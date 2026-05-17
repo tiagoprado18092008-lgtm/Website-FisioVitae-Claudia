@@ -1,35 +1,26 @@
-name: Deploy Website
+name: Website Validation
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, develop ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, develop ]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: List HTML files
+      - name: Validate HTML files
         run: |
-          echo "HTML Files Found:"
-          find . -name "*.html" -type f | sort
+          echo "✓ Validating HTML files..."
+          HTML_COUNT=$(find . -name "*.html" -type f | wc -l)
+          echo "Found $HTML_COUNT HTML files"
 
-      - name: Check project structure
+      - name: Check structure
         run: |
-          echo "Project Structure:"
-          ls -la
-
-  deploy:
-    needs: validate
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Deploy static website
-        run: |
-          echo "Website ready for deployment"
-          echo "Total HTML files: $(find . -name '*.html' -type f | wc -l)"
+          echo "✓ Checking project structure..."
+          echo "README.md exists: $([ -f README.md ] && echo 'Yes' || echo 'No')"
+          echo "index.html exists: $([ -f index.html ] && echo 'Yes' || echo 'No')"

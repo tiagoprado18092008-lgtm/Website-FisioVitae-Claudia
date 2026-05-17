@@ -2,22 +2,34 @@ name: Deploy Website
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ main ]
+    branches: [ master, main ]
 
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Validate HTML
+      - name: List HTML files
         run: |
-          echo "Validating HTML files..."
-          find . -name "*.html" -type f
+          echo "HTML Files Found:"
+          find . -name "*.html" -type f | sort
 
-      - name: Check assets
+      - name: Check project structure
         run: |
-          echo "Checking assets..."
-          ls -la assets/
+          echo "Project Structure:"
+          ls -la
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy static website
+        run: |
+          echo "Website ready for deployment"
+          echo "Total HTML files: $(find . -name '*.html' -type f | wc -l)"

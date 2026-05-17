@@ -1,0 +1,19 @@
+{
+  "name": "fisiovitae-website",
+  "version": "1.0.0",
+  "description": "Website profissional para clínica de fisioterapia Fisiovitae",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Website estático - nenhuma build necessária'"
+  },
+  "keywords": [
+    "fisioterapia",
+    "website",
+    "clinic"
+  ],
+  "author": "Notpr",
+  "email": "geral@alphascaleai.com",
+  "license": "Proprietary"
+}

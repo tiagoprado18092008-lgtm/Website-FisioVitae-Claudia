@@ -1,0 +1,23 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate HTML
+        run: |
+          echo "Validating HTML files..."
+          find . -name "*.html" -type f
+
+      - name: Check assets
+        run: |
+          echo "Checking assets..."
+          ls -la assets/

@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Serviços | Fisio Vitae — Fisioterapia e Osteopatia em Braga</title>
+  <meta name="description" content="Conheça todos os serviços da Fisio Vitae: Fisioterapia Percutânea, Ecoguiada, Pilates Clínico, Osteopatia Estrutural e Pediátrica, RPG em Panóias, Braga."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* ── SERVICE NAV ── */
+    #service-nav { background:var(--white); border-bottom:1px solid var(--beige); position:sticky; top:var(--nav-height); z-index:900; }
+    .service-nav-inner { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+    .service-nav-inner::-webkit-scrollbar { display:none; }
+    .snav-link {
+      display:flex; align-items:center; gap:.5rem; flex-shrink:0;
+      padding:1rem 1.5rem; font-size:.82rem; font-weight:600; text-decoration:none;
+      color:var(--text-light); border-bottom:2px solid transparent;
+      transition:all .2s; text-transform:uppercase; letter-spacing:.06em;
+    }
+    .snav-link:hover { color:var(--orange); }
+    .snav-link.active { color:var(--orange); border-bottom-color:var(--orange); }
+    .snav-link svg { width:15px; height:15px; }
+
+    /* ── SERVICE SECTIONS ── */
+    .service-section { padding:6rem 0; scroll-margin-top:120px; }
+    .service-section:nth-child(even) { background:var(--white); }
+    .service-section:nth-child(odd) { background:var(--cream); }
+
+    .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .svc-detail-grid.reverse { direction:rtl; }
+    .svc-detail-grid.reverse > * { direction:ltr; }
+
+    .svc-visual {
+      aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .svc-visual svg { width:40%; opacity:.2; }
+
+    .svc-detail h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem; }
+    .svc-detail h2 em { font-style:italic; color:var(--orange); }
+    .svc-detail .intro-text { font-size:1.05rem; color:var(--text-light); line-height:1.8; margin-bottom:1.5rem; }
+    .svc-detail p { font-size:.93rem; color:var(--text-light); line-height:1.78; margin-bottom:1rem; }
+    .svc-detail p strong { color:var(--text); }
+
+    .svc-indicators { display:flex; flex-direction:column; gap:.6rem; margin:1.5rem 0; }
+    .svc-indicator { display:flex; align-items:flex-start; gap:.65rem; font-size:.88rem; color:var(--text-light); line-height:1.5; }
+    .svc-indicator svg { width:16px; height:16px; color:var(--orange); flex-shrink:0; margin-top:.15rem; }
+    .svc-indicator strong { color:var(--text); font-weight:600; }
+
+    .svc-how { background:var(--orange-pale); border-radius:var(--radius); padding:1.5rem; margin:1.5rem 0; border-left:3px solid var(--orange); }
+    .svc-how h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; }
+    .svc-how-steps { display:flex; flex-direction:column; gap:.5rem; }
+    .svc-step { display:flex; align-items:flex-start; gap:.75rem; font-size:.85rem; color:var(--text-light); line-height:1.5; }
+    .step-num { width:22px; height:22px; border-radius:50%; background:var(--orange); color:white; font-size:.72rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+    .svc-faq-mini { margin-top:1.5rem; }
+    .svc-faq-mini .faq-item { background:white; }
+
+    /* ── CONDITIONS GRID ── */
+    .conditions-band { background:var(--beige); padding:4rem 0; }
+    .conditions-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2rem; }
+    .condition-chip {
+      background:white; border-radius:var(--radius); padding:1rem 1.25rem;
+      text-align:center; font-size:.85rem; font-weight:500; color:var(--text);
+      border:1px solid var(--beige); transition:all .25s;
+    }
+    .condition-chip:hover { border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
+
+    /* ── CTA INLINE ── */
+    .svc-cta-inline {
+      background:var(--orange); border-radius:var(--radius-lg); padding:2.5rem;
+      display:flex; align-items:center; justify-content:space-between; gap:2rem;
+      margin-top:2rem; flex-wrap:wrap;
+    }
+    .svc-cta-inline h4 { font-family:var(--font-display); font-size:1.3rem; font-weight:600; color:white; }
+    .svc-cta-inline p { font-size:.875rem; color:rgba(255,255,255,.75); margin-top:.25rem; }
+
+    /* ── COMPARISON TABLE ── */
+    #comparativo { background:var(--white); }
+    .comp-table { width:100%; border-collapse:collapse; margin-top:2.5rem; font-size:.9rem; }
+    .comp-table thead th { background:var(--orange); color:white; padding:1rem 1.25rem; text-align:left; font-weight:600; font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+    .comp-table thead th:first-child { border-radius:var(--radius) 0 0 0; }
+    .comp-table thead th:last-child { border-radius:0 var(--radius) 0 0; }
+    .comp-table tbody tr { border-bottom:1px solid var(--beige); }
+    .comp-table tbody tr:last-child { border-bottom:none; }
+    .comp-table tbody tr:hover { background:var(--cream); }
+    .comp-table td { padding:.9rem 1.25rem; color:var(--text-light); vertical-align:top; }
+    .comp-table td:first-child { font-weight:600; color:var(--dark); }
+    .check { color:var(--sage); font-weight:700; font-size:1rem; }
+    .dash { color:var(--beige-mid); }
+
+    /* ── FAQ SERVICOS ── */
+    #faq-servicos { background:var(--cream); }
+    .faq-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem; }
+    .faq-col { display:flex; flex-direction:column; gap:.75rem; }
+    .faq-item { background:white; border-radius:var(--radius); border:1px solid var(--beige); overflow:hidden; }
+    .faq-item.open { box-shadow:var(--shadow-card); border-color:rgba(232,98,26,.2); }
+    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.1rem 1.4rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; font-family:var(--font-body); font-size:.88rem; font-weight:600; color:var(--dark); transition:color .2s; }
+    .faq-item.open .faq-question { color:var(--orange); }
+    .faq-chevron { width:18px; height:18px; flex-shrink:0; color:var(--text-light); transition:transform .3s cubic-bezier(.22,1,.36,1), color .2s; }
+    .faq-item.open .faq-chevron { transform:rotate(180deg); color:var(--orange); }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.22,1,.36,1); }
+    .faq-item.open .faq-answer { max-height:300px; }
+    .faq-answer-inner { padding:0 1.4rem 1.1rem; font-size:.85rem; color:var(--text-light); line-height:1.72; }
+
+    @media(max-width:1024px) {
+      .conditions-grid { grid-template-columns:repeat(3,1fr); }
+    }
+    @media(max-width:768px) {
+      .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .svc-detail-grid.reverse { direction:ltr; }
+      .svc-visual { display:none; }
+      .conditions-grid { grid-template-columns:repeat(2,1fr); }
+      .faq-grid-2 { grid-template-columns:1fr; }
+      #service-nav { top:var(--nav-height); }
+      .svc-cta-inline { flex-direction:column; align-items:flex-start; }
+      .comp-table { font-size:.78rem; }
+      .comp-table td, .comp-table th { padding:.7rem .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li class="nav-dropdown">
+      <a href="servicos.html" class="nav-dropdown-toggle active">Serviços <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li>
+        <li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li>
+        <li><a href="pilates-clinico.html">Pilates Clínico</a></li>
+        <li><a href="osteopatia.html">Osteopatia</a></li>
+        <li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li>
+        <li><a href="rpg.html">RPG</a></li>
+      </ul>
+    </li>
+    <li><a href="equipa.html">Equipa</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="servicos.html">Serviços</a>
+  <div class="mobile-nav-services">
+    <a href="fisioterapia-percutanea.html">↳ Fisioterapia Percutânea</a>
+    <a href="fisioterapia-ecoguiada.html">↳ Fisioterapia Ecoguiada</a>
+    <a href="pilates-clinico.html">↳ Pilates Clínico</a>
+    <a href="osteopatia.html">↳ Osteopatia</a>
+    <a href="osteopatia-pediatrica.html">↳ Osteopatia Pediátrica</a>
+    <a href="rpg.html">↳ RPG</a>
+  </div>
+  <a href="equipa.html">Equipa</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Serviços</span></div>
+    <div class="page-hero-label section-label">O Que Fazemos</div>
+    <h1>Tratamentos <em>avançados</em><br>para cada condição</h1>
+    <p>Oferecemos um conjunto completo de serviços de fisioterapia e osteopatia, com técnicas de vanguarda e uma abordagem sempre personalizada para a sua situação específica.</p>
+  </div>
+</div>
+
+<!-- SERVICE NAV -->
+<div id="service-nav">
+  <div class="container">
+    <div class="service-nav-inner">
+      <a href="#percutanea" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>Percutânea</a>
+      <a href="#ecoguiada" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>Ecoguiada</a>
+      <a href="#pilates" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12"/></svg>Pilates Clínico</a>
+      <a href="#osteopatia" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/></svg>Osteopatia</a>
+      <a href="#pediatrica" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="5"/><path d="M12 12v10"/></svg>Pediátrica</a>
+      <a href="#rpg" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c0 0-4 4-4 9s4 9 4 9 4-4 4-9-4-9-4-9z"/><path d="M3 12h18"/></svg>RPG</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PERCUTÂNEA ═══ -->
+<section class="service-section" id="percutanea">
+  <div class="container">
+    <div class="svc-detail-grid">
+      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,var(--orange-pale),#E8C9A8,#D4A070)">
+        <svg viewBox="0 0 100 120" fill="none"><circle cx="50" cy="50" r="40" stroke="#E8621A" stroke-width="3"/><line x1="50" y1="20" x2="50" y2="80" stroke="#E8621A" stroke-width="3" stroke-linecap="round"/><circle cx="50" cy="50" r="6" fill="#E8621A"/></svg>
+      </div>
+      <div class="svc-detail reveal-right">
+        <div class="section-label">Técnica Avançada</div>
+        <h2>Fisioterapia <em>Percutânea</em></h2>
+        <p class="intro-text">Uma das técnicas mais avançadas da fisioterapia moderna, que utiliza agulhas finas para tratar estruturas musculares, tendinosas e fasciais com mínima invasão e máxima eficácia.</p>
+        <p>A fisioterapia percutânea — também conhecida como punção seca — consiste na introdução de agulhas de acupunctura finas diretamente nos tecidos-alvo. Ao contrário da acupunctura tradicional, tem uma base totalmente científica e anatómica, agindo sobre pontos-gatilho miofasciais (trigger points), tendões e tecido conjuntivo.</p>
+        <p>A técnica provoca uma <strong>resposta neuromoduladora local</strong> que quebra ciclos de dor crónica, reduz espasmo muscular e estimula os mecanismos naturais de regeneração do tecido.</p>
+        <div class="svc-how">
+          <h4>Como funciona uma sessão?</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Avaliação:</strong> Identificação dos tecidos-alvo e pontos de dor através de palpação e testes funcionais.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Aplicação:</strong> Introdução das agulhas finas nos pontos identificados com precisão anatómica.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Estimulação:</strong> Movimentos suaves para provocar a resposta de espasmo local (LTR) desejada.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Recuperação:</strong> Mobilização pós-tratamento e orientações para as 24–48h seguintes.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Indicações</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Dor cervical e lombar crónica</strong> — cervicalgias, lombalgias e dores irradiadas</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Tendinopatias</strong> — tendão de Aquiles, rotuliano, supraespinhoso</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Lesões desportivas</strong> — estiramentos, contraturas, ruturas parciais</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Síndrome de overuse</strong> — epicondilite, síndrome do manguito rotador</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pontos-gatilho miofasciais</strong> — dor referida muscular e limitação de amplitude</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>Quer saber se é indicado para si?</h4><p>Consulte a nossa equipa para uma avaliação personalizada.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ECOGUIADA ═══ -->
+<section class="service-section" id="ecoguiada">
+  <div class="container">
+    <div class="svc-detail-grid reverse">
+      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#E8DDD0,#D0C0A8,#B8A080)">
+        <svg viewBox="0 0 100 120" fill="none"><rect x="20" y="20" width="60" height="60" rx="8" stroke="#E8621A" stroke-width="3"/><circle cx="50" cy="50" r="15" stroke="#E8621A" stroke-width="2"/><line x1="50" y1="80" x2="50" y2="100" stroke="#E8621A" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="svc-detail reveal-left">
+        <div class="section-label">Precisão Máxima</div>
+        <h2>Fisioterapia <em>Ecoguiada</em></h2>
+        <p class="intro-text">A fisioterapia ecoguiada representa o estado da arte no tratamento de lesões músculo-esqueléticas — guiada por ecografia em tempo real, permite uma precisão cirúrgica que outras técnicas não conseguem igualar.</p>
+        <p>Através de um ecógrafo de alta resolução, o terapeuta consegue <strong>visualizar em tempo real</strong> as estruturas internas — tendões, músculos, bolsas sinoviais, nervos — e orientar as agulhas ou outros instrumentos com precisão milimétrica.</p>
+        <p>Esta abordagem é particularmente valiosa em <strong>zonas de difícil acesso anatómico</strong>, em estruturas profundas e em situações em que a palpação manual não é suficientemente precisa para garantir a segurança e eficácia do tratamento.</p>
+        <div class="svc-how">
+          <h4>Vantagens da abordagem ecoguiada</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Diagnóstico em consultório:</strong> A ecografia permite avaliar o estado dos tecidos sem necessidade de exames externos.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Precisão máxima:</strong> Visualização em tempo real evita estruturas vasculares e nervosas adjacentes.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Eficácia comprovada:</strong> Resultados superiores em lesões tendinosas crónicas e bursites.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Documentação:</strong> Imagens antes e depois do tratamento para acompanhamento objetivo da evolução.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Indicações principais</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Tendinopatias crónicas</strong> — de difícil resolução por métodos convencionais</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Bursite</strong> — inflamação das bolsas sinoviais do ombro, anca e joelho</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Neuropatias periféricas</strong> — compressão de nervos (carpo, cúbito)</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Calcificações tendinosas</strong> — barbotagem guiada por ecografia</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>Fisioterapia com precisão de imagem</h4><p>Agende a sua consulta de avaliação ecoguiada.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILATES ═══ -->
+<section class="service-section" id="pilates">
+  <div class="container">
+    <div class="svc-detail-grid">
+      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,#A8B89A,#8FA880,#6B8A5A)">
+        <svg viewBox="0 0 100 120" fill="none"><path d="M20 60 Q30 20 50 30 Q70 40 80 60" stroke="white" stroke-width="3" fill="none"/><line x1="50" y1="30" x2="50" y2="100" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="svc-detail reveal-right">
+        <div class="section-label">Reabilitação Ativa</div>
+        <h2>Pilates <em>Clínico</em></h2>
+        <p class="intro-text">O Pilates Clínico é muito mais do que exercício — é uma ferramenta terapêutica poderosa que, quando prescrita e supervisionada por um profissional de saúde, acelera a recuperação e previne recaídas.</p>
+        <p>Na Fisio Vitae, o Pilates Clínico é <strong>totalmente integrado no plano de tratamento</strong>. O José Pereira trabalha em estreita colaboração com as fisioterapeutas para garantir que cada exercício serve um propósito clínico específico, respeitando as limitações de cada paciente.</p>
+        <p>Utilizamos equipamento profissional — reformer, cadeira Wunda e outros aparelhos — para oferecer um programa progressivo que evolui com o paciente, desde as fases iniciais de reabilitação até ao retorno completo à atividade.</p>
+        <div class="svc-how">
+          <h4>Como é estruturado o programa?</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Avaliação Inicial:</strong> Análise postural, força, flexibilidade e limitações específicas do paciente.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Fase 1 — Consciência:</strong> Ativação do core profundo, respiração e controlo neuromuscular básico.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Fase 2 — Fortalecimento:</strong> Progressão gradual de exercícios no reformer e cadeira, com resistência crescente.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Fase 3 — Funcionalidade:</strong> Integração dos padrões de movimento nas atividades do quotidiano e desporto.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Para quem é indicado?</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Reabilitação pós-cirúrgica</strong> — coluna, joelho, ombro, anca</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Dores crónicas</strong> — lombalgia, cervicalgia, fibromialgia</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Problemas posturais</strong> — escoliose, hipercifose, hiperlordose</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Gravidez e pós-parto</strong> — fortalecimento do pavimento pélvico</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Prevenção</strong> — atletas e pessoas ativas que querem reduzir risco de lesão</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>Inicie o seu programa de Pilates Clínico</h4><p>Sessões individuais ou em pequeno grupo, sempre supervisionadas.</p></div>
+          <a href="contacto.html" class="btn-primary">Saber Mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OSTEOPATIA ═══ -->
+<section class="service-section" id="osteopatia">
+  <div class="container">
+    <div class="svc-detail-grid reverse">
+      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#6B4F3A,#A07050,#C4A070)">
+        <svg viewBox="0 0 100 120" fill="none"><path d="M50 10C30 10 15 25 15 45c0 12 6 23 16 30L25 100h50L69 75c10-7 16-18 16-30C85 25 70 10 50 10z" stroke="white" stroke-width="3" fill="none"/></svg>
+      </div>
+      <div class="svc-detail reveal-left">
+        <div class="section-label">Abordagem Holística</div>
+        <h2>Osteopatia <em>Estrutural</em></h2>
+        <p class="intro-text">A osteopatia estrutural parte de uma premissa fundamental: o corpo humano é uma unidade. Quando há disfunção numa estrutura, outras são inevitavelmente afetadas. O osteopata trata o sistema, não apenas o sintoma.</p>
+        <p>Através de técnicas manuais sofisticadas — manipulações articulares, mobilizações, técnicas de tecidos moles e técnicas de energia muscular — o osteopata restaura a mobilidade das articulações e o equilíbrio muscular, eliminando as tensões que estão na origem da dor.</p>
+        <p>A abordagem holística da osteopatia considera a interação entre o sistema músculo-esquelético, visceral e craniosacral, permitindo tratar condições aparentemente não relacionadas com a musculatura mas que têm origem em <strong>disfunções estruturais</strong>.</p>
+        <div class="svc-how">
+          <h4>Técnicas utilizadas na Fisio Vitae</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Manipulação articular (HVLA):</strong> Técnicas de alta velocidade e baixa amplitude para restaurar mobilidade articular.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Técnicas de tecidos moles:</strong> Massagem profunda, inibição e estiramentos para relaxamento muscular e fascial.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Energia muscular (MET):</strong> Contrações isométricas ativas para corrigir disfunções articulares.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Técnicas funcionais:</strong> Mobilizações suaves que seguem o movimento natural do tecido.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Condições tratadas</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Hérnias discais e ciáticas</strong> — alívio da compressão radicular</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Artrose e rigidez articular</strong> — melhoria da mobilidade e redução da dor</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções da ATM</strong> — bruxismo, dores na mandíbula e face</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cefaleias e enxaquecas tensionais</strong> — de origem músculo-esquelética</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções viscerais</strong> — refluxo, prisão de ventre, problemas digestivos</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>Trate a causa, não apenas o sintoma</h4><p>Agende uma avaliação osteopática completa.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OSTEOPATIA PEDIÁTRICA ═══ -->
+<section class="service-section" id="pediatrica">
+  <div class="container">
+    <div class="svc-detail-grid">
+      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,#F5E6D8,#E8C9A8,#D4B090)">
+        <svg viewBox="0 0 100 120" fill="none"><circle cx="50" cy="30" r="20" stroke="#E8621A" stroke-width="3"/><path d="M30 55c0-11 9-20 20-20s20 9 20 20v40H30V55z" stroke="#E8621A" stroke-width="3" fill="none"/></svg>
+      </div>
+      <div class="svc-detail reveal-right">
+        <div class="section-label">Cuidado Especializado</div>
+        <h2>Osteopatia <em>Pediátrica</em></h2>
+        <p class="intro-text">A osteopatia pediátrica é uma especialidade que aplica técnicas suaves e não invasivas para tratar bebés, crianças e adolescentes. É um dos nossos serviços mais procurados e delicados.</p>
+        <p>O nascimento, mesmo quando corre bem, é um processo fisicamente intenso para o bebé. As forças envolvidas durante o parto podem criar tensões nos tecidos cranianos e no sistema músculo-esquelético do recém-nascido. A osteopatia pediátrica intervém precocemente para <strong>eliminar essas tensões</strong> antes que se tornem padrões disfuncionais.</p>
+        <p>Todas as técnicas utilizadas em bebés e crianças são <strong>extremamente suaves</strong> — muitas vezes comparadas à pressão de uma folha de papel — e totalmente seguras quando realizadas por profissional qualificado.</p>
+        <div class="svc-how">
+          <h4>Para que idades é indicada?</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">0</div><span><strong>Recém-nascidos:</strong> Cólicas, dificuldade na amamentação, torcicolo congénito, plagiocefalia.</span></div>
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Bebés (3–12m):</strong> Irritabilidade, sono agitado, assimetrias posturais, atraso no desenvolvimento motor.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Crianças (1–10 anos):</strong> Problemas posturais, otites recorrentes, problemas respiratórios, hiperatividade.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Adolescentes:</strong> Escolioses, dores de crescimento, lesões desportivas, cefaleias.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Condições mais comuns</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cólicas do lactente</strong> — irritabilidade, choro intenso, dificuldade em acalmar</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Torcicolo congénito</strong> — inclinação persistente da cabeça para um lado</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Plagiocefalia</strong> — assimetria craniana por pressão prolongada</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Escoliose infantil e juvenil</strong> — prevenção e tratamento precoce</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Otites recorrentes</strong> — relacionadas com tensões cranianas e drenagem linfática</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>O seu filho merece os melhores cuidados</h4><p>A Inês Coelho recebe bebés e crianças com toda a delicadeza e experiência necessárias.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RPG ═══ -->
+<section class="service-section" id="rpg">
+  <div class="container">
+    <div class="svc-detail-grid reverse">
+      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#7A8C6E,#A8B89A,#C8D8B8)">
+        <svg viewBox="0 0 100 120" fill="none"><line x1="50" y1="10" x2="50" y2="110" stroke="white" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="35" rx="25" ry="12" stroke="white" stroke-width="2.5" fill="none"/><ellipse cx="50" cy="75" rx="20" ry="10" stroke="white" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div class="svc-detail reveal-left">
+        <div class="section-label">Reeducação Postural</div>
+        <h2>RPG — Reeducação Postural <em>Global</em></h2>
+        <p class="intro-text">O RPG é um método terapêutico desenvolvido pelo fisioterapeuta francês Philippe Souchard que trata o corpo como um sistema de cadeias musculares interligadas — porque a postura é sempre global, nunca localizada.</p>
+        <p>Em vez de tratar apenas a zona de dor, o RPG trabalha sobre as <strong>cadeias musculares posteriores e anteriores</strong> na sua totalidade. Através de posturas terapêuticas mantidas progressivamente, o método alonga os músculos retraídos e corrige os padrões posturais que estão na origem dos problemas.</p>
+        <p>As sessões de RPG duram tipicamente 50–60 minutos e o paciente é mantido em posturas específicas durante vários minutos, enquanto o terapeuta guia e ajusta. O método exige <strong>participação ativa</strong> e consciência corporal por parte do paciente.</p>
+        <div class="svc-how">
+          <h4>Os princípios fundamentais do RPG</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Globalidade:</strong> Cada músculo é parte de uma cadeia. Tratar o sistema, não o músculo isolado.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Causalidade:</strong> O sintoma raramente está onde está a causa. O RPG busca a origem real do problema.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Individualidade:</strong> Cada pessoa tem a sua postura específica. Não há protocolos — há pessoas.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Progressividade:</strong> As posturas evoluem à medida que o paciente ganha consciência e flexibilidade.</span></div>
+          </div>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:.75rem;margin-top:1.5rem">Indicações</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Escolioses</strong> — prevenção e correção de curvaturas laterais da coluna</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Hérnias discais</strong> — alívio da pressão e prevenção de recidivas</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Dores crónicas</strong> — lombalgia, cervicalgia, dorsalgia persistentes</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pés planos e valgos</strong> — correção postural de base pela cadeia muscular inferior</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Desvios posturais</strong> — hipercifose dorsal, hiperlordose lombar, head-forward</span></div>
+        </div>
+        <div class="svc-cta-inline">
+          <div><h4>Corrija a postura. Elimine a dor.</h4><p>Sessões individuais de RPG com a Dra. Cláudia Alves.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS BAND -->
+<section class="conditions-band">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 0">
+      <div class="section-label">Condições Tratadas</div>
+      <h2 class="section-title">Tratamos uma vasta gama de <em>condições</em></h2>
+    </div>
+    <div class="conditions-grid">
+      <div class="condition-chip reveal delay-1">Lombalgia Crónica</div>
+      <div class="condition-chip reveal delay-2">Cervicalgia</div>
+      <div class="condition-chip reveal delay-3">Hérnia Discal</div>
+      <div class="condition-chip reveal delay-4">Ciática</div>
+      <div class="condition-chip reveal delay-1">Escoliose</div>
+      <div class="condition-chip reveal delay-2">Artrose do Joelho</div>
+      <div class="condition-chip reveal delay-3">Lesão Desportiva</div>
+      <div class="condition-chip reveal delay-4">Tendinite</div>
+      <div class="condition-chip reveal delay-1">Epicondilite</div>
+      <div class="condition-chip reveal delay-2">Fascite Plantar</div>
+      <div class="condition-chip reveal delay-3">Cólicas do Bebé</div>
+      <div class="condition-chip reveal delay-4">Síndrome do Manguito</div>
+      <div class="condition-chip reveal delay-1">Dores Pós-cirúrgicas</div>
+      <div class="condition-chip reveal delay-2">Fibromialgia</div>
+      <div class="condition-chip reveal delay-3">Cefaleia Tensional</div>
+      <div class="condition-chip reveal delay-4">Disfunção ATM</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SERVIÇOS -->
+<section id="faq-servicos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 1rem">
+      <div class="section-label">Dúvidas</div>
+      <h2 class="section-title">Perguntas sobre os <em>tratamentos</em></h2>
+    </div>
+    <div class="faq-grid-2">
+      <div class="faq-col">
+        <div class="faq-item"><button class="faq-question">Qual a diferença entre fisioterapia percutânea e acupunctura?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Embora ambas utilizem agulhas, são filosofias completamente diferentes. A acupunctura baseia-se em meridianos e conceitos da medicina tradicional chinesa. A fisioterapia percutânea tem base anatómica e neurofisiológica ocidental — as agulhas são dirigidas a estruturas musculares e tendinosas específicas, identificadas por avaliação clínica. Os mecanismos de ação e os objetivos são distintos.</div></div></div>
+        <div class="faq-item"><button class="faq-question">O Pilates Clínico pode ser feito por alguém sem lesões?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim! Embora seja especialmente indicado para reabilitação, o Pilates Clínico é igualmente eficaz para prevenção de lesões, melhoria da postura e fortalecimento funcional. Atletas, pessoas sedentárias e sénior ativo — todos beneficiam de um programa bem estruturado e supervisionado.</div></div></div>
+        <div class="faq-item"><button class="faq-question">A osteopatia pediátrica é segura para recém-nascidos?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim, é completamente segura quando realizada por profissional qualificado. As técnicas utilizadas em bebés são gentilíssimas — muitas vezes imperceptíveis ao toque. A Inês Coelho tem formação específica em osteopatia pediátrica e recebe bebés desde os primeiros dias de vida com total segurança.</div></div></div>
+      </div>
+      <div class="faq-col">
+        <div class="faq-item"><button class="faq-question">Posso combinar vários tratamentos?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim, e é frequentemente a abordagem mais eficaz. Por exemplo, combinar fisioterapia percutânea com pilates clínico acelera significativamente a recuperação — o primeiro trata a lesão, o segundo fortalece e previne recaídas. A nossa equipa coordena os tratamentos para máxima eficácia.</div></div></div>
+        <div class="faq-item"><button class="faq-question">O RPG é indicado para crianças?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim, especialmente para escolioses juvenis e problemas posturais do crescimento. Quanto mais cedo se intervir, melhores os resultados. O RPG é uma das técnicas mais eficazes no tratamento e prevenção da progressão de escolioses em adolescentes.</div></div></div>
+        <div class="faq-item"><button class="faq-question">A fisioterapia ecoguiada é mais cara que a convencional?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">A fisioterapia ecoguiada tem um custo ligeiramente superior pela especialização e equipamento envolvido. No entanto, ao reduzir o número de sessões necessárias por maior precisão e eficácia, pode tornar-se mais económica a longo prazo. Contacte-nos para informação sobre preços e planos.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a><p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p><div class="footer-social"><a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div>
+      <div class="footer-col"><h4>Serviços</h4><ul><li><a href="#percutanea">Fisioterapia Percutânea</a></li><li><a href="#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="#pilates">Pilates Clínico</a></li><li><a href="#osteopatia">Osteopatia Estrutural</a></li><li><a href="#pediatrica">Osteopatia Pediátrica</a></li><li><a href="#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><strong style="color:rgba(255,255,255,.7)">Tel</strong><br><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><strong style="color:rgba(255,255,255,.7)">Email</strong><br><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Fisio Vitae · Panóias, Braga</p><p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
+
+

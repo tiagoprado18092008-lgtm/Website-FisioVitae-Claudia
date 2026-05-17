@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto | Fisio Vitae — Fisioterapia e Osteopatia em Braga</title>
+  <meta name="description" content="Contacte a Fisio Vitae em Panóias, Braga. Marque a sua consulta por telefone, email ou formulário online. Seg–Sex 9h–22h | Sáb 9h–13h."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* ── CONTACT MAIN ── */
+    #contact-main { background:var(--white); padding-top:4rem; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
+
+    /* LEFT PANEL */
+    .contact-info h2 { font-family:var(--font-display); font-size:2rem; font-weight:600; color:var(--dark); letter-spacing:-.02em; margin-bottom:.75rem; }
+    .contact-info h2 em { font-style:italic; color:var(--orange); }
+    .contact-info > .sub-text { font-size:1rem; color:var(--text-light); line-height:1.75; margin-bottom:2.5rem; }
+
+    .info-cards { display:flex; flex-direction:column; gap:1rem; margin-bottom:2rem; }
+    .info-card {
+      display:flex; gap:1rem; align-items:flex-start;
+      background:var(--cream); border-radius:var(--radius); padding:1.25rem 1.5rem;
+      border:1px solid var(--beige); transition:all .25s;
+    }
+    .info-card:hover { border-color:rgba(232,98,26,.2); box-shadow:var(--shadow-card); }
+    .info-card-icon { width:44px; height:44px; background:var(--orange-pale); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .info-card-icon svg { width:20px; height:20px; color:var(--orange); }
+    .info-card-body strong { display:block; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-light); margin-bottom:.25rem; }
+    .info-card-body span, .info-card-body a { font-size:.95rem; color:var(--dark); text-decoration:none; font-weight:500; }
+    .info-card-body a:hover { color:var(--orange); }
+    .info-card-body .sub { display:block; font-size:.8rem; color:var(--text-light); margin-top:.15rem; }
+
+    /* HORÁRIO */
+    .horario-card { background:var(--orange-pale); border:1px solid rgba(232,101,10,.15); border-radius:var(--radius-lg); padding:2rem; margin-bottom:2rem; }
+    .horario-card h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--dark); margin-bottom:1.25rem; }
+    .horario-rows { display:flex; flex-direction:column; gap:.6rem; }
+    .horario-row { display:flex; justify-content:space-between; align-items:center; padding:.5rem 0; border-bottom:1px solid rgba(232,101,10,.12); }
+    .horario-row:last-child { border-bottom:none; }
+    .horario-row .day { font-size:.88rem; color:var(--text-light); font-weight:500; }
+    .horario-row .time { font-size:.88rem; color:var(--dark); font-weight:600; }
+    .horario-row .time.closed { color:var(--text-light); opacity:.5; }
+    .horario-badge { display:inline-flex; align-items:center; gap:.4rem; background:rgba(232,101,10,.1); color:var(--orange); font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; padding:.25rem .65rem; border-radius:100px; margin-bottom:1rem; }
+    .horario-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--orange); }
+
+    /* SOCIAL */
+    .social-row { display:flex; gap:.75rem; }
+    .social-btn {
+      display:flex; align-items:center; gap:.6rem; text-decoration:none;
+      background:white; border:1.5px solid var(--beige); border-radius:10px;
+      padding:.65rem 1rem; font-size:.82rem; font-weight:600; color:var(--text);
+      transition:all .2s; flex:1; justify-content:center;
+    }
+    .social-btn:hover { border-color:var(--orange); color:var(--orange); }
+    .social-btn svg { width:18px; height:18px; }
+
+    /* FORM CARD */
+    .form-card {
+      background:var(--cream); border-radius:var(--radius-lg); padding:2.5rem;
+      border:1px solid var(--beige); box-shadow:var(--shadow-soft);
+      position:sticky; top:calc(var(--nav-height) + 2rem);
+    }
+    .form-card h3 { font-family:var(--font-display); font-size:1.75rem; font-weight:600; color:var(--dark); margin-bottom:.4rem; }
+    .form-card > p { font-size:.875rem; color:var(--text-light); margin-bottom:2rem; }
+    .form-select-wrap { position:relative; }
+    .form-select-wrap::after { content:'▾'; position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:var(--text-light); pointer-events:none; }
+    .form-group select { width:100%; appearance:none; -webkit-appearance:none; }
+    .privacy-note { font-size:.75rem; color:var(--text-light); margin-top:1rem; line-height:1.5; }
+    .privacy-note a { color:var(--orange); }
+
+    /* ── MAP ── */
+    #map-section { background:var(--beige); padding:5rem 0; }
+    .map-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; }
+    .map-wrap { border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); height:420px; }
+    .map-wrap iframe { width:100%; height:100%; border:none; }
+
+    /* ── HOW TO GET HERE ── */
+    #como-chegar { background:var(--white); }
+    .transport-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+    .transport-card { background:var(--cream); border-radius:var(--radius-lg); padding:2rem; border:1px solid var(--beige); }
+    .transport-icon { width:48px; height:48px; background:var(--orange-pale); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; }
+    .transport-icon svg { width:22px; height:22px; color:var(--orange); }
+    .transport-card h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.5rem; }
+    .transport-card p { font-size:.875rem; color:var(--text-light); line-height:1.65; }
+
+    /* ── FAQ ── */
+    #faq-contact { background:var(--cream); }
+    .faq-list { display:flex; flex-direction:column; gap:.75rem; max-width:740px; margin:2.5rem auto 0; }
+    .faq-item { background:white; border-radius:var(--radius); border:1px solid var(--beige); overflow:hidden; }
+    .faq-item.open { border-color:rgba(232,98,26,.2); box-shadow:var(--shadow-card); }
+    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.15rem 1.5rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; font-family:var(--font-body); font-size:.92rem; font-weight:600; color:var(--dark); transition:color .2s; }
+    .faq-item.open .faq-question { color:var(--orange); }
+    .faq-chevron { width:20px; height:20px; flex-shrink:0; color:var(--text-light); transition:transform .3s cubic-bezier(.22,1,.36,1), color .2s; }
+    .faq-item.open .faq-chevron { transform:rotate(180deg); color:var(--orange); }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.22,1,.36,1); }
+    .faq-item.open .faq-answer { max-height:300px; }
+    .faq-answer-inner { padding:0 1.5rem 1.25rem; font-size:.88rem; color:var(--text-light); line-height:1.72; }
+
+    /* ── EMERGENCY ── */
+    #emergency-note { background:var(--orange); padding:3rem 0; }
+    .em-inner { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+    .em-icon { width:56px; height:56px; background:rgba(255,255,255,.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .em-icon svg { width:28px; height:28px; color:white; }
+    .em-text h3 { font-family:var(--font-display); font-size:1.3rem; font-weight:600; color:white; }
+    .em-text p { font-size:.9rem; color:rgba(255,255,255,.8); margin-top:.25rem; }
+    .em-action { margin-left:auto; display:flex; gap:.75rem; flex-wrap:wrap; }
+
+    @media(max-width:1024px) {
+      .contact-grid { grid-template-columns:1fr; }
+      .form-card { position:static; }
+    }
+    @media(max-width:768px) {
+      .transport-grid { grid-template-columns:1fr; }
+      .map-header { flex-direction:column; align-items:flex-start; gap:1rem; }
+      .em-inner { flex-direction:column; align-items:flex-start; }
+      .em-action { margin-left:0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="equipa.html">Equipa</a></li>
+    <li><a href="contacto.html" class="active">Contacto</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a><a href="equipa.html">Equipa</a><a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Contacto</span></div>
+    <div class="page-hero-label section-label">Entre em Contacto</div>
+    <h1>Estamos aqui <em>para si</em></h1>
+    <p>Marque a sua consulta por telefone, email ou formulário. Respondemos sempre o mais brevemente possível — normalmente no mesmo dia útil.</p>
+  </div>
+</div>
+
+<!-- EMERGENCY NOTE -->
+<section id="emergency-note">
+  <div class="container">
+    <div class="em-inner">
+      <div class="em-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div class="em-text">
+        <h3>Prefere ligar diretamente?</h3>
+        <p>A Rafaela está disponível para marcar a sua consulta por telefone, de segunda a sábado.</p>
+      </div>
+      <div class="em-action">
+        <a href="tel:253623663" class="btn-primary" style="background:white;color:var(--orange);box-shadow:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          253 623 663
+        </a>
+        <a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="btn-outline-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section id="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- INFO -->
+      <div class="reveal-left">
+        <div class="section-label">Informações de Contacto</div>
+        <h2>Como <em>chegar</em> até nós</h2>
+        <p class="sub-text">Estamos em Panóias, Braga, e estamos sempre disponíveis para esclarecer dúvidas, dar informações sobre os nossos serviços e marcar consultas.</p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="info-card-body">
+              <strong>Morada</strong>
+              <span>Rua Nova de Agrafonte, n.º 31</span>
+              <span class="sub">Panóias, Braga, Portugal</span>
+            </div>
+          </div>
+          <a href="tel:253623663" style="text-decoration:none" class="info-card">
+            <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div class="info-card-body">
+              <strong>Telefone</strong>
+              <span>253 623 663</span>
+              <span class="sub">Clique para ligar</span>
+            </div>
+          </a>
+          <a href="mailto:saude@fisiovitae.pt" style="text-decoration:none" class="info-card">
+            <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="info-card-body">
+              <strong>Email</strong>
+              <span>saude@fisiovitae.pt</span>
+              <span class="sub">Resposta em menos de 24h</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="horario-card">
+          <div class="horario-badge">Horário de Funcionamento</div>
+          <h3>Quando Estamos Abertos</h3>
+          <div class="horario-rows">
+            <div class="horario-row"><span class="day">Segunda-feira</span><span class="time">9h00 – 22h00</span></div>
+            <div class="horario-row"><span class="day">Terça-feira</span><span class="time">9h00 – 22h00</span></div>
+            <div class="horario-row"><span class="day">Quarta-feira</span><span class="time">9h00 – 22h00</span></div>
+            <div class="horario-row"><span class="day">Quinta-feira</span><span class="time">9h00 – 22h00</span></div>
+            <div class="horario-row"><span class="day">Sexta-feira</span><span class="time">9h00 – 22h00</span></div>
+            <div class="horario-row"><span class="day">Sábado</span><span class="time">9h00 – 13h00</span></div>
+            <div class="horario-row"><span class="day">Domingo</span><span class="time closed">Encerrado</span></div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-card reveal-right">
+        <h3>Marcar Consulta</h3>
+        <p>Preencha o formulário e entraremos em contacto brevemente para confirmar a sua marcação.</p>
+
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group" id="group-nome">
+              <label for="nome">Nome Completo *</label>
+              <input type="text" id="nome" placeholder="O seu nome"/>
+              <span class="error-msg">Por favor, introduza o seu nome.</span>
+            </div>
+            <div class="form-group" id="group-telefone">
+              <label for="telefone">Telefone *</label>
+              <input type="tel" id="telefone" placeholder="9XX XXX XXX"/>
+              <span class="error-msg">Introduza um número válido.</span>
+            </div>
+          </div>
+          <div class="form-group" id="group-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="o.seu@email.com"/>
+            <span class="error-msg">Introduza um email válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="servico">Serviço de Interesse</label>
+            <div class="form-select-wrap">
+              <select id="servico">
+                <option value="">Selecionar serviço...</option>
+                <option>Fisioterapia Percutânea</option>
+                <option>Fisioterapia Ecoguiada</option>
+                <option>Pilates Clínico</option>
+                <option>Osteopatia Estrutural</option>
+                <option>Osteopatia Pediátrica</option>
+                <option>RPG — Reeducação Postural Global</option>
+                <option>Não sei / Quero avaliação</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="preferencia">Preferência de Horário</label>
+            <div class="form-select-wrap">
+              <select id="preferencia">
+                <option value="">Selecionar horário preferido...</option>
+                <option>Manhã (9h–12h)</option>
+                <option>Tarde (12h–17h)</option>
+                <option>Final do dia (17h–22h)</option>
+                <option>Sábado de manhã</option>
+                <option>Qualquer horário</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" id="group-mensagem">
+            <label for="mensagem">Mensagem / Descrição da Situação *</label>
+            <textarea id="mensagem" rows="4" placeholder="Descreva brevemente a sua situação clínica ou dúvida. Quanto mais detalhe nos der, melhor poderemos preparar a sua consulta."></textarea>
+            <span class="error-msg">Por favor, escreva uma mensagem.</span>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;justify-content:center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Enviar Pedido de Marcação
+          </button>
+          <p class="privacy-note">Ao submeter este formulário, aceita a nossa <a href="politica-privacidade.html">Política de Privacidade</a>. Os seus dados são utilizados exclusivamente para o contacto sobre a marcação solicitada.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h4>Pedido enviado com sucesso!</h4>
+          <p>Obrigado pelo seu contacto. A Rafaela entrará em contacto brevemente — normalmente no mesmo dia útil — para confirmar a sua marcação.</p>
+          <br>
+          <p style="font-size:.8rem;color:var(--text-light)">Se preferir um contacto mais rápido, ligue para <a href="tel:253623663" style="color:var(--orange)">253 623 663</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <div class="container">
+    <div class="map-header">
+      <div class="reveal">
+        <div class="section-label">Como Encontrar-nos</div>
+        <h2 class="section-title">Localização</h2>
+        <p class="section-subtitle">Rua Nova de Agrafonte, n.º 31 · Panóias · Braga</p>
+      </div>
+      <a href="https://maps.google.com/?q=Rua+Nova+de+Agrafonte+31+Panóias+Braga" target="_blank" rel="noopener" class="btn-primary reveal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Abrir no Google Maps
+      </a>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.12!2d-8.4283!3d41.5482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24f9b1f3b06e47%3A0x1234!2sRua+Nova+de+Agrafonte%2C+Panoias%2C+Braga!5e0!3m2!1spt!2spt!4v1234567890!5m2!1spt!2spt"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Localização Fisio Vitae — Panóias, Braga">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- COMO CHEGAR -->
+<section id="como-chegar">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 1rem">
+      <div class="section-label">Acessibilidade</div>
+      <h2 class="section-title">Como <em>chegar</em> até nós</h2>
+    </div>
+    <div class="transport-grid">
+      <div class="transport-card reveal delay-1">
+        <div class="transport-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-1 8h2a2 2 0 002-2v-3a2 2 0 00-2-2h-4"/><rect x="9" y="11" width="10" height="10" rx="2"/><circle cx="11.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></div>
+        <h3>De Carro</h3>
+        <p>A clínica está localizada na Rua Nova de Agrafonte, n.º 31, em Panóias. Existe estacionamento gratuito na via pública nas imediações da clínica. Recomendamos a utilização do GPS com a morada indicada.</p>
+      </div>
+      <div class="transport-card reveal delay-2">
+        <div class="transport-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M8 21V7M16 21V7M2 12h20"/></svg></div>
+        <h3>Transportes Públicos</h3>
+        <p>Existem autocarros da rede TUB (Transportes Urbanos de Braga) com paragem próxima da clínica. Consulte os horários e percursos no site da TUB. A paragem mais próxima fica a cerca de 5 minutos a pé.</p>
+      </div>
+      <div class="transport-card reveal delay-3">
+        <div class="transport-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Referências Locais</h3>
+        <p>A clínica está situada em Panóias, a poucos minutos do centro de Braga. Se tiver dificuldade em localizar, ligue para 253 623 663 — a nossa equipa dá indicações precisas de forma imediata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ CONTACTO -->
+<section id="faq-contact">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 1rem">
+      <div class="section-label">Dúvidas</div>
+      <h2 class="section-title">Perguntas sobre <em>marcações</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Quanto tempo demora a primeira consulta?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">A primeira consulta inclui uma avaliação completa e costuma demorar entre 45 a 60 minutos. As sessões seguintes têm normalmente 30 a 45 minutos, dependendo do serviço. O Pilates Clínico tem sessões de 50–60 minutos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Posso cancelar ou remarcar a minha consulta?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim. Pedimos que qualquer cancelamento ou remarcação seja feito com pelo menos 24 horas de antecedência, para que possamos disponibilizar o horário a outros pacientes. Pode cancelar por telefone, email ou WhatsApp.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">A consulta é coberta pelo subsistema de saúde?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">A Fisio Vitae trabalha com vários subsistemas de saúde e seguros. Para confirmar a cobertura do seu plano específico, contacte-nos antes da consulta. Emitimos sempre recibo que pode submeter ao seu subsistema para reembolso.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">O que devo trazer para a primeira consulta?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Recomendamos que traga: cartão de identificação, cartão de saúde, e qualquer exame auxiliar de diagnóstico relevante (ressonâncias magnéticas, ecografias, análises). Se tiver relatório médico ou indicação, traga também. Vista roupa confortável que permita acesso à zona a tratar.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Qual o prazo de espera para marcação?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Normalmente conseguimos marcação em 2–5 dias úteis. Em períodos de maior procura pode ser ligeiramente mais, mas contactamos sempre assim que exista disponibilidade. Para urgências, recomendamos que ligue diretamente.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a><p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p><div class="footer-social"><a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div>
+      <div class="footer-col"><h4>Serviços</h4><ul><li><a href="servicos.html#percutanea">Fisioterapia Percutânea</a></li><li><a href="servicos.html#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="servicos.html#pilates">Pilates Clínico</a></li><li><a href="servicos.html#osteopatia">Osteopatia Estrutural</a></li><li><a href="servicos.html#pediatrica">Osteopatia Pediátrica</a></li><li><a href="servicos.html#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><strong style="color:rgba(255,255,255,.7)">Tel</strong><br><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><strong style="color:rgba(255,255,255,.7)">Email</strong><br><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Fisio Vitae · Panóias, Braga</p><p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
+
+

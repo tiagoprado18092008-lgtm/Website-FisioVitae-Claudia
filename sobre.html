@@ -1,0 +1,609 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nós | Fisio Vitae — Fisioterapia e Osteopatia em Braga</title>
+  <meta name="description" content="Conheça a história da Fisio Vitae, a nossa missão, valores e a equipa de especialistas que cuida de si em Panóias, Braga."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+
+    /* ── HISTORIA SPLIT ── */
+    #historia { background: var(--white); padding: 8rem 0; }
+    .historia-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .historia-visual { position: relative; }
+    .historia-card {
+      background: var(--cream);
+      border: 1px solid var(--beige-mid);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+    }
+    .historia-card-big {
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .historia-card-unit {
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: .25rem;
+      display: block;
+    }
+    .historia-card-divider { width: 40px; height: 2px; background: var(--orange); margin: 1.75rem 0; }
+    .historia-card-quote {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: .65rem;
+    }
+    .historia-card-cite {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .historia-badge {
+      position: absolute;
+      top: -1.5rem;
+      right: 1.5rem;
+      background: var(--orange);
+      color: white;
+      border-radius: var(--radius);
+      padding: .85rem 1.25rem;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      box-shadow: 0 8px 24px rgba(232,101,10,.35);
+    }
+    .historia-badge strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: .15rem;
+    }
+    .historia-text p { font-size: 1rem; line-height: 1.85; color: var(--text-light); margin-bottom: 1.1rem; }
+    .historia-text p strong { color: var(--dark); font-weight: 600; }
+
+    /* ── STATS ── */
+    #stats-band { background: var(--beige); padding: 4rem 0; }
+    .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+    .stat-big { text-align: center; }
+    .stat-big .num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .stat-big .lbl { font-size: .82rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-top: .35rem; }
+
+    /* ── JORNADA / TIMELINE — cards horizontais ── */
+    #jornada { background: var(--cream); padding: 8rem 0; }
+    .jornada-intro { text-align: center; max-width: 600px; margin: 0 auto 5rem; }
+
+    .jornada-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .jornada-card {
+      background: white;
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all .3s cubic-bezier(.22,1,.36,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .jornada-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s cubic-bezier(.22,1,.36,1);
+    }
+    .jornada-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,26,26,.08); border-color: rgba(232,101,10,.2); }
+    .jornada-card:hover::before { transform: scaleX(1); }
+    .jornada-year {
+      background: var(--orange);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: .3rem .85rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+    .jornada-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .5rem;
+      line-height: 1.25;
+    }
+    .jornada-card p { font-size: .875rem; color: var(--text-light); line-height: 1.68; }
+
+    /* ── MISSÃO VALORES ── */
+    #missao { background: var(--orange-pale); border-top:1px solid rgba(232,101,10,.12); border-bottom:1px solid rgba(232,101,10,.12); padding: 8rem 0; position: relative; overflow: hidden; }
+    #missao .section-label { color: var(--orange); }
+    #missao .section-label::before { background: var(--orange); }
+    #missao .section-title { color: var(--dark); }
+
+    .mv-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 4rem;
+    }
+    .mv-block-missao { }
+    .mv-block-missao p { font-size: .95rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; }
+    .mv-block-valores h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    .mv-block-valores h3 em { font-style: italic; color: var(--orange); }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .valor-card {
+      background: var(--white);
+      border: 1px solid rgba(232,101,10,.15);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: background .22s, box-shadow .22s;
+    }
+    .valor-card:hover { box-shadow: 0 4px 20px rgba(232,101,10,.1); }
+    .valor-card h4 { font-size: .82rem; font-weight: 700; color: var(--dark); margin-bottom: .35rem; }
+    .valor-card p { font-size: .8rem; color: var(--text-light); line-height: 1.6; }
+    .valor-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      margin-bottom: .75rem;
+    }
+
+    .mv-missao-text {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    .mv-missao-text em { font-style: italic; color: var(--orange-light); }
+
+    /* ── EQUIPA ── */
+    #equipa { background: var(--white); padding: 8rem 0; }
+    .equipa-intro { text-align: center; max-width: 580px; margin: 0 auto 4rem; }
+    .equipa-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+
+    .team-card {
+      background: var(--cream);
+      border: 1px solid var(--beige-mid);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all .3s cubic-bezier(.22,1,.36,1);
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: rgba(232,101,10,.2); }
+    .team-card-top {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .team-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 8px 24px rgba(26,26,26,.2);
+    }
+    .team-body { padding: 1.75rem 2rem 2rem; }
+    .team-body h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: .2rem; }
+    .team-role { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--orange); margin-bottom: .85rem; }
+    .team-body p { font-size: .875rem; color: var(--text-light); line-height: 1.7; margin-bottom: .85rem; }
+    .team-creds { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .cred-tag { font-size: .73rem; font-weight: 600; background: var(--orange-pale); color: var(--orange); padding: .25rem .65rem; border-radius: 100px; border: 1px solid rgba(232,101,10,.15); }
+
+    /* ── INSTALAÇÕES ── */
+    #instalacoes { background: var(--cream); padding: 8rem 0; }
+    .inst-intro { text-align: center; max-width: 560px; margin: 0 auto 4rem; }
+    .inst-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .inst-card {
+      background: white;
+      border: 1px solid var(--beige);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .inst-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+    .inst-img {
+      aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .inst-img svg { width: 48px; height: 48px; color: rgba(255,255,255,.5); }
+    .inst-info { padding: 1.5rem; }
+    .inst-info h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: .4rem; }
+    .inst-info p { font-size: .85rem; color: var(--text-light); line-height: 1.6; }
+
+    /* ── CTA ── */
+    #sobre-cta { background: var(--orange); padding: 6rem 0; }
+    .sobre-cta-inner { text-align: center; max-width: 600px; margin: 0 auto; }
+    .sobre-cta-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 700; color: white; margin-bottom: 1rem; letter-spacing: -.02em; }
+    .sobre-cta-inner p { font-size: 1rem; color: rgba(255,255,255,.8); margin-bottom: 2.5rem; }
+    .sobre-cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .historia-split { grid-template-columns: 1fr; gap: 3.5rem; }
+      .jornada-grid { grid-template-columns: repeat(2,1fr); }
+      .mv-split { grid-template-columns: 1fr; gap: 3rem; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .equipa-grid { grid-template-columns: 1fr; }
+      .inst-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .jornada-grid { grid-template-columns: 1fr; }
+      .inst-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html" class="active">Sobre</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="equipa.html">Equipa</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a><a href="equipa.html">Equipa</a><a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Início</a>
+      <span>›</span>
+      <span class="current">Sobre Nós</span>
+    </div>
+    <div class="page-hero-label section-label">A Nossa História</div>
+    <h1>Duas décadas a <em>cuidar</em><br>de quem mais importa</h1>
+    <p>Conheça a Fisio Vitae — a clínica fundada com paixão pela Dra. Cláudia Alves e que, ao longo de 20 anos, se tornou uma referência em fisioterapia e osteopatia na região de Braga.</p>
+  </div>
+</div>
+
+<!-- HISTORIA SPLIT -->
+<section id="historia">
+  <div class="container">
+    <div class="historia-split">
+      <div class="historia-visual reveal-left">
+        <div class="historia-badge">
+          <strong>500+</strong>
+          Pacientes tratados
+        </div>
+        <div class="historia-card">
+          <div class="historia-card-big" data-target="20" data-suffix="+">0+</div>
+          <span class="historia-card-unit">Anos de experiência clínica</span>
+          <div class="historia-card-divider"></div>
+          <p class="historia-card-quote">"O tratamento começa por ouvir. Cada corpo conta uma história diferente."</p>
+          <span class="historia-card-cite">— Dra. Cláudia Alves, Fundadora</span>
+        </div>
+      </div>
+      <div class="historia-text reveal-right">
+        <div class="section-label">A Nossa Origem</div>
+        <h2 class="section-title">Uma clínica com <em>alma</em></h2>
+        <br>
+        <p>A <strong>Fisio Vitae</strong> nasceu da determinação e paixão da Dra. Cláudia Alves, fisioterapeuta com uma visão clara: criar um espaço onde a excelência clínica e o calor humano coexistissem em perfeita harmonia.</p>
+        <p>Fundada em Panóias, Braga, a clínica começou como um projeto íntimo, com uma única certeza: que o verdadeiro tratamento começa por ouvir. <strong>Ouvir a dor, ouvir a história, ouvir a pessoa</strong> — não apenas o diagnóstico.</p>
+        <p>Ao longo de duas décadas, a Fisio Vitae cresceu organicamente, sempre guiada pelos mesmos princípios: rigor científico, atualização permanente e um ambiente genuinamente acolhedor. Cada novo membro da equipa foi cuidadosamente escolhido para partilhar estes valores.</p>
+        <p>Hoje somos uma equipa multidisciplinar que combina <strong>fisioterapia de vanguarda</strong> — incluindo técnicas percutânea e ecoguiada — com pilates clínico e osteopatia, oferecendo aos pacientes da região de Braga cuidados que antes só encontravam nas grandes cidades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section id="stats-band">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-big reveal delay-1"><div class="num" data-target="20" data-suffix="+">0</div><div class="lbl">Anos de Atividade</div></div>
+      <div class="stat-big reveal delay-2"><div class="num" data-target="6" data-suffix="">6</div><div class="lbl">Especialidades Clínicas</div></div>
+      <div class="stat-big reveal delay-3"><div class="num" data-target="500" data-suffix="+">0</div><div class="lbl">Pacientes Tratados</div></div>
+      <div class="stat-big reveal delay-4"><div class="num" data-target="4" data-suffix="">4</div><div class="lbl">Profissionais de Saúde</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA — cards em grelha -->
+<section id="jornada">
+  <div class="container">
+    <div class="jornada-intro reveal">
+      <div class="section-label">A Nossa Jornada</div>
+      <h2 class="section-title">Uma história de <em>evolução</em></h2>
+      <p class="section-subtitle">Os marcos que moldaram a Fisio Vitae ao longo dos anos.</p>
+    </div>
+    <div class="jornada-grid">
+      <div class="jornada-card reveal delay-1">
+        <span class="jornada-year">2004</span>
+        <h3>Fundação da Fisio Vitae</h3>
+        <p>A Dra. Cláudia Alves abre a clínica em Panóias, Braga, com a missão de trazer fisioterapia de qualidade à comunidade local, com uma abordagem centrada no paciente.</p>
+      </div>
+      <div class="jornada-card reveal delay-2">
+        <span class="jornada-year">2008</span>
+        <h3>Expansão da Equipa</h3>
+        <p>A Inês Coelho junta-se à equipa como fisioterapeuta, trazendo nova valência em osteopatia e reabilitação músculo-esquelética. A clínica duplica a capacidade de atendimento.</p>
+      </div>
+      <div class="jornada-card reveal delay-3">
+        <span class="jornada-year">2013</span>
+        <h3>Introdução do Pilates Clínico</h3>
+        <p>O José Pereira integra a equipa como especialista em Pilates Clínico, tornando a Fisio Vitae numa das primeiras clínicas da região a integrar o pilates terapêutico na reabilitação.</p>
+      </div>
+      <div class="jornada-card reveal delay-1">
+        <span class="jornada-year">2017</span>
+        <h3>Fisioterapia Percutânea</h3>
+        <p>A Dra. Cláudia obtém certificação avançada em fisioterapia percutânea, tornando a Fisio Vitae uma referência regional nesta técnica minimamente invasiva de tratamento da dor.</p>
+      </div>
+      <div class="jornada-card reveal delay-2">
+        <span class="jornada-year">2020</span>
+        <h3>Fisioterapia Ecoguiada</h3>
+        <p>Investimento em ecógrafo de última geração e formação avançada em fisioterapia ecoguiada. A clínica passa a oferecer tratamentos com precisão de imagem em tempo real.</p>
+      </div>
+      <div class="jornada-card reveal delay-3">
+        <span class="jornada-year">2024</span>
+        <h3>20 Anos de Excelência</h3>
+        <p>A Fisio Vitae celebra duas décadas de atividade. Centenas de pacientes recuperados, uma equipa unida e o compromisso renovado de continuar a ser a clínica de referência em Braga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSÃO E VALORES -->
+<section id="missao">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">O Que Nos Move</div>
+      <h2 class="section-title">Missão & <em>Valores</em></h2>
+    </div>
+    <div class="mv-split">
+      <div class="mv-block-missao reveal-left">
+        <div class="mv-missao-text">A nossa <em>missão</em></div>
+        <p>Devolver movimento, saúde e qualidade de vida a cada paciente, através de cuidados especializados, personalizados e fundamentados na evidência científica mais atual.</p>
+        <p>Acreditamos que a fisioterapia não é apenas tratamento de sintomas — é um processo colaborativo entre o terapeuta e o paciente, onde a educação, o empoderamento e o acompanhamento próximo fazem toda a diferença.</p>
+        <p>O nosso compromisso é que cada pessoa que entre na Fisio Vitae saia com um plano claro, com esperança renovada e, acima de tudo, com resultados reais e duradouros.</p>
+      </div>
+      <div class="mv-block-valores reveal-right">
+        <h3>Os nossos <em>valores</em></h3>
+        <div class="valores-grid">
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Excelência Clínica</h4>
+            <p>Formação contínua e técnicas de ponta baseadas na evidência científica.</p>
+          </div>
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Humanidade</h4>
+            <p>Cada paciente é uma pessoa única. Tratamos com empatia e respeito genuíno.</p>
+          </div>
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Personalização</h4>
+            <p>Não existem tratamentos standard. Cada plano é desenhado à medida.</p>
+          </div>
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Transparência</h4>
+            <p>Explicamos sempre o que fazemos e porquê. O paciente é um participante ativo.</p>
+          </div>
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Comunidade</h4>
+            <p>Somos parte da comunidade de Braga. O bem-estar local é a nossa motivação.</p>
+          </div>
+          <div class="valor-card">
+            <div class="valor-dot"></div>
+            <h4>Inovação</h4>
+            <p>Investimos continuamente em tecnologia e formação para oferecer o melhor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPA -->
+<section id="equipa">
+  <div class="container">
+    <div class="equipa-intro reveal">
+      <div class="section-label">A Nossa Equipa</div>
+      <h2 class="section-title">Profissionais <em>dedicados</em> ao seu bem-estar</h2>
+      <p class="section-subtitle">Uma equipa multidisciplinar unida pela paixão em ajudar cada paciente a recuperar o seu movimento e qualidade de vida.</p>
+    </div>
+    <div class="equipa-grid">
+      <div class="team-card reveal delay-1">
+        <div class="team-card-top" style="background:linear-gradient(135deg,#FFF0E8,#FFD9BB)">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#E8621A,#F07A3A)">CA</div>
+        </div>
+        <div class="team-body">
+          <h3>Dra. Cláudia Alves</h3>
+          <div class="team-role">Fisioterapeuta · Fundadora & Responsável Clínica</div>
+          <p>Com mais de 20 anos de experiência, a Dra. Cláudia é a fundadora e o coração da Fisio Vitae. Especializou-se em fisioterapia percutânea e ecoguiada, sendo uma das profissionais mais experientes nestas técnicas em Braga.</p>
+          <div class="team-creds">
+            <span class="cred-tag">Fisioterapia Percutânea</span>
+            <span class="cred-tag">Fisioterapia Ecoguiada</span>
+            <span class="cred-tag">RPG</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal delay-2">
+        <div class="team-card-top" style="background:linear-gradient(135deg,#E8F0F4,#C8DDE8)">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#7A8C6E,#A8B89A)">IC</div>
+        </div>
+        <div class="team-body">
+          <h3>Inês Coelho</h3>
+          <div class="team-role">Fisioterapeuta · Especialista em Osteopatia</div>
+          <p>A Inês juntou-se à Fisio Vitae em 2008 e desde então tem sido uma peça fundamental da equipa. Com formação avançada em osteopatia estrutural e pediátrica, é a especialista de referência para tratamento de bebés e crianças.</p>
+          <div class="team-creds">
+            <span class="cred-tag">Osteopatia Estrutural</span>
+            <span class="cred-tag">Osteopatia Pediátrica</span>
+            <span class="cred-tag">Reabilitação MSE</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal delay-3">
+        <div class="team-card-top" style="background:linear-gradient(135deg,#EBF0E8,#D0DCCA)">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#6B4F3A,#A07050)">JP</div>
+        </div>
+        <div class="team-body">
+          <h3>José Pereira</h3>
+          <div class="team-role">Instrutor · Pilates Clínico & Exercício Terapêutico</div>
+          <p>O José é o especialista em Pilates Clínico e exercício terapêutico da equipa. Com certificação internacional em pilates e formação complementar em reabilitação funcional, desenvolve programas de exercício adaptados a cada fase da recuperação.</p>
+          <div class="team-creds">
+            <span class="cred-tag">Pilates Clínico</span>
+            <span class="cred-tag">Exercício Terapêutico</span>
+            <span class="cred-tag">Reabilitação Funcional</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal delay-4">
+        <div class="team-card-top" style="background:linear-gradient(135deg,#FDF4EC,#F5DEC5)">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#C4844A,#E8A870)">R</div>
+        </div>
+        <div class="team-body">
+          <h3>Rafaela</h3>
+          <div class="team-role">Rececionista & Coordenação Administrativa</div>
+          <p>A Rafaela é o primeiro sorriso que encontra quando entra na Fisio Vitae. Responsável pela coordenação de todas as marcações e pelo bom funcionamento diário da clínica — organizada, simpática e sempre disponível.</p>
+          <div class="team-creds">
+            <span class="cred-tag">Atendimento ao Paciente</span>
+            <span class="cred-tag">Gestão de Agenda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <a href="equipa.html" class="btn-primary">Ver Perfis Completos <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALAÇÕES -->
+<section id="instalacoes">
+  <div class="container">
+    <div class="inst-intro reveal">
+      <div class="section-label">As Nossas Instalações</div>
+      <h2 class="section-title">Um espaço pensado <em>para si</em></h2>
+      <p class="section-subtitle">Equipamentos modernos e um ambiente acolhedor que favorece a recuperação.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card reveal delay-1">
+        <div class="inst-img" style="background:linear-gradient(135deg,var(--orange-pale),#E8C9A8)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <div class="inst-info">
+          <h3>Sala de Fisioterapia</h3>
+          <p>Equipada com marquesas de tratamento, aparelhos de electroterapia, ultrassom terapêutico e todos os instrumentos necessários para fisioterapia manual e instrumental.</p>
+        </div>
+      </div>
+      <div class="inst-card reveal delay-2">
+        <div class="inst-img" style="background:linear-gradient(135deg,#E8DDD0,#D4C4B0)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M6 12h12M4 8h4M16 8h4M4 16h4M16 16h4"/></svg>
+        </div>
+        <div class="inst-info">
+          <h3>Estúdio de Pilates</h3>
+          <p>Estúdio dedicado ao Pilates Clínico com reformer, cadeira Wunda e acessórios de qualidade profissional. Sessões individuais e em pequenos grupos com supervisão constante.</p>
+        </div>
+      </div>
+      <div class="inst-card reveal delay-3">
+        <div class="inst-img" style="background:linear-gradient(135deg,#A8B89A,#8FA880)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="inst-info">
+          <h3>Sala de Ecografia</h3>
+          <p>Equipamento de ecografia de última geração para orientação precisa em tempo real durante os procedimentos de fisioterapia ecoguiada e avaliação de estruturas musculotendinosas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="sobre-cta">
+  <div class="container">
+    <div class="sobre-cta-inner reveal">
+      <h2>Pronto para conhecer a nossa equipa pessoalmente?</h2>
+      <p>Marque a sua consulta de avaliação e dê o primeiro passo em direção à sua recuperação.</p>
+      <div class="sobre-cta-btns">
+        <a href="contacto.html" class="btn-primary" style="background:white;color:var(--orange);box-shadow:0 8px 24px rgba(0,0,0,.2)">Marcar Consulta</a>
+        <a href="tel:253623663" class="btn-outline-white">253 623 663</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+        <p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4>Serviços</h4><ul><li><a href="servicos.html#percutanea">Fisioterapia Percutânea</a></li><li><a href="servicos.html#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="servicos.html#pilates">Pilates Clínico</a></li><li><a href="servicos.html#osteopatia">Osteopatia Estrutural</a></li><li><a href="servicos.html#pediatrica">Osteopatia Pediátrica</a></li><li><a href="servicos.html#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4>Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><span style="color:rgba(255,255,255,.4);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Tel</span><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><span style="color:rgba(255,255,255,.4);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Email</span><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Fisio Vitae · Panóias, Braga</p><p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

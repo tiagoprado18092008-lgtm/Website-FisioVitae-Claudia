@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Osteopatia Estrutural | Fisio Vitae — Braga</title>
+  <meta name="description" content="Osteopatia Estrutural na Fisio Vitae em Panóias, Braga. Abordagem holística para hérnias, artrose, cefaleias e disfunções estruturais."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+    .svc-visual svg { width:40%; opacity:.2; }
+    .svc-detail .intro-text { font-size:1.05rem; color:var(--text-light); line-height:1.8; margin-bottom:1.5rem; }
+    .svc-detail p { font-size:.93rem; color:var(--text-light); line-height:1.78; margin-bottom:1rem; }
+    .svc-detail p strong { color:var(--text); }
+    .svc-indicators { display:flex; flex-direction:column; gap:.6rem; margin:1.5rem 0; }
+    .svc-indicator { display:flex; align-items:flex-start; gap:.65rem; font-size:.88rem; color:var(--text-light); line-height:1.5; }
+    .svc-indicator svg { width:16px; height:16px; color:var(--orange); flex-shrink:0; margin-top:.15rem; }
+    .svc-indicator strong { color:var(--text); font-weight:600; }
+    .svc-how { background:var(--orange-pale); border-radius:var(--radius); padding:1.5rem; margin:1.5rem 0; border-left:3px solid var(--orange); }
+    .svc-how h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; }
+    .svc-how-steps { display:flex; flex-direction:column; gap:.5rem; }
+    .svc-step { display:flex; align-items:flex-start; gap:.75rem; font-size:.85rem; color:var(--text-light); line-height:1.5; }
+    .step-num { width:22px; height:22px; border-radius:50%; background:var(--orange); color:white; font-size:.72rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .svc-cta-inline { background:var(--orange); border-radius:var(--radius-lg); padding:2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; margin-top:2rem; flex-wrap:wrap; }
+    .svc-cta-inline h4 { font-family:var(--font-display); font-size:1.3rem; font-weight:600; color:white; }
+    .svc-cta-inline p { font-size:.875rem; color:rgba(255,255,255,.75); margin-top:.25rem; }
+    .svc-page { padding:6rem 0; background:var(--cream); }
+    .svc-h4 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; margin-top:1.5rem; }
+    @media(max-width:768px) {
+      .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .svc-visual { display:none; }
+      .svc-cta-inline { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li class="nav-dropdown">
+      <a href="servicos.html" class="nav-dropdown-toggle active">Serviços <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li>
+        <li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li>
+        <li><a href="pilates-clinico.html">Pilates Clínico</a></li>
+        <li><a href="osteopatia.html" class="active">Osteopatia</a></li>
+        <li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li>
+        <li><a href="rpg.html">RPG</a></li>
+      </ul>
+    </li>
+    <li><a href="equipa.html">Equipa</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="servicos.html">Serviços</a>
+  <div class="mobile-nav-services">
+    <a href="fisioterapia-percutanea.html">↳ Fisioterapia Percutânea</a>
+    <a href="fisioterapia-ecoguiada.html">↳ Fisioterapia Ecoguiada</a>
+    <a href="pilates-clinico.html">↳ Pilates Clínico</a>
+    <a href="osteopatia.html">↳ Osteopatia</a>
+    <a href="osteopatia-pediatrica.html">↳ Osteopatia Pediátrica</a>
+    <a href="rpg.html">↳ RPG</a>
+  </div>
+  <a href="equipa.html">Equipa</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<section class="page-hero" style="background:var(--cream);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><a href="servicos.html">Serviços</a><span>›</span><span class="current">Osteopatia</span></div>
+    <div class="page-hero-label section-label">Abordagem Holística</div>
+    <h1 class="page-hero-title">Osteopatia <em>Estrutural</em></h1>
+  </div>
+</section>
+
+<section class="svc-page">
+  <div class="container">
+    <div class="svc-detail-grid">
+      <div class="svc-visual" style="background:linear-gradient(145deg,#6B4F3A,#A07050,#C4A070)">
+        <svg viewBox="0 0 100 120" fill="none"><path d="M50 10C30 10 15 25 15 45c0 12 6 23 16 30L25 100h50L69 75c10-7 16-18 16-30C85 25 70 10 50 10z" stroke="white" stroke-width="3" fill="none"/></svg>
+      </div>
+      <div class="svc-detail">
+        <p class="intro-text">A osteopatia estrutural parte de uma premissa fundamental: o corpo humano é uma unidade. Quando há disfunção numa estrutura, outras são inevitavelmente afetadas. O osteopata trata o sistema, não apenas o sintoma.</p>
+        <p>Através de técnicas manuais sofisticadas — manipulações articulares, mobilizações, técnicas de tecidos moles e técnicas de energia muscular — o osteopata restaura a mobilidade das articulações e o equilíbrio muscular, eliminando as tensões que estão na origem da dor.</p>
+        <p>A abordagem holística da osteopatia considera a interação entre o sistema músculo-esquelético, visceral e craniosacral, permitindo tratar condições aparentemente não relacionadas com a musculatura mas que têm origem em <strong>disfunções estruturais</strong>.</p>
+
+        <div class="svc-how">
+          <h4>Técnicas utilizadas na Fisio Vitae</h4>
+          <div class="svc-how-steps">
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Manipulação articular (HVLA):</strong> Técnicas de alta velocidade e baixa amplitude para restaurar mobilidade articular.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Técnicas de tecidos moles:</strong> Massagem profunda, inibição e estiramentos para relaxamento muscular e fascial.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Energia muscular (MET):</strong> Contrações isométricas ativas para corrigir disfunções articulares.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Técnicas funcionais:</strong> Mobilizações suaves que seguem o movimento natural do tecido.</span></div>
+          </div>
+        </div>
+
+        <h4 class="svc-h4">Condições tratadas</h4>
+        <div class="svc-indicators">
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Hérnias discais e ciáticas</strong> — alívio da compressão radicular</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Artrose e rigidez articular</strong> — melhoria da mobilidade e redução da dor</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções da ATM</strong> — bruxismo, dores na mandíbula e face</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cefaleias e enxaquecas tensionais</strong> — de origem músculo-esquelética</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções viscerais</strong> — refluxo, prisão de ventre, problemas digestivos</span></div>
+        </div>
+
+        <div class="svc-cta-inline">
+          <div><h4>Trate a causa, não apenas o sintoma</h4><p>Agende uma avaliação osteopática completa.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="FisioVitae" class="nav-logo-img"/></a>
+        <span class="footer-tagline">Cuidar é a nossa vocação.</span>
+        <p>Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-accent-line"></div>
+        <h4>Navegação</h4>
+        <ul><li><a href="index.html">Início</a></li><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="blog.html">Blog</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-accent-line"></div>
+        <h4>Serviços</h4>
+        <ul><li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li><li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li><li><a href="pilates-clinico.html">Pilates Clínico</a></li><li><a href="osteopatia.html">Osteopatia Estrutural</a></li><li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li><li><a href="rpg.html">RPG</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Fisio Vitae. Todos os direitos reservados.</p><a href="politica-privacidade.html">Política de Privacidade</a></div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

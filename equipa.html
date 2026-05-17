@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Equipa | Fisio Vitae — Fisioterapia e Osteopatia em Braga</title>
+  <meta name="description" content="Conheça a equipa da Fisio Vitae: Dra. Cláudia Alves, Inês Coelho, José Pereira e Rafaela. Profissionais dedicados à sua recuperação em Braga."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* ── TEAM HERO CARDS ── */
+    #team-main { background:var(--white); }
+
+    .member-section { padding:6rem 0; scroll-margin-top:80px; }
+    .member-section:nth-child(odd) { background:var(--cream); }
+    .member-section:nth-child(even) { background:var(--white); }
+
+    .member-grid { display:grid; grid-template-columns:380px 1fr; gap:5rem; align-items:start; }
+    .member-grid.flip { grid-template-columns:1fr 380px; }
+    .member-grid.flip .member-card { order:2; }
+    .member-grid.flip .member-info { order:1; }
+
+    .member-card {
+      background:var(--cream); border-radius:var(--radius-lg);
+      overflow:hidden; border:1px solid var(--beige);
+      position:sticky; top:calc(var(--nav-height) + 2rem);
+    }
+    .member-card.flip { background:var(--white); }
+
+    .member-avatar-large {
+      width:100%; aspect-ratio:3/2;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,.06) 0px, rgba(255,255,255,.06) 1px,
+        transparent 1px, transparent 22px
+      );
+    }
+    .member-avatar-large::after { display:none; }
+    .member-avatar-initials {
+      font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:white;
+      opacity:.9; position:relative; z-index:1;
+    }
+
+    .member-card-body { padding:1.75rem; }
+    .member-card-body h2 { font-family:var(--font-display); font-size:1.6rem; font-weight:600; color:var(--dark); margin-bottom:.2rem; }
+    .member-card-role { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--orange); margin-bottom:1.25rem; }
+    .member-contacts { display:flex; flex-direction:column; gap:.5rem; }
+    .member-contact-item { display:flex; align-items:center; gap:.6rem; font-size:.85rem; color:var(--text-light); }
+    .member-contact-item svg { width:15px; height:15px; color:var(--orange); flex-shrink:0; }
+
+    .member-info h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.2; margin-bottom:.5rem; }
+    .member-info h2 em { font-style:italic; color:var(--orange); }
+    .member-info .sub { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--orange); margin-bottom:1.5rem; }
+    .member-info p { font-size:.95rem; color:var(--text-light); line-height:1.82; margin-bottom:1rem; }
+    .member-info p strong { color:var(--text); }
+
+    .info-block { margin-top:2rem; }
+    .info-block h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--dark); margin-bottom:1rem; padding-bottom:.5rem; border-bottom:2px solid var(--beige); }
+    .info-list { display:flex; flex-direction:column; gap:.6rem; }
+    .info-list-item { display:flex; align-items:flex-start; gap:.7rem; font-size:.88rem; color:var(--text-light); line-height:1.55; }
+    .info-list-item svg { width:16px; height:16px; color:var(--orange); flex-shrink:0; margin-top:.2rem; }
+    .info-list-item strong { color:var(--text); }
+
+    .credentials-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-top:1rem; }
+    .cred-item { background:white; border:1px solid var(--beige); border-radius:10px; padding:.75rem 1rem; font-size:.82rem; color:var(--text); }
+    .cred-item strong { display:block; color:var(--dark); font-weight:600; margin-bottom:.15rem; }
+    .cred-item span { color:var(--text-light); font-size:.78rem; }
+
+    .quote-pull { background:var(--orange); border-radius:var(--radius); padding:1.75rem; margin:2rem 0; }
+    .quote-pull p { font-family:var(--font-display); font-size:1.15rem; font-style:italic; color:white; line-height:1.65; }
+    .quote-pull cite { display:block; font-size:.78rem; color:rgba(255,255,255,.7); font-style:normal; margin-top:.75rem; }
+
+    /* ── EQUIPA OVERVIEW ── */
+    #team-overview { background:var(--beige); padding:5rem 0; }
+    .overview-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
+    .ov-card {
+      background:white; border-radius:var(--radius-lg); overflow:hidden;
+      border:1px solid rgba(232,98,26,.1); transition:all .3s; text-align:center; cursor:pointer;
+    }
+    .ov-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-orange); }
+    .ov-avatar {
+      width:80px; height:80px; border-radius:var(--radius);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-size:1.8rem; font-weight:800; color:white;
+      margin:1.75rem auto 0;
+    }
+    .ov-body { padding:1.25rem; }
+    .ov-body h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.15rem; }
+    .ov-body .ov-role { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--orange); margin-bottom:.75rem; }
+    .ov-body p { font-size:.82rem; color:var(--text-light); line-height:1.6; }
+
+    /* ── FORMAÇÃO ── */
+    #formacao { background:var(--cream); }
+    #formacao .section-label { color:var(--orange); }
+    #formacao .section-label::before { background:var(--orange); }
+    #formacao .section-title { color:var(--dark); }
+    .formacao-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+    .form-card { background:var(--white); border:1px solid var(--beige-mid); border-radius:var(--radius-lg); padding:1.75rem; transition:all .3s; }
+    .form-card:hover { border-color:rgba(232,101,10,.3); box-shadow:0 4px 20px rgba(232,101,10,.08); }
+    .form-card-year { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--orange); margin-bottom:.5rem; }
+    .form-card h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.4rem; }
+    .form-card p { font-size:.85rem; color:var(--text-light); line-height:1.6; }
+    .form-card .who { font-size:.78rem; color:var(--text-light); opacity:.7; margin-top:.5rem; font-style:italic; }
+
+    /* ── JOIN CTA ── */
+    #join-cta { background:var(--cream); padding:5rem 0; }
+    .join-inner { background:white; border-radius:var(--radius-lg); padding:3.5rem; display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:center; box-shadow:var(--shadow-soft); border:1px solid var(--beige); }
+    .join-inner h2 { font-family:var(--font-display); font-size:2rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; }
+    .join-inner p { font-size:.95rem; color:var(--text-light); line-height:1.75; }
+    .join-btns { display:flex; flex-direction:column; gap:.75rem; flex-shrink:0; }
+
+    @media(max-width:1024px) {
+      .member-grid, .member-grid.flip { grid-template-columns:1fr; }
+      .member-card { position:static; }
+      .member-grid.flip .member-card, .member-grid.flip .member-info { order:unset; }
+      .overview-grid { grid-template-columns:repeat(2,1fr); }
+      .formacao-grid { grid-template-columns:repeat(2,1fr); }
+      .join-inner { grid-template-columns:1fr; }
+    }
+    @media(max-width:768px) {
+      .overview-grid { grid-template-columns:repeat(2,1fr); }
+      .formacao-grid { grid-template-columns:1fr; }
+      .credentials-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:480px) {
+      .overview-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="equipa.html" class="active">Equipa</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a><a href="equipa.html">Equipa</a><a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Equipa</span></div>
+    <div class="page-hero-label section-label">Os Nossos Profissionais</div>
+    <h1>Uma equipa <em>apaixonada</em><br>por fazer a diferença</h1>
+    <p>Conheça as pessoas que dedicam cada dia a ajudar os seus pacientes a recuperar o movimento, a saúde e a qualidade de vida. Cada membro da equipa traz uma perspetiva única — juntos, somos mais completos.</p>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="team-overview">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 1rem">
+      <div class="section-label">A Nossa Equipa</div>
+      <h2 class="section-title">Quatro profissionais, <em>uma missão</em></h2>
+    </div>
+    <div class="overview-grid">
+      <a href="#claudia" class="ov-card reveal delay-1" style="text-decoration:none">
+        <div class="ov-avatar" style="background:linear-gradient(145deg,#E8621A,#F07A3A)">CA</div>
+        <div class="ov-body"><h3>Dra. Cláudia Alves</h3><div class="ov-role">Fisioterapeuta · Fundadora</div><p>Especialista em fisioterapia percutânea e ecoguiada. 20 anos de experiência clínica.</p></div>
+      </a>
+      <a href="#ines" class="ov-card reveal delay-2" style="text-decoration:none">
+        <div class="ov-avatar" style="background:linear-gradient(145deg,#7A8C6E,#A8B89A)">IC</div>
+        <div class="ov-body"><h3>Inês Coelho</h3><div class="ov-role">Fisioterapeuta · Osteopatia</div><p>Especialista em osteopatia estrutural e pediátrica. Referência para tratamento de bebés.</p></div>
+      </a>
+      <a href="#jose" class="ov-card reveal delay-3" style="text-decoration:none">
+        <div class="ov-avatar" style="background:linear-gradient(145deg,#6B4F3A,#A07050)">JP</div>
+        <div class="ov-body"><h3>José Pereira</h3><div class="ov-role">Pilates Clínico</div><p>Instrutor certificado em pilates terapêutico e exercício funcional de reabilitação.</p></div>
+      </a>
+      <a href="#rafaela" class="ov-card reveal delay-4" style="text-decoration:none">
+        <div class="ov-avatar" style="background:linear-gradient(135deg,#C4844A,#E8A870)">R</div>
+        <div class="ov-body"><h3>Rafaela</h3><div class="ov-role">Rececionista</div><p>O primeiro sorriso da Fisio Vitae. Coordenação de agenda e atendimento ao paciente.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLÁUDIA ═══ -->
+<section class="member-section" id="claudia">
+  <div class="container">
+    <div class="member-grid">
+      <div class="member-card reveal-left">
+        <div class="member-avatar-large" style="background:linear-gradient(145deg,#E8621A,#C45010)"><span class="member-avatar-initials">CA</span></div>
+        <div class="member-card-body">
+          <h2>Dra. Cláudia Alves</h2>
+          <div class="member-card-role">Fisioterapeuta · Fundadora & Responsável Clínica</div>
+          <div class="member-contacts">
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>saude@fisiovitae.pt</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>253 623 663</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>@fisiovitae_claudiaalves</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-info reveal-right">
+        <div class="section-label">Fundadora</div>
+        <h2>Dra. Cláudia <em>Alves</em></h2>
+        <div class="sub">Fisioterapeuta · 20 Anos de Experiência Clínica</div>
+        <p>A Dra. Cláudia Alves é a fundadora e responsável clínica da Fisio Vitae. Com mais de duas décadas dedicadas à fisioterapia, construiu uma das clínicas de referência da região de Braga — não apenas pela qualidade técnica, mas pela filosofia de tratamento que sempre defendeu: <strong>ouvir antes de tratar</strong>.</p>
+        <p>Formou-se em Fisioterapia e, ao longo dos anos, especializou-se continuamente em técnicas de ponta, tornando-se uma das profissionais mais qualificadas do norte de Portugal em <strong>fisioterapia percutânea e ecoguiada</strong>. Estas técnicas avançadas, que exigem formação específica e equipamento especializado, são hoje o ex-libris da Fisio Vitae.</p>
+        <p>O seu percurso é marcado por uma busca constante de excelência: quando surgiu a evidência sobre a eficácia da fisioterapia ecoguiada, investiu no formação e equipamento necessários para a trazer para Panóias. Quando o pilates clínico demonstrou resultados na reabilitação, criou condições para integrar esta valência na clínica.</p>
+        <div class="quote-pull">
+          <p>"Fiz da minha clínica aquilo que eu própria gostaria de encontrar como paciente: um lugar onde me sinto ouvida, onde o tratamento é explicado, e onde o objetivo é sempre devolver-me a vida que tinha antes da lesão."</p>
+          <cite>— Dra. Cláudia Alves</cite>
+        </div>
+        <div class="info-block">
+          <h3>Especialidades & Técnicas</h3>
+          <div class="info-list">
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Fisioterapia Percutânea</strong> — punção seca de pontos-gatilho e estruturas tendinosas</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Fisioterapia Ecoguiada</strong> — procedimentos guiados por ecografia em tempo real</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>RPG — Reeducação Postural Global</strong> — método Souchard</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Fisioterapia Músculo-esquelética</strong> — reabilitação geral e desportiva</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Electroterapia e Ultrassom</strong> — modalidades físicas complementares</span></div>
+          </div>
+        </div>
+        <div class="info-block">
+          <h3>Formação & Certificações</h3>
+          <div class="credentials-grid">
+            <div class="cred-item"><strong>Licenciatura em Fisioterapia</strong><span>Escola Superior de Saúde, Braga</span></div>
+            <div class="cred-item"><strong>Pós-graduação em Fisioterapia MSE</strong><span>Especialização músculo-esquelética</span></div>
+            <div class="cred-item"><strong>Certificação — Fisioterapia Percutânea</strong><span>Formação avançada, nível I e II</span></div>
+            <div class="cred-item"><strong>Certificação — Fisioterapia Ecoguiada</strong><span>Procedimentos guiados por imagem</span></div>
+            <div class="cred-item"><strong>RPG — Método Souchard</strong><span>Certificada pelo Institut Souchard</span></div>
+            <div class="cred-item"><strong>Membro da APF</strong><span>Associação Portuguesa de Fisioterapeutas</span></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="contacto.html" class="btn-primary">Marcar Consulta com a Dra. Cláudia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INÊS ═══ -->
+<section class="member-section" id="ines">
+  <div class="container">
+    <div class="member-grid flip">
+      <div class="member-card flip reveal-right">
+        <div class="member-avatar-large" style="background:linear-gradient(145deg,#5A7050,#7A8C6E)"><span class="member-avatar-initials">IC</span></div>
+        <div class="member-card-body">
+          <h2>Inês Coelho</h2>
+          <div class="member-card-role">Fisioterapeuta · Especialista em Osteopatia</div>
+          <div class="member-contacts">
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>saude@fisiovitae.pt</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>253 623 663</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M12 14v8M8 22h8"/></svg>Especialista Pediátrica</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-info reveal-left">
+        <div class="section-label">Osteopatia & Pediatria</div>
+        <h2>Inês <em>Coelho</em></h2>
+        <div class="sub">Fisioterapeuta · Osteopatia Estrutural & Pediátrica</div>
+        <p>A Inês Coelho juntou-se à Fisio Vitae em 2008 e rapidamente se tornou uma peça indispensável da equipa. Com uma sensibilidade clínica apurada e uma capacidade única de transmitir confiança e tranquilidade aos pacientes, é especialmente requisitada para os casos mais complexos e para o tratamento de bebés e crianças.</p>
+        <p>A sua especialização em <strong>osteopatia pediátrica</strong> foi uma resposta natural a uma necessidade crescente na comunidade de Braga: famílias que procuravam alternativas suaves e eficazes para as queixas dos seus filhos mais pequenos. Hoje, a Inês é a especialista de referência para osteopatia pediátrica na região.</p>
+        <p>Para além da pediatria, a Inês trata adultos com condições músculo-esqueléticas complexas, utilizando uma abordagem osteopática integrada que vai além do local de dor para encontrar a causa real do problema.</p>
+        <div class="quote-pull" style="background:linear-gradient(135deg,#7A8C6E,#5A7050)">
+          <p>"Quando um bebé de uma semana é trazido cá pelos pais com cólicas intensas, e uma semana depois eles regressam com o bebé tranquilo e bem-disposto... é por esses momentos que faço isto."</p>
+          <cite>— Inês Coelho</cite>
+        </div>
+        <div class="info-block">
+          <h3>Especialidades & Técnicas</h3>
+          <div class="info-list">
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Osteopatia Estrutural</strong> — manipulações e mobilizações articulares</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Osteopatia Pediátrica</strong> — técnicas adaptadas a bebés e crianças</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Osteopatia Craniosacral</strong> — abordagem suave do sistema craniosacral</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Terapia Manual</strong> — mobilizações suaves e técnicas de tecidos moles</span></div>
+          </div>
+        </div>
+        <div class="info-block">
+          <h3>Formação & Certificações</h3>
+          <div class="credentials-grid">
+            <div class="cred-item"><strong>Licenciatura em Fisioterapia</strong><span>Escola Superior de Saúde</span></div>
+            <div class="cred-item"><strong>Mestrado em Osteopatia</strong><span>Especialização avançada</span></div>
+            <div class="cred-item"><strong>Certificação — Osteopatia Pediátrica</strong><span>Formação especializada em pediatria</span></div>
+            <div class="cred-item"><strong>Pós-graduação — Craniosacral</strong><span>Terapia craniosacral biológica</span></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="contacto.html" class="btn-primary">Marcar Consulta com a Inês</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOSÉ ═══ -->
+<section class="member-section" id="jose">
+  <div class="container">
+    <div class="member-grid">
+      <div class="member-card reveal-left">
+        <div class="member-avatar-large" style="background:linear-gradient(145deg,#6B4F3A,#A07050)"><span class="member-avatar-initials">JP</span></div>
+        <div class="member-card-body">
+          <h2>José Pereira</h2>
+          <div class="member-card-role">Instrutor de Pilates Clínico & Exercício Terapêutico</div>
+          <div class="member-contacts">
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>saude@fisiovitae.pt</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>253 623 663</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12"/></svg>Pilates · Reformer & Solo</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-info reveal-right">
+        <div class="section-label">Exercício Terapêutico</div>
+        <h2>José <em>Pereira</em></h2>
+        <div class="sub">Instrutor de Pilates Clínico & Exercício Terapêutico</div>
+        <p>O José Pereira juntou-se à Fisio Vitae em 2013, trazendo consigo uma perspetiva diferente: a do movimento como terapia. Para José, <strong>o exercício não é um complemento — é tratamento</strong>. E essa convicção, sustentada por formação sólida e resultados concretos, transformou a Fisio Vitae numa clínica verdadeiramente multidisciplinar.</p>
+        <p>Certificado internacionalmente em Pilates Clínico, o José trabalha exclusivamente com utentes referenciados pela equipa clínica, desenvolvendo programas de exercício terapêutico que se encaixam na perfeição no plano de reabilitação de cada paciente.</p>
+        <p>O seu trabalho com o reformer e outros equipamentos de Pilates permite criar exercícios com diferentes resistências e amplitudes, adaptados a qualquer fase de recuperação — desde as primeiras semanas pós-cirurgia até ao regresso ao desporto de alta intensidade.</p>
+        <div class="quote-pull" style="background:linear-gradient(135deg,#6B4F3A,#4A3020)">
+          <p>"O movimento certo, na dose certa e no momento certo é tão terapêutico quanto qualquer outro tratamento. O meu trabalho é encontrar esse equilíbrio para cada pessoa."</p>
+          <cite>— José Pereira</cite>
+        </div>
+        <div class="info-block">
+          <h3>Especialidades & Equipamento</h3>
+          <div class="info-list">
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pilates Clínico no Reformer</strong> — programas de reabilitação individualizados</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pilates no Solo (Mat)</strong> — exercícios de consciência corporal e fortalecimento</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Exercício Terapêutico</strong> — programas de força e estabilidade funcional</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Reabilitação Pós-cirúrgica</strong> — protocolo específico para cirurgias ortopédicas</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pilates na Gravidez e Pós-parto</strong> — recuperação pélvica e core</span></div>
+          </div>
+        </div>
+        <div class="info-block">
+          <h3>Formação & Certificações</h3>
+          <div class="credentials-grid">
+            <div class="cred-item"><strong>Licenciatura em Ciências do Desporto</strong><span>FADE-UP, Porto</span></div>
+            <div class="cred-item"><strong>Certificação STOTT PILATES®</strong><span>Mat e Aparelhos, nível completo</span></div>
+            <div class="cred-item"><strong>Pós-graduação — Exercício Clínico</strong><span>Exercício em contexto de saúde</span></div>
+            <div class="cred-item"><strong>Pilates na Gravidez</strong><span>Formação especializada perinatal</span></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="contacto.html" class="btn-primary">Iniciar Programa de Pilates</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RAFAELA ═══ -->
+<section class="member-section" id="rafaela">
+  <div class="container">
+    <div class="member-grid flip">
+      <div class="member-card flip reveal-right">
+        <div class="member-avatar-large" style="background:linear-gradient(145deg,#C4844A,#A06030)"><span class="member-avatar-initials">R</span></div>
+        <div class="member-card-body">
+          <h2>Rafaela</h2>
+          <div class="member-card-role">Rececionista & Coordenação Administrativa</div>
+          <div class="member-contacts">
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>253 623 663 (receção)</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>saude@fisiovitae.pt</div>
+            <div class="member-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Seg–Sex: 9h–22h | Sáb: 9h–13h</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-info reveal-left">
+        <div class="section-label">Atendimento & Coordenação</div>
+        <h2><em>Rafaela</em></h2>
+        <div class="sub">Rececionista & Coordenação Administrativa</div>
+        <p>A Rafaela é a primeira pessoa que encontra quando entra na Fisio Vitae — e o último sorriso quando parte. Mas a sua importância vai muito além do atendimento: é ela que garante que a clínica funciona sem falhas, que as agendas se encaixam, que os pacientes são bem orientados e que nenhuma dúvida fica por responder.</p>
+        <p>Com uma <strong>simpatia genuína e uma eficiência notável</strong>, a Rafaela criou um ambiente de receção que reflete perfeitamente os valores da Fisio Vitae: calor humano, profissionalismo e atenção ao detalhe.</p>
+        <p>É a Rafaela quem atende as chamadas, responde aos emails, gere as marcações e coordena a logística diária. E faz tudo isso com uma serenidade e boa disposição que não passa despercebida aos pacientes.</p>
+        <div class="quote-pull" style="background:linear-gradient(135deg,#C4844A,#A06030)">
+          <p>"O meu papel é garantir que, desde o primeiro contacto, as pessoas se sintam bem-vindas e bem tratadas. Uma boa experiência começa muito antes de entrar na sala de tratamento."</p>
+          <cite>— Rafaela</cite>
+        </div>
+        <div class="info-block">
+          <h3>Responsabilidades & Competências</h3>
+          <div class="info-list">
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Gestão de Agenda</strong> — marcações, remarcações e coordenação de horários</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Atendimento ao Paciente</strong> — receção, orientação e suporte administrativo</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Gestão de Comunicações</strong> — email, telefone e canais digitais</span></div>
+            <div class="info-list-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Apoio Administrativo</strong> — faturação, processos clínicos e documentação</span></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="tel:253623663" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Ligar Agora
+          </a>
+          <a href="contacto.html" class="btn-secondary">Enviar Mensagem</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAÇÃO CONTÍNUA -->
+<section id="formacao">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Atualização Permanente</div>
+      <h2 class="section-title">Formação <em>contínua</em></h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,.5)">A nossa equipa investe continuamente em formação avançada para oferecer os tratamentos mais eficazes e seguros.</p>
+    </div>
+    <div class="formacao-grid">
+      <div class="form-card reveal delay-1">
+        <div class="form-card-year">2023</div>
+        <h3>Atualização em Fisioterapia Ecoguiada</h3>
+        <p>Curso avançado de ecografia músculo-esquelética e procedimentos ecoguiados para dor crónica e tendinopatias.</p>
+        <div class="who">Dra. Cláudia Alves</div>
+      </div>
+      <div class="form-card reveal delay-2">
+        <div class="form-card-year">2023</div>
+        <h3>Osteopatia Pediátrica Avançada</h3>
+        <p>Formação avançada em técnicas craniosacral e osteopatia neonatal — tratamento de recém-nascidos e lactentes.</p>
+        <div class="who">Inês Coelho</div>
+      </div>
+      <div class="form-card reveal delay-3">
+        <div class="form-card-year">2022</div>
+        <h3>Pilates na Gravidez e Pós-parto</h3>
+        <p>Especialização em exercício terapêutico perinatal e recuperação do pavimento pélvico no período pós-natal.</p>
+        <div class="who">José Pereira</div>
+      </div>
+      <div class="form-card reveal delay-1">
+        <div class="form-card-year">2022</div>
+        <h3>Punção Seca — Nível Avançado</h3>
+        <p>Atualização avançada em fisioterapia percutânea para tratamento de tendinopatias e síndrome miofascial.</p>
+        <div class="who">Dra. Cláudia Alves</div>
+      </div>
+      <div class="form-card reveal delay-2">
+        <div class="form-card-year">2021</div>
+        <h3>Terapia Manual Avançada</h3>
+        <p>Mobilizações e manipulações articulares de alta velocidade — coluna cervical, dorsal e lombopélvica.</p>
+        <div class="who">Inês Coelho</div>
+      </div>
+      <div class="form-card reveal delay-3">
+        <div class="form-card-year">2021</div>
+        <h3>Reabilitação Pós-cirúrgica</h3>
+        <p>Protocolos de exercício terapêutico após cirurgia ortopédica de joelho, ombro e coluna vertebral.</p>
+        <div class="who">José Pereira</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:#1C1410">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,35 L1440,60 L0,60 Z" fill="#FAF7F2"/></svg>
+</div>
+
+<!-- JOIN CTA -->
+<section id="join-cta">
+  <div class="container">
+    <div class="join-inner reveal">
+      <div>
+        <div class="section-label">Pronto para começar?</div>
+        <h2>Escolha o profissional certo para si</h2>
+        <p>Não tem a certeza de qual o tratamento mais indicado para a sua situação? A nossa equipa avalia o seu caso e recomenda o caminho mais eficaz. Entre em contacto — estamos aqui para si.</p>
+      </div>
+      <div class="join-btns">
+        <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+        <a href="servicos.html" class="btn-secondary">Ver Todos os Serviços</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a><p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga.</p><div class="footer-social"><a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div>
+      <div class="footer-col"><h4>Serviços</h4><ul><li><a href="servicos.html#percutanea">Fisioterapia Percutânea</a></li><li><a href="servicos.html#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="servicos.html#pilates">Pilates Clínico</a></li><li><a href="servicos.html#osteopatia">Osteopatia</a></li><li><a href="servicos.html#pediatrica">Osteopatia Pediátrica</a></li><li><a href="servicos.html#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><strong style="color:rgba(255,255,255,.7)">Tel</strong><br><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><strong style="color:rgba(255,255,255,.7)">Email</strong><br><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Fisio Vitae · Panóias, Braga</p><p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
+
+

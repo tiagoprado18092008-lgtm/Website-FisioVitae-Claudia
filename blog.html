@@ -1,0 +1,830 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Fisio Vitae — Dicas de Fisioterapia e Saúde</title>
+  <meta name="description" content="Artigos, dicas e informação sobre fisioterapia, osteopatia, pilates e saúde músculo-esquelética. Conteúdo da equipa Fisio Vitae, Braga."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8621A'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* ── BLOG LIST ── */
+    #blog-main { background:var(--cream); padding-top:4rem; }
+
+    .blog-filter { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .filter-btn {
+      background:white; border:1.5px solid var(--beige); border-radius:100px;
+      padding:.45rem 1.1rem; font-size:.8rem; font-weight:600; cursor:pointer;
+      font-family:var(--font-body); color:var(--text-light); transition:all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background:var(--orange); border-color:var(--orange); color:white; }
+
+    .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+
+    /* FEATURED */
+    .blog-featured {
+      grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:0;
+      background:white; border-radius:var(--radius-lg); overflow:hidden;
+      border:1px solid var(--beige); transition:all .3s;
+    }
+    .blog-featured:hover { transform:translateY(-3px); box-shadow:var(--shadow-soft); }
+    .blog-featured-img {
+      aspect-ratio:unset; min-height:320px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .blog-featured-img svg { width:60px; height:60px; color:rgba(255,255,255,.5); position:relative; z-index:1; }
+    .blog-featured-badge { position:absolute; top:1.5rem; left:1.5rem; z-index:2; }
+    .blog-featured-body { padding:2.5rem; display:flex; flex-direction:column; justify-content:center; }
+    .blog-featured-body .blog-meta { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .blog-featured-body h2 { font-family:var(--font-display); font-size:1.8rem; font-weight:600; color:var(--dark); line-height:1.2; margin-bottom:1rem; letter-spacing:-.01em; }
+    .blog-featured-body h2 a { text-decoration:none; color:inherit; }
+    .blog-featured-body h2 a:hover { color:var(--orange); }
+    .blog-featured-body p { font-size:.93rem; color:var(--text-light); line-height:1.75; margin-bottom:1.5rem; }
+
+    /* CARD */
+    .blog-card {
+      background:white; border-radius:var(--radius-lg); overflow:hidden;
+      border:1px solid var(--beige); transition:all .3s cubic-bezier(.22,1,.36,1);
+      display:flex; flex-direction:column;
+    }
+    .blog-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-soft); border-color:rgba(232,98,26,.15); }
+    .blog-card-img {
+      aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .blog-card-img svg { width:44px; height:44px; color:rgba(255,255,255,.5); }
+    .blog-card-body { padding:1.75rem; flex:1; display:flex; flex-direction:column; }
+    .blog-meta { display:flex; align-items:center; gap:.75rem; margin-bottom:.85rem; flex-wrap:wrap; }
+    .blog-cat { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--orange); }
+    .blog-date { font-size:.75rem; color:var(--text-light); }
+    .blog-read-time { font-size:.75rem; color:var(--text-light); display:flex; align-items:center; gap:.3rem; }
+    .blog-read-time svg { width:12px; height:12px; }
+    .blog-meta-sep { width:3px; height:3px; border-radius:50%; background:var(--beige-mid); }
+    .blog-card-body h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--dark); line-height:1.3; margin-bottom:.75rem; }
+    .blog-card-body h3 a { text-decoration:none; color:inherit; transition:color .2s; }
+    .blog-card-body h3 a:hover { color:var(--orange); }
+    .blog-card-body p { font-size:.87rem; color:var(--text-light); line-height:1.7; flex:1; margin-bottom:1.25rem; }
+    .blog-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:1.25rem; border-top:1px solid var(--beige); margin-top:auto; }
+    .blog-author { display:flex; align-items:center; gap:.5rem; }
+    .blog-author-av { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; color:white; flex-shrink:0; }
+    .blog-author-name { font-size:.78rem; font-weight:600; color:var(--text-light); }
+    .blog-read-link { font-size:.8rem; font-weight:700; color:var(--orange); text-decoration:none; display:flex; align-items:center; gap:.3rem; transition:gap .2s; }
+    .blog-read-link:hover { gap:.5rem; }
+    .blog-read-link svg { width:13px; height:13px; }
+
+    /* ── ARTICLE PAGE (inline) ── */
+    .article-modal {
+      display:none; position:fixed; inset:0; z-index:2000;
+      background:rgba(28,20,16,.8); backdrop-filter:blur(6px);
+      overflow-y:auto; padding:2rem 1rem;
+    }
+    .article-modal.open { display:flex; align-items:flex-start; justify-content:center; }
+    .article-inner {
+      background:white; border-radius:var(--radius-lg); max-width:760px; width:100%;
+      margin:auto; overflow:hidden; position:relative;
+    }
+    .article-header { padding:3rem 3rem 0; position:relative; }
+    .article-close {
+      position:absolute; top:1.5rem; right:1.5rem;
+      width:36px; height:36px; border-radius:50%; background:var(--cream); border:none;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; color:var(--text-light); transition:all .2s;
+    }
+    .article-close:hover { background:var(--orange); color:white; }
+    .article-header .blog-meta { margin-bottom:1.25rem; }
+    .article-header h1 { font-family:var(--font-display); font-size:2.2rem; font-weight:600; color:var(--dark); line-height:1.15; letter-spacing:-.02em; }
+    .article-header h1 em { font-style:italic; color:var(--orange); }
+    .article-header .excerpt { font-size:1.05rem; color:var(--text-light); line-height:1.75; margin-top:1rem; padding-bottom:2rem; border-bottom:1px solid var(--beige); }
+    .article-body { padding:2.5rem 3rem 3rem; }
+    .article-body h2 { font-family:var(--font-display); font-size:1.5rem; font-weight:600; color:var(--dark); margin:2rem 0 .75rem; }
+    .article-body h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--dark); margin:1.5rem 0 .5rem; }
+    .article-body p { font-size:.95rem; color:var(--text-light); line-height:1.82; margin-bottom:1rem; }
+    .article-body p strong { color:var(--text); }
+    .article-body ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; margin:.75rem 0 1rem; padding-left:0; }
+    .article-body ul li { display:flex; align-items:flex-start; gap:.65rem; font-size:.93rem; color:var(--text-light); line-height:1.6; }
+    .article-body ul li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--orange); flex-shrink:0; margin-top:.6rem; }
+    .article-cta { background:var(--orange-pale); border-radius:var(--radius); padding:2rem; margin-top:2rem; text-align:center; border:1px solid rgba(232,98,26,.15); }
+    .article-cta h4 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--dark); margin-bottom:.5rem; }
+    .article-cta p { font-size:.875rem; color:var(--text-light); margin-bottom:1.25rem; }
+
+    /* ── NEWSLETTER ── */
+    #newsletter { background:var(--orange); }
+    .nl-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .nl-text h2 { font-family:var(--font-display); font-size:2rem; font-weight:600; color:white; letter-spacing:-.02em; margin-bottom:.75rem; }
+    .nl-text h2 em { font-style:italic; color:rgba(255,255,255,.8); }
+    .nl-text p { font-size:.95rem; color:rgba(255,255,255,.75); line-height:1.75; }
+    .nl-form { display:flex; flex-direction:column; gap:1rem; }
+    .nl-form-row { display:flex; gap:.75rem; }
+    .nl-form input {
+      flex:1; font-family:var(--font-body); font-size:.93rem;
+      background:rgba(255,255,255,.2); border:1.5px solid rgba(255,255,255,.3);
+      border-radius:10px; padding:.8rem 1rem; color:white; outline:none;
+      transition:border-color .2s;
+    }
+    .nl-form input::placeholder { color:rgba(255,255,255,.6); }
+    .nl-form input:focus { border-color:white; }
+    .nl-form .privacy { font-size:.75rem; color:rgba(255,255,255,.6); line-height:1.5; }
+    .nl-success { display:none; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.3); border-radius:var(--radius); padding:1.5rem; text-align:center; }
+    .nl-success p { color:white; font-size:.93rem; }
+
+    /* ── CATEGORIES SIDE ── */
+    #blog-categories { background:var(--white); padding:4rem 0; }
+    .categories-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.5rem; }
+    .cat-card {
+      background:var(--cream); border-radius:var(--radius-lg); padding:1.75rem;
+      border:1.5px solid var(--beige); transition:all .25s; cursor:pointer;
+      text-decoration:none;
+    }
+    .cat-card:hover { border-color:var(--orange); transform:translateY(-2px); }
+    .cat-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
+    .cat-icon svg { width:20px; height:20px; }
+    .cat-card h3 { font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--dark); margin-bottom:.35rem; }
+    .cat-card .cat-count { font-size:.78rem; color:var(--text-light); font-weight:500; }
+
+    @media(max-width:1024px) {
+      .blog-grid { grid-template-columns:repeat(2,1fr); }
+      .blog-featured { grid-template-columns:1fr; }
+      .blog-featured-img { min-height:220px; aspect-ratio:16/9; }
+      .categories-grid { grid-template-columns:repeat(2,1fr); }
+      .nl-inner { grid-template-columns:1fr; gap:2rem; }
+    }
+    @media(max-width:768px) {
+      .blog-grid { grid-template-columns:1fr; }
+      .article-header { padding:2rem 1.5rem 0; }
+      .article-body { padding:1.75rem 1.5rem 2rem; }
+      .article-header h1 { font-size:1.7rem; }
+      .nl-form-row { flex-direction:column; }
+      .categories-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="equipa.html">Equipa</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a><a href="equipa.html">Equipa</a><a href="blog.html">Blog</a><a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Blog</span></div>
+    <div class="page-hero-label section-label">Saúde & Bem-estar</div>
+    <h1>Artigos sobre <em>fisioterapia</em><br>e movimento</h1>
+    <p>Informação de qualidade, escrita pela nossa equipa, sobre fisioterapia, osteopatia, pilates e bem-estar músculo-esquelético. Porque saber é o primeiro passo para cuidar melhor de si.</p>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="blog-categories">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:500px;margin:0 auto 1rem">
+      <div class="section-label">Temas</div>
+      <h2 class="section-title">Explore por <em>categoria</em></h2>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card reveal delay-1">
+        <div class="cat-icon" style="background:var(--orange-pale)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></div>
+        <h3>Fisioterapia</h3>
+        <div class="cat-count">5 artigos</div>
+      </div>
+      <div class="cat-card reveal delay-2">
+        <div class="cat-icon" style="background:#F0EBE5"><svg viewBox="0 0 24 24" fill="none" stroke="#6B4F3A" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/></svg></div>
+        <h3>Osteopatia</h3>
+        <div class="cat-count">3 artigos</div>
+      </div>
+      <div class="cat-card reveal delay-3">
+        <div class="cat-icon" style="background:#EDF2EB"><svg viewBox="0 0 24 24" fill="none" stroke="#7A8C6E" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12"/></svg></div>
+        <h3>Pilates Clínico</h3>
+        <div class="cat-count">3 artigos</div>
+      </div>
+      <div class="cat-card reveal delay-4">
+        <div class="cat-icon" style="background:#F5EDF5"><svg viewBox="0 0 24 24" fill="none" stroke="#8B6A8B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3>Bem-estar</h3>
+        <div class="cat-count">4 artigos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:white">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C400,60 1040,0 1440,35 L1440,60 L0,60 Z" fill="#FAF7F2"/></svg>
+</div>
+
+<!-- BLOG MAIN -->
+<section id="blog-main">
+  <div class="container">
+    <!-- Filters -->
+    <div class="blog-filter reveal">
+      <button class="filter-btn active" onclick="filterPosts('all', this)">Todos</button>
+      <button class="filter-btn" onclick="filterPosts('fisioterapia', this)">Fisioterapia</button>
+      <button class="filter-btn" onclick="filterPosts('osteopatia', this)">Osteopatia</button>
+      <button class="filter-btn" onclick="filterPosts('pilates', this)">Pilates</button>
+      <button class="filter-btn" onclick="filterPosts('bem-estar', this)">Bem-estar</button>
+    </div>
+
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- FEATURED -->
+      <article class="blog-featured reveal" data-cat="fisioterapia">
+        <div class="blog-featured-img" style="background:linear-gradient(145deg,var(--orange),#C45010)">
+          <div class="blog-featured-badge"><span class="tag">Destaque</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <div class="blog-featured-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Fisioterapia</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">15 Março 2025</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+          </div>
+          <h2><a href="#" onclick="openArticle('percutanea'); return false;">Fisioterapia Percutânea: o que é, como funciona e para quem é indicada</a></h2>
+          <p>A fisioterapia percutânea é uma das técnicas mais avançadas da fisioterapia contemporânea. Neste artigo, a Dra. Cláudia Alves explica em detalhe como funciona, quais as suas indicações e o que esperar de uma sessão.</p>
+          <a href="#" onclick="openArticle('percutanea'); return false;" class="btn-primary">
+            Ler Artigo Completo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- CARDS -->
+      <article class="blog-card reveal delay-1" data-cat="bem-estar">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#7A8C6E,#5A7050)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c0 0-4 4-4 9s4 9 4 9 4-4 4-9-4-9-4-9z"/><path d="M3 12h18"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Bem-estar</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">28 Fev 2025</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('postura'); return false;">5 hábitos que estão a destruir a sua postura (e como corrigi-los)</a></h3>
+          <p>Trabalho em secretária, telemóvel constante, sofá durante horas... Descubra os 5 piores hábitos posturais e o que pode fazer hoje mesmo para os corrigir.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:var(--orange)">CA</div><span class="blog-author-name">Dra. Cláudia Alves</span></div>
+            <a href="#" onclick="openArticle('postura'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-2" data-cat="osteopatia">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#6B4F3A,#8A6040)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="5"/><path d="M12 12v10M8 22h8"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Osteopatia Pediátrica</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">10 Fev 2025</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('pediatrica'); return false;">Cólicas do bebé: quando a osteopatia pediátrica pode ajudar</a></h3>
+          <p>As cólicas afetam até 25% dos bebés e são uma das principais causas de stress parental. A Inês Coelho explica como a osteopatia pediátrica pode trazer alívio.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:linear-gradient(135deg,#7A8C6E,#A8B89A)">IC</div><span class="blog-author-name">Inês Coelho</span></div>
+            <a href="#" onclick="openArticle('pediatrica'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-3" data-cat="pilates">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#A8B89A,#7A8C6E)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M18 4v16M6 12h12"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Pilates Clínico</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">25 Jan 2025</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('pilates'); return false;">Pilates Clínico vs. Pilates de Fitness: qual a diferença real?</a></h3>
+          <p>Muitas pessoas fazem pilates para se manter em forma. Mas o Pilates Clínico é outra coisa — com objetivos, abordagem e supervisão completamente diferentes.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:linear-gradient(135deg,#6B4F3A,#A07050)">JP</div><span class="blog-author-name">José Pereira</span></div>
+            <a href="#" onclick="openArticle('pilates'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-1" data-cat="fisioterapia">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#C4844A,#A06030)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Fisioterapia</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">8 Jan 2025</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('lombalgia'); return false;">Lombalgia: a dor nas costas que afeta 80% dos portugueses</a></h3>
+          <p>A lombalgia é a principal causa de absentismo laboral em Portugal. Neste artigo, explicamos as causas mais comuns, quando deve procurar ajuda e o que a fisioterapia pode fazer por si.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:var(--orange)">CA</div><span class="blog-author-name">Dra. Cláudia Alves</span></div>
+            <a href="#" onclick="openArticle('lombalgia'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-2" data-cat="bem-estar">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#8B6A8B,#6A406A)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Bem-estar</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">20 Dez 2024</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('alongamentos'); return false;">Os 6 alongamentos que deveria fazer todos os dias (e porquê)</a></h3>
+          <p>Seis minutos por dia podem fazer uma diferença enorme na sua mobilidade e bem-estar. Apresentamos os 6 alongamentos essenciais recomendados pela nossa equipa.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:linear-gradient(135deg,#6B4F3A,#A07050)">JP</div><span class="blog-author-name">José Pereira</span></div>
+            <a href="#" onclick="openArticle('alongamentos'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-3" data-cat="osteopatia">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#4A6080,#304060)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Osteopatia</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">5 Dez 2024</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('osteopatia'); return false;">Osteopatia: mais do que estalar costas — uma abordagem global da saúde</a></h3>
+          <p>A osteopatia é frequentemente mal compreendida. A Inês Coelho desmistifica o que é realmente a osteopatia estrutural e como a abordagem holística trata o sistema, não o sintoma.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:linear-gradient(135deg,#7A8C6E,#A8B89A)">IC</div><span class="blog-author-name">Inês Coelho</span></div>
+            <a href="#" onclick="openArticle('osteopatia'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-1" data-cat="pilates">
+        <div class="blog-card-img" style="background:linear-gradient(145deg,#708050,#506040)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Pilates Clínico</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-date">18 Nov 2024</span>
+            <span class="blog-meta-sep"></span>
+            <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+          </div>
+          <h3><a href="#" onclick="openArticle('core'); return false;">Porque é que o "core" não é apenas os abdominais (e o que deve realmente trabalhar)</a></h3>
+          <p>A palavra "core" tornou-se omnipresente no fitness. Mas o que é realmente o core? E porque é que trabalhar só os abdominais pode fazer mais mal do que bem?</p>
+          <div class="blog-card-footer">
+            <div class="blog-author"><div class="blog-author-av" style="background:linear-gradient(135deg,#6B4F3A,#A07050)">JP</div><span class="blog-author-name">José Pereira</span></div>
+            <a href="#" onclick="openArticle('core'); return false;" class="blog-read-link">Ler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="container">
+    <div class="nl-inner">
+      <div class="nl-text reveal-left">
+        <div class="section-label" style="color:rgba(255,255,255,.5)">Newsletter</div>
+        <h2>Receba artigos sobre <em>saúde</em> diretamente no email</h2>
+        <p>Subscreva a nossa newsletter mensal e receba artigos, dicas e novidades da Fisio Vitae. Sem spam — prometemos.</p>
+      </div>
+      <div class="reveal-right">
+        <form class="nl-form" id="nlForm" onsubmit="handleNewsletter(event)">
+          <div class="nl-form-row">
+            <input type="text" placeholder="O seu nome" id="nlNome" required/>
+            <input type="email" placeholder="O seu email" id="nlEmail" required/>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:.9rem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Subscrever Newsletter
+          </button>
+          <p class="privacy">Ao subscrever, aceita receber comunicações da Fisio Vitae. Pode cancelar a qualquer momento.</p>
+        </form>
+        <div class="nl-success" id="nlSuccess"><p>✓ Subscrito com sucesso! Bem-vindo à nossa comunidade.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTICLE MODALS ═══ -->
+
+<!-- PERCUTÂNEA -->
+<div class="article-modal" id="modal-percutanea">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('percutanea')">✕</button>
+      <div class="blog-meta">
+        <span class="blog-cat">Fisioterapia</span>
+        <span class="blog-meta-sep"></span>
+        <span class="blog-date">15 Março 2025</span>
+        <span class="blog-meta-sep"></span>
+        <span class="blog-read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min de leitura</span>
+      </div>
+      <h1>Fisioterapia Percutânea: o que é, como funciona e para <em>quem é indicada</em></h1>
+      <p class="excerpt">A fisioterapia percutânea tem ganho crescente destaque em clínicas especializadas de todo o mundo. Neste artigo, a Dra. Cláudia Alves explica em detalhe esta técnica minimamente invasiva que tem transformado o tratamento de dor crónica e lesões músculo-esqueléticas.</p>
+    </div>
+    <div class="article-body">
+      <h2>O que é a fisioterapia percutânea?</h2>
+      <p>A fisioterapia percutânea — também conhecida como punção seca (dry needling) — é uma técnica terapêutica que consiste na inserção de agulhas de acupunctura finas através da pele, diretamente nos tecidos musculares, tendinosos ou fasciais, com o objetivo de tratar a dor e restabelecer a função.</p>
+      <p>Ao contrário da acupunctura tradicional, que se baseia em meridianos e princípios da medicina tradicional chinesa, <strong>a fisioterapia percutânea tem fundamento anatómico e neurofisiológico</strong>. As agulhas são dirigidas a estruturas específicas identificadas por avaliação clínica rigorosa.</p>
+
+      <h2>Como funciona o mecanismo de ação?</h2>
+      <p>O efeito terapêutico da fisioterapia percutânea ocorre através de vários mecanismos:</p>
+      <ul>
+        <li><strong>Resposta de espasmo local (LTR):</strong> A agulha provoca uma contração reflexa do músculo que "desativa" o ponto-gatilho (trigger point), quebrando o ciclo de tensão-dor-tensão.</li>
+        <li><strong>Neuromodulação:</strong> A estimulação mecânica ativa fibras nervosas que suprimem a transmissão da dor a nível medular e cortical.</li>
+        <li><strong>Regulação do ambiente bioquímico:</strong> Altera a concentração de substâncias inflamatórias e nociceptivas no tecido tratado.</li>
+        <li><strong>Estimulação da regeneração:</strong> Provoca micro-trauma controlado que desencadeia a resposta de reparação tecidular.</li>
+      </ul>
+
+      <h2>Para que condições é indicada?</h2>
+      <p>A evidência científica suporta o uso de fisioterapia percutânea numa vasta gama de condições:</p>
+      <ul>
+        <li>Síndrome miofascial com pontos-gatilho — a indicação mais clássica e mais estudada</li>
+        <li>Tendinopatias crónicas — tendão de Aquiles, rotuliano, supraespinhoso</li>
+        <li>Cervicalgia e lombalgia crónicas — com componente muscular significativo</li>
+        <li>Síndrome do impingement do ombro — epicondilite lateral e medial</li>
+        <li>Cefaleias tensionais e migrâneas cervicogénicas</li>
+        <li>Lesões desportivas agudas e crónicas</li>
+      </ul>
+
+      <h2>O que esperar de uma sessão?</h2>
+      <p>Antes de qualquer procedimento, o fisioterapeuta realiza uma avaliação clínica completa para identificar os tecidos-alvo e planear a intervenção. A sessão de punção seca dura tipicamente 20 a 40 minutos, dependendo da área tratada e do número de pontos.</p>
+      <p>A maioria dos pacientes descreve a sensação durante a técnica como uma <strong>pressão ou peso profundo</strong>, e ocasionalmente uma sensação de cãibra local quando o ponto-gatilho é ativado. Este é precisamente o sinal de que estamos no local correto.</p>
+      <p>Após a sessão, é normal sentir alguma sensibilidade local durante 24 a 48 horas. A melhoria clínica é frequentemente observada já na primeira ou segunda sessão.</p>
+
+      <h2>Quantas sessões são necessárias?</h2>
+      <p>Depende da condição, da cronicidade e da resposta individual. Condições agudas podem resolver em 3 a 5 sessões. Condições crónicas e complexas requerem tipicamente 6 a 10 sessões, frequentemente combinadas com outros tratamentos para maximizar o resultado.</p>
+
+      <div class="article-cta">
+        <h4>Quer saber se a fisioterapia percutânea é indicada para si?</h4>
+        <p>Agende uma consulta de avaliação com a Dra. Cláudia Alves. Analisamos o seu caso e recomendamos o tratamento mais adequado.</p>
+        <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POSTURA -->
+<div class="article-modal" id="modal-postura">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('postura')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Bem-estar</span><span class="blog-meta-sep"></span><span class="blog-date">28 Fev 2025</span></div>
+      <h1>5 hábitos que estão a destruir a sua postura (e como <em>corrigi-los</em>)</h1>
+      <p class="excerpt">Vivemos numa época de postura cada vez mais comprometida. O trabalho sedentário, o telemóvel e os sofás confortáveis estão a criar uma geração com problemas posturais sérios. Mas a boa notícia é que a maioria é reversível.</p>
+    </div>
+    <div class="article-body">
+      <h2>1. O pescoço de texto (text neck)</h2>
+      <p>Em média, olhamos para o telemóvel mais de 4 horas por dia, com o pescoço inclinado para a frente. Cada grau de inclinação multiplica o peso efetivo da cabeça sobre a coluna cervical. A 60 graus de inclinação — posição comum ao usar o telemóvel — a cabeça exerce cerca de <strong>27 kg de pressão</strong> sobre a coluna cervical.</p>
+      <p><strong>Solução:</strong> Elevar o telemóvel ao nível dos olhos, fazer pausas frequentes e fortalecer a musculatura cervical posterior com exercícios específicos.</p>
+
+      <h2>2. O síndrome do computador</h2>
+      <p>Passar horas em frente ao computador com o ecrã demasiado baixo, os ombros projetados para a frente e o queixo avançado é a receita perfeita para cervicalgia, tensão no trapézio e cefaleias. A posição "forward head" — cabeça avançada em relação ao centro de gravidade — é hoje epidémica.</p>
+      <p><strong>Solução:</strong> Ergonomia correta do posto de trabalho, ecrã ao nível dos olhos, apoio de cotovelos e pausas de 5 minutos a cada hora para mobilização.</p>
+
+      <h2>3. Cruzar as pernas</h2>
+      <p>Este hábito aparentemente inocente cria uma rotação pélvica assimétrica que, com o tempo, cria desequilíbrios musculares entre o lado esquerdo e direito do corpo. Está associado a escolioses funcionais, lombalgias e disfunções da articulação sacro-ilíaca.</p>
+      <p><strong>Solução:</strong> Sentar com os pés apoiados no chão, paralelos, e as ancas e joelhos a 90 graus.</p>
+
+      <h2>4. O sofá como escritório</h2>
+      <p>Trabalhar ou ver televisão no sofá, especialmente em posições "enroscadas", cria padrões de flexão prolongada da coluna que sobrecarregam os discos intervertebrais e encurtam a cadeia muscular posterior.</p>
+      <p><strong>Solução:</strong> Reservar o sofá para descanso, não para trabalho. Se inevitável, usar almofada lombar e fazer pausas frequentes.</p>
+
+      <h2>5. Não fazer exercício — especialmente não fortalecer</h2>
+      <p>A postura é sustentada por músculos. Sem fortalecimento adequado, especialmente do core profundo, dos estabilizadores da escápula e dos glúteos, é impossível manter uma postura correta durante um dia completo. A fadiga muscular cria os mesmos padrões posturais nocivos dos outros hábitos.</p>
+      <p><strong>Solução:</strong> Programa de exercício regular com foco no fortalecimento postural. O Pilates Clínico é particularmente eficaz para este objetivo.</p>
+
+      <div class="article-cta">
+        <h4>A sua postura preocupa-o?</h4>
+        <p>A Dra. Cláudia Alves realiza avaliações posturais completas e define um plano de tratamento personalizado.</p>
+        <a href="contacto.html" class="btn-primary">Marcar Avaliação Postural</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PEDIÁTRICA -->
+<div class="article-modal" id="modal-pediatrica">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('pediatrica')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Osteopatia Pediátrica</span><span class="blog-meta-sep"></span><span class="blog-date">10 Fev 2025</span></div>
+      <h1>Cólicas do bebé: quando a osteopatia pediátrica pode <em>ajudar</em></h1>
+      <p class="excerpt">As cólicas afetam até um em cada quatro bebés e são uma das principais causas de stress nos primeiros meses de vida. A Inês Coelho explica o papel da osteopatia pediátrica neste contexto.</p>
+    </div>
+    <div class="article-body">
+      <h2>O que são realmente as cólicas do lactente?</h2>
+      <p>As cólicas do lactente definem-se como episódios de choro intenso, de causa aparentemente inexplicável, durante pelo menos 3 horas por dia, 3 dias por semana, em bebés com menos de 3 meses. Afetam entre 10 e 40% dos bebés, sem distinção de género, alimentação ou tipo de parto.</p>
+      <p>A causa exata permanece debatida. Teorias incluem imaturidade do sistema gastrointestinal, microbioma intestinal desequilibrado, hipersensibilidade neurológica e, cada vez mais estudado, <strong>disfunções do sistema nervoso autónomo relacionadas com o processo de parto</strong>.</p>
+
+      <h2>O papel do parto nas cólicas</h2>
+      <p>O nascimento, mesmo quando corre bem, é um processo fisicamente exigente para o bebé. As forças de compressão e rotação durante o canal de parto, o uso de ventosa ou fórceps, ou a cesariana de urgência podem criar tensões nos tecidos cranianos e na coluna cervical do recém-nascido.</p>
+      <p>Estas tensões podem afetar o nervo vago — o principal nervo do sistema parassimpático que regula a digestão — e criar padrões de hipersensibilidade e dificuldades de regulação que se manifestam como cólicas, irritabilidade e dificuldades de sono.</p>
+
+      <h2>Como a osteopatia pediátrica ajuda?</h2>
+      <p>A osteopatia pediátrica intervém suavemente sobre estas tensões, usando técnicas específicas para bebés que são completamente indolores e muito gentis. A pressão exercida é comparável ao peso de uma folha de papel.</p>
+      <ul>
+        <li>Avaliação craniana e cervical para identificar zonas de tensão</li>
+        <li>Técnicas craniossacral para libertar compressões cranianas do parto</li>
+        <li>Mobilizações suaves da coluna cervical e tronco</li>
+        <li>Técnicas viscerais suaves para melhorar a motilidade intestinal</li>
+      </ul>
+
+      <h2>Que resultados esperar?</h2>
+      <p>A maioria dos bebés beneficia de 2 a 4 sessões. Muitos pais reportam melhorias significativas já após a primeira ou segunda sessão — bebé mais calmo, melhor qualidade de sono e redução dos episódios de choro.</p>
+
+      <div class="article-cta">
+        <h4>O seu bebé tem cólicas intensas?</h4>
+        <p>A Inês Coelho realiza consultas de osteopatia pediátrica para bebés desde os primeiros dias de vida.</p>
+        <a href="contacto.html" class="btn-primary">Marcar Consulta Pediátrica</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILATES -->
+<div class="article-modal" id="modal-pilates">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('pilates')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Pilates Clínico</span><span class="blog-meta-sep"></span><span class="blog-date">25 Jan 2025</span></div>
+      <h1>Pilates Clínico vs. Pilates de Fitness: qual a <em>diferença real?</em></h1>
+      <p class="excerpt">O Pilates Clínico e o Pilates de fitness partilham alguns exercícios, mas são mundos completamente diferentes. O José Pereira explica o que distingue cada abordagem e para quem é indicado o Pilates Clínico.</p>
+    </div>
+    <div class="article-body">
+      <h2>Pilates de fitness: para quem quer forma e condição</h2>
+      <p>O Pilates de fitness é um excelente método de exercício para pessoas saudáveis que querem melhorar a condição física, a flexibilidade e a consciência corporal. As aulas de grupo seguem protocolos gerais, com exercícios progressivos adequados para a maioria das pessoas.</p>
+      <p>É um método válido e com benefícios comprovados — mas <strong>não é terapêutico</strong> por si só. Um instrutor de fitness não é um profissional de saúde, e uma aula de grupo não pode ser personalizada para uma lesão específica.</p>
+
+      <h2>Pilates Clínico: exercício terapêutico supervisionado</h2>
+      <p>O Pilates Clínico é prescrito e supervisionado por profissionais de saúde (fisioterapeutas ou terapeutas especializados) como parte de um plano de tratamento clínico. As diferenças são fundamentais:</p>
+      <ul>
+        <li><strong>Avaliação prévia:</strong> Antes de qualquer sessão, há uma avaliação completa — postural, funcional e clínica</li>
+        <li><strong>Personalização total:</strong> Cada exercício tem um objetivo terapêutico específico para aquele paciente</li>
+        <li><strong>Supervisão constante:</strong> O profissional está presente em cada movimento, corrigindo e adaptando em tempo real</li>
+        <li><strong>Integração no tratamento:</strong> O Pilates Clínico coordena com fisioterapia, osteopatia e outros tratamentos</li>
+        <li><strong>Progressão controlada:</strong> A evolução é monitorizada e ajustada à resposta clínica do paciente</li>
+      </ul>
+
+      <h2>Para quem é o Pilates Clínico?</h2>
+      <p>O Pilates Clínico está indicado para pessoas com:</p>
+      <ul>
+        <li>Dores crónicas da coluna — lombalgia, cervicalgia, dorsalgia</li>
+        <li>Pós-cirurgia ortopédica — joelho, ombro, anca, coluna</li>
+        <li>Escolioses e desvios posturais</li>
+        <li>Gravidez e período pós-parto</li>
+        <li>Lesões desportivas em fase de reabilitação</li>
+        <li>Sénior ativo que quer manter mobilidade e prevenir quedas</li>
+      </ul>
+
+      <div class="article-cta">
+        <h4>Quer iniciar um programa de Pilates Clínico?</h4>
+        <p>O José Pereira elabora um programa personalizado após avaliação inicial. Sessões individuais ou em pequeno grupo.</p>
+        <a href="contacto.html" class="btn-primary">Iniciar Programa</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Placeholder modals for other articles -->
+<div class="article-modal" id="modal-lombalgia">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('lombalgia')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Fisioterapia</span><span class="blog-meta-sep"></span><span class="blog-date">8 Jan 2025</span></div>
+      <h1>Lombalgia: a dor nas costas que afeta 80% dos <em>portugueses</em></h1>
+      <p class="excerpt">A lombalgia é a principal causa de absentismo laboral em Portugal e uma das condições mais tratadas na Fisio Vitae. A Dra. Cláudia Alves explica causas, fatores de risco e como a fisioterapia pode ajudar.</p>
+    </div>
+    <div class="article-body">
+      <h2>Um problema de dimensões epidémicas</h2>
+      <p>Estima-se que cerca de 80% da população portuguesa experiencia pelo menos um episódio de dor lombar ao longo da vida. É a principal causa de incapacidade para o trabalho e representa um enorme custo para o sistema de saúde e para a economia.</p>
+      <p>O que muitas pessoas não sabem é que, na maioria dos casos, a lombalgia é tratável e prevenível. A fisioterapia tem um papel central no tratamento desta condição, com evidência científica robusta que suporta a sua eficácia.</p>
+
+      <h2>Causas mais comuns</h2>
+      <ul>
+        <li><strong>Sedentarismo:</strong> A falta de movimento enfraquece a musculatura de suporte da coluna</li>
+        <li><strong>Má postura prolongada:</strong> Especialmente em contexto de trabalho de escritório</li>
+        <li><strong>Sobrecarga mecânica:</strong> Levantamento inadequado de pesos, movimentos repetitivos</li>
+        <li><strong>Hérnia discal:</strong> Compressão radicular que origina dor irradiada (ciática)</li>
+        <li><strong>Artrose lombar:</strong> Desgaste das articulações intervertebrais com a idade</li>
+        <li><strong>Fatores psicossociais:</strong> Stress, ansiedade e depressão amplificam a perceção de dor</li>
+      </ul>
+
+      <h2>Quando procurar fisioterapia?</h2>
+      <p>Deve procurar avaliação por fisioterapeuta se a dor durar mais de 2 semanas sem melhoria, se irradiar para os membros inferiores, se acompanhar formigueiros ou fraqueza muscular, ou se interferir significativamente com as atividades diárias.</p>
+      <p>Existem também sinais de alerta (red flags) que implicam avaliação médica urgente: febre associada à dor, perda de peso inexplicada, incontinência ou retenção urinária. Estes sinais são raros mas importantes.</p>
+
+      <h2>Como a fisioterapia trata a lombalgia?</h2>
+      <p>O tratamento fisioterapêutico da lombalgia é multifatorial e personalizado. Na Fisio Vitae, utilizamos uma combinação de técnicas manuais, exercício terapêutico e, quando indicado, fisioterapia percutânea para dor muscular persistente.</p>
+
+      <div class="article-cta">
+        <h4>Sofre de dores lombares?</h4>
+        <p>Não deixe que a dor limite a sua vida. Marque uma avaliação e comece o seu tratamento.</p>
+        <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-modal" id="modal-alongamentos">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('alongamentos')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Bem-estar</span><span class="blog-meta-sep"></span><span class="blog-date">20 Dez 2024</span></div>
+      <h1>Os 6 alongamentos que deveria fazer todos os dias <em>(e porquê)</em></h1>
+      <p class="excerpt">Seis minutos por dia podem fazer uma diferença enorme. O José Pereira apresenta os 6 alongamentos essenciais recomendados pela equipa Fisio Vitae para manter a mobilidade e prevenir dores.</p>
+    </div>
+    <div class="article-body">
+      <h2>Porquê alongar diariamente?</h2>
+      <p>O sedentarismo e a postura de trabalho encurtam progressivamente os músculos. Músculos encurtados puxam as articulações para posições desfavoráveis, criam tensão, reduzem a amplitude de movimento e aumentam o risco de lesões. Os alongamentos diários combatem este processo de forma simples e eficaz.</p>
+
+      <h2>Os 6 alongamentos essenciais</h2>
+      <ul>
+        <li><strong>Flexão lateral do pescoço:</strong> Incline a cabeça para o lado, orelha em direção ao ombro. Mantenha 30 seg, repita dos dois lados. Alivia tensão no trapézio superior.</li>
+        <li><strong>Alongamento do peito e ombros:</strong> Com os braços atrás das costas, entrelaçar os dedos e elevar ligeiramente os braços. Abre o peito e corrige a postura de ombros projetados.</li>
+        <li><strong>Psoas (flexor da anca):</strong> Em posição de ajoelhar com um joelho, projetar a anca para a frente suavemente. Essencial para quem trabalha sentado — o psoas encurta com o tempo de sedestação.</li>
+        <li><strong>Isquiotibiais:</strong> Deitado de costas, levar um joelho ao peito com as mãos. Fundamental para proteger a lombar.</li>
+        <li><strong>Piriforme (glúteo):</strong> Deitado, cruzar um tornozelo sobre o joelho oposto e puxar suavemente a perna para o peito. Liberta tensão na zona sagrada e no nervo ciático.</li>
+        <li><strong>Toráx (rotação):</strong> Sentado numa cadeira, rodar o tronco para cada lado, apoiando as mãos no encosto. Mantém a mobilidade dorsal, frequentemente negligenciada.</li>
+      </ul>
+
+      <p>Cada alongamento deve ser mantido durante 30 a 45 segundos, sem dor, com respiração tranquila. Nunca force — o alongamento deve ser confortável.</p>
+
+      <div class="article-cta">
+        <h4>Quer um programa de exercícios personalizado?</h4>
+        <p>O José Pereira elabora programas de exercício domiciliário adaptados à sua condição específica.</p>
+        <a href="contacto.html" class="btn-primary">Saber Mais</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-modal" id="modal-osteopatia">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('osteopatia')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Osteopatia</span><span class="blog-meta-sep"></span><span class="blog-date">5 Dez 2024</span></div>
+      <h1>Osteopatia: mais do que estalar costas — uma abordagem <em>global da saúde</em></h1>
+      <p class="excerpt">A osteopatia é frequentemente reduzida a "estalar costas" no imaginário popular. A Inês Coelho desmistifica esta disciplina e explica o que é realmente a osteopatia estrutural.</p>
+    </div>
+    <div class="article-body">
+      <h2>O que não é a osteopatia</h2>
+      <p>A osteopatia não é apenas manipulação de costas. Não é alternativa à medicina convencional. E não é algo místico ou sem base científica. A osteopatia é uma profissão de saúde reconhecida, com formação extensa (mínimo 5 anos) e fundamentação em anatomia, fisiologia e biomecânica.</p>
+
+      <h2>O princípio fundamental: o corpo como unidade</h2>
+      <p>O princípio central da osteopatia é que o corpo humano funciona como um sistema integrado. Quando há disfunção numa estrutura — seja articular, muscular, visceral ou fascial — outras estruturas são inevitavelmente afetadas. O osteopata trata o sistema, não o sintoma isolado.</p>
+      <p>Isto explica porque um osteopata pode tratar cefaleia trabalhando no pescoço e nos ombros, tratar refluxo trabalhando no diafragma, ou tratar dor lombar trabalhando nos pés. A lógica é anatómica e fisiológica.</p>
+
+      <h2>O que acontece numa consulta de osteopatia?</h2>
+      <p>A primeira consulta começa sempre com uma anamnese detalhada — história clínica, queixas, hábitos, cirurgias e traumas anteriores. Segue-se uma avaliação postural e testes de mobilidade articular. O tratamento é então planeado com base nessa avaliação.</p>
+      <p>As técnicas utilizadas variam conforme o caso — podem incluir manipulações de alta velocidade (HVLA), técnicas de energia muscular, mobilizações suaves, técnicas fasciais ou técnicas craniossacrais. O paciente está sempre informado sobre o que vai acontecer.</p>
+
+      <div class="article-cta">
+        <h4>Quer experimentar a osteopatia?</h4>
+        <p>A Inês Coelho realiza consultas de avaliação osteopática completa.</p>
+        <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-modal" id="modal-core">
+  <div class="article-inner">
+    <div class="article-header">
+      <button class="article-close" onclick="closeArticle('core')">✕</button>
+      <div class="blog-meta"><span class="blog-cat">Pilates Clínico</span><span class="blog-meta-sep"></span><span class="blog-date">18 Nov 2024</span></div>
+      <h1>Porque é que o "core" não é apenas os abdominais <em>(e o que deve trabalhar)</em></h1>
+      <p class="excerpt">O conceito de "core" tornou-se omnipresente no fitness. Mas a maioria das pessoas trabalha apenas os abdominais superficiais — e isso pode até agravar os problemas de coluna.</p>
+    </div>
+    <div class="article-body">
+      <h2>O que é realmente o core?</h2>
+      <p>O core é o conjunto de músculos que estabilizam e controlam o centro do corpo — o tronco. Inclui muito mais do que os famosos abdominais (reto abdominal) que vemos na publicidade. O core verdadeiro é composto por:</p>
+      <ul>
+        <li><strong>Transverso do abdómen:</strong> O músculo abdominal mais profundo, o verdadeiro "cinto" da coluna</li>
+        <li><strong>Multífidos:</strong> Músculos profundos da coluna que estabilizam vértebra a vértebra</li>
+        <li><strong>Pavimento pélvico:</strong> A "base" do sistema de estabilização do tronco</li>
+        <li><strong>Diafragma:</strong> Não é só respiração — é o "teto" do core e essencial para a pressão intra-abdominal</li>
+        <li><strong>Glúteos e rotadores da anca:</strong> Transferem forças entre o tronco e os membros inferiores</li>
+      </ul>
+
+      <h2>O problema dos abdominais clássicos</h2>
+      <p>Os exercícios abdominais clássicos — crunch, sit-up — trabalham predominantemente o reto abdominal, que é um músculo superficial e "motor" (cria movimento), não estabilizador. Pior ainda, estes exercícios aumentam a pressão nos discos intervertebrais lombares e podem agravar hérnias discais e lombalgias.</p>
+
+      <h2>O que o Pilates Clínico faz diferente</h2>
+      <p>O Pilates Clínico foca-se na ativação dos músculos profundos do core — especialmente o transverso do abdómen e os multífidos — através de movimentos controlados que respeitam a biomecânica da coluna. O resultado é uma coluna genuinamente estável, não apenas músculos abdominais visíveis.</p>
+
+      <div class="article-cta">
+        <h4>Quer aprender a ativar o seu core corretamente?</h4>
+        <p>O Pilates Clínico com o José Pereira começa pelos fundamentos — e constrói uma base sólida para toda a sua reabilitação.</p>
+        <a href="contacto.html" class="btn-primary">Iniciar Programa de Pilates</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="Fisio Vitae" class="nav-logo-img"/></a><p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga.</p><div class="footer-social"><a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div>
+      <div class="footer-col"><h4>Serviços</h4><ul><li><a href="servicos.html#percutanea">Fisioterapia Percutânea</a></li><li><a href="servicos.html#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="servicos.html#pilates">Pilates Clínico</a></li><li><a href="servicos.html#osteopatia">Osteopatia</a></li><li><a href="servicos.html#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><h4>Clínica</h4><ul><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="blog.html">Blog</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><strong style="color:rgba(255,255,255,.7)">Tel</strong><br><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><strong style="color:rgba(255,255,255,.7)">Email</strong><br><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Fisio Vitae · Panóias, Braga</p><p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js"></script>
+<script>
+function openArticle(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeArticle(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.article-modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.article-modal.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blogGrid [data-cat]').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  document.getElementById('nlForm').style.display = 'none';
+  document.getElementById('nlSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>
+
+

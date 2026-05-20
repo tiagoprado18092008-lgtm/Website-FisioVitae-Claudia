@@ -1,0 +1,458 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "FisioVitae" [ref=e3] [cursor=pointer]:
+      - /url: index.html
+      - img "FisioVitae" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Início" [ref=e7] [cursor=pointer]:
+          - /url: index.html
+      - listitem [ref=e8]:
+        - link "Sobre" [ref=e9] [cursor=pointer]:
+          - /url: sobre.html
+      - listitem [ref=e10]:
+        - link "Serviços" [ref=e11] [cursor=pointer]:
+          - /url: servicos.html
+          - text: Serviços
+          - img [ref=e12]
+      - listitem [ref=e14]:
+        - link "Equipa" [ref=e15] [cursor=pointer]:
+          - /url: equipa.html
+      - listitem [ref=e16]:
+        - link "Contacto" [ref=e17] [cursor=pointer]:
+          - /url: contacto.html
+      - listitem [ref=e18]:
+        - link "Marcar Consulta" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta.
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: Panoias, Braga · Desde 2004
+      - heading "20 anos a cuidar de quem move o mundo." [level=1] [ref=e24]:
+        - text: 20 anos a
+        - emphasis [ref=e25]: cuidar
+        - text: de quem move o mundo.
+      - paragraph [ref=e26]: Fisioterapia, Osteopatia e Pilates Clínico em Panoias, Braga. Dra. Cláudia Alves e uma equipa dedicada a devolver-lhe o movimento.
+      - generic [ref=e27]:
+        - link "Marcar Consulta" [ref=e28] [cursor=pointer]:
+          - /url: https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta.
+          - text: Marcar Consulta
+          - img [ref=e29]
+        - link "253 623 663" [ref=e31] [cursor=pointer]:
+          - /url: tel:253623663
+          - img [ref=e32]
+          - text: 253 623 663
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: 1+
+          - generic [ref=e37]: Anos de experiência
+        - generic [ref=e38]:
+          - generic [ref=e39]: "4"
+          - generic [ref=e40]: Especialistas
+        - generic [ref=e41]:
+          - generic [ref=e42]: "6"
+          - generic [ref=e43]: Especialidades
+        - generic [ref=e44]:
+          - generic [ref=e45]: 4.9★
+          - generic [ref=e46]: Google Reviews
+    - generic [ref=e47]:
+      - img "Dra. Cláudia Alves em sessão de fisioterapia ecoguiada na clínica FisioVitae" [ref=e48]
+      - generic [ref=e49]:
+        - generic [ref=e50]: Em Panoias, Braga
+        - generic [ref=e51]: 20+
+        - generic [ref=e52]:
+          - text: anos de experiência
+          - text: ao seu serviço
+        - paragraph [ref=e54]: "\"O tratamento começa por ouvir. Cada corpo conta uma história diferente.\""
+        - text: — Dra. Cláudia Alves
+        - generic [ref=e55]:
+          - strong [ref=e56]: 500+
+          - text: Pacientes tratados
+  - generic [ref=e58]:
+    - generic [ref=e59]: Fisioterapia Percutânea
+    - generic [ref=e61]: Fisioterapia Ecoguiada
+    - generic [ref=e63]: Pilates Clínico
+    - generic [ref=e65]: Osteopatia Estrutural
+    - generic [ref=e67]: Osteopatia Pediátrica
+    - generic [ref=e69]: RPG — Reeducação Postural
+    - generic [ref=e71]: Panoias, Braga
+    - generic [ref=e73]: Fisioterapia Percutânea
+    - generic [ref=e75]: Fisioterapia Ecoguiada
+    - generic [ref=e77]: Pilates Clínico
+    - generic [ref=e79]: Osteopatia Estrutural
+    - generic [ref=e81]: Osteopatia Pediátrica
+    - generic [ref=e83]: RPG — Reeducação Postural
+    - generic [ref=e85]: Panoias, Braga
+  - generic [ref=e89]:
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - generic [ref=e92]: 500+
+        - text: Pacientes tratados
+      - generic [ref=e93]:
+        - img "Dra. Cláudia Alves em consulta de osteopatia pediátrica na FisioVitae" [ref=e94]
+        - generic [ref=e95]:
+          - text: "\"Cada corpo conta uma história diferente.\""
+          - generic [ref=e96]: — Dra. Cláudia Alves
+      - generic [ref=e97]:
+        - generic [ref=e98]: 0+
+        - generic [ref=e99]: Anos de experiência
+        - text: Fundadora · Dra. Cláudia Alves
+    - generic [ref=e101]:
+      - generic [ref=e102]: Sobre a Clínica
+      - heading "Duas décadas. Uma missão." [level=2] [ref=e103]:
+        - text: Duas décadas.
+        - emphasis [ref=e104]: Uma missão.
+      - paragraph [ref=e105]:
+        - text: A
+        - strong [ref=e106]: FisioVitae
+        - text: "foi fundada pela Dra. Cláudia Alves com uma convicção simples: bom tratamento é aquele que vê a pessoa, não apenas o sintoma."
+      - paragraph [ref=e107]: Ao longo de 20 anos em Panoias, tornámo-nos uma referência regional — não por acaso, mas porque cada paciente é tratado com rigor clínico e proximidade humana. A nossa equipa multidisciplinar trabalha em conjunto para garantir que cada plano de tratamento é realmente feito à sua medida.
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]: 0+
+          - generic [ref=e111]: Anos
+        - generic [ref=e112]:
+          - generic [ref=e113]: "4"
+          - generic [ref=e114]: Especialistas
+        - generic [ref=e115]:
+          - generic [ref=e116]: "6"
+          - generic [ref=e117]: Especialidades
+      - link "Conhecer a Nossa História" [ref=e118] [cursor=pointer]:
+        - /url: sobre.html
+        - text: Conhecer a Nossa História
+        - img [ref=e119]
+  - generic [ref=e122]:
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: Os Nossos Serviços
+          - heading "Tratamentos especializados." [level=2] [ref=e127]:
+            - text: Tratamentos
+            - emphasis [ref=e128]: especializados.
+        - paragraph [ref=e129]: Técnicas de vanguarda combinadas com uma abordagem humana e personalizada. Cada tratamento é desenhado para si.
+      - link "Ver todos os serviços" [ref=e130] [cursor=pointer]:
+        - /url: servicos.html
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - img [ref=e134]
+        - generic [ref=e136]: Diferencial único
+        - generic [ref=e137]: Fisioterapia Percutânea
+        - generic [ref=e138]: Tratamento com precisão milimétrica. Agulhas finas atingem estruturas profundas inacessíveis à mão — eficaz em dor crónica, tendinopatias e lesões complexas.
+      - generic [ref=e139]:
+        - img [ref=e141]
+        - generic [ref=e144]: Diferencial único
+        - generic [ref=e145]: Fisioterapia Ecoguiada
+        - generic [ref=e146]: Tratamentos guiados por ecografia em tempo real. Máxima precisão, mínimo risco — para resultados mais seguros nas estruturas anatómicas.
+      - generic [ref=e147]:
+        - img [ref=e149]
+        - generic [ref=e152]: Reabilitação
+        - generic [ref=e153]: Pilates Clínico
+        - generic [ref=e154]: Programa supervisionado de exercício terapêutico. Reabilitação, fortalecimento e prevenção de lesões com base clínica — não é ginástica.
+      - generic [ref=e155]:
+        - img [ref=e157]
+        - generic [ref=e162]: Terapia Manual
+        - generic [ref=e163]: Osteopatia Estrutural
+        - generic [ref=e164]: Abordagem holística do sistema músculo-esquelético. Técnicas manuais que restauram o equilíbrio e eliminam a causa profunda da dor.
+      - generic [ref=e165]:
+        - img [ref=e167]
+        - generic [ref=e169]: Pediatria
+        - generic [ref=e170]: Osteopatia Pediátrica
+        - generic [ref=e171]: Técnicas gentis para bebés, crianças e adolescentes — cólicas, torcicolo congénito, problemas posturais e sequelas do parto.
+      - generic [ref=e172]:
+        - img [ref=e174]
+        - generic [ref=e177]: Postural
+        - generic [ref=e178]: RPG — Reeducação Postural Global
+        - generic [ref=e179]: Método progressivo sobre cadeias musculares para corrigir desequilíbrios posturais. Eficaz em escolioses, hérnias discais e dores crónicas.
+  - generic [ref=e182]:
+    - generic [ref=e183]:
+      - generic [ref=e184]: Porquê a FisioVitae
+      - heading "O que nos distingue." [level=2] [ref=e185]:
+        - text: O que nos
+        - emphasis [ref=e186]: distingue.
+      - paragraph [ref=e187]: Não somos mais uma clínica. Somos especialistas com 20 anos de resultados comprovados — e uma equipa que o conhece pelo nome.
+      - generic [ref=e188]:
+        - paragraph [ref=e189]: "\"A fisioterapia só resulta quando há confiança mútua. Construímos essa confiança há 20 anos, paciente a paciente.\""
+        - text: Dra. Cláudia Alves · Fundadora
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - img [ref=e193]
+        - generic [ref=e195]:
+          - heading "20 Anos de Confiança" [level=3] [ref=e196]
+          - paragraph [ref=e197]: Duas décadas de resultados na comunidade de Braga. A nossa reputação foi construída paciente a paciente, sem atalhos.
+      - generic [ref=e198]:
+        - img [ref=e200]
+        - generic [ref=e203]:
+          - heading "Técnicas de Vanguarda" [level=3] [ref=e204]
+          - paragraph [ref=e205]: Percutânea e ecoguiada — abordagens que a maioria das clínicas da região ainda não oferece.
+      - generic [ref=e206]:
+        - img [ref=e208]
+        - generic [ref=e212]:
+          - heading "Equipa Multidisciplinar" [level=3] [ref=e213]
+          - paragraph [ref=e214]: Fisioterapia, osteopatia e pilates no mesmo espaço. Abordagem integrada para resultados mais completos.
+      - generic [ref=e215]:
+        - img [ref=e217]
+        - generic [ref=e219]:
+          - heading "Ambiente Acolhedor" [level=3] [ref=e220]
+          - paragraph [ref=e221]: É sempre recebido pelo seu nome. Uma clínica onde o cuidado vai além do tratamento.
+      - generic [ref=e222]:
+        - img [ref=e224]
+        - generic [ref=e227]:
+          - heading "Plano Personalizado" [level=3] [ref=e228]
+          - paragraph [ref=e229]: Nenhum tratamento é igual. Avaliamos, planeamos e ajustamos à sua condição e ritmo de vida.
+      - generic [ref=e230]:
+        - img [ref=e232]
+        - generic [ref=e235]:
+          - heading "Estacionamento Gratuito" [level=3] [ref=e236]
+          - paragraph [ref=e237]: Fácil acesso e estacionamento gratuito nas imediações — sem stress antes da consulta.
+  - generic [ref=e239]:
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - generic [ref=e242]: A Nossa Equipa
+        - heading "As pessoas que vão cuidar de si." [level=2] [ref=e243]:
+          - text: As pessoas que vão
+          - emphasis [ref=e244]: cuidar de si.
+      - link "Ver equipa completa" [ref=e245] [cursor=pointer]:
+        - /url: equipa.html
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - generic [ref=e248]:
+          - img "Dra. Cláudia Alves, fundadora da FisioVitae, em consulta de osteopatia" [ref=e249]
+          - generic [ref=e250]: Fundadora
+        - generic [ref=e251]:
+          - generic [ref=e252]: Dra. Cláudia Alves
+          - generic [ref=e253]: Fisioterapeuta · Fundadora
+          - paragraph [ref=e254]: "\"Acredito que cada paciente tem uma história única que merece ser ouvida com atenção antes de ser tratada com técnica.\""
+      - generic [ref=e255]:
+        - generic [ref=e257]: IC
+        - generic [ref=e258]:
+          - generic [ref=e259]: Inês Coelho
+          - generic [ref=e260]: Fisioterapeuta · Osteopatia
+          - paragraph [ref=e261]: "\"A reabilitação é uma parceria. O meu trabalho é orientar — e o seu esforço é o que transforma os resultados.\""
+      - generic [ref=e262]:
+        - generic [ref=e264]: JP
+        - generic [ref=e265]:
+          - generic [ref=e266]: José Pereira
+          - generic [ref=e267]: Especialista em Pilates Clínico
+          - paragraph [ref=e268]: "\"O Pilates Clínico não é exercício — é a ponte entre a recuperação e a prevenção de novas lesões.\""
+  - generic [ref=e270]:
+    - generic [ref=e271]:
+      - generic [ref=e272]: Testemunhos
+      - heading "O que dizem os nossos pacientes." [level=2] [ref=e273]:
+        - text: O que dizem
+        - emphasis [ref=e274]: os nossos pacientes.
+      - generic [ref=e275]:
+        - generic [ref=e276]: "4.9"
+        - generic [ref=e277]:
+          - img [ref=e278]
+          - img [ref=e280]
+          - img [ref=e282]
+          - img [ref=e284]
+          - img [ref=e286]
+        - generic [ref=e289]: Google Reviews
+    - generic [ref=e290]:
+      - generic [ref=e291]:
+        - text: “
+        - generic [ref=e292]:
+          - img [ref=e293]
+          - img [ref=e295]
+          - img [ref=e297]
+          - img [ref=e299]
+          - img [ref=e301]
+        - paragraph [ref=e303]: "\"Sofri de hérnias discais durante anos. Com a Dra. Cláudia, em três meses voltei a fazer as minhas caminhadas diárias sem dor. O profissionalismo e o carinho fazem toda a diferença.\""
+        - generic [ref=e304]:
+          - generic [ref=e305]: AS
+          - generic [ref=e306]:
+            - generic [ref=e307]: Ana S.
+            - generic [ref=e308]: Braga
+      - generic [ref=e309]:
+        - text: “
+        - generic [ref=e310]:
+          - img [ref=e311]
+          - img [ref=e313]
+          - img [ref=e315]
+          - img [ref=e317]
+          - img [ref=e319]
+        - paragraph [ref=e321]: "\"Levei o meu bebé para osteopatia pediátrica. A Inês foi incrivelmente cuidadosa. As cólicas melhoraram em menos de uma semana. Recomendo a todos os pais.\""
+        - generic [ref=e322]:
+          - generic [ref=e323]: MC
+          - generic [ref=e324]:
+            - generic [ref=e325]: Mariana C.
+            - generic [ref=e326]: Braga
+      - generic [ref=e327]:
+        - text: “
+        - generic [ref=e328]:
+          - img [ref=e329]
+          - img [ref=e331]
+          - img [ref=e333]
+          - img [ref=e335]
+          - img [ref=e337]
+        - paragraph [ref=e339]: "\"Atleta amador com lesão no tendão de Aquiles. A fisioterapia percutânea foi uma revelação — recuperei em metade do tempo esperado.\""
+        - generic [ref=e340]:
+          - generic [ref=e341]: RM
+          - generic [ref=e342]:
+            - generic [ref=e343]: Ricardo M.
+            - generic [ref=e344]: Barcelos
+  - generic [ref=e346]:
+    - generic [ref=e347]:
+      - generic [ref=e348]:
+        - generic [ref=e349]: Em movimento
+        - heading "A clínica por dentro." [level=2] [ref=e350]:
+          - text: A clínica
+          - text: por
+          - emphasis [ref=e351]: dentro.
+      - paragraph [ref=e353]: Espaços pensados para o conforto, equipamento de vanguarda e uma equipa que coloca atenção em cada detalhe — porque a recuperação começa pelo ambiente.
+    - generic [ref=e354]:
+      - generic [ref=e355] [cursor=pointer]:
+        - img "Fisioterapia ecoguiada com ecografia em tempo real" [ref=e356]
+        - generic [ref=e357]: Fisioterapia Ecoguiada
+      - generic [ref=e358] [cursor=pointer]:
+        - img "Bebé sorridente em sessão de osteopatia pediátrica" [ref=e359]
+        - generic [ref=e360]: Osteopatia Pediátrica
+      - generic [ref=e361]:
+        - text: “
+        - paragraph [ref=e362]: "\"Não tratamos o sintoma. Tratamos a pessoa que o carrega.\""
+        - generic [ref=e363]:
+          - text: Filosofia FisioVitae
+          - generic [ref=e364]: 20 anos em Panoias
+      - generic [ref=e365] [cursor=pointer]:
+        - img "Detalhe de tratamento de fisioterapia percutânea com agulhas" [ref=e366]
+        - generic [ref=e367]: Fisioterapia Percutânea
+      - generic [ref=e368] [cursor=pointer]:
+        - img "Avaliação postural global na clínica FisioVitae" [ref=e369]
+        - generic [ref=e370]: RPG · Avaliação Postural
+      - generic [ref=e371] [cursor=pointer]:
+        - img "Reabilitação funcional com exercício terapêutico" [ref=e372]
+        - generic [ref=e373]: Reabilitação Funcional
+      - generic [ref=e374] [cursor=pointer]:
+        - img "Fachada da clínica FisioVitae em Panoias, Braga" [ref=e375]
+        - generic [ref=e376]: Panoias · Braga
+  - generic [ref=e379]:
+    - generic [ref=e380]:
+      - generic [ref=e381]: Pronto para começar?
+      - heading "Dê o primeiro passo. A recuperação começa hoje." [level=2] [ref=e382]:
+        - text: Dê o primeiro passo.
+        - text: A recuperação começa hoje.
+      - paragraph [ref=e383]: A nossa equipa está pronta para o receber e definir um plano à sua medida. Marque agora — fácil e sem complicações.
+    - generic [ref=e384]:
+      - link "Marcar via WhatsApp" [ref=e385] [cursor=pointer]:
+        - /url: https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta.
+      - link "253 623 663" [ref=e386] [cursor=pointer]:
+        - /url: tel:253623663
+  - generic [ref=e389]:
+    - generic [ref=e390]:
+      - generic [ref=e391]: Dúvidas Frequentes
+      - heading "Perguntas frequentes." [level=2] [ref=e392]:
+        - text: Perguntas
+        - emphasis [ref=e393]: frequentes.
+      - paragraph [ref=e394]:
+        - text: Esclarecemos as dúvidas mais comuns. Algo mais?
+        - link "Contacte-nos." [ref=e395] [cursor=pointer]:
+          - /url: contacto.html
+    - generic [ref=e396]:
+      - generic [ref=e397]:
+        - button "Preciso de receita médica?" [ref=e398] [cursor=pointer]:
+          - text: Preciso de receita médica?
+          - img [ref=e399]
+        - generic [ref=e401]: Não é obrigatória. Se tiver exames auxiliares (ressonâncias, ecografias) ou indicação médica, pedimos que os traga — ajudam-nos a personalizar o plano de tratamento desde o início.
+      - generic [ref=e402]:
+        - button "Quantas sessões são normalmente necessárias?" [ref=e403] [cursor=pointer]:
+          - text: Quantas sessões são normalmente necessárias?
+          - img [ref=e404]
+        - generic [ref=e406]: Depende da condição. Lesões agudas podem resolver-se em 4–8 sessões; condições crónicas requerem acompanhamento mais prolongado. Na primeira consulta definimos sempre um plano realista e honesto.
+      - generic [ref=e407]:
+        - button "O Pilates Clínico é diferente do Pilates normal?" [ref=e408] [cursor=pointer]:
+          - text: O Pilates Clínico é diferente do Pilates normal?
+          - img [ref=e409]
+        - generic [ref=e411]: Sim, significativamente. É supervisionado por um profissional de saúde, com exercícios prescritos especificamente para a sua condição — não é uma aula de grupo genérica. É reabilitação e prevenção.
+      - generic [ref=e412]:
+        - button "A fisioterapia percutânea é dolorosa?" [ref=e413] [cursor=pointer]:
+          - text: A fisioterapia percutânea é dolorosa?
+          - img [ref=e414]
+        - generic [ref=e416]: A maioria dos pacientes descreve apenas uma sensação de pressão suave. Usamos agulhas muito finas com o conforto do paciente como prioridade. É normal uma ligeira sensibilidade local nas 24–48h seguintes.
+      - generic [ref=e417]:
+        - button "A clínica tem estacionamento?" [ref=e418] [cursor=pointer]:
+          - text: A clínica tem estacionamento?
+          - img [ref=e419]
+        - generic [ref=e421]: Sim, existe estacionamento gratuito nas imediações da Rua Nova de Agrafonte. Se tiver dificuldade, ligue-nos e orientamo-lo de imediato.
+      - generic [ref=e422]:
+        - button "Tratam crianças e bebés?" [ref=e423] [cursor=pointer]:
+          - text: Tratam crianças e bebés?
+          - img [ref=e424]
+        - generic [ref=e426]: Sim. A osteopatia pediátrica permite-nos tratar recém-nascidos, bebés e crianças até à adolescência. As técnicas são completamente adaptadas e suaves — os pais são sempre bem-vindos dentro da sala.
+  - contentinfo [ref=e427]:
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - link "FisioVitae" [ref=e431] [cursor=pointer]:
+            - /url: index.html
+            - img "FisioVitae" [ref=e432]
+          - generic [ref=e433]: Cuidar é a nossa vocação.
+          - paragraph [ref=e434]: Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.
+          - generic [ref=e435]:
+            - link "Instagram" [ref=e436] [cursor=pointer]:
+              - /url: https://www.instagram.com/fisiovitae_claudiaalves/
+              - img [ref=e437]
+            - link "Facebook" [ref=e440] [cursor=pointer]:
+              - /url: https://www.facebook.com/fisiovitaeclaudiaalves/
+              - img [ref=e441]
+            - link "WhatsApp" [ref=e443] [cursor=pointer]:
+              - /url: https://wa.me/351253623663
+              - img [ref=e444]
+        - generic [ref=e446]:
+          - heading "Serviços" [level=4] [ref=e448]
+          - list [ref=e449]:
+            - listitem [ref=e450]:
+              - link "Fisioterapia Percutânea" [ref=e451] [cursor=pointer]:
+                - /url: servicos.html
+            - listitem [ref=e452]:
+              - link "Fisioterapia Ecoguiada" [ref=e453] [cursor=pointer]:
+                - /url: servicos.html
+            - listitem [ref=e454]:
+              - link "Pilates Clínico" [ref=e455] [cursor=pointer]:
+                - /url: servicos.html
+            - listitem [ref=e456]:
+              - link "Osteopatia Estrutural" [ref=e457] [cursor=pointer]:
+                - /url: servicos.html
+            - listitem [ref=e458]:
+              - link "Osteopatia Pediátrica" [ref=e459] [cursor=pointer]:
+                - /url: servicos.html
+            - listitem [ref=e460]:
+              - link "RPG" [ref=e461] [cursor=pointer]:
+                - /url: servicos.html
+        - generic [ref=e462]:
+          - heading "Clínica" [level=4] [ref=e464]
+          - list [ref=e465]:
+            - listitem [ref=e466]:
+              - link "Sobre Nós" [ref=e467] [cursor=pointer]:
+                - /url: sobre.html
+            - listitem [ref=e468]:
+              - link "Equipa" [ref=e469] [cursor=pointer]:
+                - /url: equipa.html
+            - listitem [ref=e470]:
+              - link "Contacto" [ref=e471] [cursor=pointer]:
+                - /url: contacto.html
+            - listitem [ref=e472]:
+              - link "Privacidade" [ref=e473] [cursor=pointer]:
+                - /url: politica-privacidade.html
+        - generic [ref=e474]:
+          - heading "Contacto" [level=4] [ref=e476]
+          - paragraph [ref=e477]:
+            - text: Rua Nova de Agrafonte, n.º 31
+            - text: Panoias, Braga
+          - paragraph [ref=e478]:
+            - generic [ref=e479]: Telefone
+            - link "253 623 663" [ref=e480] [cursor=pointer]:
+              - /url: tel:253623663
+          - paragraph [ref=e481]:
+            - generic [ref=e482]: Horário
+            - text: "Seg–Sex: 9h–22h"
+            - text: "Sábado: 9h–13h"
+      - generic [ref=e483]:
+        - paragraph [ref=e484]: © 2025 FisioVitae · Panoias, Braga
+        - paragraph [ref=e485]:
+          - text: Website por
+          - link "AlphaScale AI" [ref=e486] [cursor=pointer]:
+            - /url: https://alphascaleai.com
+  - link "Fale connosco via WhatsApp" [ref=e487] [cursor=pointer]:
+    - /url: https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta.
+    - generic: Fale connosco
+    - img [ref=e488]

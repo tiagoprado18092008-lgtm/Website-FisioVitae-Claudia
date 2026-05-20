@@ -1,0 +1,156 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Fisio Vitae" [ref=e3] [cursor=pointer]:
+      - /url: index.html
+      - img "Fisio Vitae" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Início" [ref=e7] [cursor=pointer]:
+          - /url: index.html
+      - listitem [ref=e8]:
+        - link "Sobre" [ref=e9] [cursor=pointer]:
+          - /url: sobre.html
+      - listitem [ref=e10]:
+        - link "Serviços" [ref=e11] [cursor=pointer]:
+          - /url: servicos.html
+          - text: Serviços
+          - img [ref=e12]
+      - listitem [ref=e14]:
+        - link "Equipa" [ref=e15] [cursor=pointer]:
+          - /url: equipa.html
+      - listitem [ref=e16]:
+        - link "Contacto" [ref=e17] [cursor=pointer]:
+          - /url: contacto.html
+      - listitem [ref=e18]:
+        - link "Marcar Consulta" [ref=e19] [cursor=pointer]:
+          - /url: https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta.
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - link "Início" [ref=e23] [cursor=pointer]:
+        - /url: index.html
+      - generic [ref=e24]: ›
+      - link "Serviços" [ref=e25] [cursor=pointer]:
+        - /url: servicos.html
+      - generic [ref=e26]: ›
+      - generic [ref=e27]: Fisioterapia Ecoguiada
+    - generic [ref=e28]: Precisão Máxima
+    - heading "Fisioterapia Ecoguiada" [level=1] [ref=e29]:
+      - text: Fisioterapia
+      - emphasis [ref=e30]: Ecoguiada
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - img "Fisioterapia ecoguiada — Dra. Cláudia Alves a operar ecógrafo durante tratamento" [ref=e35]
+      - generic [ref=e36]: Ecografia em tempo real
+    - generic [ref=e37]:
+      - paragraph [ref=e38]: A fisioterapia ecoguiada representa o estado da arte no tratamento de lesões músculo-esqueléticas — guiada por ecografia em tempo real, permite uma precisão cirúrgica que outras técnicas não conseguem igualar.
+      - paragraph [ref=e39]:
+        - text: Através de um ecógrafo de alta resolução, o terapeuta consegue
+        - strong [ref=e40]: visualizar em tempo real
+        - text: as estruturas internas — tendões, músculos, bolsas sinoviais, nervos — e orientar as agulhas ou outros instrumentos com precisão milimétrica.
+      - paragraph [ref=e41]:
+        - text: Esta abordagem é particularmente valiosa em
+        - strong [ref=e42]: zonas de difícil acesso anatómico
+        - text: ", em estruturas profundas e em situações em que a palpação manual não é suficientemente precisa para garantir a segurança e eficácia do tratamento."
+      - generic [ref=e43]:
+        - heading "Vantagens da abordagem ecoguiada" [level=4] [ref=e44]
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: "1"
+            - generic [ref=e48]:
+              - strong [ref=e49]: "Diagnóstico em consultório:"
+              - text: A ecografia permite avaliar o estado dos tecidos sem necessidade de exames externos.
+          - generic [ref=e50]:
+            - generic [ref=e51]: "2"
+            - generic [ref=e52]:
+              - strong [ref=e53]: "Precisão máxima:"
+              - text: Visualização em tempo real evita estruturas vasculares e nervosas adjacentes.
+          - generic [ref=e54]:
+            - generic [ref=e55]: "3"
+            - generic [ref=e56]:
+              - strong [ref=e57]: "Eficácia comprovada:"
+              - text: Resultados superiores em lesões tendinosas crónicas e bursites.
+          - generic [ref=e58]:
+            - generic [ref=e59]: "4"
+            - generic [ref=e60]:
+              - strong [ref=e61]: "Documentação:"
+              - text: Imagens antes e depois do tratamento para acompanhamento objetivo da evolução.
+      - heading "Indicações principais" [level=4] [ref=e62]
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - img [ref=e65]
+          - generic [ref=e67]:
+            - strong [ref=e68]: Tendinopatias crónicas
+            - text: — de difícil resolução por métodos convencionais
+        - generic [ref=e69]:
+          - img [ref=e70]
+          - generic [ref=e72]:
+            - strong [ref=e73]: Bursite
+            - text: — inflamação das bolsas sinoviais do ombro, anca e joelho
+        - generic [ref=e74]:
+          - img [ref=e75]
+          - generic [ref=e77]:
+            - strong [ref=e78]: Neuropatias periféricas
+            - text: — compressão de nervos (carpo, cúbito)
+        - generic [ref=e79]:
+          - img [ref=e80]
+          - generic [ref=e82]:
+            - strong [ref=e83]: Calcificações tendinosas
+            - text: — barbotagem guiada por ecografia
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - heading "Fisioterapia com precisão de imagem" [level=4] [ref=e86]
+          - paragraph [ref=e87]: Agende a sua consulta de avaliação ecoguiada.
+        - link "Marcar Avaliação" [ref=e88] [cursor=pointer]:
+          - /url: contacto.html
+  - contentinfo [ref=e89]:
+    - generic [ref=e90]:
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - link "FisioVitae" [ref=e93] [cursor=pointer]:
+            - /url: index.html
+            - img "FisioVitae" [ref=e94]
+          - generic [ref=e95]: Cuidar é a nossa vocação.
+          - paragraph [ref=e96]: Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.
+        - generic [ref=e97]:
+          - heading "Navegação" [level=4] [ref=e99]
+          - list [ref=e100]:
+            - listitem [ref=e101]:
+              - link "Início" [ref=e102] [cursor=pointer]:
+                - /url: index.html
+            - listitem [ref=e103]:
+              - link "Sobre Nós" [ref=e104] [cursor=pointer]:
+                - /url: sobre.html
+            - listitem [ref=e105]:
+              - link "Equipa" [ref=e106] [cursor=pointer]:
+                - /url: equipa.html
+            - listitem [ref=e107]:
+              - link "Blog" [ref=e108] [cursor=pointer]:
+                - /url: blog.html
+            - listitem [ref=e109]:
+              - link "Contacto" [ref=e110] [cursor=pointer]:
+                - /url: contacto.html
+        - generic [ref=e111]:
+          - heading "Serviços" [level=4] [ref=e113]
+          - list [ref=e114]:
+            - listitem [ref=e115]:
+              - link "Fisioterapia Percutânea" [ref=e116] [cursor=pointer]:
+                - /url: fisioterapia-percutanea.html
+            - listitem [ref=e117]:
+              - link "Fisioterapia Ecoguiada" [ref=e118] [cursor=pointer]:
+                - /url: fisioterapia-ecoguiada.html
+            - listitem [ref=e119]:
+              - link "Pilates Clínico" [ref=e120] [cursor=pointer]:
+                - /url: pilates-clinico.html
+            - listitem [ref=e121]:
+              - link "Osteopatia Estrutural" [ref=e122] [cursor=pointer]:
+                - /url: osteopatia.html
+            - listitem [ref=e123]:
+              - link "Osteopatia Pediátrica" [ref=e124] [cursor=pointer]:
+                - /url: osteopatia-pediatrica.html
+            - listitem [ref=e125]:
+              - link "RPG" [ref=e126] [cursor=pointer]:
+                - /url: rpg.html
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: © 2024 Fisio Vitae. Todos os direitos reservados.
+        - link "Política de Privacidade" [ref=e129] [cursor=pointer]:
+          - /url: politica-privacidade.html

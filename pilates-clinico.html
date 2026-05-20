@@ -12,8 +12,20 @@
   <link rel="stylesheet" href="assets/style.css"/>
   <style>
     .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-    .svc-visual svg { width:40%; opacity:.2; }
+    .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); }
+    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
+    .svc-visual:hover img { transform: scale(1.06); }
+    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; }
+    .svc-visual-badge {
+      position:absolute; bottom:1.5rem; left:1.5rem; z-index:2;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+      padding:.55rem .95rem; border-radius: 999px;
+      font-size:.62rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color: var(--dark);
+      box-shadow: 0 8px 24px rgba(26,26,26,.18);
+      display:flex; align-items:center; gap:.5rem;
+    }
+    .svc-visual-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; }
     .svc-detail .intro-text { font-size:1.05rem; color:var(--text-light); line-height:1.8; margin-bottom:1.5rem; }
     .svc-detail p { font-size:.93rem; color:var(--text-light); line-height:1.78; margin-bottom:1rem; }
     .svc-detail p strong { color:var(--text); }
@@ -90,8 +102,9 @@
 <section class="svc-page">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual" style="background:linear-gradient(145deg,#A8B89A,#8FA880,#6B8A5A)">
-        <svg viewBox="0 0 100 120" fill="none"><path d="M20 60 Q30 20 50 30 Q70 40 80 60" stroke="white" stroke-width="3" fill="none"/><line x1="50" y1="30" x2="50" y2="100" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="svc-visual">
+        <img src="assets/fotos/exercicio-rdl-mulher.jpg" alt="Pilates Clínico — Exercício terapêutico supervisionado na FisioVitae" loading="lazy"/>
+        <div class="svc-visual-badge">Exercício terapêutico</div>
       </div>
       <div class="svc-detail">
         <p class="intro-text">O Pilates Clínico é muito mais do que exercício — é uma ferramenta terapêutica poderosa que, quando prescrita e supervisionada por um profissional de saúde, acelera a recuperação e previne recaídas.</p>

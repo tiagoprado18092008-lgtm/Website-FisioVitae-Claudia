@@ -38,8 +38,22 @@
       aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%;
       display:flex; align-items:center; justify-content:center;
       position:relative; overflow:hidden;
+      box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10);
     }
-    .svc-visual svg { width:40%; opacity:.2; }
+    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
+    .svc-visual:hover img { transform: scale(1.06); }
+    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.18) 100%); pointer-events:none; }
+    .svc-visual-pill {
+      position:absolute; bottom:1.5rem; left:1.5rem; z-index:2;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+      padding:.5rem .9rem; border-radius: 999px;
+      font-size:.6rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color: var(--dark);
+      box-shadow: 0 8px 24px rgba(26,26,26,.18);
+      display:flex; align-items:center; gap:.5rem;
+    }
+    .svc-visual-pill::before { content:''; width:5px; height:5px; background:var(--orange); border-radius:50%; }
+    .svc-visual svg.legacy { width:40%; opacity:.2; }
 
     .svc-detail h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem; }
     .svc-detail h2 em { font-style:italic; color:var(--orange); }
@@ -193,8 +207,9 @@
 <section class="service-section" id="percutanea">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,var(--orange-pale),#E8C9A8,#D4A070)">
-        <svg viewBox="0 0 100 120" fill="none"><circle cx="50" cy="50" r="40" stroke="#E8621A" stroke-width="3"/><line x1="50" y1="20" x2="50" y2="80" stroke="#E8621A" stroke-width="3" stroke-linecap="round"/><circle cx="50" cy="50" r="6" fill="#E8621A"/></svg>
+      <div class="svc-visual reveal-left">
+        <img src="assets/fotos/percutanea-claudia-trabalho.jpg" alt="Fisioterapia percutânea — Dra. Cláudia Alves em sessão de tratamento" loading="lazy"/>
+        <div class="svc-visual-pill">Punção seca</div>
       </div>
       <div class="svc-detail reveal-right">
         <div class="section-label">Técnica Avançada</div>
@@ -232,8 +247,9 @@
 <section class="service-section" id="ecoguiada">
   <div class="container">
     <div class="svc-detail-grid reverse">
-      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#E8DDD0,#D0C0A8,#B8A080)">
-        <svg viewBox="0 0 100 120" fill="none"><rect x="20" y="20" width="60" height="60" rx="8" stroke="#E8621A" stroke-width="3"/><circle cx="50" cy="50" r="15" stroke="#E8621A" stroke-width="2"/><line x1="50" y1="80" x2="50" y2="100" stroke="#E8621A" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="svc-visual reveal-right">
+        <img src="assets/fotos/ecoguiada-claudia-tela.jpg" alt="Fisioterapia ecoguiada — Dra. Cláudia Alves a operar ecógrafo" loading="lazy"/>
+        <div class="svc-visual-pill">Imagem em tempo real</div>
       </div>
       <div class="svc-detail reveal-left">
         <div class="section-label">Precisão Máxima</div>
@@ -270,8 +286,9 @@
 <section class="service-section" id="pilates">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,#A8B89A,#8FA880,#6B8A5A)">
-        <svg viewBox="0 0 100 120" fill="none"><path d="M20 60 Q30 20 50 30 Q70 40 80 60" stroke="white" stroke-width="3" fill="none"/><line x1="50" y1="30" x2="50" y2="100" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="svc-visual reveal-left">
+        <img src="assets/fotos/exercicio-rdl-mulher.jpg" alt="Pilates clínico — exercício terapêutico supervisionado" loading="lazy"/>
+        <div class="svc-visual-pill">Exercício terapêutico</div>
       </div>
       <div class="svc-detail reveal-right">
         <div class="section-label">Reabilitação Ativa</div>
@@ -309,8 +326,9 @@
 <section class="service-section" id="osteopatia">
   <div class="container">
     <div class="svc-detail-grid reverse">
-      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#6B4F3A,#A07050,#C4A070)">
-        <svg viewBox="0 0 100 120" fill="none"><path d="M50 10C30 10 15 25 15 45c0 12 6 23 16 30L25 100h50L69 75c10-7 16-18 16-30C85 25 70 10 50 10z" stroke="white" stroke-width="3" fill="none"/></svg>
+      <div class="svc-visual reveal-right">
+        <img src="assets/fotos/osteopatia-manual-paciente.jpg" alt="Osteopatia estrutural — Dra. Cláudia Alves em sessão de terapia manual" loading="lazy"/>
+        <div class="svc-visual-pill">Terapia manual</div>
       </div>
       <div class="svc-detail reveal-left">
         <div class="section-label">Abordagem Holística</div>
@@ -348,8 +366,9 @@
 <section class="service-section" id="pediatrica">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual reveal-left" style="background:linear-gradient(145deg,#F5E6D8,#E8C9A8,#D4B090)">
-        <svg viewBox="0 0 100 120" fill="none"><circle cx="50" cy="30" r="20" stroke="#E8621A" stroke-width="3"/><path d="M30 55c0-11 9-20 20-20s20 9 20 20v40H30V55z" stroke="#E8621A" stroke-width="3" fill="none"/></svg>
+      <div class="svc-visual reveal-left">
+        <img src="assets/fotos/pediatrica-claudia-bebe.jpg" alt="Osteopatia pediátrica — Dra. Cláudia Alves a tratar bebé" loading="lazy"/>
+        <div class="svc-visual-pill">Técnicas gentis</div>
       </div>
       <div class="svc-detail reveal-right">
         <div class="section-label">Cuidado Especializado</div>
@@ -387,8 +406,9 @@
 <section class="service-section" id="rpg">
   <div class="container">
     <div class="svc-detail-grid reverse">
-      <div class="svc-visual reveal-right" style="background:linear-gradient(145deg,#7A8C6E,#A8B89A,#C8D8B8)">
-        <svg viewBox="0 0 100 120" fill="none"><line x1="50" y1="10" x2="50" y2="110" stroke="white" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="35" rx="25" ry="12" stroke="white" stroke-width="2.5" fill="none"/><ellipse cx="50" cy="75" rx="20" ry="10" stroke="white" stroke-width="2" fill="none"/></svg>
+      <div class="svc-visual reveal-right">
+        <img src="assets/fotos/rpg-avaliacao-postural.jpg" alt="RPG — Avaliação postural global na FisioVitae" loading="lazy"/>
+        <div class="svc-visual-pill">Postura global</div>
       </div>
       <div class="svc-detail reveal-left">
         <div class="section-label">Reeducação Postural</div>

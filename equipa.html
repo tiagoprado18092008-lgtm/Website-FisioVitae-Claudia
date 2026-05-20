@@ -31,7 +31,7 @@
     .member-card.flip { background:var(--white); }
 
     .member-avatar-large {
-      width:100%; aspect-ratio:3/2;
+      width:100%; aspect-ratio:4/5;
       display:flex; align-items:center; justify-content:center;
       position:relative; overflow:hidden;
       background-image: repeating-linear-gradient(
@@ -40,9 +40,19 @@
         transparent 1px, transparent 22px
       );
     }
+    .member-avatar-large img {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%;
+      transition: transform 1.4s cubic-bezier(.22,1,.36,1);
+    }
+    .member-card:hover .member-avatar-large img { transform: scale(1.05); }
+    .member-avatar-large::before {
+      content:''; position:absolute; inset:0; z-index:1;
+      background: linear-gradient(180deg, transparent 55%, rgba(26,26,26,.45) 100%);
+      pointer-events:none;
+    }
     .member-avatar-large::after { display:none; }
     .member-avatar-initials {
-      font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:white;
+      font-family:var(--font-display); font-size:5rem; font-weight:800; color:white;
       opacity:.9; position:relative; z-index:1;
     }
 
@@ -84,11 +94,14 @@
     }
     .ov-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-orange); }
     .ov-avatar {
-      width:80px; height:80px; border-radius:var(--radius);
+      width:100%; aspect-ratio: 4/3; border-radius:0;
       display:flex; align-items:center; justify-content:center;
-      font-family:var(--font-display); font-size:1.8rem; font-weight:800; color:white;
-      margin:1.75rem auto 0;
+      font-family:var(--font-display); font-size:2.2rem; font-weight:800; color:white;
+      margin:0; position:relative; overflow:hidden;
     }
+    .ov-avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%; transition: transform 1s cubic-bezier(.22,1,.36,1); }
+    .ov-card:hover .ov-avatar img { transform: scale(1.06); }
+    .ov-avatar::after { content:''; position:absolute; inset:0; background: linear-gradient(180deg, transparent 55%, rgba(26,26,26,.4) 100%); pointer-events:none; }
     .ov-body { padding:1.25rem; }
     .ov-body h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.15rem; }
     .ov-body .ov-role { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--orange); margin-bottom:.75rem; }
@@ -170,7 +183,7 @@
     </div>
     <div class="overview-grid">
       <a href="#claudia" class="ov-card reveal delay-1" style="text-decoration:none">
-        <div class="ov-avatar" style="background:linear-gradient(145deg,#E8621A,#F07A3A)">CA</div>
+        <div class="ov-avatar"><img src="assets/fotos/osteopatia-claudia-sorri.jpg" alt="Dra. Cláudia Alves" loading="lazy"/></div>
         <div class="ov-body"><h3>Dra. Cláudia Alves</h3><div class="ov-role">Fisioterapeuta · Fundadora</div><p>Especialista em fisioterapia percutânea e ecoguiada. 20 anos de experiência clínica.</p></div>
       </a>
       <a href="#ines" class="ov-card reveal delay-2" style="text-decoration:none">
@@ -194,7 +207,9 @@
   <div class="container">
     <div class="member-grid">
       <div class="member-card reveal-left">
-        <div class="member-avatar-large" style="background:linear-gradient(145deg,#E8621A,#C45010)"><span class="member-avatar-initials">CA</span></div>
+        <div class="member-avatar-large" style="background:linear-gradient(145deg,#E8621A,#C45010)">
+          <img src="assets/fotos/pediatrica-claudia-bebe.jpg" alt="Dra. Cláudia Alves, fundadora da FisioVitae" loading="lazy"/>
+        </div>
         <div class="member-card-body">
           <h2>Dra. Cláudia Alves</h2>
           <div class="member-card-role">Fisioterapeuta · Fundadora & Responsável Clínica</div>

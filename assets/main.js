@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── NAVBAR STICKY & SCROLL ──
   const navbar = document.getElementById('navbar');
   if (navbar) {
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       const isScrolled = window.scrollY > 20;
       navbar.classList.toggle('scrolled', isScrolled);
-      navbar.style.position = isScrolled ? 'fixed' : 'fixed';
-    }, { passive: true });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   // ── SUBMENU KEEP-OPEN (timer prevents flicker when moving to submenu) ──
@@ -64,88 +65,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── SCROLL REVEAL ──
+  // ── SCROLL REVEAL (legacy + new .reveal data-delay) ──
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
-
-  // ── COUNTER ANIMATION ──
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target);
-    const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
-    const duration = 1800;
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      el.textContent = current + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-  const counterEls = document.querySelectorAll('[data-target]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.animated) {
-        entry.target.dataset.animated = 'true';
-        animateCounter(entry.target);
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay || 0, 10);
+        if (delay) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            entry.target.classList.add('is-visible');
+          }, delay);
+        } else {
+          entry.target.classList.add('visible');
+          entry.target.classList.add('is-visible');
+        }
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-  counterEls.forEach(el => {
-    // Normalize initial state so the pre-animation render shows the suffix correctly
-    const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
-    el.textContent = '0' + suffix;
-    counterObserver.observe(el);
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    if (prefersReducedMotion) {
+      el.classList.add('visible', 'is-visible');
+    } else {
+      revealObserver.observe(el);
+    }
   });
 
-  // ── HERO STATS COUNTER ON PAGE LOAD ──
-  const heroMetaItems = document.querySelectorAll('.hero-meta-num');
-  if (heroMetaItems.length > 0) {
-    const heroStatsObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting && !entry.target.dataset.heroAnimated) {
-          entry.target.dataset.heroAnimated = 'true';
-          setTimeout(() => {
-            const originalText = entry.target.innerHTML;
-            let target, suffix = '';
+  // ── COUNTER ANIMATION ──
+  // Works for elements with [data-target] or [data-count] attribute.
+  // Optional [data-suffix] for trailing characters (e.g. "+", "★").
+  // Optional [data-decimals="1"] for one-decimal animation (e.g. 4.9).
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target || el.dataset.count || '0');
+    const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const duration = 1500;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = (decimals > 0 ? current.toFixed(decimals) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
 
-            if (entry.target.textContent.includes('4.9')) {
-              target = 49;
-              suffix = '★';
-            } else {
-              const num = entry.target.textContent.replace(/[^\d]/g, '');
-              target = parseInt(num);
-              suffix = entry.target.textContent.match(/[+★]/g) ? entry.target.textContent.match(/[+★]/g)[0] : '';
-            }
-
-            const duration = 1200;
-            const start = performance.now();
-            function update(now) {
-              const elapsed = now - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              const current = Math.round(eased * target);
-
-              if (target === 49) {
-                entry.target.innerHTML = '<span style="font-size: 1.4rem;">' + (current * 0.1).toFixed(1) + '</span>' + suffix;
-              } else {
-                entry.target.textContent = current + suffix;
-              }
-
-              if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
-          }, i * 100);
+  const counterEls = document.querySelectorAll('[data-target], [data-count]');
+  if (counterEls.length > 0) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          if (prefersReducedMotion) {
+            const target = parseFloat(entry.target.dataset.target || entry.target.dataset.count || '0');
+            const suffix = entry.target.dataset.suffix != null ? entry.target.dataset.suffix : '';
+            const decimals = parseInt(entry.target.dataset.decimals || '0', 10);
+            entry.target.textContent = (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+          } else {
+            animateCounter(entry.target);
+          }
+          counterObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
-    heroMetaItems.forEach(el => heroStatsObserver.observe(el));
+    }, { threshold: 0.3 });
+    counterEls.forEach(el => {
+      const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
+      el.textContent = '0' + suffix;
+      counterObserver.observe(el);
+    });
   }
 
   // ── FAQ ACCORDION ──
@@ -207,5 +196,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (spans) spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
     });
   });
+
+  // ── SVC QUICKINFO STICKY (show after scrolling past hero) ──
+  const quickinfo = document.querySelector('.svc-quickinfo');
+  if (quickinfo) {
+    const pageHero = document.querySelector('.page-hero');
+    const triggerY = pageHero ? pageHero.offsetTop + pageHero.offsetHeight - 80 : 300;
+    const toggleQuickInfo = () => {
+      quickinfo.classList.toggle('visible', window.scrollY > triggerY);
+    };
+    window.addEventListener('scroll', toggleQuickInfo, { passive: true });
+    toggleQuickInfo();
+  }
+
+  // ── LIGHTBOX (GLightbox) ──
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      closeButton: true
+    });
+  }
 
 });

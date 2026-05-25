@@ -17,29 +17,31 @@
 
     /* ── PAGE HERO ── */
     .team-hero {
-      background: var(--dark);
-      padding: 7rem 0 0;
+      background: var(--cream);
+      padding: calc(var(--nav-height) + 4rem) 0 0;
       overflow: hidden;
       position: relative;
     }
     .team-hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 60% 80%, rgba(232,98,26,.18) 0%, transparent 70%);
+      top: 0; left: 0; right: 0;
+      height: 100%;
+      background: radial-gradient(ellipse 55% 55% at 100% 0%, rgba(232,98,26,.07) 0%, transparent 60%);
       pointer-events: none;
     }
     .team-hero-content {
       position: relative;
       z-index: 1;
+    }
+    .team-hero-top {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
+      gap: 5rem;
+      align-items: center;
+      padding-bottom: 4rem;
     }
-    .team-hero-text {
-      padding-bottom: 5rem;
-    }
+    .team-hero-text {}
     .team-hero-label {
       display: inline-flex;
       align-items: center;
@@ -62,9 +64,9 @@
     }
     .team-hero-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 600;
-      color: white;
+      color: var(--dark);
       line-height: 1.12;
       letter-spacing: -.02em;
       margin-bottom: 1.5rem;
@@ -75,50 +77,74 @@
     }
     .team-hero-desc {
       font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      color: rgba(255,255,255,.6);
-      line-height: 1.8;
-      max-width: 420px;
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.82;
+      max-width: 460px;
+      margin-bottom: 2rem;
     }
-    .team-hero-img {
-      position: relative;
-      align-self: end;
-    }
-    .team-hero-img img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border-radius: 18px 18px 0 0;
-    }
-    .team-hero-img::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 120px;
-      background: linear-gradient(transparent, var(--dark));
-      pointer-events: none;
+    .team-hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
     }
     .team-hero-stats {
       display: flex;
       gap: 2.5rem;
       margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--beige);
     }
     .hero-stat-num {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: var(--dark);
       line-height: 1;
     }
     .hero-stat-label {
       font-family: 'DM Sans', sans-serif;
-      font-size: .78rem;
-      color: rgba(255,255,255,.45);
+      font-size: .72rem;
+      color: var(--text-light);
       margin-top: .3rem;
       text-transform: uppercase;
       letter-spacing: .06em;
+    }
+    /* big group photo full-width strip */
+    .team-hero-photo-strip {
+      width: 100%;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 60px rgba(20,15,10,.1);
+    }
+    .team-hero-photo-strip img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+    .team-hero-photo-strip .photo-overlay {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .photo-tag {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: .45rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .photo-tag span {
+      color: var(--orange);
     }
 
     /* ── OVERVIEW STRIP ── */
@@ -451,21 +477,12 @@
 
     /* ── GROUP PHOTO SECTION ── */
     #team-group {
-      background: var(--dark);
+      background: var(--beige);
       padding: 5rem 0;
       overflow: hidden;
       position: relative;
     }
-    #team-group::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(232,98,26,.12) 0%, transparent 65%);
-      pointer-events: none;
-    }
     .group-inner {
-      position: relative;
-      z-index: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
@@ -475,9 +492,9 @@
     .group-text-side .mc-label { margin-bottom: 1.2rem; }
     .group-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 600;
-      color: white;
+      color: var(--dark);
       line-height: 1.15;
       letter-spacing: -.02em;
       margin-bottom: 1.25rem;
@@ -486,7 +503,7 @@
     .group-desc {
       font-family: 'DM Sans', sans-serif;
       font-size: .96rem;
-      color: rgba(255,255,255,.6);
+      color: var(--text-light);
       line-height: 1.82;
       margin-bottom: 2rem;
     }
@@ -496,7 +513,7 @@
     .group-photo-frame {
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,.4);
+      box-shadow: 0 12px 48px rgba(20,15,10,.12);
     }
     .group-photo-frame img {
       width: 100%;
@@ -566,9 +583,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .team-cards-grid { grid-template-columns: repeat(3, 1fr); }
-      .team-hero-content { grid-template-columns: 1fr; }
-      .team-hero-img { display: none; }
-      .team-hero-text { padding-bottom: 4rem; }
+      .team-hero-top { grid-template-columns: 1fr; gap: 3rem; }
       .group-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 900px) {
@@ -610,27 +625,41 @@
 <section class="team-hero">
   <div class="container">
     <div class="team-hero-content">
-      <div class="team-hero-text reveal">
-        <div class="team-hero-label">Os Nossos Profissionais</div>
-        <h1 class="team-hero-title">Uma equipa <em>apaixonada</em><br>por fazer a diferença</h1>
-        <p class="team-hero-desc">Conheça as pessoas que dedicam cada dia a ajudar os seus pacientes a recuperar o movimento, a saúde e a qualidade de vida.</p>
-        <div class="team-hero-stats">
-          <div>
-            <div class="hero-stat-num">5</div>
-            <div class="hero-stat-label">Profissionais</div>
+      <div class="team-hero-top">
+        <div class="team-hero-text reveal">
+          <div class="team-hero-label">Fisio Vitae · Panóias, Braga</div>
+          <h1 class="team-hero-title">A equipa que vai<br>cuidar <em>de si</em></h1>
+          <p class="team-hero-desc">Na Fisio Vitae reunimos fisioterapeutas, osteopata, nutricionista e instrutores com uma missão partilhada: devolver-lhe o movimento, o bem-estar e a qualidade de vida que merece — com rigor técnico e atenção genuína a cada caso.</p>
+          <div class="team-hero-cta">
+            <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+            <a href="servicos.html" class="btn-secondary">Ver Serviços</a>
           </div>
-          <div>
-            <div class="hero-stat-num">20+</div>
-            <div class="hero-stat-label">Anos de Exp.</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">6</div>
-            <div class="hero-stat-label">Especialidades</div>
+          <div class="team-hero-stats">
+            <div>
+              <div class="hero-stat-num">5</div>
+              <div class="hero-stat-label">Especialistas</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">20+</div>
+              <div class="hero-stat-label">Anos de Exp.</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">6</div>
+              <div class="hero-stat-label">Especialidades</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="team-hero-img reveal delay-2">
-        <img src="assets/fotos/equipa-grupo.jpg" alt="Equipa Fisio Vitae" loading="lazy"/>
+        <div class="reveal delay-2">
+          <div class="team-hero-photo-strip">
+            <img src="assets/fotos/equipa-grupo.jpg" alt="Equipa Fisio Vitae" loading="lazy"/>
+            <div class="photo-overlay">
+              <div class="photo-tag"><span>✦</span> Fisioterapia</div>
+              <div class="photo-tag"><span>✦</span> Osteopatia</div>
+              <div class="photo-tag"><span>✦</span> Nutrição</div>
+              <div class="photo-tag"><span>✦</span> Pilates Clínico</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -932,13 +961,7 @@
 <section id="team-group">
   <div class="container">
     <div class="group-inner">
-      <div class="group-text-side reveal-left">
-        <div class="mc-label" style="color:var(--orange)">A Nossa Força</div>
-        <h2 class="group-title">Juntos somos<br><em>mais completos</em></h2>
-        <p class="group-desc">A Fisio Vitae é construída sobre um princípio simples: quando diferentes especialidades trabalham em harmonia, o resultado para o paciente é sempre superior. A nossa equipa multidisciplinar permite tratamentos mais completos e uma recuperação mais eficaz.</p>
-        <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
-      </div>
-      <div class="group-photo-side reveal-right">
+      <div class="group-photo-side reveal-left">
         <div class="group-photo-frame">
           <img src="assets/fotos/equipa-grupo.jpg" alt="Equipa Fisio Vitae" loading="lazy"/>
         </div>
@@ -946,6 +969,13 @@
           <div class="group-badge-num">5</div>
           <div class="group-badge-label">especialistas</div>
         </div>
+      </div>
+      <div class="group-text-side reveal-right">
+        <div class="mc-label">Uma abordagem diferente</div>
+        <h2 class="group-title">Não tratamos sintomas.<br>Tratamos <em>pessoas</em>.</h2>
+        <p class="group-desc">Na Fisio Vitae a equipa trabalha em conjunto para perceber o que está na origem do seu problema — não apenas o que dói. Fisioterapia, osteopatia, nutrição e pilates clínico trabalham lado a lado para que a sua recuperação seja mais rápida, mais duradoura e mais completa.</p>
+        <p class="group-desc" style="margin-top:-.5rem">Cada paciente tem um plano pensado especificamente para si, com profissionais que comunicam entre si e ajustam a abordagem ao longo do processo.</p>
+        <a href="contacto.html" class="btn-primary">Agendar a Primeira Consulta</a>
       </div>
     </div>
   </div>
@@ -956,8 +986,8 @@
   <div class="container">
     <div class="cta-inner reveal">
       <div>
-        <h2>Escolha o profissional <em>certo para si</em></h2>
-        <p>Não tem a certeza de qual o tratamento mais indicado para a sua situação? A nossa equipa avalia o seu caso e recomenda o caminho mais eficaz. Entre em contacto — estamos aqui para si.</p>
+        <h2>Pronto para <em>começar a recuperar</em>?</h2>
+        <p>Não precisa de saber qual o tratamento certo — é para isso que estamos aqui. Entre em contacto e a nossa equipa avalia o seu caso e traça o caminho mais eficaz para a sua recuperação.</p>
       </div>
       <div class="cta-btns">
         <a href="contacto.html" class="btn-primary">Marcar Consulta</a>

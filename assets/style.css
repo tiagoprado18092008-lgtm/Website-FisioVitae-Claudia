@@ -32,7 +32,7 @@
   --transition: all .3s ease-in-out;
   --font-display: 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
-  --nav-height: 64px;
+  --nav-height: 80px;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -50,6 +50,24 @@ body::before {
   position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events: none; z-index: 9999; opacity: 0.3;
+}
+
+/* ── A11Y FOCUS ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.nav-cta:focus-visible,
+.btn-outline-white:focus-visible {
+  outline-offset: 4px;
 }
 
 /* ── REVEAL ANIMATIONS ── */
@@ -89,7 +107,7 @@ nav.scrolled {
   display:flex; align-items:center;
 }
 .nav-logo span { color:rgba(255,255,255,0.75); }
-.nav-logo-img { height:64px; width:auto; display:block; object-fit:contain; }
+.nav-logo-img { height:56px; width:auto; display:block; object-fit:contain; background:var(--white); border-radius:8px; padding:4px 8px; }
 .nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
 .nav-links a {
   text-decoration:none; color:rgba(255,255,255,0.9); font-size:0.875rem; font-weight:500;
@@ -344,6 +362,84 @@ footer { background:var(--white); padding:5.5rem 0 2.5rem; color:var(--text-ligh
 .footer-bottom p { font-size:.8rem; }
 .footer-bottom a { color:var(--orange); text-decoration:none; }
 .footer-accent-line { width:40px; height:3px; background:var(--orange); border-radius:2px; margin-bottom:2rem; }
+
+/* ── SERVICE PAGE QUICK-INFO STICKY (desktop only) ── */
+.svc-quickinfo {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .svc-quickinfo {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    z-index: 90;
+    width: 260px;
+    background: linear-gradient(145deg, var(--white) 0%, var(--cream) 100%);
+    border: 1px solid var(--beige-mid);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 48px rgba(26,26,26,.10), 0 4px 16px rgba(232,101,10,.08);
+    padding: 1.5rem 1.25rem;
+    opacity: 0;
+    transition: opacity .35s ease-in-out, transform .35s ease-in-out;
+    pointer-events: none;
+  }
+  .svc-quickinfo.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+.svc-quickinfo-label {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.svc-quickinfo-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--orange); border-radius: 50%;
+}
+.svc-quickinfo h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+.svc-quickinfo-row {
+  display: flex; align-items: flex-start; gap: .55rem;
+  padding: .55rem 0;
+  border-top: 1px solid var(--beige-mid);
+  font-size: .78rem;
+  color: var(--text-light);
+  line-height: 1.45;
+}
+.svc-quickinfo-row svg { width: 14px; height: 14px; color: var(--orange); flex-shrink: 0; margin-top: .15rem; }
+.svc-quickinfo-row strong { color: var(--text); font-weight: 600; }
+.svc-quickinfo-cta {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  width: 100%; margin-top: 1rem;
+  background: #25D366; color: white;
+  font-size: .85rem; font-weight: 600;
+  padding: .75rem 1rem; border-radius: var(--radius-btn);
+  text-decoration: none;
+  transition: all .25s;
+}
+.svc-quickinfo-cta:hover { background: #1faa55; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,.35); }
+.svc-quickinfo-cta svg { width: 16px; height: 16px; }
+.svc-quickinfo-phone {
+  display: block; text-align: center; margin-top: .65rem;
+  font-size: .8rem; font-weight: 600; color: var(--orange);
+  text-decoration: none;
+}
 
 /* ── WHATSAPP ── */
 .whatsapp-float {

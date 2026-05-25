@@ -67,30 +67,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── SCROLL REVEAL (legacy + new .reveal data-delay) ──
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = parseInt(entry.target.dataset.delay || 0, 10);
-        if (delay) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-            entry.target.classList.add('is-visible');
-          }, delay);
-        } else {
-          entry.target.classList.add('visible');
-          entry.target.classList.add('is-visible');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+  const showReveal = (el) => {
+    const delay = parseInt(el.dataset.delay || 0, 10);
+    if (delay) {
+      setTimeout(() => { el.classList.add('visible', 'is-visible'); }, delay);
+    } else {
+      el.classList.add('visible', 'is-visible');
+    }
+  };
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('visible', 'is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          showReveal(entry.target);
+          revealObserver.unobserve(entry.target);
         }
-        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    revealEls.forEach(el => {
+      // If already in viewport at load time (above the fold), reveal immediately
+      const rect = el.getBoundingClientRect();
+      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewport) {
+        showReveal(el);
+      } else {
+        revealObserver.observe(el);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-    if (prefersReducedMotion) {
-      el.classList.add('visible', 'is-visible');
-    } else {
-      revealObserver.observe(el);
-    }
-  });
+
+    // Safety net: after 2s, force-reveal anything still hidden in case observer missed it
+    setTimeout(() => {
+      revealEls.forEach(el => {
+        if (!el.classList.contains('visible') && !el.classList.contains('is-visible')) {
+          el.classList.add('visible', 'is-visible');
+        }
+      });
+    }, 2000);
+  }
 
   // ── COUNTER ANIMATION ──
   // Works for elements with [data-target] or [data-count] attribute.
@@ -114,27 +133,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const counterEls = document.querySelectorAll('[data-target], [data-count]');
   if (counterEls.length > 0) {
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.dataset.animated) {
-          entry.target.dataset.animated = 'true';
-          if (prefersReducedMotion) {
-            const target = parseFloat(entry.target.dataset.target || entry.target.dataset.count || '0');
-            const suffix = entry.target.dataset.suffix != null ? entry.target.dataset.suffix : '';
-            const decimals = parseInt(entry.target.dataset.decimals || '0', 10);
-            entry.target.textContent = (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
-          } else {
+    const setFinal = (el) => {
+      const target = parseFloat(el.dataset.target || el.dataset.count || '0');
+      const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      el.textContent = (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      counterEls.forEach(setFinal);
+    } else {
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.dataset.animated) {
+            entry.target.dataset.animated = 'true';
             animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
           }
-          counterObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+
+      counterEls.forEach(el => {
+        const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
+        el.textContent = '0' + suffix;
+        const rect = el.getBoundingClientRect();
+        const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inViewport && !el.dataset.animated) {
+          el.dataset.animated = 'true';
+          animateCounter(el);
+        } else {
+          counterObserver.observe(el);
         }
       });
-    }, { threshold: 0.3 });
-    counterEls.forEach(el => {
-      const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
-      el.textContent = '0' + suffix;
-      counterObserver.observe(el);
-    });
+
+      // Safety net: any counter still showing "0" or "0+" after 2.5s gets its final value
+      setTimeout(() => {
+        counterEls.forEach(el => { if (!el.dataset.animated) setFinal(el); });
+      }, 2500);
+    }
   }
 
   // ── FAQ ACCORDION ──

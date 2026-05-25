@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Osteopatia Estrutural | Fisio Vitae — Braga</title>
-  <meta name="description" content="Osteopatia Estrutural na Fisio Vitae em Panóias, Braga. Abordagem holística para hérnias, artrose, cefaleias e disfunções estruturais."/>
+  <title>Drenagem Linfática | Fisio Vitae — Braga</title>
+  <meta name="description" content="Drenagem Linfática Manual na Fisio Vitae em Panóias, Braga. Técnica suave que estimula o sistema linfático, reduz edemas e promove a desintoxicação do organismo."/>
   <link rel="icon" type="image/png" href="assets/logofisiovitae.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -12,20 +12,11 @@
   <link rel="stylesheet" href="assets/style.css"/>
   <style>
     .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); }
-    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
-    .svc-visual:hover img { transform: scale(1.06); }
-    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; }
-    .svc-visual-badge {
-      position:absolute; bottom:1.5rem; left:1.5rem; z-index:2;
-      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
-      padding:.55rem .95rem; border-radius: 999px;
-      font-size:.62rem; font-weight:700; letter-spacing:.14em;
-      text-transform:uppercase; color: var(--dark);
-      box-shadow: 0 8px 24px rgba(26,26,26,.18);
-      display:flex; align-items:center; gap:.5rem;
-    }
+    .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); background:var(--orange-pale); }
+    .svc-visual-badge { position:absolute; bottom:1.5rem; left:1.5rem; z-index:2; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); padding:.55rem .95rem; border-radius: 999px; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color: var(--dark); box-shadow: 0 8px 24px rgba(26,26,26,.18); display:flex; align-items:center; gap:.5rem; }
     .svc-visual-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; }
+    .svc-detail h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem; }
+    .svc-detail h2 em { font-style:italic; color:var(--orange); }
     .svc-detail .intro-text { font-size:1.05rem; color:var(--text-light); line-height:1.8; margin-bottom:1.5rem; }
     .svc-detail p { font-size:.93rem; color:var(--text-light); line-height:1.78; margin-bottom:1rem; }
     .svc-detail p strong { color:var(--text); }
@@ -43,11 +34,7 @@
     .svc-cta-inline p { font-size:.875rem; color:rgba(255,255,255,.75); margin-top:.25rem; }
     .svc-page { padding:6rem 0; background:var(--cream); }
     .svc-h4 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; margin-top:1.5rem; }
-    @media(max-width:768px) {
-      .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; }
-      .svc-visual { display:none; }
-      .svc-cta-inline { flex-direction:column; align-items:flex-start; }
-    }
+    @media(max-width:768px) { .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; } .svc-visual { display:none; } .svc-cta-inline { flex-direction:column; align-items:flex-start; } }
   </style>
 </head>
 <body>
@@ -109,84 +96,77 @@
     </li>
     <li><a href="equipa.html">Equipa</a></li>
     <li><a href="contacto.html">Contacto</a></li>
-    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+    <li><a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="nav-cta">Marcar Consulta</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html">Início</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="servicos.html">Serviços</a>
+  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a>
   <div class="mobile-nav-services">
     <span class="mobile-nav-category">Fisioterapia</span>
     <a href="fisioterapia-percutanea.html">↳ Fisioterapia Percutânea</a>
     <a href="fisioterapia-ecoguiada.html">↳ Fisioterapia Ecoguiada</a>
-    <a href="rpg.html">↳ RPG – Reeducação Postural Global</a>
-    <a href="servicos.html">↳ Tratamentos de Fisioterapia</a>
+    <a href="rpg.html">↳ RPG</a>
     <span class="mobile-nav-category">Osteopatia</span>
     <a href="osteopatia.html">↳ Osteopatia Estrutural</a>
     <a href="osteopatia-pediatrica.html">↳ Osteopatia Pediátrica</a>
-    <a href="osteopatia-ginecologica.html">↳ Osteopatia Ginecológica e Gestacional</a>
-    <a href="osteopatia-sacro-craniana.html">↳ Osteopatia Sacro-Craniana</a>
-    <a href="osteopatia-visceral.html">↳ Osteopatia Visceral</a>
+    <a href="osteopatia-ginecologica.html">↳ Ginecológica e Gestacional</a>
+    <a href="osteopatia-sacro-craniana.html">↳ Sacro-Craniana</a>
+    <a href="osteopatia-visceral.html">↳ Visceral</a>
     <span class="mobile-nav-category">Massagens & Bem-Estar</span>
-    <a href="massagem-relaxamento.html">↳ Massagem de Relaxamento</a>
-    <a href="massagem-anti-celulite.html">↳ Massagem anti-Celulite</a>
+    <a href="massagem-relaxamento.html">↳ Relaxamento</a>
+    <a href="massagem-anti-celulite.html">↳ Anti-Celulite</a>
     <a href="drenagem-linfatica.html">↳ Drenagem Linfática</a>
-    <a href="mesoterapia-homeopatica.html">↳ Mesoterapia Homeopática</a>
+    <a href="mesoterapia-homeopatica.html">↳ Mesoterapia</a>
     <a href="electroacupuntura.html">↳ Electroacupuntura</a>
     <a href="reiki.html">↳ Reiki</a>
     <span class="mobile-nav-category">Pilates & Estética</span>
     <a href="pilates-clinico.html">↳ Pilates Clínico</a>
     <a href="estetica.html">↳ Estética</a>
   </div>
-  <a href="equipa.html">Equipa</a>
-  <a href="contacto.html">Contacto</a>
-  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+  <a href="equipa.html">Equipa</a><a href="contacto.html">Contacto</a>
+  <a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="mobile-nav-cta">Marcar Consulta</a>
 </div>
 
 <section class="page-hero" style="background:var(--cream);">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><a href="servicos.html">Serviços</a><span>›</span><span class="current">Osteopatia</span></div>
-    <div class="page-hero-label section-label">Abordagem Holística</div>
-    <h1 class="page-hero-title">Osteopatia <em>Estrutural</em></h1>
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><a href="servicos.html">Serviços</a><span>›</span><span class="current">Drenagem Linfática</span></div>
+    <div class="page-hero-label section-label">Detox e Bem-Estar</div>
+    <h1 class="page-hero-title">Drenagem <em>Linfática</em></h1>
   </div>
 </section>
 
 <section class="svc-page">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual">
-        <img src="assets/fotos/osteopatia-manual-paciente.jpg" alt="Osteopatia estrutural — Dra. Cláudia Alves em sessão de terapia manual" loading="lazy"/>
-        <div class="svc-visual-badge">Terapia manual</div>
-      </div>
+      <div class="svc-visual"><div class="svc-visual-badge">Toque suave</div></div>
       <div class="svc-detail">
-        <p class="intro-text">A osteopatia estrutural parte de uma premissa fundamental: o corpo humano é uma unidade. Quando há disfunção numa estrutura, outras são inevitavelmente afetadas. O osteopata trata o sistema, não apenas o sintoma.</p>
-        <p>Através de técnicas manuais sofisticadas — manipulações articulares, mobilizações, técnicas de tecidos moles e técnicas de energia muscular — o osteopata restaura a mobilidade das articulações e o equilíbrio muscular, eliminando as tensões que estão na origem da dor.</p>
-        <p>A abordagem holística da osteopatia considera a interação entre o sistema músculo-esquelético, visceral e craniosacral, permitindo tratar condições aparentemente não relacionadas com a musculatura mas que têm origem em <strong>disfunções estruturais</strong>.</p>
+        <p class="intro-text">Técnica manual extremamente suave que estimula a circulação do sistema linfático, ajudando o organismo a eliminar líquidos retidos, toxinas e a reduzir edemas.</p>
+        <p>A drenagem linfática manual baseia-se no <strong>método Vodder</strong>, utilizando movimentos circulares lentos e rítmicos com pressão muito ligeira. As manobras seguem o trajeto natural dos vasos linfáticos, em direção aos gânglios.</p>
+        <p>É uma técnica indicada para diversas condições — desde o pós-operatório (cirurgia plástica, mastectomia) até ao tratamento de pernas pesadas, sinusite ou retenção de líquidos durante a gravidez.</p>
 
         <div class="svc-how">
-          <h4>Técnicas utilizadas na Fisio Vitae</h4>
+          <h4>Como funciona uma sessão?</h4>
           <div class="svc-how-steps">
-            <div class="svc-step"><div class="step-num">1</div><span><strong>Manipulação articular (HVLA):</strong> Técnicas de alta velocidade e baixa amplitude para restaurar mobilidade articular.</span></div>
-            <div class="svc-step"><div class="step-num">2</div><span><strong>Técnicas de tecidos moles:</strong> Massagem profunda, inibição e estiramentos para relaxamento muscular e fascial.</span></div>
-            <div class="svc-step"><div class="step-num">3</div><span><strong>Energia muscular (MET):</strong> Contrações isométricas ativas para corrigir disfunções articulares.</span></div>
-            <div class="svc-step"><div class="step-num">4</div><span><strong>Técnicas funcionais:</strong> Mobilizações suaves que seguem o movimento natural do tecido.</span></div>
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Avaliação:</strong> Análise do estado linfático e zonas de edema.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Esvaziamento ganglionar:</strong> Abertura dos pontos-chave (cervical, axilar, inguinal).</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Drenagem:</strong> Manobras suaves e ritmadas em direção aos gânglios.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Repouso:</strong> Tempo de integração com pernas elevadas.</span></div>
           </div>
         </div>
 
-        <h4 class="svc-h4">Condições tratadas</h4>
+        <h4 class="svc-h4">Indicações</h4>
         <div class="svc-indicators">
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Hérnias discais e ciáticas</strong> — alívio da compressão radicular</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Artrose e rigidez articular</strong> — melhoria da mobilidade e redução da dor</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções da ATM</strong> — bruxismo, dores na mandíbula e face</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cefaleias e enxaquecas tensionais</strong> — de origem músculo-esquelética</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções viscerais</strong> — refluxo, prisão de ventre, problemas digestivos</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Edemas e retenção de líquidos</strong> — pernas pesadas e inchadas</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Pós-operatório</strong> — cirurgia plástica, mastectomia, lipoaspiração</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Linfedema</strong> — primário ou secundário</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Sinusite e congestão</strong> — drenagem facial</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Desintoxicação geral</strong> — apoio ao sistema imunitário</span></div>
         </div>
 
         <div class="svc-cta-inline">
-          <div><h4>Trate a causa, não apenas o sintoma</h4><p>Agende uma avaliação osteopática completa.</p></div>
-          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
+          <div><h4>Quer saber mais sobre este tratamento?</h4><p>Marque uma avaliação personalizada com a nossa equipa.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
         </div>
       </div>
     </div>
@@ -199,22 +179,19 @@
       <div class="footer-brand">
         <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae.png" alt="FisioVitae" class="nav-logo-img"/></a>
         <span class="footer-tagline">Cuidar é a nossa vocação.</span>
-        <p>Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p>
+        <p>Clínica de Fisioterapia e Osteopatia em Panoias, Braga.</p>
       </div>
-      <div class="footer-col">
-        <div class="footer-accent-line"></div>
-        <h4>Navegação</h4>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4>Navegação</h4>
         <ul><li><a href="index.html">Início</a></li><li><a href="sobre.html">Sobre Nós</a></li><li><a href="equipa.html">Equipa</a></li><li><a href="blog.html">Blog</a></li><li><a href="contacto.html">Contacto</a></li></ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-accent-line"></div>
-        <h4>Serviços</h4>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4>Serviços</h4>
         <ul><li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li><li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li><li><a href="pilates-clinico.html">Pilates Clínico</a></li><li><a href="osteopatia.html">Osteopatia Estrutural</a></li><li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li><li><a href="rpg.html">RPG</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom"><p>© 2024 Fisio Vitae. Todos os direitos reservados.</p><a href="politica-privacidade.html">Política de Privacidade</a></div>
   </div>
 </footer>
+
 <script src="assets/main.js"></script>
 </body>
 </html>

@@ -163,7 +163,7 @@ nav.scrolled {
 
 /* Secondary dropdown – sub-services */
 .dropdown-sub {
-  position:absolute; top:-8px; left:calc(100% + 6px);
+  position:fixed;
   background:var(--white); border-radius:14px; list-style:none;
   box-shadow:0 12px 48px rgba(26,26,26,.15); padding:.5rem 0; min-width:260px;
   opacity:0; visibility:hidden; pointer-events:none;

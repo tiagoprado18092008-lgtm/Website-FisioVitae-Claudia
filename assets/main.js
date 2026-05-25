@@ -14,13 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // ── SUBMENU KEEP-OPEN (bridge hover gap between category and submenu) ──
+  // ── SUBMENU POSITIONING & KEEP-OPEN ──
   document.querySelectorAll('.dropdown-cat-item').forEach(item => {
     const sub = item.querySelector('.dropdown-sub');
     if (!sub) return;
     let closeTimer;
-    const open = () => { clearTimeout(closeTimer); item.classList.add('sub-open'); };
+
+    const open = () => {
+      clearTimeout(closeTimer);
+      item.classList.add('sub-open');
+      // Align submenu top with the primary dropdown top, left with its right edge
+      const menu = item.closest('.nav-dropdown-menu');
+      const menuRect = menu.getBoundingClientRect();
+      sub.style.top = menuRect.top + 'px';
+      sub.style.left = (menuRect.right + 6) + 'px';
+    };
     const close = () => { closeTimer = setTimeout(() => item.classList.remove('sub-open'), 80); };
+
     item.addEventListener('mouseenter', open);
     item.addEventListener('mouseleave', close);
     sub.addEventListener('mouseenter', open);

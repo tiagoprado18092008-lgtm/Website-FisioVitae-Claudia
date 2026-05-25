@@ -14,37 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // ── SUBMENU POSITIONING & KEEP-OPEN ──
+  // ── SUBMENU KEEP-OPEN (timer prevents flicker when moving to submenu) ──
   document.querySelectorAll('.dropdown-cat-item').forEach(item => {
     const sub = item.querySelector('.dropdown-sub');
     if (!sub) return;
-    let closeTimer;
-
-    const position = () => {
-      // nav-dropdown is always visible — use it to calculate position
-      const navDropdown = item.closest('.nav-dropdown');
-      const toggle = navDropdown.querySelector('.nav-dropdown-toggle');
-      const toggleRect = toggle.getBoundingClientRect();
-      const menu = item.closest('.nav-dropdown-menu');
-      // menu width is known from its min-width style; use offsetWidth if available
-      const menuWidth = menu.offsetWidth || 240;
-      const menuLeft = toggleRect.left + toggleRect.width / 2 - menuWidth / 2;
-      const menuTop = toggleRect.bottom + 12; // matches top:calc(100% + .75rem)
-      sub.style.top = menuTop + 'px';
-      sub.style.left = (menuLeft + menuWidth + 6) + 'px';
-    };
-
-    const open = () => {
-      clearTimeout(closeTimer);
-      position();
-      item.classList.add('sub-open');
-    };
-    const close = () => { closeTimer = setTimeout(() => item.classList.remove('sub-open'), 100); };
-
-    item.addEventListener('mouseenter', open);
-    item.addEventListener('mouseleave', close);
-    sub.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-    sub.addEventListener('mouseleave', close);
+    let t;
+    item.addEventListener('mouseleave', () => {
+      t = setTimeout(() => item.classList.remove('sub-open'), 120);
+    });
+    sub.addEventListener('mouseenter', () => clearTimeout(t));
+    sub.addEventListener('mouseleave', () => item.classList.remove('sub-open'));
+    item.addEventListener('mouseenter', () => { clearTimeout(t); item.classList.add('sub-open'); });
   });
 
   // ── NAVBAR CTA SHAKE ON HOVER ──

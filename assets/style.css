@@ -161,26 +161,28 @@ nav.scrolled {
 .dropdown-cat-item:hover { background:var(--cream); color:var(--orange); }
 .dropdown-cat-item:hover svg { opacity:1; color:var(--orange); }
 
-/* Secondary dropdown – sub-services */
+/* Wide transparent bridge: covers the gap between category and submenu panel */
+.dropdown-cat-item::after {
+  content:''; position:absolute;
+  top:0; right:-20px;
+  width:20px; height:100%;
+}
+
+/* Secondary submenu – position absolute relative to the category row */
 .dropdown-sub {
-  position:fixed;
+  position:absolute; top:0; left:calc(100% + 8px);
   background:var(--white); border-radius:14px; list-style:none;
   box-shadow:0 12px 48px rgba(26,26,26,.15); padding:.5rem 0; min-width:260px;
   opacity:0; visibility:hidden; pointer-events:none;
-  transition:opacity .18s ease, transform .18s cubic-bezier(.22,1,.36,1);
-  transform:translateX(-4px);
+  transition:opacity .15s ease, visibility .15s;
   z-index:201;
 }
-/* Invisible bridge so cursor can move from category to submenu without gap */
-.dropdown-cat-item::after {
-  content:''; position:absolute; top:0; left:100%;
-  width:14px; height:100%; background:transparent;
-}
-.dropdown-cat-item:hover .dropdown-sub,
-.dropdown-cat-item.sub-open .dropdown-sub {
+.dropdown-cat-item:hover .dropdown-sub {
   opacity:1; visibility:visible; pointer-events:auto;
-  transform:translateX(0);
 }
+/* Keep submenu open when mouse moves onto it */
+.dropdown-sub:hover { opacity:1; visibility:visible; pointer-events:auto; }
+
 .dropdown-sub-label {
   padding:.45rem 1.1rem .3rem; font-size:.65rem; font-weight:700;
   letter-spacing:.1em; text-transform:uppercase; color:var(--orange);

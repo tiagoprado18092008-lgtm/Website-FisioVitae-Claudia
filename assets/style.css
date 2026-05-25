@@ -54,7 +54,10 @@ body::before {
 
 /* ── REVEAL ANIMATIONS ── */
 .reveal { opacity:0; transform:translateY(36px); transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
-.reveal.visible { opacity:1; transform:none; }
+.reveal.visible, .reveal.is-visible { opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right { opacity:1; transform:none; transition:none; }
+}
 .reveal-left { opacity:0; transform:translateX(-40px); transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
 .reveal-left.visible { opacity:1; transform:none; }
 .reveal-right { opacity:0; transform:translateX(40px); transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
@@ -86,7 +89,7 @@ nav.scrolled {
   display:flex; align-items:center;
 }
 .nav-logo span { color:rgba(255,255,255,0.75); }
-.nav-logo-img { height:48px; width:auto; display:block; object-fit:contain; }
+.nav-logo-img { height:64px; width:auto; display:block; object-fit:contain; }
 .nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
 .nav-links a {
   text-decoration:none; color:rgba(255,255,255,0.9); font-size:0.875rem; font-weight:500;

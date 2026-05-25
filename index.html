@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FisioVitae — Fisioterapia e Osteopatia em Braga | Panoias</title>
   <meta name="description" content="Clínica FisioVitae em Panoias, Braga — 20 anos de experiência em Fisioterapia Percutânea, Pilates Clínico, Osteopatia e RPG. Dra. Cláudia Alves e equipa."/>
-  <meta property="og:title" content="FisioVitae — Fisioterapia e Osteopatia em Braga"/>
-  <meta property="og:description" content="20 anos a devolver movimento e bem-estar. Clínica de referência em Panoias, Braga."/>
-  <meta property="og:type" content="website"/>
-  <link rel="icon" type="image/png" href="assets/logofisiovitae.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logofisiovitae.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logofisiovitae.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -148,11 +146,19 @@
       opacity: 0.92;
       filter: saturate(1.05) contrast(1.02);
       z-index: 0;
-      animation: heroImageReveal 1.4s cubic-bezier(.22,1,.36,1) both;
+      animation: heroImageReveal 1.4s cubic-bezier(.22,1,.36,1) both, kenBurns 22s ease-in-out 1.4s infinite alternate;
+      will-change: transform;
     }
     @keyframes heroImageReveal {
       from { opacity: 0; transform: scale(1.06); }
       to   { opacity: 0.92; transform: scale(1); }
+    }
+    @keyframes kenBurns {
+      0%   { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.06) translate(-1.2%, -1.2%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-right-image { animation: heroImageReveal 1.4s cubic-bezier(.22,1,.36,1) both; }
     }
     .hero-right::before {
       content: '';
@@ -911,6 +917,13 @@
       cursor: pointer;
       transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
     }
+    .gallery-item > a.glightbox {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
     .gallery-item img {
       width: 100%;
       height: 100%;
@@ -1036,6 +1049,54 @@
       .hero-meta { gap: 1.25rem; }
     }
   </style>
+<!-- FISIOVITAE_SEO_INJECTED -->
+<link rel="canonical" href="https://visiovitae.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://visiovitae.vercel.app/"/>
+<meta property="og:title" content="FisioVitae — Fisioterapia e Osteopatia em Braga | Panoias"/>
+<meta property="og:description" content="Clínica FisioVitae em Panoias, Braga — 20 anos de experiência em Fisioterapia Percutânea, Pilates Clínico, Osteopatia e RPG. Dra. Cláudia Alves e equipa."/>
+<meta property="og:image" content="https://visiovitae.vercel.app/assets/logofisiovitae.png"/>
+<meta property="og:locale" content="pt_PT"/>
+<meta property="og:site_name" content="FisioVitae"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="FisioVitae — Fisioterapia e Osteopatia em Braga | Panoias"/>
+<meta name="twitter:description" content="Clínica FisioVitae em Panoias, Braga — 20 anos de experiência em Fisioterapia Percutânea, Pilates Clínico, Osteopatia e RPG. Dra. Cláudia Alves e equipa."/>
+<meta name="twitter:image" content="https://visiovitae.vercel.app/assets/logofisiovitae.png"/>
+<meta name="theme-color" content="#0F6E56"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "FisioVitae — Clínica de Fisioterapia e Osteopatia",
+  "image": "https://visiovitae.vercel.app/assets/logofisiovitae.png",
+  "url": "https://visiovitae.vercel.app",
+  "telephone": "+351253623663",
+  "email": "saude@fisiovitae.pt",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Nova de Agrafonte, n.º 31",
+    "addressLocality": "Panóias",
+    "addressRegion": "Braga",
+    "postalCode": "4700",
+    "addressCountry": "PT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.5482,
+    "longitude": -8.4283
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"13:00"}
+  ],
+  "priceRange": "€€",
+  "medicalSpecialty": ["Physiotherapy","Osteopathy","Pediatrics"],
+  "founder": {"@type":"Person","name":"Dra. Cláudia Alves","jobTitle":"Fisioterapeuta · Fundadora"},
+  "sameAs": ["https://www.instagram.com/fisiovitae_claudiaalves/","https://www.facebook.com/fisiovitaeclaudiaalves/"],
+  "aggregateRating": {"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"3"}
+}
+</script>
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -1163,19 +1224,19 @@
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <span class="hero-meta-num">20+</span>
+        <span class="hero-meta-num" data-target="20" data-suffix="+">20+</span>
         <span class="hero-meta-label">Anos de experiência</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-num">4</span>
+        <span class="hero-meta-num" data-target="4">4</span>
         <span class="hero-meta-label">Especialistas</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-num">6</span>
+        <span class="hero-meta-num" data-target="6">6</span>
         <span class="hero-meta-label">Especialidades</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-num"><span style="font-size: 1.4rem;">5</span>★</span>
+        <span class="hero-meta-num" data-target="5" data-suffix="★">5★</span>
         <span class="hero-meta-label">Google Reviews</span>
       </div>
     </div>
@@ -1266,11 +1327,11 @@
             <span class="about-stat-l">Anos</span>
           </div>
           <div class="about-stat reveal delay-2">
-            <span class="about-stat-n">4</span>
+            <span class="about-stat-n" data-target="4">0</span>
             <span class="about-stat-l">Especialistas</span>
           </div>
           <div class="about-stat reveal delay-3">
-            <span class="about-stat-n">6</span>
+            <span class="about-stat-n" data-target="6">0</span>
             <span class="about-stat-l">Especialidades</span>
           </div>
         </div>
@@ -1459,12 +1520,12 @@
     </div>
     <div class="test-grid">
       <div class="test-card reveal delay-1">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="test-stars" aria-label="5 estrelas em 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="test-body">"Clínica com excelentes profissionais! Sempre muito bem tratada. Recomendo 100%"</p>
         <div class="test-author">
@@ -1473,12 +1534,12 @@
         </div>
       </div>
       <div class="test-card reveal delay-2">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="test-stars" aria-label="5 estrelas em 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="test-body">"Clínica incrível, com um espaço acolhedor e profissionais excelentes! Recomendo todos os serviços!"</p>
         <div class="test-author">
@@ -1487,12 +1548,12 @@
         </div>
       </div>
       <div class="test-card reveal delay-3">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <div class="test-stars" aria-label="5 estrelas em 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="test-body">"Atendimento 5 estrelas, equipa maravilhosa. Andei fazer tratamento, adorei, recomendo a visitar o espaço e os serviços."</p>
         <div class="test-author">
@@ -1519,12 +1580,16 @@
 
     <div class="gallery-grid">
       <div class="gallery-item gi-1 reveal">
-        <img src="assets/fotos/ecoguiada-claudia-tela.jpg" alt="Fisioterapia ecoguiada com ecografia em tempo real" loading="lazy"/>
-        <div class="gallery-item-label">Fisioterapia Ecoguiada</div>
+        <a href="assets/fotos/ecoguiada-claudia-tela.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: Fisioterapia Ecoguiada">
+          <img src="assets/fotos/ecoguiada-claudia-tela.jpg" alt="Fisioterapia ecoguiada com ecografia em tempo real" loading="lazy"/>
+          <div class="gallery-item-label">Fisioterapia Ecoguiada</div>
+        </a>
       </div>
       <div class="gallery-item gi-2 reveal delay-1">
-        <img src="assets/fotos/pediatrica-bebe-sorriso.jpg" alt="Bebé sorridente em sessão de osteopatia pediátrica" loading="lazy" style="object-position:center 30%;"/>
-        <div class="gallery-item-label">Osteopatia Pediátrica</div>
+        <a href="assets/fotos/pediatrica-bebe-sorriso.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: Osteopatia Pediátrica">
+          <img src="assets/fotos/pediatrica-bebe-sorriso.jpg" alt="Bebé sorridente em sessão de osteopatia pediátrica" loading="lazy" style="object-position:center 30%;"/>
+          <div class="gallery-item-label">Osteopatia Pediátrica</div>
+        </a>
       </div>
       <div class="gallery-quote-block reveal delay-2">
         <p>"Não tratamos o sintoma. Tratamos a pessoa que o carrega."</p>
@@ -1532,21 +1597,29 @@
       </div>
 
       <div class="gallery-item gi-3 reveal">
-        <img src="assets/fotos/percutanea-agulha-detalhe.jpg" alt="Detalhe de tratamento de fisioterapia percutânea com agulhas" loading="lazy"/>
-        <div class="gallery-item-label">Fisioterapia Percutânea</div>
+        <a href="assets/fotos/percutanea-agulha-detalhe.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: Fisioterapia Percutânea">
+          <img src="assets/fotos/percutanea-agulha-detalhe.jpg" alt="Detalhe de tratamento de fisioterapia percutânea com agulhas" loading="lazy"/>
+          <div class="gallery-item-label">Fisioterapia Percutânea</div>
+        </a>
       </div>
       <div class="gallery-item gi-4 reveal delay-1">
-        <img src="assets/fotos/rpg-avaliacao-postural.jpg" alt="Avaliação postural global na clínica FisioVitae" loading="lazy"/>
-        <div class="gallery-item-label">RPG · Avaliação Postural</div>
+        <a href="assets/fotos/rpg-avaliacao-postural.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: RPG · Avaliação Postural">
+          <img src="assets/fotos/rpg-avaliacao-postural.jpg" alt="Avaliação postural global na clínica FisioVitae" loading="lazy"/>
+          <div class="gallery-item-label">RPG · Avaliação Postural</div>
+        </a>
       </div>
       <div class="gallery-item gi-5 reveal delay-2">
-        <img src="assets/fotos/exercicio-funcional-homem.jpg" alt="Reabilitação funcional com exercício terapêutico" loading="lazy"/>
-        <div class="gallery-item-label">Reabilitação Funcional</div>
+        <a href="assets/fotos/exercicio-funcional-homem.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: Reabilitação Funcional">
+          <img src="assets/fotos/exercicio-funcional-homem.jpg" alt="Reabilitação funcional com exercício terapêutico" loading="lazy"/>
+          <div class="gallery-item-label">Reabilitação Funcional</div>
+        </a>
       </div>
 
       <div class="gallery-item gi-6 reveal">
-        <img src="assets/fotos/fachada-clinica.jpg" alt="Fachada da clínica FisioVitae em Panoias, Braga" loading="lazy" style="object-position:center 60%;"/>
-        <div class="gallery-item-label">Panoias · Braga</div>
+        <a href="assets/fotos/fachada-clinica.jpg" class="glightbox" data-gallery="clinica" aria-label="Ver imagem: Panoias · Braga">
+          <img src="assets/fotos/fachada-clinica.jpg" alt="Fachada da clínica FisioVitae em Panoias, Braga" loading="lazy" style="object-position:center 60%;"/>
+          <div class="gallery-item-label">Panoias · Braga</div>
+        </a>
       </div>
     </div>
   </div>
@@ -1678,6 +1751,7 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="assets/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+
 </body>
 </html>

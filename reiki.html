@@ -13,6 +13,9 @@
   <style>
     .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
     .svc-visual { aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); background:var(--orange-pale); }
+    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
+    .svc-visual:hover img { transform: scale(1.06); }
+    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; }
     .svc-visual-badge { position:absolute; bottom:1.5rem; left:1.5rem; z-index:2; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); padding:.55rem .95rem; border-radius: 999px; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color: var(--dark); box-shadow: 0 8px 24px rgba(26,26,26,.18); display:flex; align-items:center; gap:.5rem; }
     .svc-visual-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; }
     .svc-detail h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem; }
@@ -34,7 +37,10 @@
     .svc-cta-inline p { font-size:.875rem; color:rgba(255,255,255,.75); margin-top:.25rem; }
     .svc-page { padding:6rem 0; background:var(--cream); }
     .svc-h4 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; margin-top:1.5rem; }
-    @media(max-width:768px) { .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; } .svc-visual { display:none; } .svc-cta-inline { flex-direction:column; align-items:flex-start; } }
+    @media(max-width:768px) { .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; } .svc-visual { display:none; }
+    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
+    .svc-visual:hover img { transform: scale(1.06); }
+    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; } .svc-cta-inline { flex-direction:column; align-items:flex-start; } }
   </style>
 </head>
 <body>
@@ -139,7 +145,7 @@
 <section class="svc-page">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual"><div class="svc-visual-badge">Equilíbrio holístico</div></div>
+      <div class="svc-visual"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=80" alt="Reiki — terapia energética com imposição de mãos" loading="lazy"/><div class="svc-visual-badge">Equilíbrio holístico</div></div>
       <div class="svc-detail">
         <p class="intro-text">Terapia energética de origem japonesa que promove o equilíbrio físico, emocional e mental através da imposição suave das mãos, canalizando energia vital.</p>
         <p>O Reiki — palavra japonesa que significa <strong>energia vital universal</strong> — é uma técnica não-invasiva onde o terapeuta coloca as mãos sobre ou ligeiramente acima do corpo da pessoa, em pontos específicos. Não envolve manipulação física, pressão ou massagem.</p>

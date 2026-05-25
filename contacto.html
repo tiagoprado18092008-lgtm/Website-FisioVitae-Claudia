@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacto | Fisio Vitae — Fisioterapia e Osteopatia em Braga</title>
-  <meta name="description" content="Contacte a Fisio Vitae em Panóias, Braga. Marque a sua consulta por telefone, email ou formulário online. Seg–Sex 9h–22h | Sáb 9h–13h."/>
+  <meta name="description" content="Contacte a Fisio Vitae em Panóias, Braga. Marque a sua consulta por telefone ou WhatsApp. Seg–Sex 9h–22h | Sáb 9h–13h."/>
   <link rel="icon" type="image/png" href="assets/logofisiovitae.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -206,7 +206,56 @@
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li>
     <li><a href="sobre.html">Sobre</a></li>
-    <li><a href="servicos.html">Serviços</a></li>
+    <li class="nav-dropdown">
+      <a href="servicos.html" class="nav-dropdown-toggle">Serviços <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li class="dropdown-cat-item">
+          <div><span>Fisioterapia</span><span class="cat-desc">Reabilitação e movimento</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label">Fisioterapia</li>
+            <li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li>
+            <li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li>
+            <li><a href="rpg.html">RPG – Reeducação Postural Global</a></li>
+            <li><a href="servicos.html">Tratamentos de Fisioterapia</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span>Osteopatia</span><span class="cat-desc">Equilíbrio estrutural</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label">Osteopatia</li>
+            <li><a href="osteopatia.html">Osteopatia Estrutural</a></li>
+            <li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li>
+            <li><a href="servicos.html">Osteopatia Ginecológica e Gestacional</a></li>
+            <li><a href="servicos.html">Osteopatia Sacro-Craniana</a></li>
+            <li><a href="servicos.html">Osteopatia Visceral</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span>Massagens &amp; Bem-Estar</span><span class="cat-desc">Relaxamento e terapia</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label">Massagens &amp; Bem-Estar</li>
+            <li><a href="servicos.html">Massagem de Relaxamento</a></li>
+            <li><a href="servicos.html">Massagem anti-Celulite</a></li>
+            <li><a href="servicos.html">Drenagem Linfática</a></li>
+            <li><a href="servicos.html">Mesoterapia Homeopática</a></li>
+            <li><a href="servicos.html">Electroacupuntura</a></li>
+            <li><a href="servicos.html">Reiki</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span>Pilates &amp; Estética</span><span class="cat-desc">Movimento e beleza</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label">Pilates &amp; Estética</li>
+            <li><a href="pilates-clinico.html">Pilates Clínico</a></li>
+            <li><a href="servicos.html">Estética</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="equipa.html">Equipa</a></li>
     <li><a href="contacto.html" class="active">Contacto</a></li>
     <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
@@ -224,7 +273,7 @@
     <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Contacto</span></div>
     <div class="page-hero-label section-label">Entre em Contacto</div>
     <h1>Estamos aqui <em>para si</em></h1>
-    <p>Marque a sua consulta por telefone, email ou formulário. Respondemos sempre o mais brevemente possível — normalmente no mesmo dia útil.</p>
+    <p>Marque a sua consulta por telefone ou mensagem. Respondemos sempre o mais brevemente possível — normalmente no mesmo dia útil.</p>
   </div>
 </div>
 
@@ -349,76 +398,23 @@
         </div>
       </div>
 
-      <!-- FORM -->
+      <!-- MARCAÇÃO -->
       <div class="form-card reveal-right">
         <h3>Marcar Consulta</h3>
-        <p>Preencha o formulário e entraremos em contacto brevemente para confirmar a sua marcação.</p>
+        <p>As marcações são feitas por telefone ou mensagem. Contacte-nos diretamente e respondemos o mais brevemente possível.</p>
 
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group" id="group-nome">
-              <label for="nome">Nome Completo *</label>
-              <input type="text" id="nome" placeholder="O seu nome"/>
-              <span class="error-msg">Por favor, introduza o seu nome.</span>
-            </div>
-            <div class="form-group" id="group-telefone">
-              <label for="telefone">Telefone *</label>
-              <input type="tel" id="telefone" placeholder="9XX XXX XXX"/>
-              <span class="error-msg">Introduza um número válido.</span>
-            </div>
-          </div>
-          <div class="form-group" id="group-email">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="o.seu@email.com"/>
-            <span class="error-msg">Introduza um email válido.</span>
-          </div>
-          <div class="form-group">
-            <label for="servico">Serviço de Interesse</label>
-            <div class="form-select-wrap">
-              <select id="servico">
-                <option value="">Selecionar serviço...</option>
-                <option>Fisioterapia Percutânea</option>
-                <option>Fisioterapia Ecoguiada</option>
-                <option>Pilates Clínico</option>
-                <option>Osteopatia Estrutural</option>
-                <option>Osteopatia Pediátrica</option>
-                <option>RPG — Reeducação Postural Global</option>
-                <option>Não sei / Quero avaliação</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="preferencia">Preferência de Horário</label>
-            <div class="form-select-wrap">
-              <select id="preferencia">
-                <option value="">Selecionar horário preferido...</option>
-                <option>Manhã (9h–12h)</option>
-                <option>Tarde (12h–17h)</option>
-                <option>Final do dia (17h–22h)</option>
-                <option>Sábado de manhã</option>
-                <option>Qualquer horário</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group" id="group-mensagem">
-            <label for="mensagem">Mensagem / Descrição da Situação *</label>
-            <textarea id="mensagem" rows="4" placeholder="Descreva brevemente a sua situação clínica ou dúvida. Quanto mais detalhe nos der, melhor poderemos preparar a sua consulta."></textarea>
-            <span class="error-msg">Por favor, escreva uma mensagem.</span>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;justify-content:center">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Enviar Pedido de Marcação
-          </button>
-          <p class="privacy-note">Ao submeter este formulário, aceita a nossa <a href="politica-privacidade.html">Política de Privacidade</a>. Os seus dados são utilizados exclusivamente para o contacto sobre a marcação solicitada.</p>
-        </form>
-
-        <div class="form-success" id="formSuccess">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h4>Pedido enviado com sucesso!</h4>
-          <p>Obrigado pelo seu contacto. A Rafaela entrará em contacto brevemente — normalmente no mesmo dia útil — para confirmar a sua marcação.</p>
-          <br>
-          <p style="font-size:.8rem;color:var(--text-light)">Se preferir um contacto mais rápido, ligue para <a href="tel:253623663" style="color:var(--orange)">253 623 663</a>.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem">
+          <a href="tel:253623663" class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;justify-content:center;text-decoration:none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Ligar — 253 623 663
+          </a>
+          <a href="https://wa.me/351253623663" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:1rem;font-size:1rem;font-weight:600;background:#25D366;color:#fff;border-radius:12px;text-decoration:none;transition:opacity .2s">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
         </div>
+
+        <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light);text-align:center">Respondemos normalmente no mesmo dia útil.<br>Seg–Sex 9h–22h · Sáb 9h–13h</p>
       </div>
     </div>
   </div>

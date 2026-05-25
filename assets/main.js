@@ -20,20 +20,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!sub) return;
     let closeTimer;
 
+    const position = () => {
+      // Use the nav-dropdown-menu element (always in DOM, just hidden via opacity)
+      const menu = item.closest('.nav-dropdown-menu');
+      // Force layout read by temporarily making it visible but pointer-events:none
+      const prevVis = menu.style.visibility;
+      menu.style.visibility = 'visible';
+      const menuRect = menu.getBoundingClientRect();
+      menu.style.visibility = prevVis;
+      if (menuRect.width > 0) {
+        sub.style.top = menuRect.top + 'px';
+        sub.style.left = (menuRect.right + 6) + 'px';
+      }
+    };
+
     const open = () => {
       clearTimeout(closeTimer);
+      position();
       item.classList.add('sub-open');
-      // Align submenu top with the primary dropdown top, left with its right edge
-      const menu = item.closest('.nav-dropdown-menu');
-      const menuRect = menu.getBoundingClientRect();
-      sub.style.top = menuRect.top + 'px';
-      sub.style.left = (menuRect.right + 6) + 'px';
     };
-    const close = () => { closeTimer = setTimeout(() => item.classList.remove('sub-open'), 80); };
+    const close = () => { closeTimer = setTimeout(() => item.classList.remove('sub-open'), 100); };
 
     item.addEventListener('mouseenter', open);
     item.addEventListener('mouseleave', close);
-    sub.addEventListener('mouseenter', open);
+    sub.addEventListener('mouseenter', () => clearTimeout(closeTimer));
     sub.addEventListener('mouseleave', close);
   });
 

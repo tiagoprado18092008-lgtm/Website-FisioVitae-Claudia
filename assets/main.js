@@ -21,17 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let closeTimer;
 
     const position = () => {
-      // Use the nav-dropdown-menu element (always in DOM, just hidden via opacity)
+      // nav-dropdown is always visible — use it to calculate position
+      const navDropdown = item.closest('.nav-dropdown');
+      const toggle = navDropdown.querySelector('.nav-dropdown-toggle');
+      const toggleRect = toggle.getBoundingClientRect();
       const menu = item.closest('.nav-dropdown-menu');
-      // Force layout read by temporarily making it visible but pointer-events:none
-      const prevVis = menu.style.visibility;
-      menu.style.visibility = 'visible';
-      const menuRect = menu.getBoundingClientRect();
-      menu.style.visibility = prevVis;
-      if (menuRect.width > 0) {
-        sub.style.top = menuRect.top + 'px';
-        sub.style.left = (menuRect.right + 6) + 'px';
-      }
+      // menu width is known from its min-width style; use offsetWidth if available
+      const menuWidth = menu.offsetWidth || 240;
+      const menuLeft = toggleRect.left + toggleRect.width / 2 - menuWidth / 2;
+      const menuTop = toggleRect.bottom + 12; // matches top:calc(100% + .75rem)
+      sub.style.top = menuTop + 'px';
+      sub.style.left = (menuLeft + menuWidth + 6) + 'px';
     };
 
     const open = () => {

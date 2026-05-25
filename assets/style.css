@@ -127,68 +127,65 @@ nav.scrolled {
 .mobile-nav-services a { font-size:.85rem !important; color:var(--text) !important; padding:.35rem 0 !important; border-bottom:none !important; opacity:.8; }
 .mobile-nav-services a:hover { color:var(--orange) !important; opacity:1; }
 
-/* ── DROPDOWN / MEGA-MENU ── */
+/* ── DROPDOWN ── */
 .nav-dropdown { position:relative; }
 .nav-dropdown-toggle { display:flex; align-items:center; gap:.3rem; cursor:pointer; }
 .dropdown-chevron { transition:transform .25s cubic-bezier(.22,1,.36,1); flex-shrink:0; color:rgba(255,255,255,0.9); }
 .nav-dropdown:hover .dropdown-chevron { transform:rotate(180deg); }
 
-/* Mega-menu container */
+/* Primary dropdown – category list */
 .nav-dropdown-menu {
   position:absolute; top:calc(100% + .75rem); left:50%; transform:translateX(-50%) translateY(-6px);
   background:var(--white); border-radius:14px; list-style:none;
-  box-shadow:0 12px 48px rgba(26,26,26,.15); padding:0;
+  box-shadow:0 12px 48px rgba(26,26,26,.15); padding:.5rem 0; min-width:240px;
   opacity:0; visibility:hidden;
   transition:opacity .22s ease, transform .22s cubic-bezier(.22,1,.36,1), visibility .22s;
-  z-index:200; display:flex; overflow:hidden; min-width:520px;
+  z-index:200;
 }
 .nav-dropdown:hover .nav-dropdown-menu {
   opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
 }
 
-/* Left column – categories */
-.dropdown-categories {
-  width:200px; flex-shrink:0; background:#f8f6f3; padding:.5rem 0;
-  border-right:1px solid rgba(0,0,0,.07);
-}
+/* Category row */
 .dropdown-cat-item {
+  position:relative;
   display:flex; align-items:center; justify-content:space-between;
-  padding:.65rem 1.1rem; font-size:.83rem; font-weight:600; color:var(--text);
-  cursor:pointer; transition:background .15s, color .15s; white-space:nowrap;
-  gap:.4rem;
+  padding:.7rem 1.1rem; font-size:.875rem; font-weight:600; color:var(--text);
+  cursor:pointer; transition:background .15s, color .15s; white-space:nowrap; gap:.5rem;
 }
-.dropdown-cat-item svg { opacity:.4; transition:opacity .15s; flex-shrink:0; }
-.dropdown-cat-item:hover,
-.dropdown-cat-item.active { background:var(--white); color:var(--orange); }
-.dropdown-cat-item:hover svg,
-.dropdown-cat-item.active svg { opacity:1; color:var(--orange); }
+.dropdown-cat-item .cat-desc {
+  display:block; font-size:.72rem; font-weight:400; color:var(--text); opacity:.6;
+  margin-top:.1rem;
+}
+.dropdown-cat-item svg { opacity:.35; transition:opacity .15s; flex-shrink:0; }
+.dropdown-cat-item:hover { background:var(--cream); color:var(--orange); }
+.dropdown-cat-item:hover svg { opacity:1; color:var(--orange); }
 
-/* Right column – sub-items panels */
-.dropdown-panels { flex:1; position:relative; min-width:280px; }
-.dropdown-panel {
-  position:absolute; inset:0; padding:.6rem 0;
+/* Secondary dropdown – sub-services */
+.dropdown-sub {
+  position:absolute; top:-8px; left:calc(100% + 6px);
+  background:var(--white); border-radius:14px; list-style:none;
+  box-shadow:0 12px 48px rgba(26,26,26,.15); padding:.5rem 0; min-width:260px;
   opacity:0; visibility:hidden; pointer-events:none;
-  transition:opacity .18s ease;
+  transition:opacity .18s ease, transform .18s cubic-bezier(.22,1,.36,1);
+  transform:translateX(-4px);
+  z-index:201;
 }
-.dropdown-panel.active {
+.dropdown-cat-item:hover .dropdown-sub {
   opacity:1; visibility:visible; pointer-events:auto;
+  transform:translateX(0);
 }
-.dropdown-panel a {
-  display:block; padding:.6rem 1.25rem; font-size:.83rem; color:var(--text);
+.dropdown-sub-label {
+  padding:.45rem 1.1rem .3rem; font-size:.65rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--orange);
+  pointer-events:none;
+}
+.dropdown-sub a {
+  display:block; padding:.55rem 1.1rem; font-size:.83rem; color:var(--text);
   text-decoration:none; white-space:nowrap; transition:color .15s, background .15s;
 }
-.dropdown-panel a::after { display:none !important; }
-.dropdown-panel a:hover { color:var(--orange); background:var(--cream); }
-
-/* Legacy – keep for any stray uses */
-.dropdown-category {
-  padding:.45rem 1.25rem .2rem; font-size:.69rem; font-weight:700;
-  letter-spacing:.08em; text-transform:uppercase; color:var(--orange);
-  pointer-events:none; cursor:default;
-}
-.dropdown-category:not(:first-child) {
-  border-top:1px solid rgba(0,0,0,.07); margin-top:.3rem; padding-top:.65rem;
-}
+.dropdown-sub a::after { display:none !important; }
+.dropdown-sub a:hover { color:var(--orange); background:var(--cream); }
 .mobile-nav-category {
   display:block; font-size:.65rem; font-weight:700; letter-spacing:.1em;
   text-transform:uppercase; color:var(--orange) !important; padding:.7rem 0 .1rem;

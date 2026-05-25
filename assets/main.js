@@ -14,19 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // ── MEGA-MENU CATEGORY HOVER ──
-  document.querySelectorAll('.dropdown-cat-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      const panelId = item.dataset.panel;
-      const menu = item.closest('.nav-dropdown-menu');
-      menu.querySelectorAll('.dropdown-cat-item').forEach(i => i.classList.remove('active'));
-      menu.querySelectorAll('.dropdown-panel').forEach(p => p.classList.remove('active'));
-      item.classList.add('active');
-      const panel = menu.querySelector('#panel-' + panelId);
-      if (panel) panel.classList.add('active');
-    });
-  });
-
   // ── NAVBAR CTA SHAKE ON HOVER ──
   const navCta = document.querySelector('.nav-cta');
   if (navCta) {

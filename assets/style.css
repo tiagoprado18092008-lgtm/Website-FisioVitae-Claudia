@@ -171,7 +171,13 @@ nav.scrolled {
   transform:translateX(-4px);
   z-index:201;
 }
-.dropdown-cat-item:hover .dropdown-sub {
+/* Invisible bridge so cursor can move from category to submenu without gap */
+.dropdown-cat-item::after {
+  content:''; position:absolute; top:0; left:100%;
+  width:14px; height:100%; background:transparent;
+}
+.dropdown-cat-item:hover .dropdown-sub,
+.dropdown-cat-item.sub-open .dropdown-sub {
   opacity:1; visibility:visible; pointer-events:auto;
   transform:translateX(0);
 }

@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ── SUBMENU KEEP-OPEN (bridge hover gap between category and submenu) ──
+  document.querySelectorAll('.dropdown-cat-item').forEach(item => {
+    const sub = item.querySelector('.dropdown-sub');
+    if (!sub) return;
+    let closeTimer;
+    const open = () => { clearTimeout(closeTimer); item.classList.add('sub-open'); };
+    const close = () => { closeTimer = setTimeout(() => item.classList.remove('sub-open'), 80); };
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', close);
+    sub.addEventListener('mouseenter', open);
+    sub.addEventListener('mouseleave', close);
+  });
+
   // ── NAVBAR CTA SHAKE ON HOVER ──
   const navCta = document.querySelector('.nav-cta');
   if (navCta) {

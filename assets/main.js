@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── COUNTER ANIMATION ──
   function animateCounter(el) {
     const target = parseInt(el.dataset.target);
-    const suffix = el.dataset.suffix || '+';
+    const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
     const duration = 1800;
     const start = performance.now();
     function update(now) {
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(update);
   }
+  const counterEls = document.querySelectorAll('[data-target]');
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.dataset.animated) {
@@ -95,8 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCounter(entry.target);
       }
     });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+  counterEls.forEach(el => {
+    // Normalize initial state so the pre-animation render shows the suffix correctly
+    const suffix = el.dataset.suffix != null ? el.dataset.suffix : '';
+    el.textContent = '0' + suffix;
+    counterObserver.observe(el);
+  });
 
   // ── HERO STATS COUNTER ON PAGE LOAD ──
   const heroMetaItems = document.querySelectorAll('.hero-meta-num');

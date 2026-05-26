@@ -15,9 +15,9 @@
 
     /* ── HERO SPLIT ── */
     #hero {
-      min-height: 100vh;
+      min-height: min(82vh, 780px);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.88fr 1.12fr;
       padding-top: var(--nav-height);
       background: var(--cream);
       overflow: hidden;
@@ -39,12 +39,52 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 5rem 5rem 5rem 0;
+      padding: 5rem 4rem 5rem 0;
       padding-left: max(3rem, calc((100vw - 1180px) / 2 + 1.75rem));
       max-width: none;
       position: relative;
       z-index: 1;
     }
+
+    /* status chip — live indicator above eyebrow */
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .4rem .8rem .4rem .65rem;
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(232,101,10,.18);
+      border-radius: var(--radius-pill);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      width: fit-content;
+      animation: fade-up .7s cubic-bezier(.22,1,.36,1) both;
+    }
+    .hero-status-dot {
+      position: relative;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #1B9E5C;
+      flex-shrink: 0;
+    }
+    .hero-status-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(27,158,92,.4);
+      animation: status-pulse 1.8s ease-out infinite;
+    }
+    @keyframes status-pulse {
+      0% { transform: scale(.6); opacity: .9; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -126,15 +166,20 @@
       color: var(--text-light);
     }
 
-    /* Hero right — visual decorativo */
+    /* Hero right — equipa editorial */
     .hero-right {
       position: relative;
-      background: linear-gradient(135deg, #FFF5EE 0%, #FFE4CC 35%, #FFD0A8 60%, #FFC091 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      background: linear-gradient(135deg, #2A1810 0%, #1A1A1A 100%);
       z-index: 1;
+      padding: 1.75rem 1.75rem 1.75rem 0;
+    }
+    .hero-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(26,26,26,.35), 0 12px 32px rgba(232,101,10,.18);
     }
     .hero-right-image {
       position: absolute;
@@ -142,128 +187,161 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%;
-      opacity: 0.92;
-      filter: saturate(1.05) contrast(1.02);
+      object-position: center 38%;
+      filter: saturate(1.06) contrast(1.04);
       z-index: 0;
-      animation: heroImageReveal 1.4s cubic-bezier(.22,1,.36,1) both, kenBurns 22s ease-in-out 1.4s infinite alternate;
+      animation: heroImageReveal 1.6s cubic-bezier(.22,1,.36,1) both, kenBurns 24s ease-in-out 1.6s infinite alternate;
       will-change: transform;
     }
     @keyframes heroImageReveal {
-      from { opacity: 0; transform: scale(1.06); }
-      to   { opacity: 0.92; transform: scale(1); }
+      from { opacity: 0; transform: scale(1.12); }
+      to   { opacity: 1; transform: scale(1.02); }
     }
     @keyframes kenBurns {
-      0%   { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.06) translate(-1.2%, -1.2%); }
+      0%   { transform: scale(1.02) translate(0, 0); }
+      100% { transform: scale(1.06) translate(-.6%, -.6%); }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-right-image { animation: heroImageReveal 1.4s cubic-bezier(.22,1,.36,1) both; }
     }
-    .hero-right::before {
+
+    /* gradiente vinheta sobre a foto + tinta editorial */
+    .hero-frame::before {
       content: '';
       position: absolute;
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(120deg, rgba(255,245,235,.35) 0%, transparent 35%, transparent 65%, rgba(232,101,10,.18) 100%),
-        radial-gradient(circle at 20% 20%, rgba(232,101,10,.10) 0%, transparent 45%),
-        radial-gradient(circle at 80% 80%, rgba(232,101,10,.06) 0%, transparent 45%);
+        linear-gradient(180deg, transparent 40%, rgba(26,26,26,.55) 88%, rgba(26,26,26,.78) 100%),
+        linear-gradient(90deg, rgba(26,26,26,.35) 0%, transparent 22%, transparent 78%, rgba(26,26,26,.32) 100%);
       pointer-events: none;
     }
-    /* círculo decorativo grande */
-    .hero-right::after {
+
+    /* grain sutil */
+    .hero-frame::after {
       content: '';
       position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      border: 1px solid rgba(232,101,10,.12);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      z-index: 2;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/><feColorMatrix values='0 0 0 0 .9 0 0 0 0 .85 0 0 0 0 .75 0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+      opacity: .55;
       pointer-events: none;
     }
-    .hero-visual-card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 32px 80px rgba(26,26,26,.14), 0 8px 20px rgba(232,101,10,.15);
-      max-width: 340px;
-      width: 80%;
-      margin-left: -6%;
-      margin-top: 4rem;
-      animation: fade-up .9s cubic-bezier(.22,1,.36,1) .3s both;
-    }
-    .hero-visual-card .badge-top {
-      background: var(--orange);
-      color: white;
-      font-size: .65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      padding: .32rem .85rem;
-      border-radius: var(--radius-pill);
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-    .hero-visual-big {
-      font-family: 'Playfair Display', var(--font-display), serif;
-      font-size: 5.5rem;
-      font-weight: 800;
-      color: var(--dark);
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-    .hero-visual-big span { color: var(--orange); }
-    .hero-visual-label {
-      font-size: .8rem;
-      color: var(--text-light);
-      font-weight: 500;
-      margin-top: .5rem;
-      margin-bottom: 1.75rem;
-      line-height: 1.5;
-    }
-    .hero-visual-divider { width: 40px; height: 2px; background: var(--orange); margin-bottom: 1.5rem; border-radius: 2px; }
-    .hero-visual-quote {
-      font-family: 'Playfair Display', var(--font-display), serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: .5rem;
-    }
-    .hero-visual-cite {
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-weight: 700;
-      color: var(--text-light);
-    }
-    .hero-badge-float {
+
+    /* etiqueta vertical "EQUIPA / 2004—2026" */
+    .hero-vlabel {
       position: absolute;
-      bottom: 3rem;
-      left: -1.75rem;
+      top: 1.75rem;
+      left: 1.5rem;
+      z-index: 4;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      animation: fade-up .8s cubic-bezier(.22,1,.36,1) .4s both;
+    }
+    .hero-vlabel::before {
+      content: '';
+      width: 1px;
+      height: 28px;
       background: var(--orange);
+    }
+
+    /* faixa inferior — meet the team */
+    .hero-overlay-strip {
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 4px;
+      animation: fade-up .9s cubic-bezier(.22,1,.36,1) .55s both;
+    }
+    .hero-overlay-strip-left {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+    }
+    .hero-overlay-eyebrow {
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange-light, #FFB07A);
+    }
+    .hero-overlay-name {
+      font-family: 'Playfair Display', var(--font-display), serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 600;
       color: white;
-      border-radius: var(--radius);
-      padding: .9rem 1.3rem;
-      box-shadow: 0 20px 56px rgba(232,101,10,.55), 0 8px 20px rgba(232,101,10,.35);
+      letter-spacing: -.005em;
+      line-height: 1.2;
+    }
+    .hero-overlay-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
       font-size: .68rem;
       font-weight: 700;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      letter-spacing: .1em;
-      line-height: 1.4;
-      animation: fade-up .9s cubic-bezier(.22,1,.36,1) .5s both, badge-float 4s ease-in-out infinite, pulse-badge 2s ease-in-out infinite;
+      color: white;
+      text-decoration: none;
+      padding: .55rem .9rem;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: var(--radius-pill);
+      transition: all .26s ease;
+      white-space: nowrap;
     }
-    @keyframes pulse-badge {
-      0%, 100% { box-shadow: 0 20px 56px rgba(232,101,10,.55), 0 8px 20px rgba(232,101,10,.35); }
-      50% { box-shadow: 0 20px 56px rgba(232,101,10,.75), 0 0 0 6px rgba(232,101,10,.15); }
+    .hero-overlay-link:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      transform: translateX(2px);
+    }
+    .hero-overlay-link svg {
+      width: 12px;
+      height: 12px;
+      transition: transform .26s ease;
+    }
+    .hero-overlay-link:hover svg { transform: translateX(3px); }
+
+    /* badge flutuante: anos + plaque transbordando à esquerda no topo */
+    .hero-badge-float {
+      position: absolute;
+      top: 22%;
+      left: -3.5rem;
+      z-index: 5;
+      background: var(--orange);
+      color: white;
+      border-radius: 4px;
+      padding: 1.1rem 1.5rem 1.05rem;
+      box-shadow: 0 24px 60px rgba(232,101,10,.45), 0 8px 20px rgba(26,26,26,.25);
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      line-height: 1.35;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fade-up .9s cubic-bezier(.22,1,.36,1) .7s both, badge-float 5s ease-in-out 1.2s infinite;
     }
     @keyframes badge-float {
       0%, 100% { transform: translateY(0); }
@@ -272,12 +350,70 @@
     .hero-badge-float strong {
       display: block;
       font-family: 'Playfair Display', var(--font-display), serif;
-      font-size: 1.6rem;
+      font-size: 2.4rem;
       font-weight: 800;
       color: white;
       line-height: 1;
-      letter-spacing: -.02em;
-      margin-bottom: .2rem;
+      letter-spacing: -.03em;
+      font-style: italic;
+    }
+    .hero-badge-float-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,.4);
+      flex-shrink: 0;
+    }
+    .hero-badge-float-text {
+      max-width: 130px;
+    }
+    .hero-badge-float-text span {
+      display: block;
+      color: rgba(255,255,255,.85);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      margin-top: .15rem;
+    }
+
+    /* scroll cue */
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 1.75rem;
+      left: max(3rem, calc((100vw - 1180px) / 2 + 1.75rem));
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      pointer-events: none;
+      animation: fade-up .9s cubic-bezier(.22,1,.36,1) .8s both;
+    }
+    .hero-scroll-cue-line {
+      position: relative;
+      display: block;
+      width: 42px;
+      height: 1px;
+      background: var(--beige-mid);
+      overflow: hidden;
+    }
+    .hero-scroll-cue-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 35%;
+      background: var(--orange);
+      animation: scrollLine 2.2s cubic-bezier(.4, 0, .2, 1) infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: translateX(-100%); }
+      55%, 100% { transform: translateX(290%); }
+    }
+    @media (max-width: 1024px) {
+      .hero-scroll-cue { display: none; }
     }
 
     @keyframes fade-up {
@@ -1041,8 +1177,24 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { display: none; }
+      .hero-right {
+        order: 2;
+        padding: 0;
+        min-height: 480px;
+        background: transparent;
+      }
+      .hero-frame {
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .hero-badge-float {
+        left: 1.25rem;
+        bottom: auto;
+        top: 1.25rem;
+      }
+      .hero-vlabel { display: none; }
       .hero-left {
+        order: 1;
         padding: 5rem 2rem 4rem;
         padding-left: 2rem;
         max-width: 100%;
@@ -1057,6 +1209,17 @@
       .svc-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
     @media (max-width: 768px) {
+      .hero-right { min-height: 380px; }
+      .hero-overlay-strip {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        padding: .85rem 1rem;
+      }
+      .hero-overlay-name { font-size: .9rem; }
+      .hero-overlay-link { padding: .5rem .75rem; font-size: .62rem; }
+      .hero-badge-float strong { font-size: 1.8rem; }
+      .hero-badge-float { padding: .85rem 1.1rem; }
       .svc-cards { grid-template-columns: 1fr; }
       .test-grid { grid-template-columns: 1fr; }
       .test-head { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
@@ -1065,6 +1228,7 @@
     }
     @media (max-width: 480px) {
       .hero-meta { gap: 1.25rem; }
+      .hero-right { min-height: 320px; }
     }
   </style>
 <!-- FISIOVITAE_SEO_INJECTED -->
@@ -1124,101 +1288,133 @@
     <img src="assets/logofisiovitae-transparent.png" alt="FisioVitae" class="nav-logo-img" loading="lazy" decoding="async"/>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Início</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="index.html" class="active" data-i18n="nav.home">Início</a></li>
+    <li><a href="sobre.html" data-i18n="nav.about">Sobre</a></li>
     <li class="nav-dropdown">
-      <a href="servicos.html" class="nav-dropdown-toggle">Serviços <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="servicos.html" class="nav-dropdown-toggle"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
       <ul class="nav-dropdown-menu">
         <li class="dropdown-cat-item">
-          <div><span>Fisioterapia</span><span class="cat-desc">Reabilitação e movimento</span></div>
+          <div><span data-i18n="nav.cat.physio">Fisioterapia</span><span class="cat-desc" data-i18n="nav.cat.physio_desc">Reabilitação e movimento</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
-            <li class="dropdown-sub-label">Fisioterapia</li>
-            <li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li>
-            <li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li>
-            <li><a href="rpg.html">RPG – Reeducação Postural Global</a></li>
-            <li><a href="servicos.html">Tratamentos de Fisioterapia</a></li>
+            <li class="dropdown-sub-label" data-i18n="nav.cat.physio">Fisioterapia</li>
+            <li><a href="fisioterapia-percutanea.html" data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</a></li>
+            <li><a href="fisioterapia-ecoguiada.html" data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</a></li>
+            <li><a href="rpg.html" data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</a></li>
+            <li><a href="servicos.html" data-i18n="svc.physio.all">Tratamentos de Fisioterapia</a></li>
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <div><span>Osteopatia</span><span class="cat-desc">Equilíbrio estrutural</span></div>
+          <div><span data-i18n="nav.cat.osteo">Osteopatia</span><span class="cat-desc" data-i18n="nav.cat.osteo_desc">Equilíbrio estrutural</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
-            <li class="dropdown-sub-label">Osteopatia</li>
-            <li><a href="osteopatia-estrutural.html">Osteopatia Estrutural</a></li>
-            <li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li>
-            <li><a href="osteopatia-ginecologica.html">Osteopatia Ginecológica e Gestacional</a></li>
-            <li><a href="osteopatia-sacro-craniana.html">Osteopatia Sacro-Craniana</a></li>
-            <li><a href="osteopatia-visceral.html">Osteopatia Visceral</a></li>
+            <li class="dropdown-sub-label" data-i18n="nav.cat.osteo">Osteopatia</li>
+            <li><a href="osteopatia-estrutural.html" data-i18n="svc.osteo.structural">Osteopatia Estrutural</a></li>
+            <li><a href="osteopatia-pediatrica.html" data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</a></li>
+            <li><a href="osteopatia-ginecologica.html" data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</a></li>
+            <li><a href="osteopatia-sacro-craniana.html" data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</a></li>
+            <li><a href="osteopatia-visceral.html" data-i18n="svc.osteo.visceral">Osteopatia Visceral</a></li>
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <div><span>Massagens &amp; Bem-Estar</span><span class="cat-desc">Relaxamento e terapia</span></div>
+          <div><span data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</span><span class="cat-desc" data-i18n="nav.cat.massage_desc">Relaxamento e terapia</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
-            <li class="dropdown-sub-label">Massagens &amp; Bem-Estar</li>
-            <li><a href="massagem-relaxamento.html">Massagem de Relaxamento</a></li>
-            <li><a href="massagem-anti-celulite.html">Massagem anti-Celulite</a></li>
-            <li><a href="drenagem-linfatica.html">Drenagem Linfática</a></li>
-            <li><a href="mesoterapia-homeopatica.html">Mesoterapia Homeopática</a></li>
-            <li><a href="electroacupuntura.html">Electroacupuntura</a></li>
-            <li><a href="reiki.html">Reiki</a></li>
+            <li class="dropdown-sub-label" data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</li>
+            <li><a href="massagem-relaxamento.html" data-i18n="svc.massage.relax">Massagem de Relaxamento</a></li>
+            <li><a href="massagem-anti-celulite.html" data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</a></li>
+            <li><a href="drenagem-linfatica.html" data-i18n="svc.massage.lymphatic">Drenagem Linfática</a></li>
+            <li><a href="mesoterapia-homeopatica.html" data-i18n="svc.massage.meso">Mesoterapia Homeopática</a></li>
+            <li><a href="electroacupuntura.html" data-i18n="svc.massage.acupuncture">Electroacupuntura</a></li>
+            <li><a href="reiki.html" data-i18n="svc.massage.reiki">Reiki</a></li>
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <div><span>Pilates &amp; Estética</span><span class="cat-desc">Movimento e beleza</span></div>
+          <div><span data-i18n="nav.cat.pilates">Pilates &amp; Estética</span><span class="cat-desc" data-i18n="nav.cat.pilates_desc">Movimento e beleza</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
-            <li class="dropdown-sub-label">Pilates &amp; Estética</li>
-            <li><a href="pilates-clinico.html">Pilates Clínico</a></li>
-            <li><a href="estetica.html">Estética</a></li>
+            <li class="dropdown-sub-label" data-i18n="nav.cat.pilates">Pilates &amp; Estética</li>
+            <li><a href="pilates-clinico.html" data-i18n="svc.pilates.clinical">Pilates Clínico</a></li>
+            <li><a href="estetica.html" data-i18n="svc.pilates.aesthetic">Estética</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="equipa.html">Equipa</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
-    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
+    <li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li>
+    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
   </ul>
+  <div class="nav-right">
+    <div class="nav-lang-wrap">
+      <button class="nav-lang" id="langToggle" aria-expanded="false" aria-haspopup="true" aria-label="Mudar idioma / Change language">
+        <span class="nav-lang-flag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg>
+        </span>
+        <span class="nav-lang-code" id="langCode">PT</span>
+        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul class="nav-lang-menu" id="langMenu" role="menu">
+        <li><button type="button" data-lang="pt" class="active">
+          <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg></span>
+          Português
+        </button></li>
+        <li><button type="button" data-lang="en">
+          <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0l24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="5"/><path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3"/></svg></span>
+          English
+        </button></li>
+      </ul>
+    </div>
+    <a href="tel:+351253623663" class="nav-phone" aria-label="Telefone 253 623 663">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>253 623 663</span>
+    </a>
+    <a href="contacto.html" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg>
+      <span data-i18n="nav.cta">Agendar</span>
+    </a>
+  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html">Início</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="servicos.html">Serviços</a>
+  <a href="index.html" data-i18n="nav.home">Início</a>
+  <a href="sobre.html" data-i18n="nav.about">Sobre</a>
+  <a href="servicos.html" data-i18n="nav.services">Serviços</a>
   <div class="mobile-nav-services">
-    <span class="mobile-nav-category">Fisioterapia</span>
-    <a href="fisioterapia-percutanea.html">↳ Fisioterapia Percutânea</a>
-    <a href="fisioterapia-ecoguiada.html">↳ Fisioterapia Ecoguiada</a>
-    <a href="rpg.html">↳ RPG – Reeducação Postural Global</a>
-    <a href="servicos.html">↳ Tratamentos de Fisioterapia</a>
-    <span class="mobile-nav-category">Osteopatia</span>
-    <a href="osteopatia-estrutural.html">↳ Osteopatia Estrutural</a>
-    <a href="osteopatia-pediatrica.html">↳ Osteopatia Pediátrica</a>
-    <a href="osteopatia-ginecologica.html">↳ Osteopatia Ginecológica e Gestacional</a>
-    <a href="osteopatia-sacro-craniana.html">↳ Osteopatia Sacro-Craniana</a>
-    <a href="osteopatia-visceral.html">↳ Osteopatia Visceral</a>
-    <span class="mobile-nav-category">Massagens & Bem-Estar</span>
-    <a href="massagem-relaxamento.html">↳ Massagem de Relaxamento</a>
-    <a href="massagem-anti-celulite.html">↳ Massagem anti-Celulite</a>
-    <a href="drenagem-linfatica.html">↳ Drenagem Linfática</a>
-    <a href="mesoterapia-homeopatica.html">↳ Mesoterapia Homeopática</a>
-    <a href="electroacupuntura.html">↳ Electroacupuntura</a>
-    <a href="reiki.html">↳ Reiki</a>
-    <span class="mobile-nav-category">Pilates & Estética</span>
-    <a href="pilates-clinico.html">↳ Pilates Clínico</a>
-    <a href="estetica.html">↳ Estética</a>
+    <span class="mobile-nav-category" data-i18n="nav.cat.physio">Fisioterapia</span>
+    <a href="fisioterapia-percutanea.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</span></a>
+    <a href="fisioterapia-ecoguiada.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</span></a>
+    <a href="rpg.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</span></a>
+    <a href="servicos.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.all">Tratamentos de Fisioterapia</span></a>
+    <span class="mobile-nav-category" data-i18n="nav.cat.osteo">Osteopatia</span>
+    <a href="osteopatia-estrutural.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.structural">Osteopatia Estrutural</span></a>
+    <a href="osteopatia-pediatrica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</span></a>
+    <a href="osteopatia-ginecologica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</span></a>
+    <a href="osteopatia-sacro-craniana.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</span></a>
+    <a href="osteopatia-visceral.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.visceral">Osteopatia Visceral</span></a>
+    <span class="mobile-nav-category" data-i18n="nav.cat.massage">Massagens & Bem-Estar</span>
+    <a href="massagem-relaxamento.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.relax">Massagem de Relaxamento</span></a>
+    <a href="massagem-anti-celulite.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</span></a>
+    <a href="drenagem-linfatica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.lymphatic">Drenagem Linfática</span></a>
+    <a href="mesoterapia-homeopatica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.meso">Mesoterapia Homeopática</span></a>
+    <a href="electroacupuntura.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.acupuncture">Electroacupuntura</span></a>
+    <a href="reiki.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.reiki">Reiki</span></a>
+    <span class="mobile-nav-category" data-i18n="nav.cat.pilates">Pilates & Estética</span>
+    <a href="pilates-clinico.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.pilates.clinical">Pilates Clínico</span></a>
+    <a href="estetica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.pilates.aesthetic">Estética</span></a>
   </div>
-  <a href="equipa.html">Equipa</a>
-  <a href="contacto.html">Contacto</a>
-  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
+  <a href="equipa.html" data-i18n="nav.team">Equipa</a>
+  <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta" data-i18n="nav.cta">Marcar Consulta</a>
 </div>
 
 <!-- HERO SPLIT -->
 <section id="hero">
   <div class="hero-left">
+    <div class="hero-status">
+      <span class="hero-status-dot" aria-hidden="true"></span>
+      A aceitar novos pacientes
+    </div>
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-dot"></span>
       Panoias, Braga · Desde 2004
@@ -1246,7 +1442,7 @@
         <span class="hero-meta-label">Anos de experiência</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-num" data-target="4">4</span>
+        <span class="hero-meta-num" data-target="5">5</span>
         <span class="hero-meta-label">Especialistas</span>
       </div>
       <div class="hero-meta-item">
@@ -1261,19 +1457,35 @@
   </div>
 
   <div class="hero-right">
-    <img class="hero-right-image" src="assets/fotos/ecoguiada-claudia-tela.jpg" alt="Dra. Cláudia Alves em sessão de fisioterapia ecoguiada na clínica FisioVitae"  loading="eager" fetchpriority="high" decoding="async"/>
-    <div class="hero-visual-card">
-      <span class="badge-top">Em Panoias, Braga</span>
-      <div class="hero-visual-big">20<span>+</span></div>
-      <div class="hero-visual-label">anos de experiência<br>ao seu serviço</div>
-      <div class="hero-visual-divider"></div>
-      <p class="hero-visual-quote">"O tratamento começa por ouvir. Cada corpo conta uma história diferente."</p>
-      <span class="hero-visual-cite">— Dra. Cláudia Alves</span>
-      <div class="hero-badge-float">
-        <strong>500+</strong>
-        Pacientes tratados
+    <div class="hero-frame">
+      <img class="hero-right-image" src="assets/fotos/equipa-grupo.jpg" alt="Equipa FisioVitae — Dra. Cláudia Alves e fisioterapeutas da clínica em Panoias, Braga" loading="eager" fetchpriority="high" decoding="async"/>
+      <div class="hero-vlabel" aria-hidden="true">A Equipa · 2004—2026</div>
+
+      <div class="hero-overlay-strip">
+        <div class="hero-overlay-strip-left">
+          <span class="hero-overlay-eyebrow">A equipa FisioVitae</span>
+          <span class="hero-overlay-name">Cláudia, Inês, Patrícia, Rafaela & José</span>
+        </div>
+        <a href="equipa.html" class="hero-overlay-link">
+          Conhecer
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
+
+    <div class="hero-badge-float">
+      <strong>5</strong>
+      <span class="hero-badge-float-divider"></span>
+      <div class="hero-badge-float-text">
+        Especialistas
+        <span>ao seu serviço</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue" aria-hidden="true">
+    <span class="hero-scroll-cue-line"></span>
+    Scroll
   </div>
 </section>
 
@@ -1345,7 +1557,7 @@
             <span class="about-stat-l">Anos</span>
           </div>
           <div class="about-stat reveal delay-2">
-            <span class="about-stat-n" data-target="4">0</span>
+            <span class="about-stat-n" data-target="5">0</span>
             <span class="about-stat-l">Especialistas</span>
           </div>
           <div class="about-stat reveal delay-3">
@@ -1779,7 +1991,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 FisioVitae · Panoias, Braga</p>
+      <p>© 2026 FisioVitae · Panoias, Braga</p>
       <p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p>
     </div>
   </div>

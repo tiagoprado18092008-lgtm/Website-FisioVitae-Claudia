@@ -36,7 +36,7 @@
     .svc-detail-grid.reverse > * { direction:ltr; }
 
     .svc-visual {
-      aspect-ratio:4/5; border-radius:30% 70% 45% 55%/40% 35% 65% 60%;
+      aspect-ratio:4/5; border-radius:var(--radius-lg);
       display:flex; align-items:center; justify-content:center;
       position:relative; overflow:hidden;
       box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10);
@@ -239,7 +239,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
             <li class="dropdown-sub-label" data-i18n="nav.cat.pilates">Pilates &amp; Estética</li>
-            <li><a href="pilates-clinico.html" data-i18n="svc.pilates.clinical">Pilates Clínico</a></li>
+            <li><a href="pilates-clinico.html" data-i18n="svc.pilates.clinical" data-i18n="servicos.snav.pilates">Pilates Clínico</a></li>
             <li><a href="estetica.html" data-i18n="svc.pilates.aesthetic">Estética</a></li>
           </ul>
         </li>
@@ -316,10 +316,10 @@
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><span class="current">Serviços</span></div>
-    <div class="page-hero-label section-label">O Que Fazemos</div>
-    <h1>Tratamentos <em>avançados</em><br>para cada condição</h1>
-    <p>Oferecemos um conjunto completo de serviços de fisioterapia e osteopatia, com técnicas de vanguarda e uma abordagem sempre personalizada para a sua situação específica.</p>
+    <div class="breadcrumb"><a href="index.html" data-i18n="page.breadcrumb.home">Início</a><span>›</span><span class="current">Serviços</span></div>
+    <div class="page-hero-label section-label" data-i18n="servicos.hero.label">O Que Fazemos</div>
+    <h1 data-i18n-html="servicos.hero.title">Tratamentos <em>avançados</em><br>para cada condição</h1>
+    <p data-i18n="servicos.hero.sub">Oferecemos um conjunto completo de serviços de fisioterapia e osteopatia, com técnicas de vanguarda e uma abordagem sempre personalizada para a sua situação específica.</p>
   </div>
 </div>
 
@@ -327,12 +327,12 @@
 <div id="service-nav">
   <div class="container">
     <div class="service-nav-inner">
-      <a href="#percutanea" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>Percutânea</a>
-      <a href="#ecoguiada" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>Ecoguiada</a>
-      <a href="#pilates" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12"/></svg>Pilates Clínico</a>
-      <a href="#osteopatia" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/></svg>Osteopatia</a>
-      <a href="#pediatrica" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="5"/><path d="M12 12v10"/></svg>Pediátrica</a>
-      <a href="#rpg" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c0 0-4 4-4 9s4 9 4 9 4-4 4-9-4-9-4-9z"/><path d="M3 12h18"/></svg>RPG</a>
+      <a href="#percutanea" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg data-i18n="servicos.snav.percutanea">Percutânea</a>
+      <a href="#ecoguiada" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg data-i18n="servicos.snav.ecoguiada">Ecoguiada</a>
+      <a href="#pilates" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M6 12h12"/></svg data-i18n="servicos.snav.pilates">Pilates Clínico</a>
+      <a href="#osteopatia" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/></svg data-i18n="servicos.snav.osteopatia">Osteopatia</a>
+      <a href="#pediatrica" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="5"/><path d="M12 12v10"/></svg data-i18n="servicos.snav.pediatrica">Pediátrica</a>
+      <a href="#rpg" class="snav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c0 0-4 4-4 9s4 9 4 9 4-4 4-9-4-9-4-9z"/><path d="M3 12h18"/></svg data-i18n="servicos.snav.rpg">RPG</a>
     </div>
   </div>
 </div>
@@ -346,8 +346,8 @@
         <div class="svc-visual-pill">Punção seca</div>
       </div>
       <div class="svc-detail reveal-right">
-        <div class="section-label">Técnica Avançada</div>
-        <h2>Fisioterapia <em>Percutânea</em></h2>
+        <div class="section-label" data-i18n="servicos.percutanea.label">Técnica Avançada</div>
+        <h2 data-i18n-html="servicos.percutanea.title">Fisioterapia <em>Percutânea</em></h2>
         <p class="intro-text">Uma das técnicas mais avançadas da fisioterapia moderna, que utiliza agulhas finas para tratar estruturas musculares, tendinosas e fasciais com mínima invasão e máxima eficácia.</p>
         <p>A fisioterapia percutânea — também conhecida como punção seca — consiste na introdução de agulhas de acupunctura finas diretamente nos tecidos-alvo. Ao contrário da acupunctura tradicional, tem uma base totalmente científica e anatómica, agindo sobre pontos-gatilho miofasciais (trigger points), tendões e tecido conjuntivo.</p>
         <p>A técnica provoca uma <strong>resposta neuromoduladora local</strong> que quebra ciclos de dor crónica, reduz espasmo muscular e estimula os mecanismos naturais de regeneração do tecido.</p>
@@ -386,8 +386,8 @@
         <div class="svc-visual-pill">Imagem em tempo real</div>
       </div>
       <div class="svc-detail reveal-left">
-        <div class="section-label">Precisão Máxima</div>
-        <h2>Fisioterapia <em>Ecoguiada</em></h2>
+        <div class="section-label" data-i18n="servicos.ecoguiada.label">Precisão Máxima</div>
+        <h2 data-i18n-html="servicos.ecoguiada.title">Fisioterapia <em>Ecoguiada</em></h2>
         <p class="intro-text">A fisioterapia ecoguiada representa o estado da arte no tratamento de lesões músculo-esqueléticas — guiada por ecografia em tempo real, permite uma precisão cirúrgica que outras técnicas não conseguem igualar.</p>
         <p>Através de um ecógrafo de alta resolução, o terapeuta consegue <strong>visualizar em tempo real</strong> as estruturas internas — tendões, músculos, bolsas sinoviais, nervos — e orientar as agulhas ou outros instrumentos com precisão milimétrica.</p>
         <p>Esta abordagem é particularmente valiosa em <strong>zonas de difícil acesso anatómico</strong>, em estruturas profundas e em situações em que a palpação manual não é suficientemente precisa para garantir a segurança e eficácia do tratamento.</p>
@@ -425,8 +425,8 @@
         <div class="svc-visual-pill">Exercício terapêutico</div>
       </div>
       <div class="svc-detail reveal-right">
-        <div class="section-label">Reabilitação Ativa</div>
-        <h2>Pilates <em>Clínico</em></h2>
+        <div class="section-label" data-i18n="servicos.pilates.label">Reabilitação Ativa</div>
+        <h2 data-i18n-html="servicos.pilates.title">Pilates <em>Clínico</em></h2>
         <p class="intro-text">O Pilates Clínico é muito mais do que exercício — é uma ferramenta terapêutica poderosa que, quando prescrita e supervisionada por um profissional de saúde, acelera a recuperação e previne recaídas.</p>
         <p>Na Fisio Vitae, o Pilates Clínico é <strong>totalmente integrado no plano de tratamento</strong>. O José Pereira trabalha em estreita colaboração com as fisioterapeutas para garantir que cada exercício serve um propósito clínico específico, respeitando as limitações de cada paciente.</p>
         <p>Utilizamos equipamento profissional — reformer, cadeira Wunda e outros aparelhos — para oferecer um programa progressivo que evolui com o paciente, desde as fases iniciais de reabilitação até ao retorno completo à atividade.</p>
@@ -465,8 +465,8 @@
         <div class="svc-visual-pill">Terapia manual</div>
       </div>
       <div class="svc-detail reveal-left">
-        <div class="section-label">Abordagem Holística</div>
-        <h2>Osteopatia <em>Estrutural</em></h2>
+        <div class="section-label" data-i18n="servicos.osteopatia.label">Abordagem Holística</div>
+        <h2 data-i18n-html="servicos.osteopatia.title">Osteopatia <em>Estrutural</em></h2>
         <p class="intro-text">A osteopatia estrutural parte de uma premissa fundamental: o corpo humano é uma unidade. Quando há disfunção numa estrutura, outras são inevitavelmente afetadas. O osteopata trata o sistema, não apenas o sintoma.</p>
         <p>Através de técnicas manuais sofisticadas — manipulações articulares, mobilizações, técnicas de tecidos moles e técnicas de energia muscular — o osteopata restaura a mobilidade das articulações e o equilíbrio muscular, eliminando as tensões que estão na origem da dor.</p>
         <p>A abordagem holística da osteopatia considera a interação entre o sistema músculo-esquelético, visceral e craniosacral, permitindo tratar condições aparentemente não relacionadas com a musculatura mas que têm origem em <strong>disfunções estruturais</strong>.</p>
@@ -505,8 +505,8 @@
         <div class="svc-visual-pill">Técnicas gentis</div>
       </div>
       <div class="svc-detail reveal-right">
-        <div class="section-label">Cuidado Especializado</div>
-        <h2>Osteopatia <em>Pediátrica</em></h2>
+        <div class="section-label" data-i18n="servicos.pediatrica.label">Cuidado Especializado</div>
+        <h2 data-i18n-html="servicos.pediatrica.title">Osteopatia <em>Pediátrica</em></h2>
         <p class="intro-text">A osteopatia pediátrica é uma especialidade que aplica técnicas suaves e não invasivas para tratar bebés, crianças e adolescentes. É um dos nossos serviços mais procurados e delicados.</p>
         <p>O nascimento, mesmo quando corre bem, é um processo fisicamente intenso para o bebé. As forças envolvidas durante o parto podem criar tensões nos tecidos cranianos e no sistema músculo-esquelético do recém-nascido. A osteopatia pediátrica intervém precocemente para <strong>eliminar essas tensões</strong> antes que se tornem padrões disfuncionais.</p>
         <p>Todas as técnicas utilizadas em bebés e crianças são <strong>extremamente suaves</strong> — muitas vezes comparadas à pressão de uma folha de papel — e totalmente seguras quando realizadas por profissional qualificado.</p>
@@ -545,8 +545,8 @@
         <div class="svc-visual-pill">Postura global</div>
       </div>
       <div class="svc-detail reveal-left">
-        <div class="section-label">Reeducação Postural</div>
-        <h2>RPG — Reeducação Postural <em>Global</em></h2>
+        <div class="section-label" data-i18n="servicos.rpg.label">Reeducação Postural</div>
+        <h2 data-i18n-html="servicos.rpg.title">RPG — Reeducação Postural <em>Global</em></h2>
         <p class="intro-text">O RPG é um método terapêutico desenvolvido pelo fisioterapeuta francês Philippe Souchard que trata o corpo como um sistema de cadeias musculares interligadas — porque a postura é sempre global, nunca localizada.</p>
         <p>Em vez de tratar apenas a zona de dor, o RPG trabalha sobre as <strong>cadeias musculares posteriores e anteriores</strong> na sua totalidade. Através de posturas terapêuticas mantidas progressivamente, o método alonga os músculos retraídos e corrige os padrões posturais que estão na origem dos problemas.</p>
         <p>As sessões de RPG duram tipicamente 50–60 minutos e o paciente é mantido em posturas específicas durante vários minutos, enquanto o terapeuta guia e ajusta. O método exige <strong>participação ativa</strong> e consciência corporal por parte do paciente.</p>
@@ -581,8 +581,8 @@
 <section id="faq-servicos">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 1rem">
-      <div class="section-label">Dúvidas</div>
-      <h2 class="section-title">Perguntas sobre os <em>tratamentos</em></h2>
+      <div class="section-label" data-i18n="servicos.faq.label">Dúvidas</div>
+      <h2 class="section-title" data-i18n-html="servicos.faq.title">Perguntas sobre os <em>tratamentos</em></h2>
     </div>
     <div class="faq-grid-2">
       <div class="faq-col">
@@ -604,7 +604,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="assets/logofisiovitae-transparent.png" alt="Fisio Vitae" class="nav-logo-img" loading="lazy" decoding="async"/></a><p>Clínica de Fisioterapia e Osteopatia em Panóias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p><div class="footer-social"><a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div>
-      <div class="footer-col"><h4 data-i18n="nav.services">Serviços</h4><ul><li><a href="#percutanea">Fisioterapia Percutânea</a></li><li><a href="#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="#pilates">Pilates Clínico</a></li><li><a href="#osteopatia">Osteopatia Estrutural</a></li><li><a href="#pediatrica">Osteopatia Pediátrica</a></li><li><a href="#rpg">RPG</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="nav.services">Serviços</h4><ul><li><a href="#percutanea">Fisioterapia Percutânea</a></li><li><a href="#ecoguiada">Fisioterapia Ecoguiada</a></li><li><a href="#pilates" data-i18n="servicos.snav.pilates">Pilates Clínico</a></li><li><a href="#osteopatia">Osteopatia Estrutural</a></li><li><a href="#pediatrica">Osteopatia Pediátrica</a></li><li><a href="#rpg" data-i18n="servicos.snav.rpg">RPG</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="footer.clinic">Clínica</h4><ul><li><a href="sobre.html" data-i18n="footer.about_us">Sobre Nós</a></li><li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
       <div class="footer-col"><h4 data-i18n="nav.contact">Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><strong style="color:rgba(255,255,255,.7)">Tel</strong><br><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><strong style="color:rgba(255,255,255,.7)">Email</strong><br><a href="mailto:saude@fisiovitae.pt" style="color:var(--orange);text-decoration:none">saude@fisiovitae.pt</a></p></div>
     </div>

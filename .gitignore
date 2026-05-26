@@ -34,3 +34,15 @@ logs/
 .cache/
 .parcel-cache
 .turbo/
+
+# Tooling artefacts (Claude Code + Playwright screenshots)
+.claude/
+.playwright-mcp/
+
+# Local screenshots / debug output
+fisiovitae-*.png
+fisiovitae-*.jpeg
+hero-full.png
+v-*.jpeg
+verify-*.jpeg
+net-style-response.txt

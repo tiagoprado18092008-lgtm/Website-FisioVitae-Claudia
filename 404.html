@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/style.css"/>
+  <link rel="stylesheet" href="assets/style.css?v=20260526b"/>
   <style>
     body { display:flex; flex-direction:column; min-height:100vh; }
     .notfound {
@@ -99,8 +99,8 @@
     <li><a href="index.html">Início</a></li>
     <li><a href="sobre.html">Sobre</a></li>
     <li><a href="servicos.html">Serviços</a></li>
-    <li><a href="equipa.html">Equipa</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li>
+    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
     <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -149,7 +149,7 @@
   <div class="footer-inner">
     <div class="footer-bottom" style="padding-top:2rem;border-top:1px solid rgba(255,255,255,.07)">
       <p>© 2025 Fisio Vitae · Panóias, Braga</p>
-      <p>Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p>
+      <p data-i18n-html="footer.credit">Website por <a href="https://alphascaleai.com" target="_blank" rel="noopener">AlphaScale AI</a></p>
     </div>
   </div>
 </footer>

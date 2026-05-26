@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Estética | Fisio Vitae — Braga</title>
-  <meta name="description" content="Tratamentos de Estética na Fisio Vitae em Panóias, Braga. Cuidados faciais e corporais personalizados com produtos profissionais e técnicas avançadas."/>
+  <title>Osteopatia Estrutural | Fisio Vitae — Braga</title>
+  <meta name="description" content="Osteopatia Estrutural na Fisio Vitae em Panóias, Braga. Abordagem holística para hérnias, artrose, cefaleias e disfunções estruturais."/>
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -13,14 +13,20 @@
   <link rel="stylesheet" href="assets/style.css"/>
   <style>
     .svc-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .svc-visual { aspect-ratio:4/5; border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); background:var(--orange-pale); }
+    .svc-visual { aspect-ratio:4/5; border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: 0 32px 80px rgba(26,26,26,.18), 0 8px 24px rgba(232,101,10,.10); }
     .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
     .svc-visual:hover img { transform: scale(1.06); }
     .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; }
-    .svc-visual-badge { position:absolute; bottom:1.5rem; left:1.5rem; z-index:2; background: rgba(255,255,255,.95); backdrop-filter: blur(12px); padding:.55rem .95rem; border-radius: 999px; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color: var(--dark); box-shadow: 0 8px 24px rgba(26,26,26,.18); display:flex; align-items:center; gap:.5rem; }
+    .svc-visual-badge {
+      position:absolute; bottom:1.5rem; left:1.5rem; z-index:2;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+      padding:.55rem .95rem; border-radius: 999px;
+      font-size:.62rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color: var(--dark);
+      box-shadow: 0 8px 24px rgba(26,26,26,.18);
+      display:flex; align-items:center; gap:.5rem;
+    }
     .svc-visual-badge::before { content:''; width:6px; height:6px; background:var(--orange); border-radius:50%; }
-    .svc-detail h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:600; color:var(--dark); letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem; }
-    .svc-detail h2 em { font-style:italic; color:var(--orange); }
     .svc-detail .intro-text { font-size:1.05rem; color:var(--text-light); line-height:1.8; margin-bottom:1.5rem; }
     .svc-detail p { font-size:.93rem; color:var(--text-light); line-height:1.78; margin-bottom:1rem; }
     .svc-detail p strong { color:var(--text); }
@@ -38,23 +44,24 @@
     .svc-cta-inline p { font-size:.875rem; color:rgba(255,255,255,.75); margin-top:.25rem; }
     .svc-page { padding:6rem 0; background:var(--cream); }
     .svc-h4 { font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--dark); margin-bottom:.75rem; margin-top:1.5rem; }
-    @media(max-width:768px) { .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; } .svc-visual { display:none; }
-    .svc-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition: transform 1.4s cubic-bezier(.22,1,.36,1); }
-    .svc-visual:hover img { transform: scale(1.06); }
-    .svc-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, transparent 40%, rgba(232,101,10,.20) 100%); pointer-events:none; } .svc-cta-inline { flex-direction:column; align-items:flex-start; } }
+    @media(max-width:768px) {
+      .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .svc-visual { display:none; }
+      .svc-cta-inline { flex-direction:column; align-items:flex-start; }
+    }
   </style>
 <!-- FISIOVITAE_SEO_INJECTED -->
-<link rel="canonical" href="https://visiovitae.vercel.app/estetica.html"/>
+<link rel="canonical" href="https://visiovitae.vercel.app/osteopatia.html"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://visiovitae.vercel.app/estetica.html"/>
-<meta property="og:title" content="Estética | Fisio Vitae — Braga"/>
-<meta property="og:description" content="Tratamentos de Estética na Fisio Vitae em Panóias, Braga. Cuidados faciais e corporais personalizados com produtos profissionais e técnicas avançadas."/>
+<meta property="og:url" content="https://visiovitae.vercel.app/osteopatia.html"/>
+<meta property="og:title" content="Osteopatia Estrutural | Fisio Vitae — Braga"/>
+<meta property="og:description" content="Osteopatia Estrutural na Fisio Vitae em Panóias, Braga. Abordagem holística para hérnias, artrose, cefaleias e disfunções estruturais."/>
 <meta property="og:image" content="https://visiovitae.vercel.app/assets/logofisiovitae.png"/>
 <meta property="og:locale" content="pt_PT"/>
 <meta property="og:site_name" content="FisioVitae"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Estética | Fisio Vitae — Braga"/>
-<meta name="twitter:description" content="Tratamentos de Estética na Fisio Vitae em Panóias, Braga. Cuidados faciais e corporais personalizados com produtos profissionais e técnicas avançadas."/>
+<meta name="twitter:title" content="Osteopatia Estrutural | Fisio Vitae — Braga"/>
+<meta name="twitter:description" content="Osteopatia Estrutural na Fisio Vitae em Panóias, Braga. Abordagem holística para hérnias, artrose, cefaleias e disfunções estruturais."/>
 <meta name="twitter:image" content="https://visiovitae.vercel.app/assets/logofisiovitae.png"/>
 <meta name="theme-color" content="#0F6E56"/>
 <script type="application/ld+json">
@@ -97,7 +104,7 @@
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Início","item":"https://visiovitae.vercel.app/"},
     {"@type":"ListItem","position":2,"name":"Serviços","item":"https://visiovitae.vercel.app/servicos.html"},
-    {"@type":"ListItem","position":3,"name":"Estética"}
+    {"@type":"ListItem","position":3,"name":"Osteopatia Estrutural"}
   ]
 }
 </script>
@@ -161,77 +168,84 @@
     </li>
     <li><a href="equipa.html">Equipa</a></li>
     <li><a href="contacto.html">Contacto</a></li>
-    <li><a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="nav-cta">Marcar Consulta</a></li>
+    <li><a href="contacto.html" class="nav-cta">Marcar Consulta</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
-  <a href="index.html">Início</a><a href="sobre.html">Sobre</a><a href="servicos.html">Serviços</a>
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="servicos.html">Serviços</a>
   <div class="mobile-nav-services">
     <span class="mobile-nav-category">Fisioterapia</span>
     <a href="fisioterapia-percutanea.html">↳ Fisioterapia Percutânea</a>
     <a href="fisioterapia-ecoguiada.html">↳ Fisioterapia Ecoguiada</a>
-    <a href="rpg.html">↳ RPG</a>
+    <a href="rpg.html">↳ RPG – Reeducação Postural Global</a>
+    <a href="servicos.html">↳ Tratamentos de Fisioterapia</a>
     <span class="mobile-nav-category">Osteopatia</span>
     <a href="osteopatia-estrutural.html">↳ Osteopatia Estrutural</a>
     <a href="osteopatia-pediatrica.html">↳ Osteopatia Pediátrica</a>
-    <a href="osteopatia-ginecologica.html">↳ Ginecológica e Gestacional</a>
-    <a href="osteopatia-sacro-craniana.html">↳ Sacro-Craniana</a>
-    <a href="osteopatia-visceral.html">↳ Visceral</a>
+    <a href="osteopatia-ginecologica.html">↳ Osteopatia Ginecológica e Gestacional</a>
+    <a href="osteopatia-sacro-craniana.html">↳ Osteopatia Sacro-Craniana</a>
+    <a href="osteopatia-visceral.html">↳ Osteopatia Visceral</a>
     <span class="mobile-nav-category">Massagens & Bem-Estar</span>
-    <a href="massagem-relaxamento.html">↳ Relaxamento</a>
-    <a href="massagem-anti-celulite.html">↳ Anti-Celulite</a>
+    <a href="massagem-relaxamento.html">↳ Massagem de Relaxamento</a>
+    <a href="massagem-anti-celulite.html">↳ Massagem anti-Celulite</a>
     <a href="drenagem-linfatica.html">↳ Drenagem Linfática</a>
-    <a href="mesoterapia-homeopatica.html">↳ Mesoterapia</a>
+    <a href="mesoterapia-homeopatica.html">↳ Mesoterapia Homeopática</a>
     <a href="electroacupuntura.html">↳ Electroacupuntura</a>
     <a href="reiki.html">↳ Reiki</a>
     <span class="mobile-nav-category">Pilates & Estética</span>
     <a href="pilates-clinico.html">↳ Pilates Clínico</a>
     <a href="estetica.html">↳ Estética</a>
   </div>
-  <a href="equipa.html">Equipa</a><a href="contacto.html">Contacto</a>
-  <a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="mobile-nav-cta">Marcar Consulta</a>
+  <a href="equipa.html">Equipa</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
 </div>
 
 <section class="page-hero" style="background:var(--cream);">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><a href="servicos.html">Serviços</a><span>›</span><span class="current">Estética</span></div>
-    <div class="page-hero-label section-label">Beleza e Cuidado</div>
-    <h1 class="page-hero-title"><em>Estética</em></h1>
+    <div class="breadcrumb"><a href="index.html">Início</a><span>›</span><a href="servicos.html">Serviços</a><span>›</span><span class="current">Osteopatia</span></div>
+    <div class="page-hero-label section-label">Abordagem Holística</div>
+    <h1 class="page-hero-title">Osteopatia <em>Estrutural</em></h1>
   </div>
 </section>
 
 <section class="svc-page">
   <div class="container">
     <div class="svc-detail-grid">
-      <div class="svc-visual"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt="Tratamentos de Estética — cuidado facial e corporal personalizado" loading="lazy"/><div class="svc-visual-badge">Cuidado personalizado</div></div>
+      <div class="svc-visual">
+        <img src="assets/fotos/osteopatia-manual-paciente.jpg" alt="Osteopatia estrutural — Dra. Cláudia Alves em sessão de terapia manual" loading="lazy"/>
+        <div class="svc-visual-badge">Terapia manual</div>
+      </div>
       <div class="svc-detail">
-        <p class="intro-text">Tratamentos estéticos faciais e corporais personalizados, combinando técnicas profissionais com produtos de alta qualidade para realçar a sua beleza natural.</p>
-        <p>O nosso espaço de estética oferece uma <strong>gama variada de tratamentos</strong> adaptados a cada tipo de pele e necessidade — limpezas de pele profundas, peelings, hidratações, tratamentos anti-idade, depilação, manicure e pedicure.</p>
-        <p>Cada protocolo começa com uma análise cuidada da pele, das suas necessidades e objetivos pessoais, para que o tratamento escolhido devolva resultados visíveis e duradouros.</p>
+        <p class="intro-text">A osteopatia estrutural parte de uma premissa fundamental: o corpo humano é uma unidade. Quando há disfunção numa estrutura, outras são inevitavelmente afetadas. O osteopata trata o sistema, não apenas o sintoma.</p>
+        <p>Através de técnicas manuais sofisticadas — manipulações articulares, mobilizações, técnicas de tecidos moles e técnicas de energia muscular — o osteopata restaura a mobilidade das articulações e o equilíbrio muscular, eliminando as tensões que estão na origem da dor.</p>
+        <p>A abordagem holística da osteopatia considera a interação entre o sistema músculo-esquelético, visceral e craniosacral, permitindo tratar condições aparentemente não relacionadas com a musculatura mas que têm origem em <strong>disfunções estruturais</strong>.</p>
 
         <div class="svc-how">
-          <h4>Como funciona uma sessão?</h4>
+          <h4>Técnicas utilizadas na Fisio Vitae</h4>
           <div class="svc-how-steps">
-            <div class="svc-step"><div class="step-num">1</div><span><strong>Análise:</strong> Avaliação da pele e identificação das necessidades.</span></div>
-            <div class="svc-step"><div class="step-num">2</div><span><strong>Preparação:</strong> Limpeza e preparação da zona a tratar.</span></div>
-            <div class="svc-step"><div class="step-num">3</div><span><strong>Tratamento:</strong> Aplicação do protocolo personalizado.</span></div>
-            <div class="svc-step"><div class="step-num">4</div><span><strong>Manutenção:</strong> Conselhos de cuidados diários e produtos recomendados.</span></div>
+            <div class="svc-step"><div class="step-num">1</div><span><strong>Manipulação articular (HVLA):</strong> Técnicas de alta velocidade e baixa amplitude para restaurar mobilidade articular.</span></div>
+            <div class="svc-step"><div class="step-num">2</div><span><strong>Técnicas de tecidos moles:</strong> Massagem profunda, inibição e estiramentos para relaxamento muscular e fascial.</span></div>
+            <div class="svc-step"><div class="step-num">3</div><span><strong>Energia muscular (MET):</strong> Contrações isométricas ativas para corrigir disfunções articulares.</span></div>
+            <div class="svc-step"><div class="step-num">4</div><span><strong>Técnicas funcionais:</strong> Mobilizações suaves que seguem o movimento natural do tecido.</span></div>
           </div>
         </div>
 
-        <h4 class="svc-h4">Indicações</h4>
+        <h4 class="svc-h4">Condições tratadas</h4>
         <div class="svc-indicators">
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cuidados faciais</strong> — limpezas de pele, hidratações e tratamentos específicos</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Peelings</strong> — renovação e luminosidade da pele</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Tratamentos anti-idade</strong> — firmeza, redensificação e prevenção</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Depilação</strong> — cera quente, morna e zonas íntimas</span></div>
-          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Manicure e Pedicure</strong> — cuidado completo de mãos e pés</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Hérnias discais e ciáticas</strong> — alívio da compressão radicular</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Artrose e rigidez articular</strong> — melhoria da mobilidade e redução da dor</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções da ATM</strong> — bruxismo, dores na mandíbula e face</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Cefaleias e enxaquecas tensionais</strong> — de origem músculo-esquelética</span></div>
+          <div class="svc-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Disfunções viscerais</strong> — refluxo, prisão de ventre, problemas digestivos</span></div>
         </div>
 
         <div class="svc-cta-inline">
-          <div><h4>Quer saber mais sobre este tratamento?</h4><p>Marque uma avaliação personalizada com a nossa equipa.</p></div>
-          <a href="contacto.html" class="btn-primary">Marcar Avaliação</a>
+          <div><h4>Trate a causa, não apenas o sintoma</h4><p>Agende uma avaliação osteopática completa.</p></div>
+          <a href="contacto.html" class="btn-primary">Marcar Consulta</a>
         </div>
       </div>
     </div>
@@ -240,9 +254,9 @@
 
 
 <!-- QUICK INFO STICKY (desktop only) -->
-<aside class="svc-quickinfo" aria-label="Informação rápida sobre Estética">
+<aside class="svc-quickinfo" aria-label="Informação rápida sobre Osteopatia Estrutural">
   <div class="svc-quickinfo-label">Marcar agora</div>
-  <h4>Estética</h4>
+  <h4>Osteopatia Estrutural</h4>
   <div class="svc-quickinfo-row">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span><strong>Duração</strong><br>45–60 min por sessão</span>
@@ -255,7 +269,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
     <span><strong>Panóias, Braga</strong><br>Rua Nova de Agrafonte, 31</span>
   </div>
-  <a href="https://wa.me/351253623663?text=Ol%c3%a1!%20Gostaria%20de%20marcar%20uma%20consulta%20de%20Est%c3%a9tica." target="_blank" rel="noopener" class="svc-quickinfo-cta">
+  <a href="https://wa.me/351253623663?text=Ol%c3%a1!%20Gostaria%20de%20marcar%20uma%20consulta%20de%20Osteopatia%20Estrutural." target="_blank" rel="noopener" class="svc-quickinfo-cta">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
     Marcar via WhatsApp
   </a>
@@ -330,7 +344,6 @@
   <span class="wa-tooltip">Fale connosco</span>
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-
 <script src="assets/main.js"></script>
 </body>
 </html>

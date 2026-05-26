@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Osteopatia | Fisio Vitae — Braga</title>
-  <meta name="description" content="Tratamentos de Osteopatia na Fisio Vitae em Panoias, Braga: Estrutural, Pediátrica, Ginecológica, Sacro-Craniana e Visceral."/>
+  <title>Fisioterapia | Fisio Vitae — Braga</title>
+  <meta name="description" content="Tratamentos de Fisioterapia na Fisio Vitae em Panoias, Braga: Percutânea, Ecoguiada, Pilates Clínico, RPG e Electroacupuntura."/>
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -12,34 +12,131 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/style.css"/>
   <style>
+    /* ── HERO ── */
     .cat-hero { background: var(--cream); padding: 8rem 0 3rem; }
-    .cat-hero .breadcrumb { font-size: .8rem; color: var(--text-light); margin-bottom: 1.2rem; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+    .cat-hero .breadcrumb {
+      font-size: .8rem; color: var(--text-light); margin-bottom: 1.2rem;
+      display: flex; gap: .5rem; align-items: center; flex-wrap: wrap;
+    }
     .cat-hero .breadcrumb a { color: var(--text-light); text-decoration: none; transition: color .2s; }
     .cat-hero .breadcrumb a:hover { color: var(--orange); }
     .cat-hero .breadcrumb .current { color: var(--orange); font-weight: 600; }
-    .cat-hero h1 { font-family: 'Playfair Display', var(--font-display), serif; font-size: clamp(2.8rem, 6.5vw, 5.5rem); font-weight: 700; color: var(--orange); letter-spacing: -.02em; line-height: 1; margin-bottom: 1.2rem; }
-    .cat-hero-sub { font-size: 1.02rem; color: var(--text-light); line-height: 1.7; max-width: 520px; }
+    .cat-hero h1 {
+      font-family: 'Playfair Display', var(--font-display), serif;
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: -.02em;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .cat-hero-sub {
+      font-size: 1.02rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 520px;
+    }
 
+    /* ── GRID DE SUB-SERVIÇOS ── */
     .cat-grid-section { background: var(--beige); padding: 4.5rem 0 7rem; }
-    .sub-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
-    .sub-card { background: var(--white); border: 1px solid var(--beige-mid); border-radius: var(--radius); padding: 1rem 1rem 1.6rem; transition: all .35s cubic-bezier(.22,1,.36,1); text-decoration: none; color: inherit; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .sub-card:hover { border-color: var(--orange); box-shadow: 0 22px 60px rgba(232,101,10,.16); transform: translateY(-6px); }
-    .sub-card-media { position: relative; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; margin-bottom: 1.1rem; background: linear-gradient(135deg, rgba(232,101,10,.20), rgba(232,101,10,.05)); }
-    .sub-card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.22,1,.36,1); }
+
+    .sub-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .sub-card {
+      background: var(--white);
+      border: 1px solid var(--beige-mid);
+      border-radius: var(--radius);
+      padding: 1rem 1rem 1.6rem;
+      transition: all .35s cubic-bezier(.22,1,.36,1);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .sub-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 22px 60px rgba(232,101,10,.16);
+      transform: translateY(-6px);
+    }
+    .sub-card-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.1rem;
+      background: linear-gradient(135deg, rgba(232,101,10,.20), rgba(232,101,10,.05));
+    }
+    .sub-card-media img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(.22,1,.36,1);
+    }
     .sub-card:hover .sub-card-media img { transform: scale(1.06); }
-    .sub-card-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(26,26,26,.20) 100%); pointer-events: none; }
-    .sub-card-pill { position: absolute; top: .8rem; left: .8rem; z-index: 2; background: rgba(26,26,26,.82); backdrop-filter: blur(8px); color: var(--white); font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: .38rem .68rem; border-radius: 4px; }
+    .sub-card-media::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(26,26,26,.20) 100%);
+      pointer-events: none;
+    }
+    .sub-card-pill {
+      position: absolute;
+      top: .8rem; left: .8rem;
+      z-index: 2;
+      background: rgba(26,26,26,.82);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .38rem .68rem;
+      border-radius: 4px;
+    }
     .sub-card-body { padding: 0 .65rem; }
-    .sub-card-title { display: flex; align-items: center; justify-content: space-between; gap: .75rem; font-family: 'Playfair Display', var(--font-display), serif; font-size: 1.18rem; font-weight: 700; color: var(--dark); margin-bottom: .55rem; line-height: 1.2; }
-    .sub-card-arrow { flex-shrink: 0; width: 22px; height: 22px; color: var(--orange); transition: transform .3s ease; }
+    .sub-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      font-family: 'Playfair Display', var(--font-display), serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .55rem;
+      line-height: 1.2;
+    }
+    .sub-card-arrow {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      color: var(--orange);
+      transition: transform .3s ease;
+    }
     .sub-card:hover .sub-card-arrow { transform: translateX(4px); }
-    .sub-card-desc { font-size: .87rem; color: var(--text-light); line-height: 1.65; padding: 0 .65rem; }
-    @media (max-width: 1024px) { .sub-cards { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 640px) { .sub-cards { grid-template-columns: 1fr; } .cat-hero { padding-top: 6rem; } }
+    .sub-card-desc {
+      font-size: .87rem;
+      color: var(--text-light);
+      line-height: 1.65;
+      padding: 0 .65rem;
+    }
+
+    @media (max-width: 1024px) {
+      .sub-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .sub-cards { grid-template-columns: 1fr; }
+      .cat-hero { padding-top: 6rem; }
+    }
   </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo"><img src="assets/logofisiovitae-transparent.png" alt="Fisio Vitae" class="nav-logo-img" loading="lazy" decoding="async"/></a>
   <ul class="nav-links">
@@ -132,92 +229,97 @@
   <a href="contacto.html" class="mobile-nav-cta">Marcar Consulta</a>
 </div>
 
+<!-- HERO -->
 <section class="cat-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Início</a><span>/</span><span class="current">Osteopatia</span></div>
-    <h1>Osteopatia</h1>
-    <p class="cat-hero-sub">Abordagem holística do corpo humano através de técnicas manuais — para restaurar o equilíbrio estrutural, eliminar a causa profunda da dor e devolver mobilidade.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Início</a><span>/</span><span class="current">Fisioterapia</span>
+    </div>
+    <h1>Fisioterapia</h1>
+    <p class="cat-hero-sub">Avaliação e tratamento individual de dor, lesão e disfunção — para crianças e adultos. Técnicas avançadas combinadas com uma abordagem clínica personalizada.</p>
   </div>
 </section>
 
+<!-- GRID DE SUB-SERVIÇOS -->
 <section class="cat-grid-section">
   <div class="container">
     <div class="sub-cards">
 
-      <a href="osteopatia-estrutural.html" class="sub-card">
+      <a href="fisioterapia-percutanea.html" class="sub-card">
         <div class="sub-card-media">
-          <span class="sub-card-pill">Estrutural</span>
-          <img src="assets/fotos/osteopatia-manual-paciente.jpg" alt="Osteopatia Estrutural" loading="lazy"/>
+          <span class="sub-card-pill">Fisioterapia Percutânea</span>
+          <img src="assets/fotos/percutanea-agulha-detalhe.jpg" alt="Fisioterapia Percutânea — agulhas finas" loading="lazy"/>
         </div>
         <div class="sub-card-body">
           <h3 class="sub-card-title">
-            Osteopatia Estrutural
+            Fisioterapia Percutânea
             <svg class="sub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </h3>
         </div>
-        <p class="sub-card-desc">Abordagem holística do sistema músculo-esquelético. Técnicas manuais que restauram o equilíbrio e eliminam a causa profunda da dor.</p>
+        <p class="sub-card-desc">Tratamento com precisão milimétrica usando agulhas finas para alcançar estruturas profundas — eficaz em dor crónica, tendinopatias e lesões complexas.</p>
       </a>
 
-      <a href="osteopatia-pediatrica.html" class="sub-card">
+      <a href="fisioterapia-ecoguiada.html" class="sub-card">
         <div class="sub-card-media">
-          <span class="sub-card-pill">Pediátrica</span>
-          <img src="assets/fotos/pediatrica-claudia-bebe.jpg" alt="Osteopatia Pediátrica" loading="lazy"/>
+          <span class="sub-card-pill">Fisioterapia Ecoguiada</span>
+          <img src="assets/fotos/ecoguiada-claudia-tela.jpg" alt="Fisioterapia Ecoguiada — ecografia em tempo real" loading="lazy"/>
         </div>
         <div class="sub-card-body">
           <h3 class="sub-card-title">
-            Osteopatia Pediátrica
+            Fisioterapia Ecoguiada
             <svg class="sub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </h3>
         </div>
-        <p class="sub-card-desc">Técnicas gentis para bebés, crianças e adolescentes — cólicas, torcicolo congénito, problemas posturais e sequelas do parto.</p>
+        <p class="sub-card-desc">Tratamentos guiados por ecografia em tempo real — máxima precisão e mínimo risco nas estruturas anatómicas mais delicadas.</p>
       </a>
 
-      <a href="osteopatia-ginecologica.html" class="sub-card">
+      <a href="pilates-clinico.html" class="sub-card">
         <div class="sub-card-media">
-          <span class="sub-card-pill">Ginecológica</span>
-          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=900&q=80" alt="Osteopatia Ginecológica e Gestacional" loading="lazy"/>
+          <span class="sub-card-pill">Pilates Clínico</span>
+          <img src="assets/fotos/pilates-equipamento.jpg" alt="Pilates Clínico — equipamento e supervisão" loading="lazy"/>
         </div>
         <div class="sub-card-body">
           <h3 class="sub-card-title">
-            Osteopatia Ginecológica
+            Pilates Clínico
             <svg class="sub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </h3>
         </div>
-        <p class="sub-card-desc">Apoio osteopático na gravidez, pós-parto e disfunções do pavimento pélvico — para o bem-estar feminino em todas as fases.</p>
+        <p class="sub-card-desc">Programa supervisionado de exercício terapêutico. Reabilitação, fortalecimento e prevenção de lesões com base clínica — não é ginástica.</p>
       </a>
 
-      <a href="osteopatia-sacro-craniana.html" class="sub-card">
+      <a href="rpg.html" class="sub-card">
         <div class="sub-card-media">
-          <span class="sub-card-pill">Sacro-Craniana</span>
-          <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=900&q=80" alt="Osteopatia Sacro-Craniana" loading="lazy"/>
+          <span class="sub-card-pill">RPG</span>
+          <img src="assets/fotos/rpg-avaliacao-postural.jpg" alt="RPG — Reeducação Postural Global" loading="lazy"/>
         </div>
         <div class="sub-card-body">
           <h3 class="sub-card-title">
-            Sacro-Craniana
+            RPG — Reeducação Postural
             <svg class="sub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </h3>
         </div>
-        <p class="sub-card-desc">Técnica subtil que actua sobre o ritmo crânio-sacral — eficaz em cefaleias, stress, perturbações do sono e desequilíbrios neurovegetativos.</p>
+        <p class="sub-card-desc">Método progressivo sobre cadeias musculares para corrigir desequilíbrios posturais. Eficaz em escolioses, hérnias discais e dores crónicas.</p>
       </a>
 
-      <a href="osteopatia-visceral.html" class="sub-card">
+      <a href="electroacupuntura.html" class="sub-card">
         <div class="sub-card-media">
-          <span class="sub-card-pill">Visceral</span>
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="Osteopatia Visceral" loading="lazy"/>
+          <span class="sub-card-pill">Electroacupuntura</span>
+          <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&w=900&q=80" alt="Electroacupuntura" loading="lazy"/>
         </div>
         <div class="sub-card-body">
           <h3 class="sub-card-title">
-            Osteopatia Visceral
+            Electroacupuntura
             <svg class="sub-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </h3>
         </div>
-        <p class="sub-card-desc">Mobilização suave dos órgãos internos — alívio de disfunções digestivas, refluxo, obstipação e impacto destas em dores posturais.</p>
+        <p class="sub-card-desc">Estimulação eléctrica de baixa frequência aplicada em pontos específicos — alívio da dor, contracturas e regulação muscular.</p>
       </a>
 
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
@@ -228,9 +330,15 @@
         <span class="footer-tagline">Cuidar é a nossa vocação.</span>
         <p>Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
       </div>
       <div class="footer-col">

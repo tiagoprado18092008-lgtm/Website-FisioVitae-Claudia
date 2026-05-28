@@ -1207,6 +1207,15 @@
       .faq-wrap { grid-template-columns: 1fr; gap: 3rem; }
       .svc-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gi-1 { grid-column: 1 / 3; grid-row: auto; height: 280px; }
+      .gi-2, .gi-3, .gi-4 { grid-column: auto; grid-row: auto; height: 220px; }
+      .gallery-quote-block { grid-column: 1 / 3; grid-row: auto; }
+    }
     @media (max-width: 768px) {
       .hero-right { min-height: 380px; }
       .hero-overlay-strip {

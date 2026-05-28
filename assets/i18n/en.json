@@ -35,7 +35,7 @@
 
   "hero.status": "Accepting new patients",
   "hero.eyebrow": "Panoias, Braga · Since 2004",
-  "hero.title": "20 years of <em>caring</em><br>for those who move the world.",
+  "hero.title": "20 years of <em>caring</em><br>for those who move the world",
   "hero.sub": "Physiotherapy, Osteopathy and Clinical Pilates in Panoias, Braga. Dr. Cláudia Alves and a team dedicated to giving you back your movement.",
   "hero.meta.years": "Years of experience",
   "hero.meta.specialists": "Specialists",
@@ -115,7 +115,7 @@
   "gallery.quote_sub": "20 years in Panoias",
 
   "cta.label": "Ready to start?",
-  "cta.title": "Take the first step.<br>Recovery starts today.",
+  "cta.title": "Take the first step<br>Recovery starts today",
   "cta.text": "Our team is ready to welcome you and design a plan tailored to you. Book now — easy and hassle-free.",
   "cta.whatsapp": "Book via WhatsApp",
 
@@ -540,7 +540,7 @@
   "team.rafaela.cta_call": "Call Now",
   "team.rafaela.cta_msg": "Send Message",
   "team.group.label": "A different approach",
-  "team.group.title": "We don't treat symptoms.<br>We treat <em>people</em>.",
+  "team.group.title": "We don't treat symptoms<br>We treat <em>people</em>",
   "team.group.cta": "Book Your First Appointment",
   "team.group.badge_label": "specialists",
   "team.cta.title": "Ready to <em>start your recovery</em>?",
@@ -559,5 +559,31 @@
 
   "404.title": "Page not found",
   "404.sub": "The page you are looking for does not exist or has been moved.",
-  "404.cta": "Back to home"
+  "404.cta": "Back to home",
+
+  "breadcrumb.fisioterapia": "Physiotherapy",
+  "breadcrumb.osteopatia": "Osteopathy",
+  "breadcrumb.massagens": "Massage & Wellness",
+  "breadcrumb.holisticas": "Holistic Therapies",
+  "breadcrumb.pilates_estetica": "Pilates & Aesthetics",
+  "breadcrumb.servicos": "Services",
+  "breadcrumb.sobre": "About Us",
+  "breadcrumb.contacto": "Contact",
+  "breadcrumb.blog": "Blog",
+  "breadcrumb.percutanea": "Percutaneous Physiotherapy",
+  "breadcrumb.ecoguiada": "Ultrasound-Guided Physiotherapy",
+  "breadcrumb.rpg": "GPR",
+  "breadcrumb.pilates": "Clinical Pilates",
+  "breadcrumb.osteo_estrutural": "Structural Osteopathy",
+  "breadcrumb.osteo_pediatrica": "Paediatric Osteopathy",
+  "breadcrumb.osteo_gyn": "Gynaecological Osteopathy",
+  "breadcrumb.osteo_sacro": "Sacro-Cranial Osteopathy",
+  "breadcrumb.osteo_visceral": "Visceral Osteopathy",
+  "breadcrumb.massagem_relax": "Relaxation Massage",
+  "breadcrumb.massagem_anti": "Anti-Cellulite Massage",
+  "breadcrumb.drenagem": "Lymphatic Drainage",
+  "breadcrumb.mesoterapia": "Homeopathic Mesotherapy",
+  "breadcrumb.electro": "Electroacupuncture",
+  "breadcrumb.reiki": "Reiki",
+  "breadcrumb.estetica": "Aesthetics"
 }

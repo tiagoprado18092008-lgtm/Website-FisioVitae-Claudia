@@ -35,7 +35,7 @@
 
   "hero.status": "A aceitar novos pacientes",
   "hero.eyebrow": "Panoias, Braga · Desde 2004",
-  "hero.title": "20 anos a <em>cuidar</em><br>de quem move o mundo.",
+  "hero.title": "20 anos a <em>cuidar</em><br>de quem move o mundo",
   "hero.sub": "Fisioterapia, Osteopatia e Pilates Clínico em Panoias, Braga. Dra. Cláudia Alves e uma equipa dedicada a devolver-lhe o movimento.",
   "hero.meta.years": "Anos de experiência",
   "hero.meta.specialists": "Especialistas",
@@ -115,7 +115,7 @@
   "gallery.quote_sub": "20 anos em Panoias",
 
   "cta.label": "Pronto para começar?",
-  "cta.title": "Dê o primeiro passo.<br>A recuperação começa hoje.",
+  "cta.title": "Dê o primeiro passo<br>A recuperação começa hoje",
   "cta.text": "A nossa equipa está pronta para o receber e definir um plano à sua medida. Marque agora — fácil e sem complicações.",
   "cta.whatsapp": "Marcar via WhatsApp",
 
@@ -540,7 +540,7 @@
   "team.rafaela.cta_call": "Ligar Agora",
   "team.rafaela.cta_msg": "Enviar Mensagem",
   "team.group.label": "Uma abordagem diferente",
-  "team.group.title": "Não tratamos sintomas.<br>Tratamos <em>pessoas</em>.",
+  "team.group.title": "Não tratamos sintomas<br>Tratamos <em>pessoas</em>",
   "team.group.cta": "Agendar a Primeira Consulta",
   "team.group.badge_label": "especialistas",
   "team.cta.title": "Pronto para <em>começar a recuperar</em>?",
@@ -559,5 +559,31 @@
 
   "404.title": "Página não encontrada",
   "404.sub": "A página que procura não existe ou foi movida.",
-  "404.cta": "Voltar ao início"
+  "404.cta": "Voltar ao início",
+
+  "breadcrumb.fisioterapia": "Fisioterapia",
+  "breadcrumb.osteopatia": "Osteopatia",
+  "breadcrumb.massagens": "Massagens & Bem-Estar",
+  "breadcrumb.holisticas": "Holísticas",
+  "breadcrumb.pilates_estetica": "Pilates & Estética",
+  "breadcrumb.servicos": "Serviços",
+  "breadcrumb.sobre": "Sobre Nós",
+  "breadcrumb.contacto": "Contacto",
+  "breadcrumb.blog": "Blog",
+  "breadcrumb.percutanea": "Fisioterapia Percutânea",
+  "breadcrumb.ecoguiada": "Fisioterapia Ecoguiada",
+  "breadcrumb.rpg": "RPG",
+  "breadcrumb.pilates": "Pilates Clínico",
+  "breadcrumb.osteo_estrutural": "Osteopatia Estrutural",
+  "breadcrumb.osteo_pediatrica": "Osteopatia Pediátrica",
+  "breadcrumb.osteo_gyn": "Osteopatia Ginecológica",
+  "breadcrumb.osteo_sacro": "Osteopatia Sacro-Craniana",
+  "breadcrumb.osteo_visceral": "Osteopatia Visceral",
+  "breadcrumb.massagem_relax": "Massagem de Relaxamento",
+  "breadcrumb.massagem_anti": "Massagem Anti-Celulite",
+  "breadcrumb.drenagem": "Drenagem Linfática",
+  "breadcrumb.mesoterapia": "Mesoterapia Homeopática",
+  "breadcrumb.electro": "Electroacupuntura",
+  "breadcrumb.reiki": "Reiki",
+  "breadcrumb.estetica": "Estética"
 }

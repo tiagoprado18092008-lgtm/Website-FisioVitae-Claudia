@@ -44,9 +44,16 @@
     });
   }
 
+  const FLAGS = {
+    pt: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg>',
+    en: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="#012169"/><path d="M0 0l24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="5"/><path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3"/></svg>'
+  };
+
   function updateLangUI(lang) {
     const code = document.getElementById('langCode');
     if (code) code.textContent = lang.toUpperCase();
+    const toggleFlag = document.querySelector('#langToggle .nav-lang-flag');
+    if (toggleFlag && FLAGS[lang]) toggleFlag.innerHTML = FLAGS[lang];
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('#langMenu [data-lang]').forEach((btn) => {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);

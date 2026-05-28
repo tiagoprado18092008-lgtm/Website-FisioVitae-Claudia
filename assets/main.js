@@ -255,4 +255,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── ASSISTENTE / CHAT WIDGET ──
+  const chatWidget = document.getElementById('chatWidget');
+  if (chatWidget) {
+    const WA_NUMBER = '351253623663';
+    const fab = document.getElementById('chatFab');
+    const panel = document.getElementById('chatPanel');
+    const closeBtn = document.getElementById('chatClose');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('chatText');
+
+    const openChat = () => {
+      chatWidget.classList.add('open');
+      fab.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      setTimeout(() => input && input.focus(), 280);
+    };
+    const closeChat = () => {
+      chatWidget.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    };
+    const toggleChat = () => {
+      chatWidget.classList.contains('open') ? closeChat() : openChat();
+    };
+
+    fab.addEventListener('click', toggleChat);
+    closeBtn.addEventListener('click', closeChat);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatWidget.classList.contains('open')) closeChat();
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = (input.value || '').trim() || 'Olá! Gostaria de marcar uma consulta.';
+      const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank', 'noopener');
+      input.value = '';
+    });
+  }
+
 });

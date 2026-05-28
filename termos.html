@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Termos e Condições | Fisio Vitae</title>
+  <meta name="description" content="Termos e Condições de utilização da Fisio Vitae. Conheça as regras que regem a utilização dos nossos serviços."/>
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/style.css?v=20260528a"/>
+  <style>
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    .policy-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+      background: white;
+      border: 1px solid var(--beige);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .policy-sidebar h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--beige);
+    }
+    .policy-sidebar ul { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
+    .policy-sidebar a {
+      display: block;
+      font-size: .82rem;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: .4rem .6rem;
+      border-radius: 6px;
+      transition: all .2s;
+      line-height: 1.4;
+    }
+    .policy-sidebar a:hover { background: var(--orange-pale); color: var(--orange); }
+    .policy-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--beige);
+    }
+    .policy-content h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .policy-content h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 1.75rem 0 .5rem;
+    }
+    .policy-content p {
+      font-size: .95rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .policy-content ul, .policy-content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .policy-content li {
+      font-size: .95rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: .4rem;
+    }
+    .policy-content strong { color: var(--dark); font-weight: 600; }
+    .policy-content a { color: var(--orange); text-decoration: underline; }
+    .policy-highlight {
+      background: var(--orange-pale);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .policy-highlight p { margin: 0; color: var(--dark); font-weight: 500; }
+    .policy-last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      border-radius: 20px;
+      padding: .4rem 1rem;
+      font-size: .8rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    .policy-last-updated svg { width: 14px; height: 14px; color: var(--orange); }
+    @media (max-width: 768px) {
+      .policy-layout { grid-template-columns: 1fr; }
+      .policy-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logofisiovitae-transparent.png" alt="FisioVitae" class="nav-logo-img" loading="lazy" decoding="async"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-i18n="nav.home">Início</a></li>
+    <li><a href="sobre.html" data-i18n="nav.about">Sobre</a></li>
+    <li class="nav-dropdown">
+      <a href="servicos.html" class="nav-dropdown-toggle"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <ul class="nav-dropdown-menu">
+        <li class="dropdown-cat-item">
+          <div><span data-i18n="nav.cat.physio">Fisioterapia</span><span class="cat-desc" data-i18n="nav.cat.physio_desc">Reabilitação e movimento</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label" data-i18n="nav.cat.physio">Fisioterapia</li>
+            <li><a href="fisioterapia-percutanea.html" data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</a></li>
+            <li><a href="fisioterapia-ecoguiada.html" data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</a></li>
+            <li><a href="rpg.html" data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</a></li>
+            <li><a href="servicos.html" data-i18n="svc.physio.all">Tratamentos de Fisioterapia</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span data-i18n="nav.cat.osteo">Osteopatia</span><span class="cat-desc" data-i18n="nav.cat.osteo_desc">Equilíbrio estrutural</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label" data-i18n="nav.cat.osteo">Osteopatia</li>
+            <li><a href="osteopatia-estrutural.html" data-i18n="svc.osteo.structural">Osteopatia Estrutural</a></li>
+            <li><a href="osteopatia-pediatrica.html" data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</a></li>
+            <li><a href="osteopatia-ginecologica.html" data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</a></li>
+            <li><a href="osteopatia-sacro-craniana.html" data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</a></li>
+            <li><a href="osteopatia-visceral.html" data-i18n="svc.osteo.visceral">Osteopatia Visceral</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</span><span class="cat-desc" data-i18n="nav.cat.massage_desc">Relaxamento e terapia</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label" data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</li>
+            <li><a href="massagem-relaxamento.html" data-i18n="svc.massage.relax">Massagem de Relaxamento</a></li>
+            <li><a href="massagem-anti-celulite.html" data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</a></li>
+            <li><a href="drenagem-linfatica.html" data-i18n="svc.massage.lymphatic">Drenagem Linfática</a></li>
+            <li><a href="mesoterapia-homeopatica.html" data-i18n="svc.massage.meso">Mesoterapia Homeopática</a></li>
+            <li><a href="electroacupuntura.html" data-i18n="svc.massage.acupuncture">Electroacupuntura</a></li>
+            <li><a href="reiki.html" data-i18n="svc.massage.reiki">Reiki</a></li>
+          </ul>
+        </li>
+        <li class="dropdown-cat-item">
+          <div><span data-i18n="nav.cat.pilates">Pilates &amp; Estética</span><span class="cat-desc" data-i18n="nav.cat.pilates_desc">Movimento e beleza</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
+          <ul class="dropdown-sub">
+            <li class="dropdown-sub-label" data-i18n="nav.cat.pilates">Pilates &amp; Estética</li>
+            <li><a href="pilates-clinico.html" data-i18n="svc.pilates.clinical">Pilates Clínico</a></li>
+            <li><a href="estetica.html" data-i18n="svc.pilates.aesthetic">Estética</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li>
+    <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang-wrap">
+      <button class="nav-lang" id="langToggle" aria-expanded="false" aria-haspopup="true" aria-label="Mudar idioma / Change language">
+        <span class="nav-lang-flag" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg>
+        </span>
+        <span class="nav-lang-code" id="langCode">PT</span>
+        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul class="nav-lang-menu" id="langMenu" role="menu">
+        <li><button type="button" data-lang="pt" class="active">
+          <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg></span>
+          Português
+        </button></li>
+        <li><button type="button" data-lang="en">
+          <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0l24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="5"/><path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3"/></svg></span>
+          English
+        </button></li>
+      </ul>
+    </div>
+    <a href="tel:+351253623663" class="nav-phone" aria-label="Telefone 253 623 663">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>253 623 663</span>
+    </a>
+    <a href="contacto.html" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg>
+      <span data-i18n="nav.cta">Agendar</span>
+    </a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-i18n="nav.home">Início</a>
+  <a href="sobre.html" data-i18n="nav.about">Sobre</a>
+  <a href="servicos.html" data-i18n="nav.services">Serviços</a>
+  <a href="equipa.html" data-i18n="nav.team">Equipa</a>
+  <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
+  <a href="tel:+351253623663" class="mobile-nav-cta">253 623 663</a>
+</div>
+
+<section class="page-hero" style="padding:7rem 0 3rem; background:var(--cream);">
+  <div class="container" style="max-width:900px; margin:0 auto; padding:0 1.5rem; text-align:center;">
+    <p style="font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem;">Informação Legal</p>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--dark);margin-bottom:1rem;">Termos e Condições</h1>
+    <p style="font-size:1rem;color:var(--text-light);max-width:600px;margin:0 auto;">Regras que regem a utilização dos nossos serviços e do presente website.</p>
+  </div>
+</section>
+
+<div class="policy-layout">
+  <aside class="policy-sidebar">
+    <h3>Índice</h3>
+    <ul>
+      <li><a href="#identificacao">1. Identificação</a></li>
+      <li><a href="#servicos">2. Serviços Prestados</a></li>
+      <li><a href="#marcacoes">3. Marcações e Consultas</a></li>
+      <li><a href="#cancelamentos">4. Cancelamentos</a></li>
+      <li><a href="#pagamentos">5. Pagamentos</a></li>
+      <li><a href="#responsabilidade">6. Responsabilidade</a></li>
+      <li><a href="#website">7. Utilização do Website</a></li>
+      <li><a href="#propriedade">8. Propriedade Intelectual</a></li>
+      <li><a href="#privacidade">9. Privacidade</a></li>
+      <li><a href="#alteracoes">10. Alterações</a></li>
+      <li><a href="#lei">11. Lei Aplicável</a></li>
+      <li><a href="#contacto">12. Contacto</a></li>
+    </ul>
+  </aside>
+
+  <div class="policy-content">
+    <div class="policy-last-updated">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Última atualização: 28 de maio de 2026
+    </div>
+
+    <div class="policy-highlight">
+      <p>Ao utilizar os nossos serviços ou este website, aceita os presentes Termos e Condições. Leia-os com atenção antes de agendar qualquer consulta ou tratamento.</p>
+    </div>
+
+    <h2 id="identificacao">1. Identificação</h2>
+    <p>Este website e os serviços aqui descritos são prestados por <strong>Fisio Vitae</strong>, clínica de fisioterapia e osteopatia sediada em Panoias, Braga, Portugal.</p>
+    <ul>
+      <li><strong>Denominação:</strong> Fisio Vitae</li>
+      <li><strong>Morada:</strong> Rua Nova de Agrafonte, n.º 31, Panoias, Braga</li>
+      <li><strong>Telefone:</strong> +351 253 623 663</li>
+      <li><strong>Email:</strong> <a href="mailto:geral@fisiovitae.pt">geral@fisiovitae.pt</a></li>
+    </ul>
+
+    <h2 id="servicos">2. Serviços Prestados</h2>
+    <p>A Fisio Vitae presta serviços de saúde e bem-estar, incluindo fisioterapia, osteopatia, pilates clínico, massagens terapêuticas e estética. Os serviços são prestados por profissionais de saúde devidamente habilitados e certificados pelas entidades competentes.</p>
+    <p>Os serviços disponíveis podem ser alterados sem aviso prévio. A descrição dos serviços no website tem caráter meramente informativo e não substitui a avaliação clínica personalizada.</p>
+
+    <h2 id="marcacoes">3. Marcações e Consultas</h2>
+    <p>As consultas e tratamentos são realizados mediante marcação prévia, que pode ser efetuada por:</p>
+    <ul>
+      <li>Telefone: +351 253 623 663</li>
+      <li>Email: <a href="mailto:geral@fisiovitae.pt">geral@fisiovitae.pt</a></li>
+      <li>WhatsApp ou formulário de contacto no website</li>
+    </ul>
+    <p>A marcação é confirmada após contacto da nossa equipa. A Fisio Vitae reserva-se o direito de recusar ou reagendar consultas por motivos clínicos, operacionais ou de força maior.</p>
+
+    <h3>3.1 Pontualidade</h3>
+    <p>Solicitamos que os utentes compareçam com pelo menos 5 minutos de antecedência. Atrasos superiores a 15 minutos podem implicar a realização de uma consulta reduzida ou o seu reagendamento, sem direito a reembolso da taxa de cancelamento tardio quando aplicável.</p>
+
+    <h2 id="cancelamentos">4. Cancelamentos e Reagendamentos</h2>
+    <p>Para cancelar ou reagendar uma consulta, solicitamos um aviso mínimo de <strong>24 horas</strong> antes da hora marcada.</p>
+    <ul>
+      <li>Cancelamentos com mais de 24h de antecedência: sem qualquer custo.</li>
+      <li>Cancelamentos com menos de 24h ou falta sem aviso: poderá ser aplicada uma taxa correspondente ao custo da sessão.</li>
+    </ul>
+    <p>Em situações de força maior devidamente justificadas, analisaremos cada caso individualmente.</p>
+
+    <h2 id="pagamentos">5. Pagamentos</h2>
+    <p>O pagamento dos serviços é efetuado no final de cada sessão ou de acordo com o plano de tratamento acordado. Aceitamos os seguintes meios de pagamento:</p>
+    <ul>
+      <li>Numerário (dinheiro)</li>
+      <li>Transferência bancária</li>
+      <li>Cartão de débito/crédito (sujeito a disponibilidade)</li>
+    </ul>
+    <p>Os preços dos serviços são indicativos e podem variar conforme a duração e complexidade do tratamento. Será sempre informado do valor antes do início de qualquer sessão.</p>
+
+    <h3>5.1 Subsistemas de Saúde</h3>
+    <p>A Fisio Vitae pode ter protocolos com determinados subsistemas de saúde. Contacte-nos para confirmar se o seu subsistema está abrangido e quais as condições aplicáveis.</p>
+
+    <h2 id="responsabilidade">6. Responsabilidade</h2>
+    <p>Os profissionais da Fisio Vitae comprometem-se a prestar os seus serviços com o máximo de rigor, competência e dedicação, de acordo com as boas práticas clínicas e os protocolos estabelecidos.</p>
+    <p>A Fisio Vitae não se responsabiliza por:</p>
+    <ul>
+      <li>Resultados clínicos que dependam de fatores externos ao tratamento ou da falta de adesão às indicações terapêuticas por parte do utente;</li>
+      <li>Danos ou perdas não diretamente imputáveis à prestação dos seus serviços;</li>
+      <li>Informações médicas prestadas por terceiros ou obtidas fora do âmbito das consultas na clínica.</li>
+    </ul>
+
+    <h2 id="website">7. Utilização do Website</h2>
+    <p>O presente website destina-se a fornecer informação sobre os serviços da Fisio Vitae e a facilitar o contacto com a clínica. A utilização deste website está sujeita às seguintes condições:</p>
+    <ul>
+      <li>O conteúdo tem fins exclusivamente informativos e não constitui aconselhamento médico;</li>
+      <li>É proibida qualquer utilização do website para fins ilícitos ou que possa causar danos à Fisio Vitae ou a terceiros;</li>
+      <li>A Fisio Vitae não garante a disponibilidade contínua do website e pode proceder a alterações sem aviso prévio.</li>
+    </ul>
+
+    <h2 id="propriedade">8. Propriedade Intelectual</h2>
+    <p>Todo o conteúdo deste website — incluindo textos, imagens, logótipos, design e estrutura — é propriedade da Fisio Vitae ou dos seus licenciantes, estando protegido pela legislação de direitos de autor e propriedade intelectual aplicável.</p>
+    <p>É proibida a reprodução, distribuição ou utilização de qualquer conteúdo sem autorização prévia e escrita da Fisio Vitae.</p>
+
+    <h2 id="privacidade">9. Privacidade e Dados Pessoais</h2>
+    <p>O tratamento dos dados pessoais dos utentes é realizado em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD) e demais legislação aplicável. Para informação detalhada sobre como tratamos os seus dados, consulte a nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+
+    <h2 id="alteracoes">10. Alterações aos Termos e Condições</h2>
+    <p>A Fisio Vitae reserva-se o direito de atualizar os presentes Termos e Condições a qualquer momento. As alterações entram em vigor no momento da sua publicação no website. Recomendamos que consulte esta página regularmente.</p>
+    <p>A continuação da utilização dos nossos serviços após a publicação de alterações implica a aceitação dos novos termos.</p>
+
+    <h2 id="lei">11. Lei Aplicável e Resolução de Litígios</h2>
+    <p>Os presentes Termos e Condições são regidos pela lei portuguesa. Em caso de litígio, as partes comprometem-se a tentar uma resolução amigável.</p>
+    <p>Caso não seja possível resolver o litígio de forma amigável, poderá recorrer ao <strong>Centro de Arbitragem de Conflitos de Consumo</strong> ou a outros mecanismos de resolução alternativa de litígios (RAL) previstos na lei.</p>
+    <p>O utente tem ainda o direito de apresentar reclamação através do <strong>Livro de Reclamações Eletrónico</strong> disponível em <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">www.livroreclamacoes.pt</a>.</p>
+
+    <h2 id="contacto">12. Contacto</h2>
+    <p>Para qualquer questão relacionada com os presentes Termos e Condições, pode contactar-nos através de:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:geral@fisiovitae.pt">geral@fisiovitae.pt</a></li>
+      <li><strong>Telefone:</strong> +351 253 623 663</li>
+      <li><strong>Morada:</strong> Rua Nova de Agrafonte, n.º 31, Panoias, Braga, Portugal</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/logofisiovitae-transparent.png" alt="FisioVitae" class="nav-logo-img" loading="lazy" decoding="async" style="height:60px;"/>
+        </a>
+        <span class="footer-tagline">Cuidar é a nossa vocação.</span>
+        <p>Clínica de Fisioterapia e Osteopatia em Panoias, Braga. Duas décadas a devolver movimento e qualidade de vida.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/fisiovitae_claudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/fisiovitaeclaudiaalves/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/351253623663" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-accent-line"></div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li>
+          <li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li>
+          <li><a href="pilates-clinico.html">Pilates Clínico</a></li>
+          <li><a href="osteopatia-estrutural.html">Osteopatia Estrutural</a></li>
+          <li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li>
+          <li><a href="rpg.html">RPG</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-accent-line"></div>
+        <h4>Clínica</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="equipa.html">Equipa</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="politica-privacidade.html">Privacidade</a></li>
+          <li><a href="termos.html">Termos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-accent-line"></div>
+        <h4>Contacto</h4>
+        <p style="margin-bottom:.85rem">Rua Nova de Agrafonte, n.º 31<br>Panoias, Braga</p>
+        <p style="margin-bottom:.6rem">
+          <span style="color:var(--text-light);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Telefone</span>
+          <a href="tel:253623663" style="color:var(--orange);text-decoration:none;font-weight:600">253 623 663</a>
+        </p>
+        <p>
+          <span style="color:var(--text-light);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Horário</span>
+          <span>Seg–Sex: 9h–22h<br>Sábado: 9h–13h</span>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-left">© 2026 Clínica Rita Guerreiro — Centro de Terapias &amp; Bem-Estar &nbsp;|&nbsp; <a href="politica-privacidade.html">Privacidade</a> &nbsp;|&nbsp; <a href="termos.html">Termos</a></p>
+      <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener" class="livro-reclamacoes" aria-label="Livro de Reclamações Eletrónico">
+        <img src="assets/livro-reclamacoes.png" alt="Livro de Reclamações" class="livro-reclamacoes-img" loading="lazy"/>
+      </a>
+      <p class="footer-bottom-right">Desenvolvido por <a href="https://alphascaleai.com" target="_blank" rel="noopener" class="alphascale-link"><img src="assets/alphascaleai-logo-white.png" alt="AlphaScale AI" class="alphascale-logo" loading="lazy"/></a></p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/351253623663?text=Ol%C3%A1!%20Gostaria%20de%20marcar%20uma%20consulta." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale connosco via WhatsApp">
+  <span class="wa-tooltip">Fale connosco</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/main.js?v=20260528a"></script>
+</body>
+</html>

@@ -565,7 +565,7 @@ footer {
 .chat-fab:hover { transform:scale(1.08) translateY(-3px); box-shadow:0 10px 36px rgba(37,211,102,.55); }
 .chat-fab svg { width:28px; height:28px; color:#fff; position:absolute; transition:opacity .2s, transform .25s; }
 .chat-fab-close { opacity:0; transform:rotate(-90deg) scale(.6); }
-.chat-widget.open .chat-fab { background:var(--accent); animation:none; }
+.chat-widget.open .chat-fab { background:var(--orange); animation:none; }
 .chat-widget.open .chat-fab-icon { opacity:0; transform:rotate(90deg) scale(.6); }
 .chat-widget.open .chat-fab-close { opacity:1; transform:rotate(0) scale(1); }
 
@@ -582,7 +582,7 @@ footer {
 
 .chat-header {
   display:flex; align-items:center; gap:.75rem;
-  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  background:linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
   padding:1rem 1.1rem; color:#fff;
 }
 .chat-avatar {

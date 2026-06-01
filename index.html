@@ -181,6 +181,12 @@
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 40px 100px rgba(26,26,26,.35), 0 12px 32px rgba(232,101,10,.18);
+      /* parallax drift, driven by --parallax in main.js (scroll-linked) */
+      transform: translate3d(0, var(--parallax, 0px), 0);
+      will-change: transform;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-frame { transform: none; }
     }
     .hero-right-image {
       position: absolute;

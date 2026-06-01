@@ -4,14 +4,39 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── NAVBAR STICKY & SCROLL ──
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── NAVBAR SHRINK + HERO PARALLAX (single rAF-throttled scroll loop) ──
   const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const onScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      navbar.classList.toggle('scrolled', isScrolled);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
+  const heroFrame = document.querySelector('#hero .hero-frame');
+  const hero = document.getElementById('hero');
+
+  let ticking = false;
+  const onScroll = () => {
+    const y = window.scrollY;
+
+    // navbar condenses past a small threshold
+    if (navbar) navbar.classList.toggle('scrolled', y > 20);
+
+    // hero image drifts at ~0.18x scroll speed, only while hero is in view
+    if (heroFrame && hero && !prefersReducedMotion) {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      if (y < heroBottom) {
+        heroFrame.style.setProperty('--parallax', (y * 0.18).toFixed(1) + 'px');
+      }
+    }
+    ticking = false;
+  };
+
+  const requestScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(onScroll);
+    }
+  };
+
+  if (navbar || heroFrame) {
+    window.addEventListener('scroll', requestScroll, { passive: true });
     onScroll();
   }
 
@@ -66,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── SCROLL REVEAL (legacy + new .reveal data-delay) ──
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
   const showReveal = (el) => {

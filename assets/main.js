@@ -282,6 +282,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── ASSISTENTE / CHAT WIDGET ──
   const chatWidget = document.getElementById('chatWidget');
   if (chatWidget) {
+    // Update chat timestamp to current time
+    const chatTimeEl = chatWidget.querySelector('.chat-time');
+    if (chatTimeEl) {
+      const now = new Date();
+      chatTimeEl.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    }
+
     const WA_NUMBER = '351253623663';
     const fab = document.getElementById('chatFab');
     const panel = document.getElementById('chatPanel');

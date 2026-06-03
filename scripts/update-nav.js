@@ -26,8 +26,7 @@ function activeFor(file) {
       file === 'drenagem-linfatica.html' || file === 'electroacupuntura.html' ||
       file === 'mesoterapia-homeopatica.html' || file === 'reiki.html' ||
       file === 'rpg.html' || file === 'pilates-clinico.html' ||
-      file === 'estetica.html' || file === 'holisticas.html' ||
-      file === 'servicos.html') return 'services';
+      file === 'estetica.html' || file === 'holisticas.html') return 'services';
   return null;
 }
 
@@ -35,13 +34,13 @@ function buildNavbar(active) {
   const cls = (k) => active === k ? ' class="active"' : '';
   return `<nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <img src="assets/logofisiovitae-transparent.png" alt="FisioVitae" class="nav-logo-img" loading="lazy" decoding="async"/>
+    <img src="assets/logofisiovitae-transparent.png" alt="FisioVitae" class="nav-logo-img" loading="eager" fetchpriority="high" decoding="async"/>
   </a>
   <ul class="nav-links">
     <li><a href="index.html"${cls('home')} data-i18n="nav.home">Início</a></li>
     <li><a href="sobre.html"${cls('about')} data-i18n="nav.about">Sobre</a></li>
     <li class="nav-dropdown">
-      <a href="servicos.html" class="nav-dropdown-toggle${active === 'services' ? ' active' : ''}"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="#" class="nav-dropdown-toggle${active === 'services' ? ' active' : ''}"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
       <ul class="nav-dropdown-menu">
         <li class="dropdown-cat-item">
           <div><span data-i18n="nav.cat.physio">Fisioterapia</span><span class="cat-desc" data-i18n="nav.cat.physio_desc">Reabilitação e movimento</span></div>
@@ -51,7 +50,6 @@ function buildNavbar(active) {
             <li><a href="fisioterapia-percutanea.html" data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</a></li>
             <li><a href="fisioterapia-ecoguiada.html" data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</a></li>
             <li><a href="rpg.html" data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</a></li>
-            <li><a href="servicos.html" data-i18n="svc.physio.all">Tratamentos de Fisioterapia</a></li>
           </ul>
         </li>
         <li class="dropdown-cat-item">
@@ -90,7 +88,6 @@ function buildNavbar(active) {
         </li>
       </ul>
     </li>
-    <li><a href="equipa.html"${cls('team')} data-i18n="nav.team">Equipa</a></li>
     <li><a href="contacto.html"${cls('contact')} data-i18n="nav.contact">Contacto</a></li>
   </ul>
   <div class="nav-right">
@@ -141,13 +138,12 @@ const MOBILE_NAV = `<div class="mobile-nav" id="mobileNav">
   </div>
   <a href="index.html" data-i18n="nav.home">Início</a>
   <a href="sobre.html" data-i18n="nav.about">Sobre</a>
-  <a href="servicos.html" data-i18n="nav.services">Serviços</a>
+  <a href="#" data-i18n="nav.services">Serviços</a>
   <div class="mobile-nav-services">
     <span class="mobile-nav-category" data-i18n="nav.cat.physio">Fisioterapia</span>
     <a href="fisioterapia-percutanea.html"><span data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</span></a>
     <a href="fisioterapia-ecoguiada.html"><span data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</span></a>
     <a href="rpg.html"><span data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</span></a>
-    <a href="servicos.html"><span data-i18n="svc.physio.all">Tratamentos de Fisioterapia</span></a>
     <span class="mobile-nav-category" data-i18n="nav.cat.osteo">Osteopatia</span>
     <a href="osteopatia-estrutural.html"><span data-i18n="svc.osteo.structural">Osteopatia Estrutural</span></a>
     <a href="osteopatia-pediatrica.html"><span data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</span></a>
@@ -165,7 +161,6 @@ const MOBILE_NAV = `<div class="mobile-nav" id="mobileNav">
     <a href="pilates-clinico.html"><span data-i18n="svc.pilates.clinical">Pilates Clínico</span></a>
     <a href="estetica.html"><span data-i18n="svc.pilates.aesthetic">Estética</span></a>
   </div>
-  <a href="equipa.html" data-i18n="nav.team">Equipa</a>
   <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
   <a href="contacto.html" class="mobile-nav-cta" data-i18n="nav.cta">Marcar Consulta</a>
 </div>`;

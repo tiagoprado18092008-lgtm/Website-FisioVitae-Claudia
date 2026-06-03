@@ -53,6 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('mouseenter', () => { clearTimeout(t); item.classList.add('sub-open'); });
   });
 
+  // ── SERVIÇOS TOGGLE (href="#" → don't jump to top) ──
+  // The "Serviços" entry opens the dropdown (hover on desktop, always-expanded on
+  // mobile) and is not a page itself, so a click should not navigate anywhere.
+  document.querySelectorAll('.nav-dropdown-toggle[href="#"], .mobile-nav > a[href="#"]').forEach(link => {
+    link.addEventListener('click', (e) => e.preventDefault());
+  });
+
   // ── NAVBAR CTA SHAKE ON HOVER ──
   const navCta = document.querySelector('.nav-cta');
   if (navCta) {

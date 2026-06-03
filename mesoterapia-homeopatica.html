@@ -112,20 +112,21 @@
     <li><a href="index.html" data-i18n="nav.home">Início</a></li>
     <li><a href="sobre.html" data-i18n="nav.about">Sobre</a></li>
     <li class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle active"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
+      <a href="servicos.html" class="nav-dropdown-toggle active"><span data-i18n="nav.services">Serviços</span> <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M6 9l6 6 6-6"/></svg></a>
       <ul class="nav-dropdown-menu">
         <li class="dropdown-cat-item">
-          <a href="fisioterapia.html"><span data-i18n="nav.cat.physio">Fisioterapia</span><span class="cat-desc" data-i18n="nav.cat.physio_desc">Reabilitação e movimento</span></a>
+          <div><span data-i18n="nav.cat.physio">Fisioterapia</span><span class="cat-desc" data-i18n="nav.cat.physio_desc">Reabilitação e movimento</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
             <li class="dropdown-sub-label" data-i18n="nav.cat.physio">Fisioterapia</li>
             <li><a href="fisioterapia-percutanea.html" data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</a></li>
             <li><a href="fisioterapia-ecoguiada.html" data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</a></li>
             <li><a href="rpg.html" data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</a></li>
+            <li><a href="servicos.html" data-i18n="svc.physio.all">Tratamentos de Fisioterapia</a></li>
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <a href="osteopatia.html"><span data-i18n="nav.cat.osteo">Osteopatia</span><span class="cat-desc" data-i18n="nav.cat.osteo_desc">Equilíbrio estrutural</span></a>
+          <div><span data-i18n="nav.cat.osteo">Osteopatia</span><span class="cat-desc" data-i18n="nav.cat.osteo_desc">Equilíbrio estrutural</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
             <li class="dropdown-sub-label" data-i18n="nav.cat.osteo">Osteopatia</li>
@@ -137,7 +138,7 @@
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <a href="massagens.html"><span data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</span><span class="cat-desc" data-i18n="nav.cat.massage_desc">Relaxamento e terapia</span></a>
+          <div><span data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</span><span class="cat-desc" data-i18n="nav.cat.massage_desc">Relaxamento e terapia</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
             <li class="dropdown-sub-label" data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</li>
@@ -150,7 +151,7 @@
           </ul>
         </li>
         <li class="dropdown-cat-item">
-          <a href="pilates-estetica.html"><span data-i18n="nav.cat.pilates">Pilates &amp; Estética</span><span class="cat-desc" data-i18n="nav.cat.pilates_desc">Movimento e beleza</span></a>
+          <div><span data-i18n="nav.cat.pilates">Pilates &amp; Estética</span><span class="cat-desc" data-i18n="nav.cat.pilates_desc">Movimento e beleza</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M9 18l6-6-6-6"/></svg>
           <ul class="dropdown-sub">
             <li class="dropdown-sub-label" data-i18n="nav.cat.pilates">Pilates &amp; Estética</li>
@@ -197,30 +198,41 @@
   </button>
 </nav>
 <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-lang" id="mobileNavLang">
+    <button type="button" data-lang="pt" class="active">
+      <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg></span>
+      Português
+    </button>
+    <button type="button" data-lang="en">
+      <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0l24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="5"/><path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3"/></svg></span>
+      English
+    </button>
+  </div>
   <a href="index.html" data-i18n="nav.home">Início</a>
   <a href="sobre.html" data-i18n="nav.about">Sobre</a>
-  <a href="#" data-i18n="nav.services">Serviços</a>
+  <a href="servicos.html" data-i18n="nav.services">Serviços</a>
   <div class="mobile-nav-services">
     <span class="mobile-nav-category" data-i18n="nav.cat.physio">Fisioterapia</span>
-    <a href="fisioterapia-percutanea.html"><span data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</span></a>
-    <a href="fisioterapia-ecoguiada.html"><span data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</span></a>
-    <a href="rpg.html"><span data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</span></a>
+    <a href="fisioterapia-percutanea.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</span></a>
+    <a href="fisioterapia-ecoguiada.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</span></a>
+    <a href="rpg.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</span></a>
+    <a href="servicos.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.physio.all">Tratamentos de Fisioterapia</span></a>
     <span class="mobile-nav-category" data-i18n="nav.cat.osteo">Osteopatia</span>
-    <a href="osteopatia-estrutural.html"><span data-i18n="svc.osteo.structural">Osteopatia Estrutural</span></a>
-    <a href="osteopatia-pediatrica.html"><span data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</span></a>
-    <a href="osteopatia-ginecologica.html"><span data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</span></a>
-    <a href="osteopatia-sacro-craniana.html"><span data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</span></a>
-    <a href="osteopatia-visceral.html"><span data-i18n="svc.osteo.visceral">Osteopatia Visceral</span></a>
+    <a href="osteopatia-estrutural.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.structural">Osteopatia Estrutural</span></a>
+    <a href="osteopatia-pediatrica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</span></a>
+    <a href="osteopatia-ginecologica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</span></a>
+    <a href="osteopatia-sacro-craniana.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</span></a>
+    <a href="osteopatia-visceral.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.osteo.visceral">Osteopatia Visceral</span></a>
     <span class="mobile-nav-category" data-i18n="nav.cat.massage">Massagens & Bem-Estar</span>
-    <a href="massagem-relaxamento.html"><span data-i18n="svc.massage.relax">Massagem de Relaxamento</span></a>
-    <a href="massagem-anti-celulite.html"><span data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</span></a>
-    <a href="drenagem-linfatica.html"><span data-i18n="svc.massage.lymphatic">Drenagem Linfática</span></a>
-    <a href="mesoterapia-homeopatica.html"><span data-i18n="svc.massage.meso">Mesoterapia Homeopática</span></a>
-    <a href="electroacupuntura.html"><span data-i18n="svc.massage.acupuncture">Electroacupuntura</span></a>
-    <a href="reiki.html"><span data-i18n="svc.massage.reiki">Reiki</span></a>
+    <a href="massagem-relaxamento.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.relax">Massagem de Relaxamento</span></a>
+    <a href="massagem-anti-celulite.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</span></a>
+    <a href="drenagem-linfatica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.lymphatic">Drenagem Linfática</span></a>
+    <a href="mesoterapia-homeopatica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.meso">Mesoterapia Homeopática</span></a>
+    <a href="electroacupuntura.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.acupuncture">Electroacupuntura</span></a>
+    <a href="reiki.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.massage.reiki">Reiki</span></a>
     <span class="mobile-nav-category" data-i18n="nav.cat.pilates">Pilates & Estética</span>
-    <a href="pilates-clinico.html"><span data-i18n="svc.pilates.clinical">Pilates Clínico</span></a>
-    <a href="estetica.html"><span data-i18n="svc.pilates.aesthetic">Estética</span></a>
+    <a href="pilates-clinico.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.pilates.clinical">Pilates Clínico</span></a>
+    <a href="estetica.html"><span aria-hidden="true">↳ </span><span data-i18n="svc.pilates.aesthetic">Estética</span></a>
   </div>
   <a href="equipa.html" data-i18n="nav.team">Equipa</a>
   <a href="contacto.html" data-i18n="nav.contact">Contacto</a>

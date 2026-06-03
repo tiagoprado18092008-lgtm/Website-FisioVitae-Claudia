@@ -55,7 +55,7 @@
     const toggleFlag = document.querySelector('#langToggle .nav-lang-flag');
     if (toggleFlag && FLAGS[lang]) toggleFlag.innerHTML = FLAGS[lang];
     document.documentElement.setAttribute('lang', lang);
-    document.querySelectorAll('#langMenu [data-lang]').forEach((btn) => {
+    document.querySelectorAll('#langMenu [data-lang], #mobileNavLang [data-lang]').forEach((btn) => {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
   }
@@ -90,6 +90,16 @@
           setLang(lang);
           menu.classList.remove('open');
           toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Mobile language switcher (inside slide-out menu)
+    const mobileLang = document.getElementById('mobileNavLang');
+    if (mobileLang) {
+      mobileLang.querySelectorAll('[data-lang]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          setLang(btn.getAttribute('data-lang'));
         });
       });
     }

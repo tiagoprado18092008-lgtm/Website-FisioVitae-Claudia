@@ -129,6 +129,16 @@ function buildNavbar(active) {
 }
 
 const MOBILE_NAV = `<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-lang" id="mobileNavLang">
+    <button type="button" data-lang="pt" class="active">
+      <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="9" height="24" fill="#006600"/><rect x="9" width="15" height="24" fill="#FF0000"/><circle cx="9" cy="12" r="4.5" fill="#FFD500" stroke="#000" stroke-width=".5"/></svg></span>
+      Português
+    </button>
+    <button type="button" data-lang="en">
+      <span class="nav-lang-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0l24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="5"/><path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3"/></svg></span>
+      English
+    </button>
+  </div>
   <a href="index.html" data-i18n="nav.home">Início</a>
   <a href="sobre.html" data-i18n="nav.about">Sobre</a>
   <a href="servicos.html" data-i18n="nav.services">Serviços</a>

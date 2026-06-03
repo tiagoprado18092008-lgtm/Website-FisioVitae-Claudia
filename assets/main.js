@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileNav.classList.toggle('open', menuOpen);
+      document.body.classList.toggle('menu-open', menuOpen);
       const spans = hamburger.querySelectorAll('span');
       if (menuOpen) {
         spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
@@ -251,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.mobile-nav a').forEach(link => {
     link.addEventListener('click', () => {
       if (mobileNav) mobileNav.classList.remove('open');
+      document.body.classList.remove('menu-open');
       menuOpen = false;
       const spans = hamburger?.querySelectorAll('span');
       if (spans) spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });

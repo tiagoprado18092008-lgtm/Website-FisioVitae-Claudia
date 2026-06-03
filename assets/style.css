@@ -2,6 +2,22 @@
    FISIO VITAE — Global Stylesheet v2
    ═══════════════════════════════════════ */
 
+/* Substituir o & por Playfair Display itálico em todo o site */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2') format('woff2');
+  unicode-range: U+0026;
+  font-style: italic;
+  font-weight: 400 800;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-Q.woff2') format('woff2');
+  unicode-range: U+0026;
+  font-style: italic;
+  font-weight: 400 800;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -219,12 +235,28 @@ nav.scrolled .nav-logo-img { height:var(--nav-logo-height); }
 
 .mobile-nav {
   display:none; position:fixed; top:var(--nav-height); left:0; right:0;
+  max-height:calc(100vh - var(--nav-height));
+  overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
   background:rgba(251,248,244,.97); backdrop-filter:blur(24px);
   padding:1.75rem 2rem 2.5rem; z-index:999;
   border-bottom:1px solid var(--beige-mid); flex-direction:column; gap:.5rem;
   box-shadow:0 8px 40px rgba(26,26,26,.1);
 }
 .mobile-nav.open { display:flex; }
+body.menu-open { overflow:hidden; }
+
+/* ── MOBILE LANGUAGE SWITCHER (inside slide-out menu) ── */
+.mobile-nav-lang { display:flex; gap:.6rem; margin-bottom:.4rem; }
+.mobile-nav-lang button {
+  flex:1; display:flex; align-items:center; justify-content:center; gap:.5rem;
+  background:var(--white); border:1.5px solid var(--beige-mid); border-radius:100px;
+  padding:.6rem 1rem; font-size:.95rem; font-weight:600; color:var(--text);
+  cursor:pointer; transition:all .2s;
+}
+.mobile-nav-lang button .nav-lang-flag { width:22px; height:22px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+.mobile-nav-lang button .nav-lang-flag svg { width:22px; height:22px; display:block; }
+.mobile-nav-lang button.active { border-color:var(--orange); color:var(--orange); }
+.mobile-nav-lang button:hover { border-color:var(--orange); }
 .mobile-nav a { text-decoration:none; color:var(--text); font-size:1.05rem; font-weight:500; padding:.65rem 0; border-bottom:1px solid var(--beige); transition:color .2s; }
 .mobile-nav a:hover { color:var(--orange); }
 .mobile-nav-cta { background:var(--orange); color:var(--white) !important; padding:.9rem 1.5rem !important; border-radius:100px; text-align:center; border:none !important; margin-top:.75rem; font-weight:600 !important; }

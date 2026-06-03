@@ -777,8 +777,54 @@
     @media (max-width: 1100px) {
       .cat-cards { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* Mobile: hide grid cards, show grouped list */
+    .svc-mobile-grouped { display: none; }
     @media (max-width: 640px) {
-      .cat-cards { grid-template-columns: 1fr; }
+      .cat-cards { display: none; }
+      .svc-mobile-grouped {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .svc-mobile-group {}
+      .svc-mobile-group-title {
+        font-family: 'Playfair Display', var(--font-display), serif;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+        color: #F97316;
+        margin-bottom: .75rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid rgba(249,115,22,.2);
+      }
+      .svc-mobile-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .svc-mobile-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .72rem 0;
+        border-bottom: 1px solid var(--beige-mid);
+        text-decoration: none;
+        color: var(--dark);
+        font-size: .95rem;
+        font-weight: 500;
+        transition: color .2s;
+      }
+      .svc-mobile-item:last-child { border-bottom: none; }
+      .svc-mobile-item:hover { color: #F97316; }
+      .svc-mobile-item svg {
+        flex-shrink: 0;
+        color: #F97316;
+        opacity: .6;
+        transition: transform .2s, opacity .2s;
+      }
+      .svc-mobile-item:hover svg { transform: translateX(3px); opacity: 1; }
     }
 
     /* ── PORQUÊ ── */
@@ -1678,6 +1724,46 @@
         </div>
         <p class="cat-card-desc" data-i18n="svc.card.aesthetic">Tratamentos personalizados para realçar a tua beleza natural e bem-estar — com rigor clínico.</p>
       </a>
+    </div>
+
+    <!-- Mobile: serviços agrupados por categoria -->
+    <div class="svc-mobile-grouped">
+      <div class="svc-mobile-group">
+        <div class="svc-mobile-group-title" data-i18n="nav.cat.physio">Fisioterapia</div>
+        <div class="svc-mobile-list">
+          <a href="fisioterapia-percutanea.html" class="svc-mobile-item"><span data-i18n="svc.physio.percutaneous">Fisioterapia Percutânea</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="fisioterapia-ecoguiada.html" class="svc-mobile-item"><span data-i18n="svc.physio.ultrasound">Fisioterapia Ecoguiada</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="rpg.html" class="svc-mobile-item"><span data-i18n="svc.physio.rpg">RPG – Reeducação Postural Global</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="svc-mobile-group">
+        <div class="svc-mobile-group-title" data-i18n="nav.cat.osteo">Osteopatia</div>
+        <div class="svc-mobile-list">
+          <a href="osteopatia-estrutural.html" class="svc-mobile-item"><span data-i18n="svc.osteo.structural">Osteopatia Estrutural</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="osteopatia-pediatrica.html" class="svc-mobile-item"><span data-i18n="svc.osteo.pediatric">Osteopatia Pediátrica</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="osteopatia-ginecologica.html" class="svc-mobile-item"><span data-i18n="svc.osteo.gyn">Osteopatia Ginecológica e Gestacional</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="osteopatia-sacro-craniana.html" class="svc-mobile-item"><span data-i18n="svc.osteo.sacrocranial">Osteopatia Sacro-Craniana</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="osteopatia-visceral.html" class="svc-mobile-item"><span data-i18n="svc.osteo.visceral">Osteopatia Visceral</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="svc-mobile-group">
+        <div class="svc-mobile-group-title" data-i18n="nav.cat.massage">Massagens &amp; Bem-Estar</div>
+        <div class="svc-mobile-list">
+          <a href="massagem-relaxamento.html" class="svc-mobile-item"><span data-i18n="svc.massage.relax">Massagem de Relaxamento</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="massagem-anti-celulite.html" class="svc-mobile-item"><span data-i18n="svc.massage.anticellulite">Massagem anti-Celulite</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="drenagem-linfatica.html" class="svc-mobile-item"><span data-i18n="svc.massage.lymphatic">Drenagem Linfática</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="mesoterapia-homeopatica.html" class="svc-mobile-item"><span data-i18n="svc.massage.meso">Mesoterapia Homeopática</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="electroacupuntura.html" class="svc-mobile-item"><span data-i18n="svc.massage.acupuncture">Electroacupuntura</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="reiki.html" class="svc-mobile-item"><span data-i18n="svc.massage.reiki">Reiki</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="svc-mobile-group">
+        <div class="svc-mobile-group-title" data-i18n="nav.cat.pilates">Pilates &amp; Estética</div>
+        <div class="svc-mobile-list">
+          <a href="pilates-clinico.html" class="svc-mobile-item"><span data-i18n="svc.pilates.clinical">Pilates Clínico</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="estetica.html" class="svc-mobile-item"><span data-i18n="svc.pilates.aesthetic">Estética</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

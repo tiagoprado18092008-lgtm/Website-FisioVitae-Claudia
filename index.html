@@ -1149,6 +1149,20 @@
       .hero-frame {
         border-radius: 0;
         box-shadow: none;
+        /* fade suave da base da foto para o fundo creme no mobile */
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+      }
+      /* em mobile, troca a vinheta escura por um esbatimento para o creme */
+      .hero-frame::before {
+        background: linear-gradient(180deg, transparent 55%, var(--cream) 100%);
+      }
+      .hero-frame::after { display: none; }
+      /* puxa o texto para cima, sobrepondo a zona esbatida */
+      .hero-left {
+        margin-top: -3rem;
+        position: relative;
+        z-index: 3;
       }
       .hero-badge-float {
         left: 1.25rem;

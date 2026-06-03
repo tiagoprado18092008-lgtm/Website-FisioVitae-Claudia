@@ -260,7 +260,7 @@ body.menu-open { overflow:hidden; }
 .mobile-nav a { text-decoration:none; color:var(--text); font-size:1.05rem; font-weight:500; padding:.65rem 0; border-bottom:1px solid var(--beige); transition:color .2s; }
 .mobile-nav a:hover { color:var(--orange); }
 .mobile-nav-cta { background:var(--orange); color:var(--white) !important; padding:.9rem 1.5rem !important; border-radius:100px; text-align:center; border:none !important; margin-top:.75rem; font-weight:600 !important; }
-.mobile-nav-services { display:flex; flex-direction:column; padding-left:1rem; border-left:2px solid var(--orange); margin:.25rem 0 .25rem .5rem; }
+.mobile-nav-services { display:flex; flex-direction:column; padding-left:1rem; margin:.25rem 0 .25rem .5rem; }
 .mobile-nav-services a { font-size:.85rem !important; color:var(--text) !important; padding:.35rem 0 !important; border-bottom:none !important; opacity:.8; }
 .mobile-nav-services a:hover { color:var(--orange) !important; opacity:1; }
 

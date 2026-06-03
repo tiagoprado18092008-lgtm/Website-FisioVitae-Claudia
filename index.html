@@ -1186,7 +1186,10 @@
       .hero-actions { gap: .75rem; }
       .hero-actions .btn-primary,
       .hero-actions .btn-secondary { flex: 1 1 auto; justify-content: center; }
-      .hero-meta { grid-template-columns: repeat(4, 1fr); }
+      .hero-meta { grid-template-columns: repeat(2, 1fr); }
+      .hero-meta-item { border-bottom: 1px solid var(--beige-mid); border-right: 1px solid var(--beige-mid); padding: 1rem .75rem; }
+      .hero-meta-item:nth-child(2), .hero-meta-item:nth-child(4) { border-right: none; }
+      .hero-meta-item:nth-child(3), .hero-meta-item:nth-child(4) { border-bottom: none; }
       .hero-right { min-height: 420px; }
       .hero-overlay-strip {
         left: 1rem;

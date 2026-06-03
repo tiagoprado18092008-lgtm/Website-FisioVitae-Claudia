@@ -246,15 +246,15 @@ nav.scrolled .nav-logo-img { height:var(--nav-logo-height); }
 body.menu-open { overflow:hidden; }
 
 /* ── MOBILE LANGUAGE SWITCHER (inside slide-out menu) ── */
-.mobile-nav-lang { display:flex; gap:.6rem; margin-bottom:.4rem; }
+.mobile-nav-lang { display:flex; gap:.4rem; margin-bottom:.5rem; }
 .mobile-nav-lang button {
-  flex:1; display:flex; align-items:center; justify-content:center; gap:.5rem;
+  display:inline-flex; align-items:center; justify-content:center; gap:.35rem;
   background:var(--white); border:1.5px solid var(--beige-mid); border-radius:100px;
-  padding:.6rem 1rem; font-size:.95rem; font-weight:600; color:var(--text);
+  padding:.3rem .65rem; font-size:.78rem; font-weight:600; color:var(--text);
   cursor:pointer; transition:all .2s;
 }
-.mobile-nav-lang button .nav-lang-flag { width:22px; height:22px; border-radius:50%; overflow:hidden; flex-shrink:0; }
-.mobile-nav-lang button .nav-lang-flag svg { width:22px; height:22px; display:block; }
+.mobile-nav-lang button .nav-lang-flag { width:15px; height:15px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+.mobile-nav-lang button .nav-lang-flag svg { width:15px; height:15px; display:block; }
 .mobile-nav-lang button.active { border-color:var(--orange); color:var(--orange); }
 .mobile-nav-lang button:hover { border-color:var(--orange); }
 .mobile-nav a { text-decoration:none; color:var(--text); font-size:1.05rem; font-weight:500; padding:.65rem 0; border-bottom:1px solid var(--beige); transition:color .2s; }

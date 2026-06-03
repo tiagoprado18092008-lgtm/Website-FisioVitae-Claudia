@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/style.css?v=20260528b"/>
   <style>
 
@@ -249,56 +250,297 @@
     }
     .mv-missao-text em { font-style: italic; color: var(--orange-light); }
 
-    /* ── EQUIPA ── */
-    #equipa { background: var(--white); padding: 8rem 0; }
-    .equipa-intro { text-align: center; max-width: 580px; margin: 0 auto 4rem; }
-    .equipa-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+    /* ══════════════════════════════════════════
+       EQUIPA — migrada e integrada (estilo perfis detalhados)
+       ══════════════════════════════════════════ */
 
-    .team-card {
-      background: var(--cream);
-      border: 1px solid var(--beige-mid);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      transition: all .3s cubic-bezier(.22,1,.36,1);
+    /* ── INTRO + CARDS OVERVIEW ── */
+    #equipa { background: var(--white); padding: 8rem 0 5rem; }
+    .equipa-intro { text-align: center; max-width: 600px; margin: 0 auto 3.5rem; }
+
+    .team-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
     }
-    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: rgba(232,101,10,.2); }
-    .team-card-top {
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .tc-card {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(232,101,10,.08);
+      cursor: pointer;
+      transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+      text-decoration: none;
+      display: block;
+    }
+    .tc-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(232,101,10,.15); }
+    .tc-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
       position: relative;
       overflow: hidden;
+      background: linear-gradient(145deg, #e8d5c4, #c4a882);
     }
-    .team-card-top::after { content:''; position:absolute; inset:0; background: linear-gradient(180deg, transparent 55%, rgba(26,26,26,.4) 100%); pointer-events:none; z-index:1; }
-    .team-card-photo {
-      position: absolute; inset: 0;
+    .tc-photo img {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
       transition: transform 1.2s cubic-bezier(.22,1,.36,1);
-      filter: saturate(1.05);
     }
-    .team-card:hover .team-card-photo { transform: scale(1.06); }
-    .team-card-photo.photo-top { object-fit: cover; object-position: center 10%; }
-    .team-card-photo.photo-ines { object-fit: cover; object-position: center 10%; transform: scale(1.25); transform-origin: center 30%; }
-    .team-card-photo.photo-patricia { object-fit: cover; object-position: center 5%; transform: scale(1.3); transform-origin: center 20%; }
-    .team-avatar {
-      width: 130px; height: 130px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 800;
+    .tc-card:hover .tc-photo img { transform: scale(1.07); }
+    .tc-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(transparent, rgba(20,15,10,.5));
+      pointer-events: none;
+    }
+    .tc-body { padding: 1rem 1.1rem 1.25rem; }
+    .tc-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .25rem;
+      line-height: 1.2;
+    }
+    .tc-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--orange);
+    }
+
+    /* ── MEMBER SECTIONS ── */
+    .member-section {
+      padding: 5rem 0;
+      scroll-margin-top: 90px;
+    }
+    .member-section:nth-of-type(odd) { background: var(--white); }
+    .member-section.alt { background: var(--cream); }
+
+    .member-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+    .member-layout.flip { grid-template-columns: 1fr 360px; }
+    .member-layout.flip .member-photo-col { order: 2; }
+    .member-layout.flip .member-content { order: 1; }
+
+    .member-photo-col {
+      position: sticky;
+      top: calc(var(--nav-height, 78px) + 2rem);
+    }
+    .member-photo-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      box-shadow: 0 8px 40px rgba(20,15,10,.08);
+    }
+    .member-photo-frame img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      transition: transform 1.4s cubic-bezier(.22,1,.36,1);
+    }
+    .member-photo-frame:hover img { transform: scale(1.04); }
+    #ines .member-photo-frame img { object-position: center 18%; }
+    #jose .member-photo-frame img { object-position: center 12%; }
+    .member-photo-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .mph-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .2rem;
+    }
+    .mph-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--orange);
+    }
+
+    .mc-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .mc-label::before { content: ''; width: 22px; height: 2px; background: var(--orange); }
+    .mc-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: .5rem;
+    }
+    .mc-title em { font-style: italic; color: var(--orange); }
+    .mc-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-light);
+      margin-bottom: 1.75rem;
+    }
+    .mc-body p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .96rem;
+      color: var(--text-light);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .mc-body p strong { color: var(--text); }
+
+    .mc-quote {
+      background: var(--dark);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+    .mc-quote::before {
+      content: '"';
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 5rem;
+      color: var(--orange);
+      opacity: .3;
+      position: absolute;
+      top: -.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+    .mc-quote p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-style: italic;
       color: white;
-      box-shadow: 0 16px 44px rgba(26,26,26,.25);
-      position: relative; z-index: 1;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+      margin-bottom: .75rem !important;
     }
-    .team-body { padding: 1.75rem 2rem 2rem; }
-    .team-body h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: .2rem; }
-    .team-role { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--orange); margin-bottom: .85rem; }
-    .team-body p { font-size: .875rem; color: var(--text-light); line-height: 1.7; margin-bottom: .85rem; }
-    .team-creds { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .cred-tag { font-size: .73rem; font-weight: 600; background: var(--orange-pale); color: var(--orange); padding: .25rem .65rem; border-radius: 100px; border: 1px solid rgba(232,101,10,.15); }
+    .mc-quote cite {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .mc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.75rem 0;
+    }
+    .mc-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .76rem;
+      font-weight: 500;
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      color: var(--text);
+      padding: .4rem .9rem;
+      border-radius: 50px;
+    }
+    .mc-tag.accent {
+      background: rgba(232,98,26,.08);
+      border-color: rgba(232,98,26,.2);
+      color: var(--orange);
+    }
+    .mc-cta { margin-top: 2.25rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    /* ── GROUP PHOTO SECTION ── */
+    #team-group {
+      background: var(--beige);
+      padding: 6rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .group-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .group-text-side .mc-label { margin-bottom: 1.2rem; }
+    .group-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 1.25rem;
+    }
+    .group-title em { font-style: italic; color: var(--orange); }
+    .group-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .96rem;
+      color: var(--text-light);
+      line-height: 1.82;
+      margin-bottom: 2rem;
+    }
+    .group-photo-side { position: relative; }
+    .group-photo-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(20,15,10,.12);
+    }
+    .group-photo-frame img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .group-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--orange);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      box-shadow: 0 8px 24px rgba(232,98,26,.35);
+    }
+    .group-badge-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+    .group-badge-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .7rem;
+      color: rgba(255,255,255,.8);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: .2rem;
+    }
 
     /* ── INSTALAÇÕES ── */
     #instalacoes { background: var(--cream); padding: 8rem 0; }
@@ -351,13 +593,24 @@
     .sobre-cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .team-cards-grid { grid-template-columns: repeat(3, 1fr); }
+      .group-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
     @media (max-width: 1024px) {
       .historia-split { grid-template-columns: 1fr; gap: 3.5rem; }
       .jornada-grid { grid-template-columns: repeat(2,1fr); }
       .mv-split { grid-template-columns: 1fr; gap: 3rem; }
       .valores-grid { grid-template-columns: 1fr; }
-      .equipa-grid { grid-template-columns: 1fr; }
       .inst-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .member-layout,
+      .member-layout.flip { grid-template-columns: 1fr; gap: 2.5rem; }
+      .member-photo-col { position: static; max-width: 420px; }
+      .member-layout.flip .member-photo-col,
+      .member-layout.flip .member-content { order: unset; }
+      .member-section { padding: 4rem 0; }
     }
     @media (max-width: 768px) {
       .stats-row { grid-template-columns: repeat(2,1fr); }
@@ -366,6 +619,18 @@
       .historia-visual { padding-right: 1.5rem; padding-bottom: 3.5rem; }
       .historia-card { width: 190px; padding: 1.35rem 1.5rem; right: -0.5rem; }
       .historia-card-big { font-size: 2.7rem; }
+      #equipa { padding: 5rem 0 3rem; }
+      .group-badge { left: 0; bottom: -1rem; padding: .9rem 1.15rem; }
+      .group-badge-num { font-size: 1.6rem; }
+    }
+    @media (max-width: 640px) {
+      .team-cards-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+      .tc-name { font-size: .92rem; }
+      .tc-role { font-size: .64rem; letter-spacing: .05em; }
+      .member-photo-col { max-width: none; }
+    }
+    @media (max-width: 340px) {
+      .team-cards-grid { grid-template-columns: 1fr; }
     }
   </style>
 <!-- FISIOVITAE_SEO_INJECTED -->
@@ -476,7 +741,6 @@
         </li>
       </ul>
     </li>
-    <li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li>
     <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
   </ul>
   <div class="nav-right">
@@ -549,7 +813,6 @@
     <a href="pilates-clinico.html"><span data-i18n="svc.pilates.clinical">Pilates Clínico</span></a>
     <a href="estetica.html"><span data-i18n="svc.pilates.aesthetic">Estética</span></a>
   </div>
-  <a href="equipa.html" data-i18n="nav.team">Equipa</a>
   <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
   <a href="contacto.html" class="mobile-nav-cta" data-i18n="nav.cta">Marcar Consulta</a>
 </div>
@@ -671,83 +934,257 @@
       <h2 class="section-title" data-i18n-html="sobre.equipa.title">Profissionais <em>dedicados</em> ao seu bem-estar</h2>
       <p class="section-subtitle" data-i18n="sobre.equipa.sub">Uma equipa multidisciplinar unida pela paixão em ajudar cada paciente a recuperar o seu movimento e qualidade de vida.</p>
     </div>
-    <div class="equipa-grid">
-      <div class="team-card reveal delay-1">
-        <div class="team-card-top">
-          <img class="team-card-photo" src="assets/fotos/equipa-claudia.jpg" alt="Dra. Cláudia Alves, fundadora da FisioVitae" loading="lazy"/>
+    <div class="team-cards-grid">
+      <a href="#claudia" class="tc-card reveal delay-1">
+        <div class="tc-photo">
+          <img src="assets/fotos/equipa-claudia.jpg" alt="Dra. Cláudia Alves" loading="lazy"/>
         </div>
-        <div class="team-body">
-          <h3>Dra. Cláudia Alves</h3>
-          <div class="team-role" data-i18n="sobre.equipa.claudia.role">Fisioterapeuta · Fundadora & Responsável Clínica</div>
-          <p data-i18n="sobre.equipa.claudia.bio">Com mais de 20 anos de experiência, a Dra. Cláudia é a fundadora e o coração da Fisio Vitae. Especializou-se em fisioterapia percutânea e ecoguiada, sendo uma das profissionais mais experientes nestas técnicas em Braga.</p>
-          <div class="team-creds">
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.percutanea">Fisioterapia Percutânea</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.ecoguiada">Fisioterapia Ecoguiada</span>
-            <span class="cred-tag">RPG</span>
+        <div class="tc-body">
+          <div class="tc-name">Dra. Cláudia Alves</div>
+          <div class="tc-role" data-i18n="team.claudia.tc_role">Fisioterapeuta · Fundadora</div>
+        </div>
+      </a>
+      <a href="#ines" class="tc-card reveal delay-2">
+        <div class="tc-photo">
+          <img src="assets/fotos/equipa-ines.jpg" alt="Inês Macedo" loading="lazy"/>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Inês Macedo</div>
+          <div class="tc-role" data-i18n="team.ines.tc_role">Fisioterapeuta</div>
+        </div>
+      </a>
+      <a href="#patricia" class="tc-card reveal delay-3">
+        <div class="tc-photo">
+          <img src="assets/fotos/equipa-patricia.jpg" alt="Patrícia" loading="lazy"/>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Patrícia</div>
+          <div class="tc-role" data-i18n="team.patricia.tc_role">Nutricionista</div>
+        </div>
+      </a>
+      <a href="#jose" class="tc-card reveal delay-4">
+        <div class="tc-photo">
+          <img src="assets/fotos/equipa-jose.jpg" alt="José Pereira" loading="lazy"/>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">José Pereira</div>
+          <div class="tc-role" data-i18n="team.jose.tc_role">Analista Reikiano · Pilates</div>
+        </div>
+      </a>
+      <a href="#rafaela" class="tc-card reveal delay-4">
+        <div class="tc-photo">
+          <img src="assets/fotos/equipa-rafaela.jpg" alt="Rafaela Torres" loading="lazy"/>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Rafaela Torres</div>
+          <div class="tc-role" data-i18n="team.rafaela.tc_role">Rececionista</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERFIS DETALHADOS ═══ -->
+
+<!-- CLÁUDIA -->
+<section class="member-section" id="claudia">
+  <div class="container">
+    <div class="member-layout">
+      <div class="member-photo-col reveal-left">
+        <div class="member-photo-frame">
+          <img src="assets/fotos/equipa-claudia.jpg" alt="Dra. Cláudia Alves" loading="lazy" decoding="async"/>
+          <div class="member-photo-body">
+            <div class="mph-name">Dra. Cláudia Alves</div>
+            <div class="mph-role">Fisioterapeuta · Fundadora &amp; Resp. Clínica</div>
           </div>
         </div>
       </div>
-      <div class="team-card reveal delay-2">
-        <div class="team-card-top">
-          <img class="team-card-photo photo-ines" src="assets/fotos/equipa-ines.jpg" alt="Inês Macedo, fisioterapeuta e osteopata na FisioVitae" loading="lazy"/>
+      <div class="member-content reveal-right">
+        <div class="mc-label" data-i18n="team.claudia.mc_label">Fundadora</div>
+        <h2 class="mc-title">Dra. Cláudia <em>Alves</em></h2>
+        <div class="mc-sub" data-i18n="team.claudia.mc_sub">Fisioterapeuta · Osteopata · Fisioterapia Invasiva · 20+ Anos de Experiência</div>
+        <div class="mc-body">
+          <p data-i18n-html="team.claudia.bio1">A Dra. Cláudia Alves é a fundadora e responsável clínica da Fisio Vitae. Com mais de duas décadas dedicadas à fisioterapia, construiu uma das clínicas de referência da região de Braga — pela qualidade técnica e pela filosofia que sempre defendeu: <strong>ouvir antes de tratar</strong>.</p>
+          <p data-i18n-html="team.claudia.bio2">Detém formação avançada em Osteopatia e concluiu uma <strong>Pós-graduação em Fisioterapia Invasiva</strong>, integrando técnicas de ecoguiada e percutânea no seu trabalho clínico diário.</p>
         </div>
-        <div class="team-body">
-          <h3>Inês Macedo</h3>
-          <div class="team-role" data-i18n="sobre.equipa.ines.role">Fisioterapeuta · Especialista em Osteopatia</div>
-          <p data-i18n="sobre.equipa.ines.bio">A Inês juntou-se à Fisio Vitae em 2008 e desde então tem sido uma peça fundamental da equipa. Com formação avançada em osteopatia estrutural e pediátrica, é a especialista de referência para tratamento de bebés e crianças.</p>
-          <div class="team-creds">
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.osteo_estrutural">Osteopatia Estrutural</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.osteo_pediatrica">Osteopatia Pediátrica</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.reab_mse">Reabilitação MSE</span>
-          </div>
+        <div class="mc-quote reveal">
+          <p data-i18n="team.claudia.quote">"Fiz da minha clínica aquilo que eu própria gostaria de encontrar como paciente: um lugar onde me sinto ouvida, onde o tratamento é explicado, e onde o objetivo é sempre devolver-me a vida que tinha antes da lesão."</p>
+          <cite>— Dra. Cláudia Alves</cite>
         </div>
-      </div>
-      <div class="team-card reveal delay-3">
-        <div class="team-card-top">
-          <img class="team-card-photo photo-top" src="assets/fotos/equipa-jose.jpg" alt="José Pereira, instrutor de Pilates Clínico na FisioVitae" loading="lazy"/>
+        <div class="mc-tags">
+          <span class="mc-tag accent" data-i18n="team.claudia.tag1">Fisioterapia</span>
+          <span class="mc-tag accent" data-i18n="team.claudia.tag2">Osteopatia</span>
+          <span class="mc-tag accent" data-i18n="team.claudia.tag3">Fisioterapia Invasiva</span>
+          <span class="mc-tag" data-i18n="team.claudia.tag4">Osteopatia Pediátrica</span>
+          <span class="mc-tag" data-i18n="team.claudia.tag5">Ecoguiada</span>
+          <span class="mc-tag" data-i18n="team.claudia.tag6">Percutânea</span>
         </div>
-        <div class="team-body">
-          <h3>José Pereira</h3>
-          <div class="team-role" data-i18n="sobre.equipa.jose.role">Instrutor · Pilates Clínico & Exercício Terapêutico</div>
-          <p data-i18n="sobre.equipa.jose.bio">O José é o especialista em Pilates Clínico e exercício terapêutico da equipa. Com certificação internacional em pilates e formação complementar em reabilitação funcional, desenvolve programas de exercício adaptados a cada fase da recuperação.</p>
-          <div class="team-creds">
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.pilates">Pilates Clínico</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.ex_terapeutico">Exercício Terapêutico</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.reab_funcional">Reabilitação Funcional</span>
-          </div>
-        </div>
-      </div>
-      <div class="team-card reveal delay-4">
-        <div class="team-card-top">
-          <img class="team-card-photo photo-patricia" src="assets/fotos/equipa-patricia.jpg" alt="Patrícia, fisioterapeuta na FisioVitae" loading="lazy"/>
-        </div>
-        <div class="team-body">
-          <h3>Patrícia</h3>
-          <div class="team-role" data-i18n="sobre.equipa.patricia.role">Fisioterapeuta</div>
-          <p data-i18n="sobre.equipa.patricia.bio">A Patrícia integra a equipa da Fisio Vitae trazendo dedicação e competência no acompanhamento dos pacientes ao longo de todo o processo de recuperação.</p>
-          <div class="team-creds">
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.fisioterapia">Fisioterapia</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.reabilitacao">Reabilitação</span>
-          </div>
-        </div>
-      </div>
-      <div class="team-card reveal delay-5" style="grid-column: 1 / -1; max-width: calc(50% - 0.75rem); justify-self: center; width: 100%;">
-        <div class="team-card-top">
-          <img class="team-card-photo" src="assets/fotos/equipa-rafaela.jpg" alt="Rafaela, rececionista e coordenação administrativa na FisioVitae" loading="lazy"/>
-        </div>
-        <div class="team-body">
-          <h3>Rafaela</h3>
-          <div class="team-role" data-i18n="sobre.equipa.rafaela.role">Rececionista & Coordenação Administrativa</div>
-          <p data-i18n="sobre.equipa.rafaela.bio">A Rafaela é o primeiro sorriso que encontra quando entra na Fisio Vitae. Responsável pela coordenação de todas as marcações e pelo bom funcionamento diário da clínica — organizada, simpática e sempre disponível.</p>
-          <div class="team-creds">
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.atendimento">Atendimento ao Paciente</span>
-            <span class="cred-tag" data-i18n="sobre.equipa.cred.agenda">Gestão de Agenda</span>
-          </div>
+        <div class="mc-cta">
+          <a href="contacto.html" class="btn-primary"><span data-i18n="team.claudia.cta">Marcar Consulta com a Dra. Cláudia</span></a>
         </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:3rem" class="reveal">
-      <a href="equipa.html" class="btn-primary"><span data-i18n="sobre.equipa.cta">Ver Perfis Completos</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- INÊS -->
+<section class="member-section alt" id="ines">
+  <div class="container">
+    <div class="member-layout flip">
+      <div class="member-photo-col reveal-right">
+        <div class="member-photo-frame">
+          <img src="assets/fotos/equipa-ines.jpg" alt="Inês Macedo" loading="lazy" decoding="async"/>
+          <div class="member-photo-body">
+            <div class="mph-name">Inês Macedo</div>
+            <div class="mph-role">Fisioterapeuta</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-content reveal-left">
+        <div class="mc-label" data-i18n="team.ines.mc_label">Fisioterapia</div>
+        <h2 class="mc-title">Inês <em>Macedo</em></h2>
+        <div class="mc-sub" data-i18n="team.ines.mc_sub">Fisioterapeuta</div>
+        <div class="mc-body">
+          <p data-i18n="team.ines.bio1">A Inês Macedo é fisioterapeuta na Fisio Vitae, comprometida com uma abordagem centrada no paciente e orientada para resultados funcionais duradouros.</p>
+          <p data-i18n-html="team.ines.bio2">O seu trabalho integra técnicas manuais e terapêuticas atuais, sempre com foco na <strong>recuperação do movimento</strong> e na prevenção de lesões recorrentes.</p>
+        </div>
+        <div class="mc-tags">
+          <span class="mc-tag accent" data-i18n="team.ines.tag1">Fisioterapia</span>
+          <span class="mc-tag" data-i18n="team.ines.tag2">Terapia Manual</span>
+          <span class="mc-tag" data-i18n="team.ines.tag3">Reabilitação</span>
+        </div>
+        <div class="mc-cta">
+          <a href="contacto.html" class="btn-primary"><span data-i18n="team.ines.cta">Marcar Consulta com a Inês</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATRÍCIA -->
+<section class="member-section" id="patricia">
+  <div class="container">
+    <div class="member-layout">
+      <div class="member-photo-col reveal-left">
+        <div class="member-photo-frame">
+          <img src="assets/fotos/equipa-patricia.jpg" alt="Patrícia" loading="lazy" decoding="async"/>
+          <div class="member-photo-body">
+            <div class="mph-name">Patrícia</div>
+            <div class="mph-role">Nutricionista</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-content reveal-right">
+        <div class="mc-label" data-i18n="team.patricia.mc_label">Nutrição</div>
+        <h2 class="mc-title"><em>Patrícia</em></h2>
+        <div class="mc-sub" data-i18n="team.patricia.mc_sub">Nutricionista</div>
+        <div class="mc-body">
+          <p data-i18n-html="team.patricia.bio1">A Patrícia integra a equipa da Fisio Vitae como nutricionista, trazendo uma visão holística à recuperação dos pacientes. Acredita que <strong>a alimentação e a reabilitação caminham juntas</strong> para um resultado mais completo.</p>
+          <p data-i18n="team.patricia.bio2">Acompanha pacientes em processos de perda de peso, gestão de doenças crónicas, nutrição desportiva e planos alimentares individualizados adaptados aos objetivos de cada pessoa.</p>
+        </div>
+        <div class="mc-tags">
+          <span class="mc-tag accent" data-i18n="team.patricia.tag1">Nutrição Clínica</span>
+          <span class="mc-tag" data-i18n="team.patricia.tag2">Nutrição Desportiva</span>
+          <span class="mc-tag" data-i18n="team.patricia.tag3">Gestão de Peso</span>
+          <span class="mc-tag" data-i18n="team.patricia.tag4">Planos Personalizados</span>
+        </div>
+        <div class="mc-cta">
+          <a href="contacto.html" class="btn-primary"><span data-i18n="team.patricia.cta">Marcar Consulta com a Patrícia</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOSÉ -->
+<section class="member-section alt" id="jose">
+  <div class="container">
+    <div class="member-layout flip">
+      <div class="member-photo-col reveal-right">
+        <div class="member-photo-frame">
+          <img src="assets/fotos/equipa-jose.jpg" alt="José Pereira" loading="lazy" decoding="async"/>
+          <div class="member-photo-body">
+            <div class="mph-name">José Pereira</div>
+            <div class="mph-role">Analista Reikiano · Instrutor de Pilates</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-content reveal-left">
+        <div class="mc-label" data-i18n="team.jose.mc_label">Bem-estar &amp; Movimento</div>
+        <h2 class="mc-title">José <em>Pereira</em></h2>
+        <div class="mc-sub" data-i18n="team.jose.mc_sub">Analista Reikiano · Instrutor de Pilates Clínico</div>
+        <div class="mc-body">
+          <p data-i18n-html="team.jose.bio1">O José Pereira é uma presença única na Fisio Vitae, combinando duas áreas complementares: o <strong>Pilates Clínico</strong> como ferramenta de reabilitação e fortalecimento, e a <strong>Análise Reikiana</strong> como suporte ao bem-estar energético e emocional dos pacientes.</p>
+          <p data-i18n="team.jose.bio2">Desenvolve programas de pilates adaptados em articulação direta com a equipa clínica, garantindo que cada exercício serve a recuperação específica de cada pessoa.</p>
+        </div>
+        <div class="mc-tags">
+          <span class="mc-tag accent" data-i18n="team.jose.tag1">Pilates Clínico</span>
+          <span class="mc-tag accent" data-i18n="team.jose.tag2">Análise Reikiana</span>
+          <span class="mc-tag" data-i18n="team.jose.tag3">Exercício Terapêutico</span>
+          <span class="mc-tag" data-i18n="team.jose.tag4">Bem-estar</span>
+        </div>
+        <div class="mc-cta">
+          <a href="contacto.html" class="btn-primary"><span data-i18n="team.jose.cta_pilates">Iniciar Programa de Pilates</span></a>
+          <a href="pilates-clinico.html" class="btn-secondary" data-i18n="team.jose.cta_more">Saber mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RAFAELA -->
+<section class="member-section" id="rafaela">
+  <div class="container">
+    <div class="member-layout">
+      <div class="member-photo-col reveal-left">
+        <div class="member-photo-frame">
+          <img src="assets/fotos/equipa-rafaela.jpg" alt="Rafaela Torres" loading="lazy" decoding="async"/>
+          <div class="member-photo-body">
+            <div class="mph-name">Rafaela Torres</div>
+            <div class="mph-role">Rececionista &amp; Coordenação Administrativa</div>
+          </div>
+        </div>
+      </div>
+      <div class="member-content reveal-right">
+        <div class="mc-label" data-i18n="team.rafaela.mc_label">Atendimento &amp; Coordenação</div>
+        <h2 class="mc-title">Rafaela <em>Torres</em></h2>
+        <div class="mc-sub" data-i18n="team.rafaela.mc_sub">Rececionista &amp; Coordenação Administrativa</div>
+        <div class="mc-body">
+          <p data-i18n-html="team.rafaela.bio1">A Rafaela Torres é o primeiro rosto da Fisio Vitae — a voz que atende a chamada, o sorriso que recebe na entrada, a pessoa que garante que cada marcação e cada detalhe está tratado com <strong>cuidado e atenção</strong>.</p>
+          <p data-i18n="team.rafaela.bio2">Coordena a agenda da clínica e assegura que a experiência de cada paciente, desde o primeiro contacto até ao final do tratamento, é fluida e acolhedora.</p>
+        </div>
+        <div class="mc-cta">
+          <a href="tel:253623663" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:.3rem"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.91 8.15a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span data-i18n="team.rafaela.cta_call">Ligar Agora</span>
+          </a>
+          <a href="contacto.html" class="btn-secondary" data-i18n="team.rafaela.cta_msg">Enviar Mensagem</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRUPO -->
+<section id="team-group">
+  <div class="container">
+    <div class="group-inner">
+      <div class="group-photo-side reveal-left">
+        <div class="group-photo-frame">
+          <img src="assets/fotos/equipa-grupo.jpg" alt="Equipa Fisio Vitae" loading="lazy"/>
+        </div>
+        <div class="group-badge">
+          <div class="group-badge-num">5</div>
+          <div class="group-badge-label" data-i18n="team.group.badge_label">especialistas</div>
+        </div>
+      </div>
+      <div class="group-text-side reveal-right">
+        <div class="mc-label" data-i18n="team.group.label">Uma abordagem diferente</div>
+        <h2 class="group-title" data-i18n-html="team.group.title">Não tratamos sintomas<br>Tratamos <em>pessoas</em></h2>
+        <p class="group-desc" data-i18n="team.group.desc1">Na Fisio Vitae a equipa trabalha em conjunto para perceber o que está na origem do seu problema — não apenas o que dói. Fisioterapia, osteopatia, nutrição e pilates clínico trabalham lado a lado para que a sua recuperação seja mais rápida, mais duradoura e mais completa.</p>
+        <p class="group-desc" style="margin-top:-.5rem" data-i18n="team.group.desc2">Cada paciente tem um plano pensado especificamente para si, com profissionais que comunicam entre si e ajustam a abordagem ao longo do processo.</p>
+        <a href="contacto.html" class="btn-primary" data-i18n="team.group.cta">Agendar a Primeira Consulta</a>
+      </div>
     </div>
   </div>
 </section>
@@ -828,7 +1265,7 @@
         </div>
       </div>
       <div class="footer-col"><div class="footer-accent-line"></div><h4 data-i18n="nav.services">Serviços</h4><ul><li><a href="fisioterapia-percutanea.html">Fisioterapia Percutânea</a></li><li><a href="fisioterapia-ecoguiada.html">Fisioterapia Ecoguiada</a></li><li><a href="pilates-clinico.html">Pilates Clínico</a></li><li><a href="osteopatia-estrutural.html">Osteopatia Estrutural</a></li><li><a href="osteopatia-pediatrica.html">Osteopatia Pediátrica</a></li><li><a href="rpg.html">RPG</a></li></ul></div>
-      <div class="footer-col"><div class="footer-accent-line"></div><h4 data-i18n="footer.clinic">Clínica</h4><ul><li><a href="sobre.html" data-i18n="footer.about_us">Sobre Nós</a></li><li><a href="equipa.html" data-i18n="nav.team">Equipa</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
+      <div class="footer-col"><div class="footer-accent-line"></div><h4 data-i18n="footer.clinic">Clínica</h4><ul><li><a href="sobre.html" data-i18n="footer.about_us">Sobre Nós</a></li><li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li><li><a href="politica-privacidade.html">Política de Privacidade</a></li></ul></div>
       <div class="footer-col"><div class="footer-accent-line"></div><h4 data-i18n="nav.contact">Contacto</h4><p>Rua Nova de Agrafonte, n.º 31<br>Panóias, Braga</p><br><p><span style="color:rgba(255,255,255,.4);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Tel</span><a href="tel:253623663" style="color:var(--orange);text-decoration:none">253 623 663</a></p><br><p><span style="color:rgba(255,255,255,.4);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:.2rem">Email</span><a href="mailto:saude.fisio.vitae@hotmail.com" style="color:var(--orange);text-decoration:none">saude.fisio.vitae@hotmail.com</a></p></div>
     </div>
     <div class="footer-bottom">

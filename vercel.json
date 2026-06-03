@@ -1,5 +1,9 @@
 {
   "buildCommand": "echo 'Static website - no build needed'",
   "outputDirectory": ".",
-  "installCommand": "echo 'No dependencies to install'"
+  "installCommand": "echo 'No dependencies to install'",
+  "redirects": [
+    { "source": "/equipa.html", "destination": "/sobre.html", "permanent": true },
+    { "source": "/equipa", "destination": "/sobre.html", "permanent": true }
+  ]
 }

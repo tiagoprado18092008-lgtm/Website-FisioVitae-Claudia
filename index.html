@@ -634,8 +634,13 @@
     }
     .about-stat {
       flex: 1;
+      min-width: 0;
       padding: 1.5rem 1rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       border-right: 1px solid var(--beige-mid);
       background: var(--white);
       transition: background .22s;
@@ -657,7 +662,8 @@
       text-transform: uppercase;
       color: var(--text-light);
       display: block;
-      margin-top: .3rem;
+      margin-top: .4rem;
+      line-height: 1.25;
     }
 
     /* ── SERVIÇOS — categorias com imagem ── */
@@ -1251,6 +1257,16 @@
         transform: none;
       }
       .about-photo-caption { right: 1.5rem; }
+      /* caixas de estatísticas — manter alinhadas e legíveis no iPhone */
+      .about-stats-row { margin: 2rem 0; }
+      .about-stat { padding: 1.15rem .35rem; }
+      .about-stat-n { font-size: 1.85rem; }
+      .about-stat-l {
+        font-size: .58rem;
+        letter-spacing: .03em;
+        margin-top: .35rem;
+        word-break: break-word;
+      }
     }
   </style>
 <!-- FISIOVITAE_SEO_INJECTED -->

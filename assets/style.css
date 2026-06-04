@@ -335,8 +335,18 @@ body.menu-open { overflow:hidden; }
 .dropdown-sub a::after { display:none !important; }
 .dropdown-sub a:hover { color:var(--orange); background:var(--cream); }
 .mobile-nav-category {
-  display:none !important;
+  display:block;
+  font-family:'Playfair Display', var(--font-display, serif);
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin:.85rem 0 .3rem;
+  padding-bottom:.35rem;
+  border-bottom:1px solid rgba(232,101,10,.2);
 }
+.mobile-nav-category:first-child { margin-top:0; }
 
 /* ── BUTTONS ── */
 .btn-primary {

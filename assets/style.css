@@ -779,7 +779,7 @@ footer {
   nav.scrolled .nav-logo-img { height:54px; }
   section { padding:4.5rem 0; }
   .footer-grid { grid-template-columns:1fr; gap:2rem; }
-  .footer-bottom { grid-template-columns:1fr; text-align:center; gap:1rem; }
+  .footer-bottom { grid-template-columns:1fr; text-align:center; gap:1rem; padding-bottom:5.5rem; }
   .footer-bottom-left,
   .footer-bottom > .livro-reclamacoes,
   .footer-bottom-right { justify-self:center; }

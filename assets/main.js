@@ -113,9 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     revealEls.forEach(el => el.classList.add('visible', 'is-visible'));
   } else {
-    // rootMargin bottom of -12% means an element only reveals once it has scrolled
-    // ~12% up into the viewport — so things animate *as you reach them*, not a whole
-    // screen early. (threshold 0 + the negative margin together set the trigger line.)
+    // The trigger line sits at 80% of the viewport height (i.e. 20% up from the
+    // bottom). An element reveals only once its top reaches that line — roughly
+    // where the eye lands when scrolling — so the animation plays right where you're
+    // looking instead of finishing down at the bottom edge before you notice it.
+    // (This is what made sections feel "already done" with mouse-wheel jumps.)
+    const TRIGGER = 0.80; // fraction of viewport height where reveals fire
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -123,33 +126,48 @@ document.addEventListener('DOMContentLoaded', () => {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    }, { threshold: 0, rootMargin: `0px 0px -${Math.round((1 - TRIGGER) * 100)}% 0px` });
 
     revealEls.forEach(el => {
-      // If already fully above the trigger line at load (above the fold), reveal now;
+      // If already above the trigger line at load (above the fold), reveal now;
       // otherwise let the observer fire it when the user scrolls it into view.
       const rect = el.getBoundingClientRect();
-      const triggerLine = window.innerHeight * 0.88; // matches the -12% rootMargin
-      if (rect.top < triggerLine) {
+      if (rect.top < window.innerHeight * TRIGGER) {
         showReveal(el);
       } else {
         revealObserver.observe(el);
       }
     });
 
-    // Safety net: only reveal elements the user has already scrolled PAST (above the
-    // viewport). Never force-reveal something still below — that's what was killing the
-    // on-scroll effect by flashing everything visible 2s after load.
-    setTimeout(() => {
+    // Bottom-of-page guard: an element low on the page may never have its top reach
+    // the 80% trigger line (the page simply ends first), leaving it stuck hidden.
+    // Whenever the user is near the very bottom, reveal anything still visible there.
+    const revealStragglers = () => {
+      const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
+      if (!atBottom) return;
       revealEls.forEach(el => {
         if (el.classList.contains('visible') || el.classList.contains('is-visible')) return;
         const rect = el.getBoundingClientRect();
-        if (rect.bottom < 0) {
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          showReveal(el);
+          revealObserver.unobserve(el);
+        }
+      });
+    };
+    window.addEventListener('scroll', revealStragglers, { passive: true });
+
+    // Last-resort net: only reveal elements the user has already scrolled PAST (above
+    // the viewport). Never force-reveal something still below — that's what was
+    // killing the on-scroll effect by flashing everything visible after load.
+    setTimeout(() => {
+      revealEls.forEach(el => {
+        if (el.classList.contains('visible') || el.classList.contains('is-visible')) return;
+        if (el.getBoundingClientRect().bottom < 0) {
           el.classList.add('visible', 'is-visible');
           revealObserver.unobserve(el);
         }
       });
-    }, 3000);
+    }, 4000);
   }
 
   // ── COUNTER ANIMATION ──

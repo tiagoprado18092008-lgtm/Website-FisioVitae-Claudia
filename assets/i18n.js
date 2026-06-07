@@ -14,7 +14,7 @@
   async function loadDict(lang) {
     if (cache[lang]) return cache[lang];
     try {
-      const res = await fetch(`assets/i18n/${lang}.json?v=20260528b`, { cache: 'no-cache' });
+      const res = await fetch(`assets/i18n/${lang}.json?v=20260607e`, { cache: 'no-cache' });
       if (!res.ok) throw new Error('i18n fetch failed: ' + res.status);
       cache[lang] = await res.json();
       return cache[lang];

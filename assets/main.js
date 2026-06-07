@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     revealEls.forEach(el => el.classList.add('visible', 'is-visible'));
   } else {
+    // rootMargin bottom of -12% means an element only reveals once it has scrolled
+    // ~12% up into the viewport — so things animate *as you reach them*, not a whole
+    // screen early. (threshold 0 + the negative margin together set the trigger line.)
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -120,27 +123,33 @@ document.addEventListener('DOMContentLoaded', () => {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
 
     revealEls.forEach(el => {
-      // If already in viewport at load time (above the fold), reveal immediately
+      // If already fully above the trigger line at load (above the fold), reveal now;
+      // otherwise let the observer fire it when the user scrolls it into view.
       const rect = el.getBoundingClientRect();
-      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      if (inViewport) {
+      const triggerLine = window.innerHeight * 0.88; // matches the -12% rootMargin
+      if (rect.top < triggerLine) {
         showReveal(el);
       } else {
         revealObserver.observe(el);
       }
     });
 
-    // Safety net: after 2s, force-reveal anything still hidden in case observer missed it
+    // Safety net: only reveal elements the user has already scrolled PAST (above the
+    // viewport). Never force-reveal something still below — that's what was killing the
+    // on-scroll effect by flashing everything visible 2s after load.
     setTimeout(() => {
       revealEls.forEach(el => {
-        if (!el.classList.contains('visible') && !el.classList.contains('is-visible')) {
+        if (el.classList.contains('visible') || el.classList.contains('is-visible')) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < 0) {
           el.classList.add('visible', 'is-visible');
+          revealObserver.unobserve(el);
         }
       });
-    }, 2000);
+    }, 3000);
   }
 
   // ── COUNTER ANIMATION ──

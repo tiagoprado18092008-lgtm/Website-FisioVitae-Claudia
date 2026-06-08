@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroFrame = document.querySelector('#hero .hero-frame');
   const hero = document.getElementById('hero');
 
+  // All scroll-driven work runs through ONE rAF-throttled loop. Other features
+  // (reveal stragglers, quickinfo sticky) push callbacks here instead of adding
+  // their own scroll listeners, so we never run more than one handler per frame.
+  const scrollTasks = [];
+  const registerScrollTask = (fn) => { scrollTasks.push(fn); };
+
   let ticking = false;
   const onScroll = () => {
     const y = window.scrollY;
@@ -25,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         heroFrame.style.setProperty('--parallax', (y * 0.18).toFixed(1) + 'px');
       }
     }
+
+    for (let i = 0; i < scrollTasks.length; i++) scrollTasks[i](y);
     ticking = false;
   };
 
@@ -35,10 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  if (navbar || heroFrame) {
-    window.addEventListener('scroll', requestScroll, { passive: true });
-    onScroll();
-  }
+  // Single scroll listener for the whole page.
+  window.addEventListener('scroll', requestScroll, { passive: true });
 
   // ── SUBMENU KEEP-OPEN (timer prevents flicker when moving to submenu) ──
   document.querySelectorAll('.dropdown-cat-item').forEach(item => {
@@ -101,12 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── SCROLL REVEAL (legacy + new .reveal data-delay) ──
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 
+  // Promote to its own compositing layer only for the duration of the transition,
+  // then drop the hint so we don't keep dozens of permanent layers alive.
+  const reveal = (el) => {
+    el.classList.add('anim', 'visible', 'is-visible');
+    const clear = () => { el.classList.remove('anim'); el.removeEventListener('transitionend', clear); };
+    el.addEventListener('transitionend', clear);
+    setTimeout(clear, 1200); // fallback in case transitionend doesn't fire
+  };
+
   const showReveal = (el) => {
     const delay = parseInt(el.dataset.delay || 0, 10);
     if (delay) {
-      setTimeout(() => { el.classList.add('visible', 'is-visible'); }, delay);
+      setTimeout(() => reveal(el), delay);
     } else {
-      el.classList.add('visible', 'is-visible');
+      reveal(el);
     }
   };
 
@@ -141,33 +156,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bottom-of-page guard: an element low on the page may never have its top reach
     // the 80% trigger line (the page simply ends first), leaving it stuck hidden.
-    // Whenever the user is near the very bottom, reveal anything still visible there.
-    const revealStragglers = () => {
-      const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
-      if (!atBottom) return;
+    // When the user reaches the very bottom, reveal anything still visible there.
+    // Exposed on the shared rAF scroll loop (see registerScrollTask) — no extra
+    // scroll listener of its own.
+    let stragglersDone = false;
+    registerScrollTask(() => {
+      if (stragglersDone) return;
+      if (window.innerHeight + window.scrollY < document.body.scrollHeight - 4) return;
+      let remaining = 0;
       revealEls.forEach(el => {
         if (el.classList.contains('visible') || el.classList.contains('is-visible')) return;
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
           showReveal(el);
           revealObserver.unobserve(el);
+        } else if (rect.top >= window.innerHeight) {
+          remaining++;
         }
       });
-    };
-    window.addEventListener('scroll', revealStragglers, { passive: true });
+      if (remaining === 0) stragglersDone = true; // nothing left below; stop checking
+    });
 
-    // Last-resort net: only reveal elements the user has already scrolled PAST (above
-    // the viewport). Never force-reveal something still below — that's what was
-    // killing the on-scroll effect by flashing everything visible after load.
-    setTimeout(() => {
-      revealEls.forEach(el => {
-        if (el.classList.contains('visible') || el.classList.contains('is-visible')) return;
+    // Above-viewport rescue: during fast (mouse-wheel) scrolling the observer can
+    // coalesce rapid intersection changes and miss a few staggered items, leaving
+    // them hidden far above the fold. On every frame, snap-reveal (no transition,
+    // no stagger) anything that has scrolled fully past the top — the user can't see
+    // it animate up there anyway, so this only prevents "stuck hidden" gaps without
+    // ever flashing something that's still on screen or below. We keep a live list
+    // and drop entries as they resolve, so once everything's shown this costs nothing.
+    let pending = Array.prototype.slice.call(revealEls);
+    registerScrollTask(() => {
+      if (!pending.length) return;
+      pending = pending.filter(el => {
+        if (el.classList.contains('visible') || el.classList.contains('is-visible')) return false;
         if (el.getBoundingClientRect().bottom < 0) {
           el.classList.add('visible', 'is-visible');
           revealObserver.unobserve(el);
+          return false;
         }
+        return true;
       });
-    }, 4000);
+    });
   }
 
   // ── COUNTER ANIMATION ──
@@ -298,12 +327,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quickinfo) {
     const pageHero = document.querySelector('.page-hero');
     const triggerY = pageHero ? pageHero.offsetTop + pageHero.offsetHeight - 80 : 300;
-    const toggleQuickInfo = () => {
-      quickinfo.classList.toggle('visible', window.scrollY > triggerY);
-    };
-    window.addEventListener('scroll', toggleQuickInfo, { passive: true });
-    toggleQuickInfo();
+    registerScrollTask((y) => {
+      quickinfo.classList.toggle('visible', y > triggerY);
+    });
   }
+
+  // Kick the shared scroll loop once now that every task is registered, so initial
+  // state (navbar, quickinfo, above-fold reveals) is correct without waiting for a scroll.
+  onScroll();
 
   // ── LIGHTBOX (GLightbox) ──
   if (typeof GLightbox !== 'undefined') {

@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chatTimeEl.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
     }
 
-    const WA_NUMBER = '351253623663';
+    const WA_NUMBER = '351961783566';
     const fab = document.getElementById('chatFab');
     const panel = document.getElementById('chatPanel');
     const closeBtn = document.getElementById('chatClose');
